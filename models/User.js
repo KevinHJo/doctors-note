@@ -14,17 +14,24 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    role: {
+    role: { 
         type: String,
-        require: true
+        required: true
     },
     fname: {
         type: String,
-        require: true
+        required: true
     },
     lname: {
         type: String,
-        require: true
+        required: true
+    },
+    dba: {
+        type: String,
+        required: true
+    },
+    patients: {
+      type: Object
     }
   }, {
     timestamps: true

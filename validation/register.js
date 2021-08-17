@@ -2,12 +2,15 @@ const Validator = require('validator');
 const validText = require('./valid-text');
 
 module.exports = function validateRegisterInput(data) {
+  console.log(data);
   let errors = {};
 
   data.username = validText(data.username) ? data.username : '';
   data.email = validText(data.email) ? data.email : '';
   data.fname = validText(data.fname) ? data.fname : '';
   data.lname = validText(data.lname) ? data.lname : '';
+  data.dba = validText(data.dba) ? data.dba : '';
+  data.role = validText(data.role) ? data.role : '';
   data.password = validText(data.password) ? data.password : '';
   data.password2 = validText(data.password2) ? data.password2 : '';
 
@@ -28,11 +31,19 @@ module.exports = function validateRegisterInput(data) {
   }
 
   if (Validator.isEmpty(data.fname)) {
-    errors.fname = 'First name is required'
+    errors.fname = 'First name is required';
   }
-  
+
   if (Validator.isEmpty(data.lname)) {
-    errors.lname = 'Last name is required'
+    errors.lname = 'Last name is required';
+  }
+
+  if (Validator.isEmpty(data.dba)) {
+    errors.dba = 'Business name is required';
+  }
+
+  if (Validator.isEmpty(data.role)) {
+    errors.role = 'User role is required';
   }
 
   if (Validator.isEmpty(data.password)) {
