@@ -4,39 +4,39 @@ const Schema = mongoose.Schema;
 const PatientSchema = new Schema ({
   fname: {
     type: String,
-    require: true
+    required: true
   },
   lname: {
     type: String,
-    require: true
+    required: true
   },
   username: {
     type: String,
-    require: true
+    required: true
   },
   password: {
     type: String,
-    require: true
+    required: true
   },
   address: {
     type: String,
-    require: true
+    required: true
   },
   dateOfBirth: {
     type: Date,
-    require: true
+    required: true
   },
   sex: {
     type: String,
-    require: true
+    required: true
   },
   phone: {
     type: String,
-    require: true
+    required: true
   },
   email: {
     type: String,
-    require: true
+    required: true
   },
   diagnoses: {
     type: Array
@@ -46,7 +46,13 @@ const PatientSchema = new Schema ({
   },
   allergies: {
     type: Array
+  },
+  doctor: {
+    type: Schema.Types.ObjectId,
+    ref: 'users'
   }
 }, {
   timestamps: true
 })
+
+module.exports = Patient = mongoose.model('Patient', PatientSchema)
