@@ -38,7 +38,7 @@ router.post('/register', (req, res) => {
 	User.findOne({ username: req.body.username })
 		.then(user => {
 			if (user) {
-				// Throw a 400 error if the username address already exists
+				// Throw a 400 error if the username already exists
 				return res.status(400).json({username: "A user has already registered with this username"})
 			}});
 
