@@ -14,7 +14,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    role: {
+    role: { 
         type: String,
         required: true
     },
@@ -23,6 +23,10 @@ const UserSchema = new Schema({
         required: true
     },
     lname: {
+        type: String,
+        required: true
+    },
+    dba: {
         type: String,
         required: true
     },

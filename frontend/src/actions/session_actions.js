@@ -14,9 +14,12 @@ export const receiveCurrentUser = currentUser => ({
     currentUser
 });
 
-export const receiveUserLogin = () => ({
-    type: RECEIVE_USER_LOGIN
-});
+export const receiveUserLogin = (pkg) => {
+    debugger;
+    return ({
+        type: RECEIVE_USER_LOGIN
+    })
+};
 
 export const logoutUser = () => ({
     type: RECEIVE_USER_LOGOUT
@@ -37,9 +40,9 @@ export const logout = () => dispatch => {
     dispatch(logoutUser())
 };
 
-export const signup = user => dispatch => (
-    SessionAPIUtil.signup(user).then(() => (
-        dispatch(receiveUserLogin())
+export const signup = (user) => (dispatch) => (
+    SessionAPIUtil.signup(user).then((res) => (
+        dispatch(receiveUserLogin(res))
     ), err => (
         dispatch(receiveSessionErrors(err.response.data))
     ))
