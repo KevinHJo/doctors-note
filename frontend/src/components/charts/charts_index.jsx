@@ -23,6 +23,7 @@ export default class ChartsIndex extends React.Component {
     let selectedPatient = patients.find(patient => patient.id === this.state.patientId)
     return (
       <div>
+        
         <div className='charts-index'>
           {patients.map(patient => 
             <div key={patient.id}>
