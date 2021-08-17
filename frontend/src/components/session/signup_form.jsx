@@ -55,13 +55,13 @@ export default class SignupForm extends React.Component {
               defaultValue={this.state.fname}
             ></input>
           </label>
-          <label className="signup-email-label">Email: 
-            <input className="signup-email-input" 
-              type="text" 
-              placeholder="Enter Email Here."
-              onChange={this.updateField('email')}
-              defaultValue={this.state.email}
-            ></input>
+          <label className="signup-business-label">Last Name:
+            <input className="signup-business-input"
+              type="text"
+              placeholder="Enter Last Name Here."
+              onChange={this.updateField("lname")}
+              defaultValue={this.state.lname}
+              ></input>
           </label>
           <label className="signup-business-label">DBA:
             <input className="signup-business-input"
@@ -76,13 +76,13 @@ export default class SignupForm extends React.Component {
           </label>
         </div>
         <div className='section2'>
-          <label className="signup-business-label">Last Name:
-            <input className="signup-business-input"
-              type="text"
-              placeholder="Enter Last Name Here."
-              onChange={this.updateField("lname")}
-              defaultValue={this.state.lname}
-              ></input>
+          <label className="signup-email-label">Email: 
+            <input className="signup-email-input" 
+              type="text" 
+              placeholder="Enter Email Here."
+              onChange={this.updateField('email')}
+              defaultValue={this.state.email}
+            ></input>
           </label>
           <label className="signup-username-label">Username:
             <input type="text" 

@@ -1,0 +1,75 @@
+::placeholder {
+  font-size: 14px;
+}
+
+:-ms-input-placeholder {
+  color: rgb(62,62,118);
+}
+
+#empty-space {
+  background: rgb(255, 255, 255, 80%);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+}
+
+#empty-space:hover {
+  cursor: pointer;
+}
+
+#login-form {
+  position: absolute;
+  background: white;
+  width: 400px;
+  height: 300px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px 20px;
+  z-index: 5;
+}
+
+#login-form .title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  border-bottom: 3px solid rgb(62,62,62);
+  margin-bottom: 15px;
+}
+
+.section-login-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 80%;
+}
+
+.section-login-fields input {
+  border: none;
+  padding: 5px 14px;
+  letter-spacing: 2px;
+  font-size: 15px;
+  font-weight: 500;
+  width: 300px;
+}
+
+.section-login-fields label {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+#login-button {
+  width: 150px;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color: rgb(17,94,155);
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+}
