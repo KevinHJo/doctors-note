@@ -15,7 +15,6 @@ export const receiveCurrentUser = currentUser => ({
 });
 
 export const receiveUserLogin = (pkg) => {
-    debugger;
     return ({
         type: RECEIVE_USER_LOGIN
     })

@@ -1,4 +1,5 @@
 node_modules/
 private.md
-config/keys.js
+keys.js
+keys_dev.js
 .env
