@@ -105,4 +105,18 @@ router.post('/login', (req, res) => {
 		});
 });
 
+router.patch('/update/:id', (req, res) => {
+  const user = User.findOne({_id: req.params.id})
+  if (!user) return res.status(404).json({user: 'This doctor does not exist'})
+  const patients = Object.assign({}, user.patients)
+  patients[req.body.patient.id] = req.body.patient
+
+  User.updateOne({_id: req.params.id}, {
+    // add other user params
+    patients
+  })
+    .then(user => res.json(user))
+    .catch(err => console.log(err))
+})
+
 module.exports = router;

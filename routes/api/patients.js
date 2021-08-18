@@ -41,7 +41,8 @@ router.post('/register', (req, res) => {
     dateOfBirth: req.body.dateOfBirth,
     sex: req.body.sex,
     phone: req.body.phone,
-    email: req.body.email
+    email: req.body.email,
+    doctorId: req.body.doctorId
 	})
 
 	bcrypt.genSalt(10, (err, salt) => {
@@ -53,6 +54,32 @@ router.post('/register', (req, res) => {
 				.catch(err => console.log(err));
 		})
 	})
+})
+
+router.post('/new', (req, res) => {
+  const { body } = req;
+  const generateRandomString = (length=8)=>Math.random().toString(20).substr(2, length)
+  let randomUsername = generateRandomString()
+  while (User.findOne({username: randomUsername})) {
+    randomUsername = generateRandomString();
+  }
+  const newPatient = new Patient({
+		username: randomUsername,
+		email: body.patient.email,
+		password: 'password', // might need to hash this?
+    role: 'patient',
+		fname: body.patient.fname,
+		lname: body.patient.lname,
+    address: body.patient.address,
+    dateOfBirth: body.patient.dateOfBirth,
+    sex: body.patient.sex,
+    phone: body.patient.phone,
+    doctorId: body.patient.doctorId
+	})
+
+  newPatient.save()
+    .then(patient => res.json(patient))
+    .catch(err => console.log(err))
 })
 
 // router.post('/login', (req, res) => {
