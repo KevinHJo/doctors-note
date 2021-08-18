@@ -11,38 +11,53 @@ export default class TopNavBar extends React.Component {
   
   toggleLoginForm() {
     document.getElementById("login-form-section").classList.add("show")
+    document.getElementById("login-email").focus();
   }
   
   render() {
-    console.log('hi')
     let buttons = [];
+    let title = !!this.props.pageDir ? this.props.pageDir : 'D.Note';
+    let link = !!this.props.pageDir ? '/patients/login' : '/';
+    let style = !!this.props.pageDir ? 'top-nav-bar-patient' : 'top-nav-bar';
+    let color = !!this.props.pageDir ? 'section-title-patient' : 'section-title';
+    let button = !!this.props.pageDir ? 'section-buttons-patient' : 'section-buttons';
     if (this.props.loggedIn) {
       buttons.push(
-        <Link key={0} onClick={this.props.logout} to="/" className="section-nav-logout-button section-buttons">
+        <Link key='0' onClick={this.props.logout} to="/" className={`${button}`}>
           <p className="nav-buttons">Logout</p>
         </Link>
       )
     } else {
-      buttons.push(
-        <div key={1} onClick={this.toggleLoginForm} className="section-nav-login-button section-buttons">
-          <p className="nav-buttons">Sign in</p>
-        </div>
-      )
-      buttons.push(
-        <div key={2} className="section-nav-signup-button section-buttons">
-          <Link to="/signup" className="nav-buttons">Signup</Link>
-        </div>
-      )
+      if (!!this.props.pageDir) {
+        buttons.push(
+          <Link key='3' to="/" className={`${button}`}>
+            <p className="nav-buttons">Doctor Portal.</p>
+          </Link>
+        )
+      } else {
+        buttons.push(
+          <div key='1' onClick={this.toggleLoginForm} className={`${button}`}>
+            <p className="nav-buttons">Sign in</p>
+          </div>
+        )
+        buttons.push(
+          <Link key='2' to="/patients/login" className={`${button}`}>
+            <p className="nav-buttons">Patient Portal.</p>
+          </Link>
+        )
+      }
     }
     
     return (
       <div>
-        <div id="top-nav-bar">
-          <Link to="/" className="section-title">
-            <p className="nav-title">D.Note</p>
+        <div id={style}>
+          <Link to={link} className={color}>
+            <p className="nav-title">{title}</p>
           </Link>
           <div className="section-nav-buttons">
-            {buttons}
+            {buttons.map(button => {
+              return button;
+            })}
           </div>
         </div>
         <SigninForm login={this.props.login} />

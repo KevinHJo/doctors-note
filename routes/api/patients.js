@@ -6,7 +6,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const router = express.Router();
 // const validateRegisterInput = require('../../validation/register');
-const validateLoginInput = require('../../validation/login');
+const validatePatientLoginInput = require('../../validation/patient_login.js');
 
 router.post('/register', (req, res) => {
 	// const { errors, isValid } = validateRegisterInput(req.body)
@@ -57,6 +57,45 @@ router.post('/register', (req, res) => {
 				.catch(err => res.json(err));
 		});
 	});
+});
+
+router.post('/login', (req, res) => {
+	const { errors, isValid } = validatePatientLoginInput(req.body);
+
+	if (!isValid) {
+		return res.status(400).json(errors);
+	}
+
+	const username = req.body.username;
+	const password = req.body.password;
+
+	Patient.findOne({ username: username })
+		.then(patient => {
+			if (!patient) {
+				return res.status(404).json({ username: 'This patient does not exist' });
+			}
+
+			bcrypt.compare(password, patient.password)
+				.then(isMatch => {
+					if (isMatch) {
+						const payload = { id: patient.id, username: patient.username, role: patient.role }; // revisit this
+
+						jwt.sign(
+							payload,
+							keys.secretOrKey,
+							// Tell the key to expire in one hour
+							{ expiresIn: 3600 },
+							(err, token) => {
+								res.json({
+									success: true,
+									token: 'Bearer ' + token
+								});
+							});
+					} else {
+						return res.status(400).json({ password: 'Incorrect password' });
+					}
+				});
+		});
 });
 
 router.post('/new', (req, res) => {
