@@ -9,6 +9,10 @@ import LoginPage from './session/login_page';
 import HomePageContainer from './home/home_page_container';
 import NavBarContainer from './navbar/top_nav_bar_container';
 
+//TESTING - start
+import VisitsIndex from './visits/visits_index';
+//TESTING -end
+
 const App = () => (
     <div>
         <NavBarContainer />
@@ -19,6 +23,9 @@ const App = () => (
             <ProtectedRoute exact path="/charts" component={ChartsIndexContainer} />
             <ProtectedRoute exact path='/charts/:patientId' component={ChartShow} />
             <ProtectedRoute exact path='/charts/:patientId/:visitId' component={VisitShow} />
+              
+            {/* TESTING ROUTES */}
+            <Route exact path='/charts/visits' component={VisitsIndex} />
         </Switch>
     </div>
 );

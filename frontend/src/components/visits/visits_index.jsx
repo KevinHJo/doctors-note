@@ -14,7 +14,7 @@ class VisitsIndex extends Component {
         {visits.map(visit => {
           return (
             <li key={visit.id} className='visit-link'>
-              <Link to={`charts/${_id}/${visit.id}`}>
+              <Link to={{pathname: `charts/${_id}/${visit.id}`, state: {patient: this.props.patient, visit: visit}}}>
                 {
                   visit.aggregate({
                     $project: {
