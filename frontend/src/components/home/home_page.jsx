@@ -7,7 +7,8 @@ export default class HomePage extends React.Component {
   render() {
     return (
       <div id="homepage">
-        <NavBarContainer login={this.props.login} logout={this.props.logout}/>        <div id="spacer"></div>
+        <NavBarContainer login={this.props.login} logout={this.props.logout}/>
+        <div id="spacer"></div>
         <div className="section-main">
           <div id="spacer"></div>
           <div className="info-upper-line"></div>
