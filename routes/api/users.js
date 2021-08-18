@@ -38,7 +38,7 @@ router.post('/register', (req, res) => {
 			}
 		});
 
-	User.findOne({ username: req.body.username })
+	let user = User.findOne({ username: req.body.username })
 		.then(user => {
 			if (user) {
 				// Throw a 400 error if the username already exists
@@ -111,21 +111,30 @@ router.post('/login', (req, res) => {
 });
 
 router.patch('/update/:id', (req, res) => {
-	const patient = Patient.findOne({ _id: req.params.id });
-	const user = User.findOne({ _id: patient.doctorId });
-	if (!patient) return res.status(404).json({ user: 'This patient does not exist' });
-	if (!user) return res.status(404).json({ user: 'This doctor does not exist' });
-	const patients = Object.assign({}, user.patients);
-	console.log('patient', patient);
-	console.log('body', user);
-	patients[patient.id] = patient;
-
-	User.updateOne({ _id: req.params.id }, {
-		// add other user params
-		patients
-	})
-		.then(user => res.json(user))
-		.catch(err => console.log(err));
+	// Put patient :id as wildcard!
+	Patient.findOne({ _id: req.params.id })
+		.then(patient => {
+			if (patient) {
+				console.log('patient', patient);
+				User.findOne({ _id: patient.doctorId })
+					.then(user => {
+						if (user) {
+							console.log('user', user);
+							let patients = user.patients;
+							patients[patient._id] = patient;
+							User.updateOne({ _id: user._id }, {
+								patients
+							})
+								.then(user => res.json(user))
+								.catch(err => console.log(err));
+						} else {
+							return res.status(404).json({ user: 'This doctor does not exist' });
+						}
+					});
+			} else {
+				return res.status(404).json({ user: 'This patient does not exist' });
+			}
+		});
 });
 
 module.exports = router;
