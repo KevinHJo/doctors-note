@@ -21,10 +21,27 @@ router.post('/new', (req, res) => {
 		assessment: req.body.assessment,
 		plan: req.body.plan,
     patientId: req.body.patientId
+    
 	})
 
   newVisit.save()
-				.then(visit => res.json(visit))
+				.then(visit => {
+          Patient.findOne({_id: visit.patientId })
+          .then(patient => {
+              if (patient) {
+                let visits = patient.visits;
+                visits[visit._id] = visit;
+                Patient.updateOne({ _id: patient.id }, {
+                  visits
+                })
+                  .catch(err => res.json(err));
+              } else {
+                return res.status(404).json({patient: 'This patient does not exist' });
+              }
+            })
+            .catch(err => res.json(err)); //THROWING WARNING (FIX LATER)
+          res.json(visit)
+        })
 				.catch(err => res.json(err));
 });
 

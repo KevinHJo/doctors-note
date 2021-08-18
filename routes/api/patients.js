@@ -78,8 +78,9 @@ router.post('/new', (req, res) => {
 		sex: body.sex,
 		phone: body.phone,
 		doctorId: body.doctorId,
-    visits: {}
 	});
+	
+	newPatient.visits = new Object();
 
 	bcrypt.genSalt(10, (err, salt) => {
 		bcrypt.hash(newPatient.password, salt, (err, hash) => {

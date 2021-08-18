@@ -61,7 +61,8 @@ const PatientSchema = new Schema ({
     required: true
   }
 }, {
-  timestamps: true
+  timestamps: true,
+  minimize: false
 })
 
 module.exports = Patient = mongoose.model('Patient', PatientSchema)
