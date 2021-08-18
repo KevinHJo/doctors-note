@@ -13,3 +13,5 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => ({
   fetchPatientVisits: () => dispatch(fetchPatientVisits)
 })
+
+export default connect(mSTP, mDTP)(VisitsIndex);
