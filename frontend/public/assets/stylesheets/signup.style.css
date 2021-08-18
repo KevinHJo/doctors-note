@@ -1,5 +1,6 @@
 ::placeholder {
   font-size: 14px;
+  text-align: center;
 }
 
 :-ms-input-placeholder {
@@ -31,6 +32,7 @@
 
 .section1 input {
   border: none;
+  text-align:center;
   padding: 5px 14px;
   letter-spacing: 2px;
   font-size: 15px;
@@ -75,6 +77,7 @@
   margin-right: 20px;
   padding-bottom: 9px;
   border-bottom: 1px solid rgb(62,62,118);
+  text-align: center;
   padding-top: 9px;
   background: white;
   color: rgb(62,62,118);
@@ -94,10 +97,6 @@
   flex-direction: column;
 }
 
-.signup-username-label {
-
-}
-
 .signup-email-input {
   border: none;
   padding: 5px 14px;
@@ -106,28 +105,19 @@
   font-weight: 500;
 }
 
-.signup-email-input:focus {
-  outline: none;
-  border-bottom: 1px solid rgb(62,62,118);
-  background-color: none;
-}
-
-.signup-email-label {
-
-}
-
 #signup-submit-button {
   border: none;
-  margin-top: 15px;
-  border-radius: 7px;
+  margin-top: 7px;
+  border-radius: 0px;
+  padding: 6px;
   width: 55%;
   align-self: center;
-  background-color: rgb(0,164,0);
+  background-color: rgb(17,94,155);;
   font-weight: 700;
   color: white;
 }
 
 #signup-submit-button:hover {
   cursor: pointer;
-  background-color: rgb(108,160,95);
+  background-color: rgb(7,46,92);
 }

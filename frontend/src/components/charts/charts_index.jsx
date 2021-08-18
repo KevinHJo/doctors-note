@@ -27,7 +27,7 @@ export default class ChartsIndex extends React.Component {
         <div className='charts-index'>
           {patients.map(patient => 
             <div key={patient.id}>
-              <Link to={{pathname: `/charts/${patient.id}`, state: selectedPatient}}>{`${patient.lname}, ${patient.fname}`}</Link>
+              <Link to={{pathname: `/charts/${patient.id}`, state: patient}}>{`${patient.lname}, ${patient.fname}`}</Link>
               <button onClick={this.handleClick(patient.id)}>🔍</button>
             </div>
           )}

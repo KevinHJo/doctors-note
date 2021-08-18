@@ -2,7 +2,7 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SignupPage from './session/signup_page';
 import ChartsIndexContainer from './charts/charts_index';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import VisitShow from './visits/visit_show'
 import LoginPage from './session/login_page';
 import HomePageContainer from './home/home_page_container';

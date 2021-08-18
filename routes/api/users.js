@@ -8,7 +8,7 @@ const router = express.Router();
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-// router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
 	res.json({
@@ -33,14 +33,18 @@ router.post('/register', (req, res) => {
 			if (user) {
 				// Throw a 400 error if the email address already exists
 				return res.status(400).json({ email: "A user has already registered with this address" });
+			} else {
+				null;
 			}
 		});
 
-	User.findOne({ username: req.body.username })
+	let user = User.findOne({ username: req.body.username })
 		.then(user => {
 			if (user) {
 				// Throw a 400 error if the username already exists
 				return res.status(400).json({ username: "A user has already registered with this username" });
+			} else {
+				null;
 			}
 		});
 
@@ -53,6 +57,7 @@ router.post('/register', (req, res) => {
 		lname: req.body.lname,
 		dba: req.body.dba,
 		role: req.body.role,
+		patients: new Object(),
 	});
 
 	bcrypt.genSalt(10, (err, salt) => {
@@ -61,7 +66,7 @@ router.post('/register', (req, res) => {
 			newUser.password = hash;
 			newUser.save()
 				.then(user => res.json(user))
-				.catch(err => console.log(err));
+				.catch(err => res.json(err));
 		});
 	});
 });
@@ -102,6 +107,33 @@ router.post('/login', (req, res) => {
 						return res.status(400).json({ password: 'Incorrect password' });
 					}
 				});
+		});
+});
+
+router.patch('/update/:id', (req, res) => {
+	// Put patient :id as wildcard!
+	Patient.findOne({ _id: req.params.id })
+		.then(patient => {
+			if (patient) {
+				console.log('patient', patient);
+				User.findOne({ _id: patient.doctorId })
+					.then(user => {
+						if (user) {
+							console.log('user', user);
+							let patients = user.patients;
+							patients[patient._id] = patient;
+							User.updateOne({ _id: user._id }, {
+								patients
+							})
+								.then(user => res.json(user))
+								.catch(err => console.log(err));
+						} else {
+							return res.status(404).json({ user: 'This doctor does not exist' });
+						}
+					});
+			} else {
+				return res.status(404).json({ user: 'This patient does not exist' });
+			}
 		});
 });
 

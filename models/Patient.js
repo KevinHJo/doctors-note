@@ -18,6 +18,10 @@ const PatientSchema = new Schema ({
     type: String,
     required: true
   },
+  role: {
+    type: String,
+    required: true
+  },
   address: {
     type: String,
     required: true
@@ -47,7 +51,7 @@ const PatientSchema = new Schema ({
   allergies: {
     type: Array
   },
-  doctor: {
+  doctorId: {
     type: Schema.Types.ObjectId,
     ref: 'users'
   }
