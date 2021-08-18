@@ -15,20 +15,22 @@ router.post('/register', (req, res) => {
 	// 	return res.status(400).json(errors)
 	// }
 
-    // Check to make sure nobody has already registered with a duplicate email
+	// Check to make sure nobody has already registered with a duplicate email
 	Patient.findOne({ email: req.body.email })
 		.then(patient => {
 			if (patient) {
 				// Throw a 400 error if the email address already exists
-				return res.status(400).json({email: "A patient has already registered with this address"})
-			}});
-	
+				return res.status(400).json({ email: "A patient has already registered with this address" });
+			}
+		});
+
 	Patient.findOne({ username: req.body.username })
 		.then(patient => {
 			if (patient) {
 				// Throw a 400 error if the username already exists
-				return res.status(400).json({username: "A patient has already registered with this username"})
-			}});
+				return res.status(400).json({ username: "A patient has already registered with this username" });
+			}
+		});
 
 	// Otherwise create a new user
 	const newPatient = new Patient({
@@ -37,13 +39,14 @@ router.post('/register', (req, res) => {
 		password: req.body.password,
 		fname: req.body.fname,
 		lname: req.body.lname,
-    address: req.body.address,
-    dateOfBirth: req.body.dateOfBirth,
-    sex: req.body.sex,
-    phone: req.body.phone,
-    email: req.body.email,
-    doctorId: req.body.doctorId
-	})
+		address: req.body.address,
+		dateOfBirth: req.body.dateOfBirth,
+		sex: req.body.sex,
+		phone: req.body.phone,
+		email: req.body.email,
+		doctorId: req.body.doctorId,
+		role: req.body.role,
+	});
 
 	bcrypt.genSalt(10, (err, salt) => {
 		bcrypt.hash(newPatient.password, salt, (err, hash) => {
@@ -52,35 +55,35 @@ router.post('/register', (req, res) => {
 			newPatient.save()
 				.then(patient => res.json(patient))
 				.catch(err => console.log(err));
-		})
-	})
-})
+		});
+	});
+});
 
 router.post('/new', (req, res) => {
-  const { body } = req;
-  const generateRandomString = (length=8)=>Math.random().toString(20).substr(2, length)
-  let randomUsername = generateRandomString()
-  while (User.findOne({username: randomUsername})) {
-    randomUsername = generateRandomString();
-  }
-  const newPatient = new Patient({
+	const { body } = req;
+	const generateRandomString = (length = 8) => Math.random().toString(20).substr(2, length);
+	let randomUsername = generateRandomString();
+	// while (User.findOne({username: randomUsername})) {
+	//   randomUsername = generateRandomString();
+	// }
+	const newPatient = new Patient({
 		username: randomUsername,
-		email: body.patient.email,
+		email: body.email,
 		password: 'password', // might need to hash this?
-    role: 'patient',
-		fname: body.patient.fname,
-		lname: body.patient.lname,
-    address: body.patient.address,
-    dateOfBirth: body.patient.dateOfBirth,
-    sex: body.patient.sex,
-    phone: body.patient.phone,
-    doctorId: body.patient.doctorId
-	})
+		role: 'patient',
+		fname: body.fname,
+		lname: body.lname,
+		address: body.address,
+		dateOfBirth: body.dateOfBirth,
+		sex: body.sex,
+		phone: body.phone,
+		doctorId: body.doctorId
+	});
 
-  newPatient.save()
-    .then(patient => res.json(patient))
-    .catch(err => console.log(err))
-})
+	newPatient.save()
+		.then(patient => res.json(patient))
+		.catch(err => console.log(err));
+});
 
 // router.post('/login', (req, res) => {
 // 	const { errors, isValid } = validateLoginInput(req.body);
