@@ -69,9 +69,9 @@
   justify-content: space-evenly;
 }
 .container-info-left-title {
-  font-size: 44px;
-  font-weight: 300;
-  letter-spacing: 0.6px;
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: 3px;
   color: rgb(62, 62, 62);
   margin-left: 20px;
   margin-bottom: 10px;

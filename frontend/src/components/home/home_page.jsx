@@ -1,16 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SignupForm from '../session/signup_form';
-import SigninForm from '../session/login_form';
 import NavBarContainer from '../navbar/top_nav_bar_container';
 
 export default class HomePage extends React.Component {
   render() {
     return (
       <div id="homepage">
-        <NavBarContainer login={this.props.login} logout={this.props.logout}/>
-        <SigninForm />
-        <div id="spacer"></div>
+        <NavBarContainer login={this.props.login} logout={this.props.logout}/>        <div id="spacer"></div>
         <div className="section-main">
           <div id="spacer"></div>
           <div className="info-upper-line"></div>
