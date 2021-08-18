@@ -33,6 +33,8 @@ router.post('/register', (req, res) => {
 			if (user) {
 				// Throw a 400 error if the email address already exists
 				return res.status(400).json({ email: "A user has already registered with this address" });
+			} else {
+				null;
 			}
 		});
 
@@ -41,6 +43,8 @@ router.post('/register', (req, res) => {
 			if (user) {
 				// Throw a 400 error if the username already exists
 				return res.status(400).json({ username: "A user has already registered with this username" });
+			} else {
+				null;
 			}
 		});
 
@@ -53,6 +57,7 @@ router.post('/register', (req, res) => {
 		lname: req.body.lname,
 		dba: req.body.dba,
 		role: req.body.role,
+		patients: new Object(),
 	});
 
 	bcrypt.genSalt(10, (err, salt) => {
@@ -106,17 +111,21 @@ router.post('/login', (req, res) => {
 });
 
 router.patch('/update/:id', (req, res) => {
-  const user = User.findOne({_id: req.params.id})
-  if (!user) return res.status(404).json({user: 'This doctor does not exist'})
-  const patients = Object.assign({}, user.patients)
-  patients[req.body.patient.id] = req.body.patient
+	const patient = Patient.findOne({ _id: req.params.id });
+	const user = User.findOne({ _id: patient.doctorId });
+	if (!patient) return res.status(404).json({ user: 'This patient does not exist' });
+	if (!user) return res.status(404).json({ user: 'This doctor does not exist' });
+	const patients = Object.assign({}, user.patients);
+	console.log('patient', patient);
+	console.log('body', user);
+	patients[patient.id] = patient;
 
-  User.updateOne({_id: req.params.id}, {
-    // add other user params
-    patients
-  })
-    .then(user => res.json(user))
-    .catch(err => console.log(err))
-})
+	User.updateOne({ _id: req.params.id }, {
+		// add other user params
+		patients
+	})
+		.then(user => res.json(user))
+		.catch(err => console.log(err));
+});
 
 module.exports = router;

@@ -61,15 +61,15 @@ router.post('/register', (req, res) => {
 
 router.post('/new', (req, res) => {
 	const { body } = req;
-	const generateRandomString = (length = 8) => Math.random().toString(20).substr(2, length);
-	let randomUsername = generateRandomString();
-	// while (User.findOne({username: randomUsername})) {
-	//   randomUsername = generateRandomString();
-	// }
+	const generatePassword = (length = 8) => Math.random().toString(20).substr(2, length);
+	const digits = Math.floor(1000 + Math.random() * 9000);
+	let randomUsername = `${body.fname}${body.lname}${digits}`;
+	let oldPw = generatePassword();
+
 	const newPatient = new Patient({
 		username: randomUsername,
 		email: body.email,
-		password: 'password', // might need to hash this?
+		password: oldPw,
 		role: 'patient',
 		fname: body.fname,
 		lname: body.lname,
@@ -80,48 +80,33 @@ router.post('/new', (req, res) => {
 		doctorId: body.doctorId
 	});
 
-	newPatient.save()
-		.then(patient => res.json(patient))
-		.catch(err => console.log(err));
+	bcrypt.genSalt(10, (err, salt) => {
+		bcrypt.hash(newPatient.password, salt, (err, hash) => {
+			if (err) throw err;
+			newPatient.password = hash;
+			newPatient.save()
+				.then(patient => res.json(Object.assign({}, { pw: oldPw }, patient._doc)))
+				.catch(err => console.log(err));
+		});
+	});
 });
 
-// router.post('/login', (req, res) => {
-// 	const { errors, isValid } = validateLoginInput(req.body);
+// router.patch('/update/:id', (req, res) => {
+// 	const patient = Patient.findOne({ _id: req.params.id });
+// 	const user = User.findOne({ _id: patient.doctorId });
+// 	if (!patient) return res.status(404).json({ user: 'This patient does not exist' });
+// 	if (!user) return res.status(404).json({ user: 'This doctor does not exist' });
+// 	const patients = Object.assign({}, user.patients);
+// 	console.log('patient', req.body.patient);
+// 	console.log('body', req.body);
+// 	patients[req.body.patient.id] = req.body.patient;
 
-//   if (!isValid) {
-//     return res.status(400).json(errors);
-//   }
-
-// 	const email = req.body.email;
-// 	const password = req.body.password;
-
-// 	User.findOne({email})
-// 		.then(user => {
-// 			if (!user) {
-// 				return res.status(404).json({email: 'This user does not exist'});
-// 			}
-
-// 			bcrypt.compare(password, user.password)
-// 				.then(isMatch => {
-// 					if (isMatch) {
-// 						const payload = {id: user.id, email: user.email}; // revisit this
-
-// 						jwt.sign(
-// 							payload,
-// 							keys.secretOrKey,
-// 							// Tell the key to expire in one hour
-// 							{expiresIn: 3600},
-// 							(err, token) => {
-// 								res.json({
-// 									success: true,
-// 									token: 'Bearer ' + token
-// 								});
-// 							});
-// 					} else {
-// 						return res.status(400).json({password: 'Incorrect password'});
-// 					}
-// 				})
-// 		})
-// })
+// 	User.updateOne({ _id: req.params.id }, {
+// 		// add other user params
+// 		patients
+// 	})
+// 		.then(user => res.json(user))
+// 		.catch(err => console.log(err));
+// });
 
 module.exports = router;

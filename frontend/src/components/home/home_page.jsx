@@ -20,7 +20,7 @@ export default class HomePage extends React.Component {
                 />
               </div>
               <div className="section-desc">
-                <p className="container-info-left-title">Your personalized Doctors Note,</p>
+                <p className="container-info-left-title">Your personalized Doctors Note.</p>
                 <p className="container-info-left-desc">D.Note</p>
               </div>
             </div>
