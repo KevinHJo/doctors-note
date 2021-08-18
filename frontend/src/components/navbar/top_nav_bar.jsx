@@ -14,7 +14,6 @@ export default class TopNavBar extends React.Component {
   }
   
   render() {
-    console.log('hi')
     let buttons = [];
     if (this.props.loggedIn) {
       buttons.push(

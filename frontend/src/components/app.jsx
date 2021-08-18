@@ -1,7 +1,8 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SignupPage from './session/signup_page';
-import ChartsIndexContainer from './charts/charts_index';
+import ChartsIndexContainer from './charts/charts_index_container';
+import ChartShow from './charts/chart_show'
 import { Switch, Route } from 'react-router-dom';
 import VisitShow from './visits/visit_show'
 import LoginPage from './session/login_page';
@@ -16,8 +17,8 @@ const App = () => (
             <AuthRoute exact path="/login" component={LoginPage} />
             <AuthRoute exact path="/signup" component={SignupPage} />
             <ProtectedRoute exact path="/charts" component={ChartsIndexContainer} />
-            {/* <AuthRoute exact path='/charts/:patientId' component={ChartShow} /> */}
-            {<AuthRoute exact path='/charts/:patientId/:visitId' component={VisitShow} />}
+            <ProtectedRoute exact path='/charts/:patientId' component={ChartShow} />
+            <ProtectedRoute exact path='/charts/:patientId/:visitId' component={VisitShow} />
         </Switch>
     </div>
 );
