@@ -22,7 +22,7 @@ export default class ChartShow extends React.Component {
           <div><p>Allergies: </p>(map allergies)</div>
         </div>
         <div>
-          {/* <VisitsIndex patient={patient} /> */}
+          <VisitsIndex patient={patient} />
         </div>
       </div>
     )
