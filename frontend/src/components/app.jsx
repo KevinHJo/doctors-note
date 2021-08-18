@@ -17,6 +17,9 @@ const App = () => (
     <div>
         <NavBarContainer />
         <Switch>
+            {/* TESTING ROUTES */}
+            <ProtectedRoute exact path='/charts/visits/:patientId' component={VisitsIndex} />
+            {/* END TESTING ROUTES */}
             <AuthRoute exact path="/" component={HomePageContainer} />
             <AuthRoute exact path="/login" component={LoginPage} />
             <AuthRoute exact path="/signup" component={SignupPage} />
@@ -24,8 +27,6 @@ const App = () => (
             <ProtectedRoute exact path='/charts/:patientId' component={ChartShow} />
             <ProtectedRoute exact path='/charts/:patientId/:visitId' component={VisitShow} />
               
-            {/* TESTING ROUTES */}
-            <Route exact path='/charts/visits' component={VisitsIndex} />
         </Switch>
     </div>
 );

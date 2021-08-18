@@ -8,63 +8,20 @@ const router = express.Router();
 // const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-router.post('/register', (req, res) => {
-	// const { errors, isValid } = validateRegisterInput(req.body)
-
-	// if(!isValid) {
-	// 	return res.status(400).json(errors)
-	// }
-
-	// Check to make sure nobody has already registered with a duplicate email
-	Patient.findOne({ email: req.body.email })
-		.then(patient => {
-			if (patient) {
-				// Throw a 400 error if the email address already exists
-				return res.status(400).json({ email: "A patient has already registered with this address" });
-			}
-		});
-
-	Patient.findOne({ username: req.body.username })
-		.then(patient => {
-			if (patient) {
-				// Throw a 400 error if the username already exists
-				return res.status(400).json({ username: "A patient has already registered with this username" });
-			}
-		});
-
-	// Otherwise create a new user
-	const newPatient = new Patient({
-		username: req.body.username,
-		email: req.body.email,
-		password: req.body.password,
-		fname: req.body.fname,
-		lname: req.body.lname,
-		address: req.body.address,
-		dateOfBirth: req.body.dateOfBirth,
-		sex: req.body.sex,
-		phone: req.body.phone,
-		email: req.body.email,
-		doctorId: req.body.doctorId,
-		role: req.body.role,
-	});
-
-	bcrypt.genSalt(10, (err, salt) => {
-		bcrypt.hash(newPatient.password, salt, (err, hash) => {
-			if (err) throw err;
-			newPatient.password = hash;
-			newPatient.save()
-				.then(patient => res.json(patient))
-				.catch(err => res.json(err));
-		});
-	});
-});
-
 router.post('/new', (req, res) => {
 	const { body } = req;
 	const generatePassword = (length = 8) => Math.random().toString(20).substr(2, length);
 	const digits = Math.floor(1000 + Math.random() * 9000);
 	let randomUsername = `${body.fname}${body.lname}${digits}`;
 	let oldPw = generatePassword();
+
+	Patient.findOne({ email: body.email })
+		.then(patient => {
+			if (patient) {
+				// Throw a 400 error if the email address already exists
+				return res.status(400).json({ email: "A patient has already registered with this address" });
+			}
+		});
 
 	const newPatient = new Patient({
 		username: randomUsername,
