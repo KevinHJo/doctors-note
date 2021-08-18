@@ -5,13 +5,13 @@ const router = express.Router();
 router.get('/:patientId', (req, res) => {
   Visit.find({ patientId: req.params.patientId })
     .then(visits => res.json(visits))
-    .catch(err => console.log(err));
+    .catch(err => res.json(err));
 })
 
 router.get('/patients/:visitId', (req, res) => {
   Visit.findOne({ _id: req.params.visitId })
     .then(visit => res.json(visit))
-    .catch(err => console.log(err));
+    .catch(err => res.json(err));
 })
 
 router.post('/new', (req, res) => {
@@ -25,7 +25,7 @@ router.post('/new', (req, res) => {
 
   newVisit.save()
 				.then(visit => res.json(visit))
-				.catch(err => console.log(err));
+				.catch(err => res.json(err));
 });
 
 router.patch('/update/:id', (req, res) => {
@@ -44,7 +44,7 @@ router.patch('/update/:id', (req, res) => {
     patientId
   })
     .then(visit => res.json(visit))
-    .catch(err => console.log(err));
+    .catch(err => res.json(err));
 });
 
 module.exports = router;
