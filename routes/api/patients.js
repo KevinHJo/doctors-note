@@ -86,8 +86,24 @@ router.post('/new', (req, res) => {
 			if (err) throw err;
 			newPatient.password = hash;
 			newPatient.save()
-				.then(patient => res.json(Object.assign({}, { pw: oldPw }, patient._doc)))
-				.catch(err => console.log(err));
+				.then(patient => {
+          User.findOne({ _id: patient.doctorId })
+          .then(user => {
+            if (user) {
+              let patients = user.patients;
+              patients[patient._id] = patient;
+              User.updateOne({ _id: user._id }, {
+                patients
+              })
+                .catch(err => res.json(err));
+            } else {
+              return res.status(404).json({ user: 'This doctor does not exist' });
+            }
+          })
+          .catch(err => res.json(err))
+          res.json(Object.assign({}, { pw: oldPw }, patient._doc))
+        })
+				.catch(err => res.json(err));
 		});
 	});
 });

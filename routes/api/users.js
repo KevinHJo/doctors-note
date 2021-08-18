@@ -132,7 +132,7 @@ router.patch('/update/:id', (req, res) => {
 								patients
 							})
 								.then(user => res.json(user))
-								.catch(err => console.log(err));
+								.catch(err => res.json(err));
 						} else {
 							return res.status(404).json({ user: 'This doctor does not exist' });
 						}
