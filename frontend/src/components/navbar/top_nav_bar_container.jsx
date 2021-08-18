@@ -3,7 +3,6 @@ import { login, logout } from '../../actions/session_actions';
 import TopNavBar from './top_nav_bar';
 
 const mSTP = (state) => {
-  // debugger;
   return ({
     history: state.history,
     loggedIn: state.session.isAuthenticated,
