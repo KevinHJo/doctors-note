@@ -66,7 +66,7 @@ router.post('/register', (req, res) => {
 			newUser.password = hash;
 			newUser.save()
 				.then(user => res.json(user))
-				.catch(err => console.log(err));
+				.catch(err => res.json(err));
 		});
 	});
 });
@@ -116,8 +116,8 @@ router.patch('/update/:id', (req, res) => {
 	if (!patient) return res.status(404).json({ user: 'This patient does not exist' });
 	if (!user) return res.status(404).json({ user: 'This doctor does not exist' });
 	const patients = Object.assign({}, user.patients);
-	console.log('patient', patient);
-	console.log('body', user);
+	// console.log('patient', patient);
+	// console.log('body', user);
 	patients[patient.id] = patient;
 
 	User.updateOne({ _id: req.params.id }, {
@@ -125,7 +125,7 @@ router.patch('/update/:id', (req, res) => {
 		patients
 	})
 		.then(user => res.json(user))
-		.catch(err => console.log(err));
+		.catch(err => res.json(err));
 });
 
 module.exports = router;

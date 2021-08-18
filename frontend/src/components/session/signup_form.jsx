@@ -21,7 +21,7 @@ export default class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let packages = Object.assign({}, this.state, {role: "admin", password2: this.state.password});
-    console.log(packages)
+    // console.log(packages)
     this.props.signup(packages, this.props.history);
     this.setState = {
       username: '',
