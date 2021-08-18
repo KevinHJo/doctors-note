@@ -1,3 +1,7 @@
+#login-form-section {
+  display: none;
+}
+
 ::placeholder {
   font-size: 14px;
 }
@@ -21,7 +25,7 @@
 #login-form {
   position: absolute;
   background: white;
-  width: 400px;
+  width: 275px;
   height: 300px;
   top: 0;
   bottom: 0;
@@ -47,15 +51,22 @@
   flex-direction: column;
   justify-content: space-evenly;
   height: 80%;
+  border-bottom: 3px solid rgb(62,62,62);
 }
 
 .section-login-fields input {
   border: none;
-  padding: 5px 14px;
+  padding: 8px 14px;
   letter-spacing: 2px;
   font-size: 15px;
   font-weight: 500;
-  width: 300px;
+  width: 210px;
+  margin: 5px 10px 0px 10px;
+  border-bottom: 1px solid black;
+}
+
+.section-login-fields input:focus {
+  outline: none;
 }
 
 .section-login-fields label {
@@ -64,12 +75,22 @@
   letter-spacing: 0.5px;
 }
 
+.login-password-label {
+  
+}
+
 #login-button {
-  width: 150px;
+  width: 125px;
   margin: 0 auto;
   border-radius: 8px;
   background-color: rgb(17,94,155);
   color: white;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 15px;
+  padding: 6px 8px;
+}
+
+#login-button:hover {
+  background-color: rgb(7,46,92);
+  cursor: pointer;
 }
