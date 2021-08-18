@@ -66,23 +66,23 @@
 .section-desc {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 .container-info-left-title {
-  font-size: 48px;
-  font-weight: 600;
-  letter-spacing: 3px;
+  font-size: 44px;
+  font-weight: 200;
+  letter-spacing: 4px;
   color: rgb(62, 62, 62);
   margin-left: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .container-info-left-desc {
-  font-size: 24px;
+  font-size: 44px;
   font-weight: 200;
   letter-spacing: 0.6px;
   color: rgb(62, 62, 62);
-  margin-left: 80px;
+  margin-left: 330px;
 }
 
 .container-info-right {
