@@ -33,14 +33,18 @@ router.post('/register', (req, res) => {
 			if (user) {
 				// Throw a 400 error if the email address already exists
 				return res.status(400).json({ email: "A user has already registered with this address" });
+			} else {
+				null;
 			}
 		});
 
-	User.findOne({ username: req.body.username })
+	let user = User.findOne({ username: req.body.username })
 		.then(user => {
 			if (user) {
 				// Throw a 400 error if the username already exists
 				return res.status(400).json({ username: "A user has already registered with this username" });
+			} else {
+				null;
 			}
 		});
 
@@ -53,6 +57,7 @@ router.post('/register', (req, res) => {
 		lname: req.body.lname,
 		dba: req.body.dba,
 		role: req.body.role,
+		patients: new Object(),
 	});
 
 	bcrypt.genSalt(10, (err, salt) => {
@@ -61,7 +66,7 @@ router.post('/register', (req, res) => {
 			newUser.password = hash;
 			newUser.save()
 				.then(user => res.json(user))
-				.catch(err => console.log(err));
+				.catch(err => res.json(err));
 		});
 	});
 });
@@ -106,17 +111,30 @@ router.post('/login', (req, res) => {
 });
 
 router.patch('/update/:id', (req, res) => {
-  const user = User.findOne({_id: req.params.id})
-  if (!user) return res.status(404).json({user: 'This doctor does not exist'})
-  const patients = Object.assign({}, user.patients)
-  patients[req.body.patient.id] = req.body.patient
-
-  User.updateOne({_id: req.params.id}, {
-    // add other user params
-    patients
-  })
-    .then(user => res.json(user))
-    .catch(err => console.log(err))
-})
+	// Put patient :id as wildcard!
+	Patient.findOne({ _id: req.params.id })
+		.then(patient => {
+			if (patient) {
+				console.log('patient', patient);
+				User.findOne({ _id: patient.doctorId })
+					.then(user => {
+						if (user) {
+							console.log('user', user);
+							let patients = user.patients;
+							patients[patient._id] = patient;
+							User.updateOne({ _id: user._id }, {
+								patients
+							})
+								.then(user => res.json(user))
+								.catch(err => console.log(err));
+						} else {
+							return res.status(404).json({ user: 'This doctor does not exist' });
+						}
+					});
+			} else {
+				return res.status(404).json({ user: 'This patient does not exist' });
+			}
+		});
+});
 
 module.exports = router;

@@ -5,6 +5,6 @@ export const createPatient = patient => {
   return axios.post('/api/patients/new', patient);
 };
 
-export const addPatientToDoctor = patient => {
-  return axios.patch(`/api/users/update/${patient.doctorId}`, patient);
+export const addPatientToDoctor = (patientId) => {
+  return axios.patch(`/api/users/update/${patientId}`);
 };
