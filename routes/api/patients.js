@@ -77,7 +77,8 @@ router.post('/new', (req, res) => {
 		dateOfBirth: body.dateOfBirth,
 		sex: body.sex,
 		phone: body.phone,
-		doctorId: body.doctorId
+		doctorId: body.doctorId,
+    visits: {}
 	});
 
 	bcrypt.genSalt(10, (err, salt) => {

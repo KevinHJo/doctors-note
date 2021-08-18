@@ -8,7 +8,13 @@ const router = express.Router();
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+// router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+
+router.get('/:id', (req, res) => {
+  User.findOne({_id: req.params.id})
+    .then(user => res.json(user))
+    .catch(err => res.json(err))
+})
 
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
 	res.json({

@@ -3,9 +3,11 @@ import VisitsIndex from '../visits/visits_index'
 
 export default class ChartShow extends React.Component {
   render() {
-    const { patient } = this.props.location.state
+    console.log(this.props)
+    const patient = this.props.location.state
     return (
       <div>
+        <div id='spacer'></div>
         <div className='chart-patient-info'>
           <div><p>First name: </p>{patient.fname}</div>
           <div><p>Last name: </p>{patient.lname}</div>
@@ -20,7 +22,7 @@ export default class ChartShow extends React.Component {
           <div><p>Allergies: </p>(map allergies)</div>
         </div>
         <div>
-          <VisitsIndex patient={patient} />
+          {/* <VisitsIndex patient={patient} /> */}
         </div>
       </div>
     )
