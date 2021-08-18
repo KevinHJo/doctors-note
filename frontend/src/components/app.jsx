@@ -3,6 +3,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SignupPage from './session/signup_page';
 import ChartsIndexContainer from './charts/charts_index';
 import { Switch } from 'react-router-dom';
+import VisitShow from './visits/visit_show'
 import LoginPage from './session/login_page';
 import HomePageContainer from './home/home_page_container';
 import NavBarContainer from './navbar/top_nav_bar_container';
@@ -16,7 +17,7 @@ const App = () => (
             <AuthRoute exact path="/signup" component={SignupPage} />
             <ProtectedRoute exact path="/charts" component={ChartsIndexContainer} />
             {/* <AuthRoute exact path='/charts/:patientId' component={ChartShow} /> */}
-            {/* <AuthRoute exact path='/charts/:patientId/:visitId' component={VisitShow} /> */}
+            {<AuthRoute exact path='/charts/:patientId/:visitId' component={VisitShow} />}
         </Switch>
     </div>
 );
