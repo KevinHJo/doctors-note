@@ -14,21 +14,22 @@ export default class TopNavBar extends React.Component {
   }
   
   render() {
+    console.log('hi')
     let buttons = [];
     if (this.props.loggedIn) {
       buttons.push(
-        <Link onClick={this.props.logout} to="/" className="section-nav-logout-button section-buttons">
+        <Link key={0} onClick={this.props.logout} to="/" className="section-nav-logout-button section-buttons">
           <p className="nav-buttons">Logout</p>
         </Link>
       )
     } else {
       buttons.push(
-        <div onClick={this.toggleLoginForm} className="section-nav-login-button section-buttons">
+        <div key={1} onClick={this.toggleLoginForm} className="section-nav-login-button section-buttons">
           <p className="nav-buttons">Sign in</p>
         </div>
       )
       buttons.push(
-        <div className="section-nav-signup-button section-buttons">
+        <div key={2} className="section-nav-signup-button section-buttons">
           <Link to="/signup" className="nav-buttons">Signup</Link>
         </div>
       )
