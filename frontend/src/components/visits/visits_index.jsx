@@ -7,7 +7,7 @@ class VisitsIndex extends Component {
   }
 
   componentDidMount() {
-    
+    this.props.fetchPatientVisits(this.props.patientId)
   }
 
   render() {
