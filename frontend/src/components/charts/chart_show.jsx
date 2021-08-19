@@ -31,6 +31,7 @@ export default class ChartShow extends React.Component {
         </div>
         <div>
           <VisitsIndex patient={patient} />
+          <Link to={`/charts/${this.props.match.params.patientId}/visits/new`}>Create New Visit</Link>
         </div>
       </div>
     )

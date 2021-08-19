@@ -5,7 +5,7 @@ import ChartsIndexContainer from './charts/charts_index_container';
 import ChartShowContainer from './charts/chart_show_container'
 import { Switch } from 'react-router-dom';
 import VisitShowContainer from './visits/visit_show_container';
-import VisitForm from './visits/visit_form';
+import NewVisitFormContainer from './visits/new_visit_form_container';
 import LoginPageContainer from './patients/login_page_container';
 import HomePageContainer from './home/home_page_container';
 import PatientsIndexContainer from './patients/index_page_container';
@@ -25,7 +25,7 @@ const App = () => (
             <PatientProtectedRoute exact path="/patients/home" component={PatientsIndexContainer} />
             <ProtectedRoute exact path='/charts/:patientId' component={ChartShowContainer} />
             <ProtectedRoute exact path='/charts/:patientId/:visitId' component={VisitShowContainer} />
-            <ProtectedRoute exact path='/charts/:patientId/visits/new' component={VisitForm} />
+            <ProtectedRoute exact path='/charts/:patientId/visits/new' component={NewVisitFormContainer} />
         </Switch>
     </div>
 );

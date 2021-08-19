@@ -37,7 +37,6 @@ class VisitShow extends Component {
             <div id='spacer'/>
             <VisitForm visit={visit} processForm={this.props.processForm} toggleEdit={this.toggleEdit} updateEditedVisit={this.updateEditedVisit} />
           </div>
-          
         )
       } else {
         return (
