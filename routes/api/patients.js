@@ -6,7 +6,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const router = express.Router();
 // const validateRegisterInput = require('../../validation/register');
-const validateLoginInput = require('../../validation/login');
+const validatePatientLoginInput = require('../../validation/patient_login');
 
 router.get('/:patientId', (req, res) => {
 	Patient.findOne({_id: req.params.patientId})
