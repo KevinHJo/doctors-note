@@ -12,8 +12,11 @@ class VisitForm extends Component {
       plan: visit.plan
     }
 
-    this.handleSubjectiveChange = this.handleSubjectiveChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubjectiveChange = this.handleSubjectiveChange.bind(this);
+    this.handleObjectiveChange = this.handleObjectiveChange.bind(this);
+    this.handleAssessmentChange = this.handleAssessmentChange.bind(this);
+    this.handlePlanChange = this.handlePlanChange.bind(this);
   }
 
   handleSubmit(e) {
@@ -21,9 +24,20 @@ class VisitForm extends Component {
     this.props.processForm(this.state)
   }
 
-  handleSubjectiveChange(value) {
-    debugger
+  handleSubjectiveChange(value, editor) {
     this.setState({subjective: value})
+  }
+
+  handleObjectiveChange(value, editor) {
+    this.setState({objective: value})
+  }
+
+  handleAssessmentChange(value, editor) {
+    this.setState({assessment: value})
+  }
+
+  handlePlanChange(value, editor) {
+    this.setState({plan: value})
   }
   
   render() {
@@ -67,17 +81,51 @@ class VisitForm extends Component {
                   toolbar:
                     'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | help'
                 }}
-                onEditorChange={this.handleSubjectiveChange}
+                onEditorChange={this.handleObjectiveChange}
                 value={this.state.objective}
               />
           </div>
 
           <div className='soap-assessment'>
-
+            <h1>Assessment</h1>
+              <Editor
+                apiKey="qdsfz5mb1rgq6f9e4tlppil5y3suu39z8ln3guyhhbej13qp"
+                init={{
+                  height: 500,
+                  menubar: false,
+                  plugins: [
+                    'advlist autolink lists link image', 
+                    'charmap print preview anchor help',
+                    'searchreplace visualblocks code',
+                    'insertdatetime media table paste wordcount'
+                  ],
+                  toolbar:
+                    'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | help'
+                }}
+                onEditorChange={this.handleAssessmentChange}
+                value={this.state.assessment}
+              />
           </div>
 
           <div className='soap-plan'>
-
+            <h1>Plan</h1>
+                <Editor
+                  apiKey="qdsfz5mb1rgq6f9e4tlppil5y3suu39z8ln3guyhhbej13qp"
+                  init={{
+                    height: 500,
+                    menubar: false,
+                    plugins: [
+                      'advlist autolink lists link image', 
+                      'charmap print preview anchor help',
+                      'searchreplace visualblocks code',
+                      'insertdatetime media table paste wordcount'
+                    ],
+                    toolbar:
+                      'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | help'
+                  }}
+                  onEditorChange={this.handlePlanChange}
+                  value={this.state.plan}
+                />
           </div>
 
           <input type="submit" value='save'/>

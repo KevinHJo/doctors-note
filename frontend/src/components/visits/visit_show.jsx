@@ -32,19 +32,23 @@ class VisitShow extends Component {
         <div className='visit-show'>
           <div className='soap-note'>
             <div className='soap-subjective'>
-              {visit.subjective}
+              <h1>Subjective</h1>
+              <div className='soap-subjective-display'>{visit.subjective}</div>
             </div>
 
             <div className='soap-objective'>
-              {visit.objective}
+              <h1>Objective</h1>
+                <div className='soap-objective-display'>{visit.objective}</div>
             </div>
 
             <div className='soap-assessment'>
-              {visit.assessment}
+              <h1>Assessment</h1>
+                <div className='soap-assessment-display'>{visit.assessment}</div>
             </div>
 
             <div className='soap-plan'>
-              {visit.plan}
+              <h1>Plan</h1>
+                <div className='soap-plan-display'>{visit.plan}</div>
             </div>
           </div>
 
