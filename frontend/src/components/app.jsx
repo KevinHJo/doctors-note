@@ -10,7 +10,7 @@ import HomePageContainer from './home/home_page_container';
 import NavBarContainer from './navbar/top_nav_bar_container';
 
 //TESTING - start
-import VisitsIndex from './visits/visits_index';
+import VisitsIndexContainer from './visits/visits_index_container';
 //TESTING -end
 
 const App = () => (
@@ -18,7 +18,7 @@ const App = () => (
         <NavBarContainer />
         <Switch>
             {/* TESTING ROUTES */}
-            <ProtectedRoute exact path='/charts/visits/:patientId' component={VisitsIndex} />
+            <ProtectedRoute exact path='/charts/:patientId/visits' component={VisitsIndexContainer} />
             {/* END TESTING ROUTES */}
             <AuthRoute exact path="/" component={HomePageContainer} />
             <AuthRoute exact path="/login" component={LoginPage} />

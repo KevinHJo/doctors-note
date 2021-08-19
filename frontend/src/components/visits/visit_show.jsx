@@ -17,7 +17,7 @@ class VisitShow extends Component {
   }
 
   render() {
-    const {patient, visit} = this.props.location.state
+    const {visit} = this.props
     if (this.state.editing) {
       return (
         <VisitForm visit={visit} />
