@@ -4,6 +4,11 @@ import SignupForm from '../session/signup_form';
 import NavBarContainer from '../navbar/top_nav_bar_container';
 
 export default class HomePage extends React.Component {
+  toggleLoginForm() {
+    document.getElementById("login-form-section").classList.add("show")
+    document.getElementById("login-email").focus();
+  }
+  
   render() {
     return (
       <div id="homepage">
@@ -32,9 +37,14 @@ export default class HomePage extends React.Component {
                 login={this.props.login}
                 history={this.props.history}
               />
-              <p className="product-key-info">Don't have a product key?
-                <a href="#" className="product-key-link">Click to purchase.</a>
-              </p>
+              <div className="bottom-links">
+                <p className="product-key-info">Don't have a product key?
+                  <a href="#" className="product-key-link">Click to purchase.</a>
+                </p>
+                <p className="product-key-info">Already have an account?
+                  <a href="#" onClick={this.toggleLoginForm} className="product-key-link">Click to login.</a>
+                </p>
+              </div>
             </div>
           </div>
           <div className="info-lower-line"></div>

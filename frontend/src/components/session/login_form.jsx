@@ -48,6 +48,7 @@ export default class LoginForm extends React.Component {
                 placeholder="Username or email"
                 onChange={this.updateField('email')}
                 defaultValue={this.state.email}
+                id="login-email"
               ></input>
             </label>
             <label className="login-password-label">Password:

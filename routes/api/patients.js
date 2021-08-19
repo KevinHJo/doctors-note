@@ -64,26 +64,18 @@ router.post('/new', (req, res) => {
 	let randomUsername = `${body.fname}${body.lname}${digits}`;
 	let oldPw = generatePassword();
 
-	Patient.findOne({ email: body.email })
-		.then(patient => {
-			if (patient) {
-				// Throw a 400 error if the email address already exists
-				return res.status(400).json({ email: "A patient has already registered with this address" });
-			}
-		});
-
 	const newPatient = new Patient({
-		username: randomUsername,
-		email: body.email,
-		password: oldPw,
-		role: 'patient',
 		fname: body.fname,
 		lname: body.lname,
-		address: body.address,
 		dateOfBirth: body.dateOfBirth,
 		sex: body.sex,
+		email: body.email,
 		phone: body.phone,
+		address: body.address,
 		doctorId: body.doctorId,
+		role: 'patient',
+		username: randomUsername,
+		password: oldPw,
 	});
 	
 	newPatient.visits = new Object();
@@ -113,6 +105,45 @@ router.post('/new', (req, res) => {
 				.catch(err => res.json(err));
 		});
 	});
+});
+
+router.post('/login', (req, res) => {
+	const { errors, isValid } = validatePatientLoginInput(req.body);
+
+	if (!isValid) {
+		return res.status(400).json(errors);
+	}
+
+	const username = req.body.username;
+	const password = req.body.password;
+
+	Patient.findOne({ username: username })
+		.then(patient => {
+			if (!patient) {
+				return res.status(404).json({ username: 'This patient does not exist' });
+			}
+
+			bcrypt.compare(password, patient.password)
+				.then(isMatch => {
+					if (isMatch) {
+						const payload = { id: patient.id, username: patient.username, role: patient.role }; // revisit this
+
+						jwt.sign(
+							payload,
+							keys.secretOrKey,
+							// Tell the key to expire in one hour
+							{ expiresIn: 3600 },
+							(err, token) => {
+								res.json({
+									success: true,
+									token: 'Bearer ' + token
+								});
+							});
+					} else {
+						return res.status(400).json({ password: 'Incorrect password' });
+					}
+				});
+		});
 });
 
 module.exports = router;

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ChartsIndexPanel from './charts_index_panel'
+import TopNavBarContainer from '../navbar/top_nav_bar_container'
 
 export default class ChartsIndex extends React.Component {
   constructor(props) {
@@ -19,6 +20,18 @@ export default class ChartsIndex extends React.Component {
   }
 
   render() {
+
+    if (!!this.props.patients) {
+      const { patients } = this.props
+      let selectedPatient = patients.find(patient => patient.id === this.state.patientId)
+    }
+    
+    return (
+      <div>
+        <TopNavBarContainer/>
+        <div id='spacer'></div>
+        
+        {/* <div className='charts-index'>
     console.log(this.props.state)
     console.log(this.props.doctorId)
     console.log(this.props.isDataReady)
@@ -43,7 +56,7 @@ export default class ChartsIndex extends React.Component {
           :
           <div></div>
           }
-        </div>
+        </div> */}
       </div>
     )
   }

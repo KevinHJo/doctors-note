@@ -44,7 +44,7 @@ router.post('/register', (req, res) => {
 			}
 		});
 
-	let user = User.findOne({ username: req.body.username })
+	User.findOne({ username: req.body.username })
 		.then(user => {
 			if (user) {
 				// Throw a 400 error if the username already exists
@@ -71,7 +71,21 @@ router.post('/register', (req, res) => {
 			if (err) throw err;
 			newUser.password = hash;
 			newUser.save()
-				.then(user => res.json(user))
+				.then(user => {
+					const payload = { id: user.id, email: user.email }; // revisit this
+					jwt.sign(
+						payload,
+						keys.secretOrKey,
+						// Tell the key to expire in one hour
+						{ expiresIn: 3600 },
+						(err, token) => {
+							res.json({
+								success: true,
+								token: 'Bearer ' + token
+							});
+						}
+					);
+				})
 				.catch(err => res.json(err));
 		});
 	});
@@ -96,7 +110,7 @@ router.post('/login', (req, res) => {
 			bcrypt.compare(password, user.password)
 				.then(isMatch => {
 					if (isMatch) {
-						const payload = { id: user.id, email: user.email }; // revisit this
+						const payload = { id: user.id, email: user.email, role: user.role }; // revisit this
 
 						jwt.sign(
 							payload,

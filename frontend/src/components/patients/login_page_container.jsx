@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { login, logout } from '../../actions/session_actions';
+import { login, logout } from '../../actions/patient_actions';
 import LoginPage from './login_page';
 
-const mSTP = (state) => ({
-  history: state.history,
+const mSTP = (state, ownProps) => ({
+  history: ownProps.history,
 });
 
 const mDTP = (dispatch) => ({
