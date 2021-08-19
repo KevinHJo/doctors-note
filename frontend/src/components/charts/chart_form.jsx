@@ -102,7 +102,7 @@ export default class ChartForm extends React.Component {
             <input type="email" required onChange={this.handleStringChange('email')} />
           </label>
           <label className='new-chart-form-label'>Phone number: 
-            <input type="tel" required pattern="[0-9]{3} [0-9]{3}-[0-9]{4}" placeholder="(123) 456-7890" onChange={this.handlePhoneChange} value={this.state.phone} />
+            <input type="tel" required pattern="[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={this.handlePhoneChange} value={this.state.phone} />
             {/* <input type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={this.handleStringChange('phone')} value={this.state.phone} /> */}
           </label>
           <label className='new-chart-form-label'>Address: 
