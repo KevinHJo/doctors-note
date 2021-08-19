@@ -32,6 +32,11 @@
   cursor: pointer;
 }
 
+.section-title:active {
+  background: rgb(62, 57, 94);
+  border: 1px inset rgb(81,75,123, 0%);
+}
+
 .section-title-patient {
   margin: 0px 15px 0px 0px;
   padding: 12px 15px;
@@ -41,6 +46,11 @@
 .section-title-patient:hover {
   background: rgb(108, 141, 184);
   cursor: pointer;
+}
+
+.section-title-patient:active {
+  background: rgb(89, 119, 158);
+  border: 1px inset rgb(81,75,123, 0%);
 }
 
 .nav-title {
@@ -67,6 +77,11 @@
   cursor: pointer;
 }
 
+.section-buttons:active {
+  background: rgb(62, 57, 94);
+  border: 1px inset rgb(81,75,123, 0%);
+}
+
 .section-buttons-patient {
   padding: 12px 15px;
   text-decoration: none;
@@ -75,6 +90,11 @@
 .section-buttons-patient:hover {
   background: rgb(108, 141, 184);
   cursor: pointer;
+}
+
+.section-buttons-patient:active {
+  background: rgb(89, 119, 158);
+  border: 1px inset rgb(81,75,123, 0%);
 }
 
 .nav-buttons {
