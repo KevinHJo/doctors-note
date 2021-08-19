@@ -1,6 +1,7 @@
 import React from 'react'
 import TopNavBarContainer from '../navbar/top_nav_bar_container'
 import VisitsIndex from '../visits/visits_index'
+import { getAge } from '../../util/chart_util'
 
 export default class ChartShow extends React.Component {
   componentDidMount() {
@@ -17,8 +18,8 @@ export default class ChartShow extends React.Component {
         <div className='chart-patient-info'>
           <div><p>First name: </p>{patient.fname}</div>
           <div><p>Last name: </p>{patient.lname}</div>
-          <div><p>Age: </p>(calculate age based on dateOfBirth)</div>
-          <div><p>Date of Birth: </p>{patient.dateOfBirth}</div>
+          <div><p>Age: </p>{getAge(patient.dateOfBirth)}</div>
+          <div><p>Date of Birth: </p>{new Date(patient.dateOfBirth).toLocaleDateString("en-US")}</div>
           <div><p>Sex: </p>{patient.sex}</div>
           <div><p>Email: </p>{patient.email}</div>
           <div><p>Phone number: </p>{patient.phone}</div>
