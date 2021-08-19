@@ -22,7 +22,8 @@ export default class SignupForm extends React.Component {
     e.preventDefault();
     let packages = Object.assign({}, this.state, {role: "admin", password2: this.state.password});
     // console.log(packages)
-    this.props.signup(packages, this.props.history);
+    this.props.signup(packages, this.props.history)
+      .then((user) => this.props.login(packages))
     this.setState = {
       username: '',
       email: '',
@@ -32,6 +33,7 @@ export default class SignupForm extends React.Component {
       fname: '',
       lname: ''
     }
+    this.props.history.push('/charts')
   }
 
   updateField(field) {

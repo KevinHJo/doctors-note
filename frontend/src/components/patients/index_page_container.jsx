@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { login, logout } from '../../actions/session_actions';
-import TopNavBar from './top_nav_bar';
+import IndexPage from './index_page';
 
 const mSTP = (state, ownParams) => {
   return ({
@@ -14,4 +14,4 @@ const mDTP = (dispatch) => ({
   logout: () => dispatch(logout())
 });
 
-export default connect(mSTP, mDTP)(TopNavBar);
+export default connect(mSTP, mDTP)(IndexPage);

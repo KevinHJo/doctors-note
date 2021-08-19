@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { login, logout, signup } from '../../actions/session_actions';
 import HomePage from './home_page';
 
-const mSTP = (state) => ({
-  history: state.history,
+const mSTP = (state, ownParams) => ({
+  history: ownParams.history,
 });
 
 const mDTP = (dispatch) => ({
