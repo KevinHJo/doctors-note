@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@tinymce/tinymce-react": "^3.12.6",
+    "@whoicd/icd11ect": "^1.4.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^6.2.1",
