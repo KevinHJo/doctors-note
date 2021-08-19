@@ -11,43 +11,52 @@ class VisitShow extends Component {
     this.toggleEdit = this.toggleEdit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.fetchVisit(this.props.visitId);
+  }
+
   toggleEdit() {
     const editing = this.state.editing;
     this.setState({ editing: !editing })
   }
 
   render() {
-    const {visit} = this.props
-    if (this.state.editing) {
-      return (
-        <VisitForm visit={visit} />
+    if (this.props.visit) {
+      const {visit} = this.props
+      if (this.state.editing) {
+        return (
+          <VisitForm visit={visit} processForm={this.props.processForm}/>
+        )
+      } else {
+        return (
+        <div className='visit-show'>
+          <div className='soap-note'>
+            <div className='soap-subjective'>
+              {visit.subjective}
+            </div>
+
+            <div className='soap-objective'>
+              {visit.objective}
+            </div>
+
+            <div className='soap-assessment'>
+              {visit.assessment}
+            </div>
+
+            <div className='soap-plan'>
+              {visit.plan}
+            </div>
+          </div>
+
+          <button onClick={this.toggleEdit}>Edit</button>
+        </div>
       )
+      }
     } else {
       return (
-      <div className='visit-show'>
-        <div className='soap-note'>
-          <div className='soap-subjective'>
-            {visit.subjective}
-          </div>
-
-          <div className='soap-objective'>
-            {visit.objective}
-          </div>
-
-          <div className='soap-assessment'>
-            {visit.assessment}
-          </div>
-
-          <div className='soap-plan'>
-            {visit.plan}
-          </div>
-        </div>
-
-        <button onClick={this.toggleEdit}>Edit</button>
-      </div>
-    )
+        <p key={this.props.visit}>Loading Visit</p>
+      )
     }
-    
   }
 }
 

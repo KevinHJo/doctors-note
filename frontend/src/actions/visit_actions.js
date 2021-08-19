@@ -17,7 +17,7 @@ const receiveVisit = visit => ({
 //THUNK ACTION CREATORS
 export const fetchVisit = visitId => dispatch => (
   VisitAPIUtil.fetchVisit(visitId)
-    .then(visit => dispatch(receiveVisit(visit)))
+    .then(visit => dispatch(receiveVisit(visit.data)))
 );
 
 export const fetchPatientVisits = patientId => dispatch => (

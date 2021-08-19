@@ -3,8 +3,8 @@ import { AuthRoute, ProtectedRoute, PatientProtectedRoute } from '../util/route_
 import SignupPage from './session/signup_page';
 import ChartsIndexContainer from './charts/charts_index_container';
 import ChartShowContainer from './charts/chart_show_container'
-import { Switch, Route } from 'react-router-dom';
-import VisitShow from './visits/visit_show'
+import { Switch } from 'react-router-dom';
+import VisitShowContainer from './visits/visit_show_container'
 import LoginPageContainer from './patients/login_page_container';
 import HomePageContainer from './home/home_page_container';
 import PatientsIndexContainer from './patients/index_page_container';
@@ -27,7 +27,7 @@ const App = () => (
             <ProtectedRoute exact path='/charts/form' component={ChartFormContainer} />
             <PatientProtectedRoute exact path="/patients/home" component={PatientsIndexContainer} />
             <ProtectedRoute exact path='/charts/:patientId' component={ChartShowContainer} />
-            <ProtectedRoute exact path='/charts/:patientId/:visitId' component={VisitShow} />
+            <ProtectedRoute exact path='/charts/:patientId/:visitId' component={VisitShowContainer} />
         </Switch>
     </div>
 );
