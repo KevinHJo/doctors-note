@@ -1,0 +1,9 @@
+.new-chart-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-chart-form {
+  display: flex;
+  flex-direction: column;
+}
