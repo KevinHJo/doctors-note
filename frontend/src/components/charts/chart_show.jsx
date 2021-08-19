@@ -25,7 +25,7 @@ export default class ChartShow extends React.Component {
           <div><p>Email: </p>{patient.email}</div>
           <div><p>Phone number: </p>{patient.phone}</div>
           <div><p>Address: </p>{patient.address}</div>
-          <div><p>Diagnoses: </p>{patient.diagnoses.map(diagnosis => <p>{diagnosis}</p>)}</div>
+          <div><p>Diagnoses: </p>{patient.diagnoses.map(diagnosis => <p key={patient.diagnoses.indexOf(diagnosis)}>{diagnosis}</p>)}</div>
           <div><p>Medications: </p>{patient.medications.map(medication => <p>{medication}</p>)}</div>
           <div><p>Allergies: </p>{patient.allergies.map(allergy => <p>{allergy}</p>)}</div>
         </div>
@@ -33,6 +33,8 @@ export default class ChartShow extends React.Component {
           <VisitsIndex patient={patient} />
           <Link to={`/charts/${this.props.match.params.patientId}/visits/new`}>Create New Visit</Link>
         </div>
+        {/* <Link>Edit Patient Information</Link> */}
+        {/* <button>Delete Patient</button> */}
       </div>
     )
   }
