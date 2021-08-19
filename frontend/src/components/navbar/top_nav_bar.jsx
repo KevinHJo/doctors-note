@@ -73,7 +73,10 @@ export default class TopNavBar extends React.Component {
             })}
           </div>
         </div>
-        <SigninForm login={this.props.login} />
+        <SigninForm 
+          login={this.props.login}
+          signinErrors={this.props.signinErrors}
+        />
       </div>
     )
   }

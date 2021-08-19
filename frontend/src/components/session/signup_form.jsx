@@ -11,7 +11,7 @@ export default class SignupForm extends React.Component {
       role: '',
       dba: '',
       fname: '',
-      lname: ''
+      lname: '',
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,6 +38,8 @@ export default class SignupForm extends React.Component {
   }
   
   render() {
+    console.log(this.state.prodKey);
+  
     let error1 = '';
     let error2 = '';
     let error3 = '';
@@ -132,6 +134,7 @@ export default class SignupForm extends React.Component {
               type="text"
               id={focused['prodKey']}
               placeholder="Enter 16-Digit Product Key."
+              defaultValue={this.props.prodKey}
             ></input>
             {error4}
           </label>

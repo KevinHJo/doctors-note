@@ -57,6 +57,7 @@
 
 .section-login-fields input {
   border: none;
+  position: relative;
   padding: 8px 14px;
   letter-spacing: 2px;
   font-size: 15px;
@@ -77,8 +78,24 @@
   letter-spacing: 0.5px;
 }
 
-.login-password-label {
-  
+.section-login-fields .error-field {
+  position: absolute;
+  margin-top: 10px;
+  left: 230px;
+  font-size: 12px;
+  padding: 6px;
+  background-color: rgb(206, 84, 104);
+  color: white;
+  font-weight: 500;
+  border: none; 
+}
+
+.section-login-fields .errored-field {
+  border: 0.5px solid rgb(206, 84, 104);
+}
+
+.section-login-fields .errored-field::placeholder {
+  color: rgb(206, 84, 104);
 }
 
 #login-button {

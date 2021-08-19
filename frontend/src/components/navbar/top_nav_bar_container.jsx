@@ -7,6 +7,7 @@ const mSTP = (state, ownParams) => {
     history: ownParams.history,
     loggedIn: state.session.isAuthenticated,
     currentUser: state.session.user,
+    signinErrors: state.errors.signin,
   })
 };
 
