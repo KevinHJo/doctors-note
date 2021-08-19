@@ -12,6 +12,7 @@ import PatientsIndexContainer from './patients/index_page_container';
 
 //TESTING - start
 import ChartFormContainer from './charts/chart_form_container';
+import DiagnosisTest from './testing/diagnosis_test'
 //TESTING -end
 
 const App = () => (
@@ -26,6 +27,10 @@ const App = () => (
             <ProtectedRoute exact path='/charts/:patientId' component={ChartShowContainer} />
             <ProtectedRoute exact path='/charts/:patientId/:visitId' component={VisitShowContainer} />
             <ProtectedRoute exact path='/charts/:patientId/visits/new' component={NewVisitFormContainer} />
+
+            {/* TESTING ROUTES - start */}
+            <ProtectedRoute exact path='/testing' component={DiagnosisTest}/>
+            {/* TESTING ROUTES - end */}
         </Switch>
     </div>
 );
