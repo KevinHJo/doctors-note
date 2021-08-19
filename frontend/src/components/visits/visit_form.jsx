@@ -22,7 +22,6 @@ class VisitForm extends Component {
   }
 
   handleSubjectiveChange(value) {
-    debugger
     this.setState({subjective: value})
   }
   
