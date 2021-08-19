@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
-import { Redirect } from 'react-router';
 
 class VisitForm extends Component {
   constructor(props) {
@@ -26,6 +25,7 @@ class VisitForm extends Component {
     e.preventDefault();
     this.props.processForm(this.state);
     this.props.toggleEdit();
+    this.props.updateEditedVisit();
   }
 
   handleSubjectiveChange(value, editor) {

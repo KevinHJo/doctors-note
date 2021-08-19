@@ -1,7 +1,8 @@
-import React from 'react'
-import TopNavBarContainer from '../navbar/top_nav_bar_container'
-import VisitsIndex from '../visits/visits_index'
-import { getAge } from '../../util/chart_util'
+import React from 'react';
+import TopNavBarContainer from '../navbar/top_nav_bar_container';
+import VisitsIndex from '../visits/visits_index';
+import { getAge } from '../../util/chart_util';
+import { Link } from 'react-router-dom';
 
 export default class ChartShow extends React.Component {
   componentDidMount() {

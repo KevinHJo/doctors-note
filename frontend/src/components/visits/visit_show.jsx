@@ -10,9 +10,14 @@ class VisitShow extends Component {
     }
 
     this.toggleEdit = this.toggleEdit.bind(this);
+    this.updateEditedVisit = this.updateEditedVisit.bind(this);
   }
 
   componentDidMount() {
+    this.props.fetchVisit(this.props.visitId);
+  }
+
+  updateEditedVisit() {
     this.props.fetchVisit(this.props.visitId);
   }
 
@@ -23,13 +28,14 @@ class VisitShow extends Component {
 
   render() {
     if (this.props.visit) {
-      const {visit} = this.props
+      const { visit } = this.props
+
       if (this.state.editing) {
         return (
           <div>
             <TopNavBarContainer />
             <div id='spacer'/>
-            <VisitForm visit={visit} processForm={this.props.processForm} toggleEdit={this.toggleEdit}/>
+            <VisitForm visit={visit} processForm={this.props.processForm} toggleEdit={this.toggleEdit} updateEditedVisit={this.updateEditedVisit} />
           </div>
           
         )
