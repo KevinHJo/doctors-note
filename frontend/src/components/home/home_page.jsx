@@ -20,13 +20,13 @@ export default class HomePage extends React.Component {
           <div className="section-info">
             <div className="container-info-left">
               <div className="section-doctor-picture">
-                <img src='https://doctors-note-seeds.s3.us-west-1.amazonaws.com/form.png' 
+                <img src='https://doctors-note-seeds.s3.us-west-1.amazonaws.com/note.png' 
                   alt="doctor"
                   className="doctor-image"
                 />
               </div>
               <div className="section-desc">
-                <p className="container-info-left-title">Your personalized Doctors Note.</p>
+                <p className="container-info-left-title">Your personalized Doctors Note</p>
                 <p className="container-info-left-desc">D.Note</p>
               </div>
             </div>

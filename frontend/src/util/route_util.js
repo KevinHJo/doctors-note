@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 
 // Passed in from parent component or from mapStateToProps
-const Auth = ({ component: Component, path, loggedIn, exact, role }) => (
+const Auth = ({ component: Component, path, loggedIn, exact, user }) => (
   <Route path={path} exact={exact} render={(props) => (
     !loggedIn ? (
       <Component {...props} />
     ) : (
         // Redirect to the tweets page if the user is authenticated
-      (role === 'patient') ? (
+      (user.role === 'patient') ? (
         <Redirect to="/patients/home" />
       ) : (
         <Redirect to="/charts" />
@@ -18,11 +18,11 @@ const Auth = ({ component: Component, path, loggedIn, exact, role }) => (
   )} />
 );
 
-const Protected = ({ component: Component, loggedIn, role, ...rest }) => (
+const Protected = ({ component: Component, loggedIn, user, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      (role === 'patient') ? (
+      (user.role === 'patient') ? (
         <Redirect to="/patients/home" />
       ) : (
         loggedIn ? (
@@ -36,11 +36,11 @@ const Protected = ({ component: Component, loggedIn, role, ...rest }) => (
   />
 );
 
-const PatientProtected = ({ component: Component, loggedIn, role, ...rest }) => (
+const PatientProtected = ({ component: Component, loggedIn, user, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      (loggedIn && (role === 'patient')) ? (
+      (loggedIn && (user.role === 'patient')) ? (
         <Component {...props} />
       ) : (
         // Redirect to the login page if the user is already authenticated
@@ -54,7 +54,7 @@ const PatientProtected = ({ component: Component, loggedIn, role, ...rest }) => 
 
 const mapStateToProps = state => ({
   loggedIn: state.session.isAuthenticated,
-  role: state.session.role,
+  user: state.session.user,
 });
 
 export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));

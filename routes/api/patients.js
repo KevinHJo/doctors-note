@@ -129,7 +129,23 @@ router.post('/login', (req, res) => {
 			bcrypt.compare(password, patient.password)
 				.then(isMatch => {
 					if (isMatch) {
-						const payload = { id: patient.id, username: patient.username, role: patient.role }; // revisit this
+						const payload = { 
+							id: patient.id, 
+							username: patient.username,
+							fname: patient.fname,
+							lname: patient.lname,
+							role: patient.role,
+							dateOfBirth: patient.dateOfBirth.split("T")[0],
+							sex: patient.sex,
+							email: patient.email,
+							phone: patient.phone,
+							address: patient.address,
+							doctorId: patient.doctorId,
+							diagnoses: patient.diagnoses,
+							medications: patient.medications,
+							allergies: patient.allergies,
+							visits: patient.visits,
+						};
 
 						jwt.sign(
 							payload,
