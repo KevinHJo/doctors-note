@@ -5,6 +5,7 @@ export default class Appointments extends React.Component {
     return (
       <div>
         <p>Appointments</p>
+        <p>No scheduled appointments.</p>
       </div>
     )
   }

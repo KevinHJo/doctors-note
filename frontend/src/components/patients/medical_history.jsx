@@ -5,6 +5,7 @@ export default class MedicalHistory extends React.Component {
     return (
       <div>
         <p>Medical History</p>
+        <p></p>
       </div>
     )
   }

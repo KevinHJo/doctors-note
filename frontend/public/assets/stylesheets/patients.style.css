@@ -147,6 +147,7 @@
 
 .focused {
   background-color: rgb(48, 80, 122) !important;
+  font-weight: 400 !important;
 }
 
 #patient-home-page {
@@ -158,8 +159,8 @@
 
 #patient-left-nav {
   height: 100%;
-  width: 250px;
-  position: absolute;
+  width: 265px;
+  position: fixed;
   left: 0;
   top: 55px;
   bottom: 0;
@@ -171,15 +172,6 @@
   color: rgb(245, 245, 245);
 }
 
-#patient-section-top-main {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 800px;
-  height: 500px;
-  border: 1px solid black;
-}
-
 .patient-left-nav-sections {
   font-weight: 200;
   font-size: 23px;
@@ -187,6 +179,7 @@
   text-align: right;
   padding: 5px 15px;
   margin: 5px 0px;
+  border: 2px solid rgb(62, 104, 159);
 }
 
 .patient-left-nav-sections:hover {
@@ -194,9 +187,101 @@
   cursor: pointer;
 }
 
+.patient-left-nav-sections:active {
+  background: rgb(18, 16, 31);
+  border: 2px inset rgb(81,75,123, 0%);
+}
+
 .patient-homepage-sections {
-  width: 600px;
+  margin-top: 25px;
+  padding: 15px 25px;
   border: 1px solid black;
+}
+
+#patient-home-info-title {
+  font-size: 22px;
+  font-weight: 600;
+  padding-bottom: 5px;
+  border-bottom: 3px solid rgb(62,62,62);
+}
+
+#patient-form {
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid rgb(62,62,62);
+}
+
+#patient-form .editable-inputs {
+  border: none;
+  text-align:center;
+  width: 300px;
+  padding: 9px 14px;
+  letter-spacing: 2px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 8px;
+  margin-right: 60px;
+  margin-top: -1px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgb(62,62,118);
+  background: rgb(251,254,255);
+  color: rgb(62,62,118);
+}
+
+.nonedit-inputs {
+  width: 300px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 8px;
+  margin-right: 25px;
+  margin-top: 15px;
+}
+
+#patient-form label {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.patient-form-section-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-right: 3px solid rgb(62,62,62);
+  padding-left: 35px;
+}
+
+.patient-form-section-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-left: 50px;
+}
+
+.patient-home-form-button {
+  width: 170px;
+  margin-left: 58px;
+  padding: 7px;
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+  background-color: rgb(108, 184, 151);
+}
+
+.patient-home-form-button:hover {
+  background-color: rgb(80, 141, 115);
+  cursor: pointer;
+}
+
+.patient-code {
+  width: 100px;
+  margin-left: 88px;
 }
 
 /*  End Patient home page styling   */

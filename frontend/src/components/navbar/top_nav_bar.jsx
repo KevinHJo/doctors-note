@@ -22,8 +22,8 @@ export default class TopNavBar extends React.Component {
     let color = !!this.props.pageDir ? 'section-title-patient' : 'section-title';
     let button = !!this.props.pageDir ? 'section-buttons-patient' : 'section-buttons';
     let name = '';
-    if (this.props.currentUser) {
-      name = !!this.props.pageDir ? `${this.props.currentUser.fname} ${this.props.currentUser.lname}` : `Dr. ${this.props.currentUser.lname}`;
+    if (this.props.currentUser && this.props.currentUser.username) {
+      name = !!this.props.pageDir ? `${this.props.currentUser.fname} ${this.props.currentUser.lname} #${this.props.currentUser.username.split("").slice(-4).join("")}` : `Dr. ${this.props.currentUser.lname}`;
     }
     if (this.props.loggedIn) {
       buttons.push(
