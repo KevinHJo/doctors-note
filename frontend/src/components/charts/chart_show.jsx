@@ -24,9 +24,9 @@ export default class ChartShow extends React.Component {
           <div><p>Email: </p>{patient.email}</div>
           <div><p>Phone number: </p>{patient.phone}</div>
           <div><p>Address: </p>{patient.address}</div>
-          <div><p>Diagnoses: </p>(map diagnoses)</div>
-          <div><p>Medications: </p>(map meds)</div>
-          <div><p>Allergies: </p>(map allergies)</div>
+          <div><p>Diagnoses: </p>{patient.diagnoses.map(diagnosis => <p>{diagnosis}</p>)}</div>
+          <div><p>Medications: </p>{patient.medications.map(medication => <p>{medication}</p>)}</div>
+          <div><p>Allergies: </p>{patient.allergies.map(allergy => <p>{allergy}</p>)}</div>
         </div>
         <div>
           <VisitsIndex patient={patient} />

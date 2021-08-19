@@ -28,6 +28,8 @@ export default class ChartForm extends React.Component {
   }
 
   handleSubmit = e => {
+    e.preventDefault()
+    console.log(this.state)
     this.props.createPatient(this.state)
   }
 
@@ -39,38 +41,38 @@ export default class ChartForm extends React.Component {
         <h1>New Patient Form</h1>
         <form onSubmit={this.handleSubmit}>
           <label>First name: 
-            <input type="text" onChange={() => this.handleStringChange('fname')} />
+            <input type="text" required onChange={this.handleStringChange('fname')} />
           </label>
           <label>Last name: 
-            <input type="text" onChange={() => this.handleStringChange('lname')} />
+            <input type="text" required onChange={this.handleStringChange('lname')} />
           </label>
           <label>Date of Birth: 
-            <input type="date" onChange={() => this.handleStringChange('dateOfBirth')} />
+            <input type="date" required onChange={this.handleStringChange('dateOfBirth')} />
           </label>
           <label>Sex: 
-            <select defaultValue='' required onChange={() => this.handleStringChange('sex')} >
+            <select defaultValue='' required onChange={this.handleStringChange('sex')} >
               <option value="" disabled hidden> </option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
           </label>
           <label>Email: 
-            <input type="email" onChange={() => this.handleStringChange('email')} />
+            <input type="email" required onChange={this.handleStringChange('email')} />
           </label>
           <label>Phone number: 
-            <input type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={() => this.handleStringChange('phone')} />
+            <input type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={this.handleStringChange('phone')} />
           </label>
           <label>Address: 
-            <input type="text" onChange={() => this.handleStringChange('address')} />
+            <input type="text" required onChange={this.handleStringChange('address')} />
           </label>
           <label>Diagnoses: 
-            <input type="text" onChange={() => this.handleArrayChange('diagnoses')} />
+            <textarea onChange={this.handleArrayChange('diagnoses')}></textarea>
           </label>
           <label>Medications: 
-            <input type="text" onChange={() => this.handleArrayChange('medications')} />
+            <textarea onChange={this.handleArrayChange('medications')}></textarea>
           </label>
           <label>Allergies: 
-            <input type="text" onChange={() => this.handleArrayChange('allergies')} />
+            <textarea onChange={this.handleArrayChange('allergies')}></textarea>
           </label>
           <input type="submit" value="Create Patient" />
         </form>
