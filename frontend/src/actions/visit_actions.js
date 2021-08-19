@@ -27,11 +27,11 @@ export const fetchPatientVisits = patientId => dispatch => (
 
 export const createVisit = visit => dispatch => (
   VisitAPIUtil.createVisit(visit).then(visit => {
-    dispatch(receiveVisit(visit))
+    dispatch(receiveVisit(visit.data))
   }   
 ));
 
-export const updateVisit = visit => dispatch => (
-  VisitAPIUtil.updateVisit(visit)
-    .then(visit => dispatch(receiveVisit(visit)))
-);
+export const updateVisit = visit => dispatch => {
+  return VisitAPIUtil.updateVisit(visit)
+    .then(visit => dispatch(receiveVisit(visit.data)))
+};

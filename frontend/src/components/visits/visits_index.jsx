@@ -5,7 +5,6 @@ class VisitsIndex extends Component {
 
   render() {
     if (this.props.patient) {
-      console.log(this.props.patient)
       const { _id, visits } = this.props.patient
       return (
         <ul className='visits-index'>

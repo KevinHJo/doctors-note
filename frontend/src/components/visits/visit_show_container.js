@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 import { fetchVisit, updateVisit } from "../../actions/visit_actions";
 import VisitShow from "./visit_show";
 
@@ -15,4 +16,4 @@ const mDTP = dispatch => ({
   processForm: visit => dispatch(updateVisit(visit))
 });
 
-export default connect(mSTP, mDTP)(VisitShow)
+export default withRouter(connect(mSTP, mDTP)(VisitShow))
