@@ -43,7 +43,6 @@ class DiagnosisTest extends React.Component {
         <button class="demo-clear" onclick="ECT.Handler.clear('1');" title="Clear search and results">❌</button>
         <div class="ctw-window" data-ctw-ino="1"></div>
       </div>
-      
     )
   }
 }
