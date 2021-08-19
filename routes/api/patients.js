@@ -74,6 +74,9 @@ router.post('/new', (req, res) => {
 		address: body.address,
 		doctorId: body.doctorId,
 		role: 'patient',
+    diagnoses: body.diagnoses || [],
+    medications: body.medications || [],
+    allergies: body.allergies || [],
 		username: randomUsername,
 		password: oldPw,
 	});

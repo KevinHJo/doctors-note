@@ -1,6 +1,7 @@
 import React from 'react'
 import TopNavBarContainer from '../navbar/top_nav_bar_container'
 import VisitsIndex from '../visits/visits_index'
+import { getAge } from '../../util/chart_util'
 
 export default class ChartShow extends React.Component {
   componentDidMount() {
@@ -17,15 +18,15 @@ export default class ChartShow extends React.Component {
         <div className='chart-patient-info'>
           <div><p>First name: </p>{patient.fname}</div>
           <div><p>Last name: </p>{patient.lname}</div>
-          <div><p>Age: </p>(calculate age based on dateOfBirth)</div>
-          <div><p>Date of Birth: </p>{patient.dateOfBirth}</div>
+          <div><p>Age: </p>{getAge(patient.dateOfBirth)}</div>
+          <div><p>Date of Birth: </p>{new Date(patient.dateOfBirth).toLocaleDateString("en-US")}</div>
           <div><p>Sex: </p>{patient.sex}</div>
           <div><p>Email: </p>{patient.email}</div>
           <div><p>Phone number: </p>{patient.phone}</div>
           <div><p>Address: </p>{patient.address}</div>
-          <div><p>Diagnoses: </p>(map diagnoses)</div>
-          <div><p>Medications: </p>(map meds)</div>
-          <div><p>Allergies: </p>(map allergies)</div>
+          <div><p>Diagnoses: </p>{patient.diagnoses.map(diagnosis => <p>{diagnosis}</p>)}</div>
+          <div><p>Medications: </p>{patient.medications.map(medication => <p>{medication}</p>)}</div>
+          <div><p>Allergies: </p>{patient.allergies.map(allergy => <p>{allergy}</p>)}</div>
         </div>
         <div>
           <VisitsIndex patient={patient} />

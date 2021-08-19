@@ -82,10 +82,10 @@ export const fetchDoctorPatients = doctorId => dispatch => (
 
 export const createPatient = patient => dispatch => (
   PatientAPIUtil.createPatient(patient)
-    .then(patient => dispatch(receivePatient(patient)))
+    .then(patient => dispatch(receivePatient(patient.data)))
 );
 
 export const updatePatient = patient => dispatch => (
   PatientAPIUtil.updatePatient(patient)
-    .then(patient => dispatch(receivePatient(patient)))
+    .then(patient => dispatch(receivePatient(patient.data)))
 );
