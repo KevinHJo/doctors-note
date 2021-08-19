@@ -135,7 +135,7 @@ router.post('/login', (req, res) => {
 							fname: patient.fname,
 							lname: patient.lname,
 							role: patient.role,
-							dateOfBirth: patient.dateOfBirth.split("T")[0],
+							dateOfBirth: patient.dateOfBirth,
 							sex: patient.sex,
 							email: patient.email,
 							phone: patient.phone,
