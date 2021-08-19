@@ -33,7 +33,7 @@ export default class HomePage extends React.Component {
             <div id="horizontal-spacer"></div>
             <div className="container-info-right">
               <p className="title">New Registration</p>
-              <SignupForm signup={this.props.signup}
+              <SignupForm signupErrors={this.props.signupErrors} signup={this.props.signup}
                 login={this.props.login}
                 history={this.props.history}
               />

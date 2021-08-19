@@ -12,7 +12,6 @@ module.exports = function validateRegisterInput(data) {
   data.dba = validText(data.dba) ? data.dba : '';
   data.role = validText(data.role) ? data.role : '';
   data.password = validText(data.password) ? data.password : '';
-  data.password2 = validText(data.password2) ? data.password2 : '';
 
   if (!Validator.isLength(data.username, { min: 6, max: 20 })) {
     errors.username = 'Username must be between 6 and 20 characters';
@@ -20,10 +19,6 @@ module.exports = function validateRegisterInput(data) {
 
   if (Validator.isEmpty(data.username)) {
     errors.username = 'Username field is required';
-  }
-
-  if (Validator.isEmpty(data.email)) {
-    errors.email = 'Email field is required';
   }
 
   if (!Validator.isEmail(data.email)) {
@@ -46,20 +41,8 @@ module.exports = function validateRegisterInput(data) {
     errors.role = 'User role is required';
   }
 
-  if (Validator.isEmpty(data.password)) {
-    errors.password = 'Password field is required';
-  }
-
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
     errors.password = 'Password must be at least 6 characters';
-  }
-
-  if (Validator.isEmpty(data.password2)) {
-    errors.password2 = 'Confirm Password field is required';
-  }
-
-  if (!Validator.equals(data.password, data.password2)) {
-    errors.password2 = 'Passwords must match';
   }
 
   return {

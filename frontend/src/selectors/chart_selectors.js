@@ -4,6 +4,7 @@ export const isDataReady = state => {
 
 export const getPatients = state => {
   if (!state.entities.user) return null
+  if (!state.entities.user.patients) return null
   return Object.values(state.entities.user.patients)
 }
 

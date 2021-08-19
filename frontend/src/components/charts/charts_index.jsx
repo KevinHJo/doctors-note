@@ -27,18 +27,25 @@ export default class ChartsIndex extends React.Component {
     // }
     if (!this.props.isDataReady) return null
     const { patients } = this.props
-    let selectedPatient = patients.find(patient => patient._id === this.state.patientId)
+    let selectedPatient = '';
+    if (!!patients) {
+      selectedPatient = patients.find(patient => patient._id === this.state.patientId)
+    }
     return (
       <div>
         <TopNavBarContainer />
         <div id='spacer'></div>
         <div className='charts-index'>
-          {patients.map(patient => 
-            <div key={patient._id}>
-              <Link to={`/charts/${patient._id}`}>{`${patient.lname}, ${patient.fname}`}</Link>
-              <button onClick={this.handleClick(patient._id)}>🔍</button>
-            </div>
-          )}
+          {!!patients ? 
+            (patients.map(patient => 
+              <div key={patient._id}>
+                <Link to={`/charts/${patient._id}`}>{`${patient.lname}, ${patient.fname}`}</Link>
+                <button onClick={this.handleClick(patient._id)}>🔍</button>
+              </div>
+            )) : (
+              ''
+            )
+          }
         </div>
         <Link to='/charts/form'>Add New Patient</Link>
         <div className='charts-index-panel'>
