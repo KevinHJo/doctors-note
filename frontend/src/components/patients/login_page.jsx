@@ -29,6 +29,30 @@ export default class LoginPage extends React.Component {
   }
 
   render() {
+    let error1 = '';
+    let error2 = '';
+    let focused = {};
+    
+    const {username, email, password} = this.props.signinErrors;
+
+    if (username) {
+      error1 = (
+        <input disabled className="error-field" defaultValue={`${username}`} />
+      )
+      focused['username'] = 'errored-field';
+    }
+    if (email) {
+      error1 = (
+        <input disabled className="error-field" defaultValue={`${email}`} />
+      )
+      focused['email'] = 'errored-field';
+    }
+    if (password) {
+      error2 = (
+        <input disabled className="error-field" defaultValue={`${password}`} />
+      )
+      focused['password'] = 'errored-field';
+    }
     return (
       <div id="patient-login-page">
         <TopNavBarContainer pageDir='Patient Portal.' />
@@ -44,7 +68,9 @@ export default class LoginPage extends React.Component {
                   placeholder="Enter Username Here." 
                   onChange={this.updateField('username')}
                   value={this.state.username}
+                  id={focused['username']}
                 />
+                {error1}
               </label>
               <label className="patient-login-labels patient-login-pw">Password:
                 <input className="patient-login-inputs"
@@ -52,7 +78,9 @@ export default class LoginPage extends React.Component {
                   placeholder="Enter Password Here."
                   onChange={this.updateField('password')}
                   value={this.state.password}
+                  id={focused['password']}
                 />
+                {error2}
               </label>
               <input className="patient-login-button" type='submit' value="Submit" />
             </form>

@@ -67,6 +67,17 @@
   color: rgb(62,62,118);
 }
 
+.patient-login-form .error-field {
+  position: absolute;
+  margin-top: 63px;
+  margin-left: 38px;
+  padding: 3px;
+  background-color: rgb(206, 84, 104, 0%);
+  border: none;
+  color: rgb(206, 84, 104);
+  text-align: center;
+}
+
 .patient-login-labels {
   font-size: 13px;
   font-weight: 800;

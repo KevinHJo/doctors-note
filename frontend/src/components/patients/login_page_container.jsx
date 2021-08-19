@@ -4,6 +4,7 @@ import LoginPage from './login_page';
 
 const mSTP = (state, ownProps) => ({
   history: ownProps.history,
+  signinErrors: state.errors.session,
 });
 
 const mDTP = (dispatch) => ({

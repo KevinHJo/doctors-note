@@ -9,6 +9,7 @@ export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_SIGNUP_ERRORS = "RECEIVE_SIGNUP_ERRORS";
 export const RECEIVE_SIGNIN_ERRORS = "RECEIVE_SIGNIN_ERRORS";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
+export const RECEIVE_PROD_KEY = "RECEIVE_PROD_KEY";
 
 //ACTION CREATORS
 export const receiveCurrentUser = currentUser => ({
@@ -35,6 +36,11 @@ const receiveSigninErrors = errors => ({
     type: RECEIVE_SIGNIN_ERRORS,
     errors
 });
+
+export const receiveProdKey = (prodKey) => ({
+    type: RECEIVE_PROD_KEY,
+    prodKey
+})
 
 //THUNK ACTION CREATORS
 export const logout = () => dispatch => {
