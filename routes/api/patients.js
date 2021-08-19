@@ -67,17 +67,17 @@ router.post('/new', (req, res) => {
 	let oldPw = generatePassword();
 
 	const newPatient = new Patient({
-		username: randomUsername,
-		email: body.email,
-		password: oldPw,
-		role: 'patient',
 		fname: body.fname,
 		lname: body.lname,
-		address: body.address,
 		dateOfBirth: body.dateOfBirth,
 		sex: body.sex,
+		email: body.email,
 		phone: body.phone,
+		address: body.address,
 		doctorId: body.doctorId,
+		role: 'patient',
+		username: randomUsername,
+		password: oldPw,
 	});
 	
 	newPatient.visits = new Object();

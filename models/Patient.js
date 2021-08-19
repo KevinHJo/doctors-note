@@ -10,22 +10,6 @@ const PatientSchema = new Schema ({
     type: String,
     required: true
   },
-  username: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  role: {
-    type: String,
-    required: true
-  },
-  address: {
-    type: String,
-    required: true
-  },
   dateOfBirth: {
     type: Date,
     required: true
@@ -34,17 +18,33 @@ const PatientSchema = new Schema ({
     type: String,
     required: true
   },
+  email: {
+    type: String,
+    required: true
+  },
   phone: {
     type: String,
     required: true
   },
-  email: {
+  address: {
     type: String,
     required: true
   },
   doctorId: {
     type: Schema.Types.ObjectId,
     ref: 'users',
+    required: true
+  },
+  role: {
+    type: String,
+    required: true
+  },
+  username: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
     required: true
   },
   diagnoses: {
