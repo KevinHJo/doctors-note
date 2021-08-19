@@ -3,7 +3,7 @@ import { AuthRoute, ProtectedRoute, PatientProtectedRoute } from '../util/route_
 import SignupPage from './session/signup_page';
 import ChartsIndexContainer from './charts/charts_index_container';
 import ChartShowContainer from './charts/chart_show_container'
-import { Switch } from 'react-router-dom';
+import { Redirect, Switch } from 'react-router-dom';
 import VisitShowContainer from './visits/visit_show_container';
 import NewVisitFormContainer from './visits/new_visit_form_container';
 import LoginPageContainer from './patients/login_page_container';
@@ -33,6 +33,7 @@ const App = () => (
             {/* TESTING ROUTES - start */}
             <ProtectedRoute exact path='/testing' component={DiagnosisTest}/>
             {/* TESTING ROUTES - end */}
+            <Redirect to='/' />
         </Switch>
     </div>
 );
