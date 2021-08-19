@@ -36,9 +36,9 @@ export default class TopNavBar extends React.Component {
         )
       } else {
         buttons.push(
-          <div key='1' onClick={this.toggleLoginForm} className={`${button}`}>
-            <p className="nav-buttons">Sign in</p>
-          </div>
+          <p key='1' onClick={this.toggleLoginForm} className={`${button}`}>
+            <a className="nav-buttons">Sign in</a>
+          </p>
         )
         buttons.push(
           <Link key='2' to="/patients/login" className={`${button}`}>
