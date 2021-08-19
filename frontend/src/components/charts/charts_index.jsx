@@ -17,6 +17,7 @@ export default class ChartsIndex extends React.Component {
 
   handleClick = patientId => e => {
     this.setState({patientId})
+    console.log(this.state)
   }
 
   render() {
@@ -26,7 +27,7 @@ export default class ChartsIndex extends React.Component {
     // }
     if (!this.props.isDataReady) return null
     const { patients } = this.props
-    let selectedPatient = patients.find(patient => patient.id === this.state.patientId)
+    let selectedPatient = patients.find(patient => patient._id === this.state.patientId)
     return (
       <div>
         <TopNavBarContainer />
@@ -35,7 +36,7 @@ export default class ChartsIndex extends React.Component {
           {patients.map(patient => 
             <div key={patient._id}>
               <Link to={`/charts/${patient._id}`}>{`${patient.lname}, ${patient.fname}`}</Link>
-              <button onClick={this.handleClick(patient.id)}>🔍</button>
+              <button onClick={this.handleClick(patient._id)}>🔍</button>
             </div>
           )}
         </div>

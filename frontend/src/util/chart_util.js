@@ -8,3 +8,11 @@ export const getAge = dateString => {
   }
   return age;
 }
+
+export const getLastVisit = visits => {
+  if (!visits) return null
+  const visitsArr = Object.values(visits)
+  visitsArr.sort((a, b) => (new Date(a.createdAt).getTime() / 1000) - (new Date(b.createdAt).getTime() / 1000))
+  console.log(visitsArr)
+  return visitsArr[visitsArr.length - 1]
+}
