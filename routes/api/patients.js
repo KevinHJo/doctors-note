@@ -8,15 +8,14 @@ const router = express.Router();
 // const validateRegisterInput = require('../../validation/register');
 const validatePatientLoginInput = require('../../validation/patient_login.js');
 
-router.post('/register', (req, res) => {
-	// const { errors, isValid } = validateRegisterInput(req.body)
+router.post('/new', (req, res) => {
+	const { body } = req;
+	const generatePassword = (length = 8) => Math.random().toString(20).substr(2, length);
+	const digits = Math.floor(1000 + Math.random() * 9000);
+	let randomUsername = `${body.fname}${body.lname}${digits}`;
+	let oldPw = generatePassword();
 
-	// if(!isValid) {
-	// 	return res.status(400).json(errors)
-	// }
-
-	// Check to make sure nobody has already registered with a duplicate email
-	Patient.findOne({ email: req.body.email })
+	Patient.findOne({ email: body.email })
 		.then(patient => {
 			if (patient) {
 				// Throw a 400 error if the email address already exists
@@ -105,6 +104,7 @@ router.post('/new', (req, res) => {
 	let randomUsername = `${body.fname}${body.lname}${digits}`;
 	let oldPw = generatePassword();
 
+
 	const newPatient = new Patient({
 		username: randomUsername,
 		email: body.email,
@@ -116,16 +116,34 @@ router.post('/new', (req, res) => {
 		dateOfBirth: body.dateOfBirth,
 		sex: body.sex,
 		phone: body.phone,
-		doctorId: body.doctorId
+		doctorId: body.doctorId,
 	});
+	
+	newPatient.visits = new Object();
 
 	bcrypt.genSalt(10, (err, salt) => {
 		bcrypt.hash(newPatient.password, salt, (err, hash) => {
 			if (err) throw err;
 			newPatient.password = hash;
 			newPatient.save()
-				.then(patient => res.json(Object.assign({}, { pw: oldPw }, patient._doc)))
-				.catch(err => console.log(err));
+				.then(patient => {
+          User.findOne({ _id: patient.doctorId })
+          .then(user => {
+            if (user) {
+              let patients = user.patients;
+              patients[patient._id] = patient;
+              User.updateOne({ _id: user._id }, {
+                patients
+              })
+                .catch(err => res.json(err));
+            } else {
+              return res.status(404).json({ user: 'This doctor does not exist' });
+            }
+          })
+          .catch(err => res.json(err))
+          res.json(Object.assign({}, { pw: oldPw }, patient._doc))
+        })
+				.catch(err => res.json(err));
 		});
 	});
 });

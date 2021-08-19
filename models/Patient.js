@@ -42,6 +42,11 @@ const PatientSchema = new Schema ({
     type: String,
     required: true
   },
+  doctorId: {
+    type: Schema.Types.ObjectId,
+    ref: 'users',
+    required: true
+  },
   diagnoses: {
     type: Array
   },
@@ -51,12 +56,13 @@ const PatientSchema = new Schema ({
   allergies: {
     type: Array
   },
-  doctorId: {
-    type: Schema.Types.ObjectId,
-    ref: 'users'
+  visits: {
+    type: Object,
+    required: true
   }
 }, {
-  timestamps: true
+  timestamps: true,
+  minimize: false
 })
 
 module.exports = Patient = mongoose.model('Patient', PatientSchema)
