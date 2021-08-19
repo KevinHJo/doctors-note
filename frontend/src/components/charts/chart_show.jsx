@@ -1,4 +1,5 @@
 import React from 'react'
+import TopNavBarContainer from '../navbar/top_nav_bar_container'
 import VisitsIndex from '../visits/visits_index'
 
 export default class ChartShow extends React.Component {
@@ -11,6 +12,7 @@ export default class ChartShow extends React.Component {
     const { patient } = this.props
     return (
       <div>
+        <TopNavBarContainer />
         <div id='spacer'></div>
         <div className='chart-patient-info'>
           <div><p>First name: </p>{patient.fname}</div>
