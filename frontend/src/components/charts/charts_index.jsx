@@ -39,6 +39,7 @@ export default class ChartsIndex extends React.Component {
             </div>
           )}
         </div>
+        <Link to='/charts/form'>Add New Patient</Link>
         <div className='charts-index-panel'>
           {this.state.patientId ? 
           <ChartsIndexPanel patient={selectedPatient} />
