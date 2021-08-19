@@ -6,6 +6,7 @@ const mSTP = (state, ownParams) => {
   return ({
     history: ownParams.history,
     loggedIn: state.session.isAuthenticated,
+    currentUser: state.session.user,
   })
 };
 

@@ -21,7 +21,16 @@ export default class TopNavBar extends React.Component {
     let style = !!this.props.pageDir ? 'top-nav-bar-patient' : 'top-nav-bar';
     let color = !!this.props.pageDir ? 'section-title-patient' : 'section-title';
     let button = !!this.props.pageDir ? 'section-buttons-patient' : 'section-buttons';
+    let name = '';
+    if (this.props.currentUser) {
+      name = !!this.props.pageDir ? `${this.props.currentUser.fname} ${this.props.currentUser.lname}` : `Dr. ${this.props.currentUser.lname}`;
+    }
     if (this.props.loggedIn) {
+      buttons.push(
+        <Link key='4' to='/patients/home' className={`${button}`}>
+          <p className="nav-buttons">Welcome, {name}</p>
+        </Link>
+      )
       buttons.push(
         <Link key='0' onClick={this.props.logout} to="/" className={`${button}`}>
           <p className="nav-buttons">Logout</p>
@@ -52,6 +61,10 @@ export default class TopNavBar extends React.Component {
       <div>
         <div id={style}>
           <Link to={link} className={color}>
+            <img src="https://doctors-note-seeds.s3.us-west-1.amazonaws.com/white-icon.png"
+              alt="chart"
+              className="navbar-icon"
+            ></img>
             <p className="nav-title">{title}</p>
           </Link>
           <div className="section-nav-buttons">

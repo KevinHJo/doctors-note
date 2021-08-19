@@ -60,7 +60,9 @@
 }
 
 .doctor-image {
-  width: 250px;
+  width: 325px;
+  margin-top: -30px;
+  margin-right: 10px;
 }
 
 .section-desc {
@@ -69,10 +71,11 @@
   justify-content: center;
 }
 .container-info-left-title {
-  font-size: 44px;
+  font-size: 46px;
   font-weight: 500;
   letter-spacing: 4px;
-  color: rgb(26, 26, 26);
+  text-align: right;
+  color: rgb(53, 53, 53);
   margin-left: 20px;
   margin-bottom: 0px;
 }
@@ -80,8 +83,8 @@
 .container-info-left-desc {
   font-size: 44px;
   font-weight: 500;
-  letter-spacing: 0.6px;
-  margin-left: 330px;
+  letter-spacing: 4px;
+  margin-left: 314px;
   color: rgb(238,252,255);
 }
 
