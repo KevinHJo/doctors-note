@@ -1,6 +1,7 @@
 import React from 'react'
 import { formatPhone, getDigits, isDelete } from '../../util/chart_util'
 import TopNavBarContainer from '../navbar/top_nav_bar_container'
+import * as ECT from '@whoicd/icd11ect';
 
 export default class ChartForm extends React.Component {
   constructor(props) {
@@ -18,6 +19,20 @@ export default class ChartForm extends React.Component {
       medications: [],
       allergies: []
     }
+
+    this.renderSelections = this.renderSelections.bind(this);
+  }
+
+  componentDidMount() {
+    const mySettings = {apiServerUrl: "https://icd11restapi-developer-test.azurewebsites.net"};
+    const myCallbacks = {
+      selectedEntityFunction: selectedEntity => {
+        const selections = this.state.diagnoses.concat(selectedEntity.code + " - " + selectedEntity.bestMatchText)
+        this.setState({diagnoses: selections})
+      }
+    };
+
+    ECT.Handler.configure(mySettings, myCallbacks);
   }
 
   handleStringChange = field => e => {
@@ -46,6 +61,18 @@ export default class ChartForm extends React.Component {
     console.log(this.state)
     this.props.createPatient(this.state)
       .then(res => this.props.history.push({pathname: '/print', state: { username: res.patient.username, pw: res.patient.pw, _id: res.patient._id, email: res.patient.email }}))
+  }
+
+  renderSelections() {
+    if (this.state.diagnoses[0]) {
+      return (
+        <div>
+          {this.state.diagnoses.map(selection => {
+            return <li>{selection}</li>
+          })}
+        </div>
+      )
+    }
   }
 
   render() {
@@ -82,7 +109,12 @@ export default class ChartForm extends React.Component {
             <input type="text" required onChange={this.handleStringChange('address')} />
           </label>
           <label>Diagnoses: 
-            <textarea onChange={this.handleArrayChange('diagnoses')}></textarea>
+            <div>
+              {this.renderSelections()}
+              Type for starting search: <input type="text" class="ctw-input" autocomplete="off" data-ctw-ino="1" />
+              {/* <button class="search-clear" onClick={ECT.Handler.clear('1')} title="Clear search and results">❌</button> */}
+              <div class="ctw-window" data-ctw-ino="1"></div>
+            </div>
           </label>
           <label>Medications: 
             <textarea onChange={this.handleArrayChange('medications')}></textarea>
