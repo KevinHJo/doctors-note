@@ -5,7 +5,8 @@ export const isDataReady = state => {
 export const getPatients = state => {
   if (!state.entities.user) return null
   if (!state.entities.user.patients) return null
-  return Object.values(state.entities.user.patients)
+  let patients = Object.values(state.entities.user.patients)
+  return patients.sort((a, b) => (a.lname + a.fname).localeCompare(b.lname + b.fname))
 }
 
 export const getPatient = (state, patientId) => (
