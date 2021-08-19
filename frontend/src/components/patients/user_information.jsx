@@ -53,6 +53,16 @@ export default class UserInformation extends React.Component {
             <input type='submit' value='Update' className="patient-home-form-button"/>
           </div>
         </form>
+        <div id='spacer'></div>
+        <div id='spacer'></div>
+        <div id='spacer'></div>
+        <div id='spacer'></div>
+        <div id='spacer'></div>
+        <div id='spacer'></div>
+        <div id='spacer'></div>
+        <div id='spacer'></div>
+        <div id='spacer'></div>
+        <div id='spacer'></div>
       </div>
     )
   }

@@ -7,6 +7,14 @@
   color: rgb(62,62,118);
 }
 
+#errored-field {
+  border: 0.5px solid rgb(206, 84, 104);
+}
+
+#errored-field::placeholder {
+  color: rgb(206, 84, 104);
+}
+
 .signup-form {
   position: relative;
   width: 100%;
@@ -31,6 +39,7 @@
 }
 
 .section1 input {
+  position: relative;
   border: none;
   text-align:center;
   padding: 5px 14px;
@@ -58,6 +67,56 @@
   letter-spacing: 0.5px;
   display: flex;
   flex-direction: column;
+  /* position: relative; */
+}
+
+.section1 .error-field {
+  position: absolute;
+  left: -155px;
+  margin-top: 24px;
+  font-size: 12px;
+  padding: 6px;
+  background-color: rgb(206, 84, 104);
+  color: white;
+  font-weight: 500;
+  border: none; 
+}
+
+.dba-error-field {
+  width: 33%;
+  left: -198px !important;
+}
+
+.section2 .error-field {
+  position: absolute;
+  margin-top: 25px;
+  font-size: 12px;
+  padding: 6px;
+  background-color: rgb(206, 84, 104);
+  color: white;
+  font-weight: 500;
+  border: none; 
+}
+
+#error-field-email {
+  width: 130px;
+  right: -100px;
+}
+
+#error-field-username {
+  width: 210px;
+  right: -178px;
+  resize: none;
+  letter-spacing: 1.5px;
+  right: -161px;
+  margin-top: 16px;
+}
+
+#error-field-pw {
+  resize: none;
+  letter-spacing: 1.5px;
+  right: -120px;
+  margin-top: 16px;
 }
 
 .section2 {

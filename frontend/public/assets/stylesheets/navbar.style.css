@@ -82,6 +82,7 @@
 .section-buttons {
   padding: 12px 15px;
   text-decoration: none;
+  margin-left: 3px;
 }
 
 .section-buttons:hover {
@@ -92,6 +93,7 @@
 .section-buttons:active {
   background: rgb(62, 57, 94);
   border: 1px inset rgb(81,75,123, 0%);
+  margin-left: 0px;
 }
 
 .section-buttons-patient {

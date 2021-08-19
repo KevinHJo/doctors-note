@@ -1,4 +1,5 @@
 import React from 'react'
+import { formatPhone, getDigits, isDelete } from '../../util/chart_util'
 import TopNavBarContainer from '../navbar/top_nav_bar_container'
 
 export default class ChartForm extends React.Component {
@@ -24,13 +25,27 @@ export default class ChartForm extends React.Component {
   }
 
   handleArrayChange = field => e => {
+    console.log(e)
     this.setState({[field]: e.target.value.split(',')})
+  }
+
+  handlePhoneChange = e => {
+    // console.log(e)
+    let prevDigits = getDigits(this.state.phone)
+    let nextDigits = getDigits(e.target.value)
+    // console.log(prevDigits)
+    // console.log(nextDigits)
+    if (prevDigits.length === 10 && !isDelete(e.nativeEvent.inputType)) return
+    if (isDelete(e.nativeEvent.inputType) && nextDigits.length === prevDigits.length) return
+    if (!/^\d+$/.test(e.nativeEvent.data) && !isDelete(e.nativeEvent.inputType)) return
+    this.setState({phone: formatPhone(nextDigits)})
   }
 
   handleSubmit = e => {
     e.preventDefault()
     console.log(this.state)
     this.props.createPatient(this.state)
+      .then(res => this.props.history.push({pathname: '/print', state: { username: res.patient.username, pw: res.patient.pw, _id: res.patient._id, email: res.patient.email }}))
   }
 
   render() {
@@ -60,7 +75,8 @@ export default class ChartForm extends React.Component {
             <input type="email" required onChange={this.handleStringChange('email')} />
           </label>
           <label>Phone number: 
-            <input type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={this.handleStringChange('phone')} />
+            <input type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="(123) 456-7890" onChange={this.handlePhoneChange} value={this.state.phone} />
+            {/* <input type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={this.handleStringChange('phone')} value={this.state.phone} /> */}
           </label>
           <label>Address: 
             <input type="text" required onChange={this.handleStringChange('address')} />
