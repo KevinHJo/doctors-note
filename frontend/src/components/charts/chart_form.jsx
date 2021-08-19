@@ -75,45 +75,69 @@ export default class ChartForm extends React.Component {
     }
   }
 
+  removeVisible() {
+    console.log('remove');
+    document.getElementById('ctw-window').classList.remove('visible')
+  }
+
+  addVisible() {
+    console.log('add')
+    document.getElementById('ctw-window').classList.add('visible')
+  }
+
   render() {
     return (
       <div className='new-chart-page'>
         <TopNavBarContainer />
         <div id='spacer'></div>
+        <div id='close-modal' onClick={this.removeVisible}></div>
         <h1>Create a New Patient</h1>
         <form onSubmit={this.handleSubmit} className='new-chart-form'>
-          <label className='new-chart-form-label'>First name: 
-            <input type="text" required onChange={this.handleStringChange('fname')} />
-          </label>
-          <label className='new-chart-form-label'>Last name: 
-            <input type="text" required onChange={this.handleStringChange('lname')} />
-          </label>
-          <label className='new-chart-form-label'>Date of Birth: 
-            <input type="date" required onChange={this.handleStringChange('dateOfBirth')} />
-          </label>
-          <label className='new-chart-form-label'>Sex: 
-            <select defaultValue='' required onChange={this.handleStringChange('sex')} >
-              <option value="" disabled hidden> </option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-          </label>
-          <label className='new-chart-form-label'>Email: 
-            <input type="email" required onChange={this.handleStringChange('email')} />
-          </label>
-          <label className='new-chart-form-label'>Phone number: 
-            <input type="tel" required pattern="[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={this.handlePhoneChange} value={this.state.phone} />
-            {/* <input type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={this.handleStringChange('phone')} value={this.state.phone} /> */}
-          </label>
-          <label className='new-chart-form-label'>Address: 
+          <div className='new-chart-top'>
+            <div className='new-chart-section1'>
+              <label className='new-chart-form-label'>First name: 
+                <input type="text" required onChange={this.handleStringChange('fname')} />
+              </label>
+
+              <label className='new-chart-form-label'>Date of Birth: 
+                <input type="date" required onChange={this.handleStringChange('dateOfBirth')} />
+              </label>
+              
+              <label className='new-chart-form-label'>Email: 
+                <input type="email" required onChange={this.handleStringChange('email')} />
+              </label>
+            </div>
+
+            <div className='new-chart-section2'>
+              <label className='new-chart-form-label'>Last name: 
+                <input type="text" required onChange={this.handleStringChange('lname')} />
+              </label>
+
+              <label className='new-chart-form-label'>Sex: 
+                <select className='new-chart-sex-input' defaultValue='' required onChange={this.handleStringChange('sex')} >
+                  <option value="" disabled hidden> </option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </label>
+
+              <label className='new-chart-form-label'>Phone number: 
+                <input type="tel" required pattern="[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={this.handlePhoneChange} value={this.state.phone} />
+                {/* <input type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={this.handleStringChange('phone')} value={this.state.phone} /> */}
+              </label>
+            </div>
+          </div>
+
+          <label className='new-chart-form-label new-chart-form-address'>Address: 
             <input type="text" required onChange={this.handleStringChange('address')} />
           </label>
+
           <label className='new-chart-form-label'>Diagnoses: 
-            <div>
-              {this.renderSelections()}
-              Type to search: <input type="text" className="ctw-input" autoComplete="off" data-ctw-ino="1" />
+            <div className='new-chart-diagnoses'>
+              <div className='new-chart-diaglist'>{this.renderSelections()}</div>
+              Type to search: <input type="text" className="ctw-input" autoComplete="off" data-ctw-ino="1" onClick={this.addVisible}/>
               {/* <button class="search-clear" onClick={ECT.Handler.clear('1')} title="Clear search and results">❌</button> */}
-              <div className="ctw-window" data-ctw-ino="1"></div>
+              <div className="ctw-window" data-ctw-ino="1" id='ctw-window'></div>
             </div>
           </label>
           <label className='new-chart-form-label'>Medications: 
@@ -122,7 +146,7 @@ export default class ChartForm extends React.Component {
           <label className='new-chart-form-label'>Allergies: 
             <textarea onChange={this.handleArrayChange('allergies')}></textarea>
           </label>
-          <input type="submit" value="Create Patient" />
+          <input type="submit" value="Create Patient" id='new-chart-submit-button'/>
         </form>
       </div>
     )
