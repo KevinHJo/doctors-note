@@ -39,7 +39,8 @@ export default class LoginPage extends React.Component {
             <p className="patient-login-title">Patient Login Portal</p>
             <form className="patient-login-form" onSubmit={this.handleSubmit}>
               <label className="patient-login-labels">Username:
-                <input className="patient-login-inputs" 
+                <input className="patient-login-inputs"
+                  type="text"
                   placeholder="Enter Username Here." 
                   onChange={this.updateField('username')}
                   value={this.state.username}
@@ -47,6 +48,7 @@ export default class LoginPage extends React.Component {
               </label>
               <label className="patient-login-labels patient-login-pw">Password:
                 <input className="patient-login-inputs"
+                  type="password"
                   placeholder="Enter Password Here."
                   onChange={this.updateField('password')}
                   value={this.state.password}
@@ -54,6 +56,14 @@ export default class LoginPage extends React.Component {
               </label>
               <input className="patient-login-button" type='submit' value="Submit" />
             </form>
+          </div>
+          <div id="patient-login-sub-section2">
+            <div className="patient-login-desc">
+              <p className='desc'>Access your medical records, all in one place.</p>
+            </div>
+            <div className="patient-login-img">
+              <img id="group-icon" src="https://doctors-note-seeds.s3.us-west-1.amazonaws.com/group-users.png" alt="records"></img>
+            </div>
           </div>
         </div>
         <div id="patient-section1-botline"></div>
