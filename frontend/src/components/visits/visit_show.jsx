@@ -25,7 +25,7 @@ class VisitShow extends Component {
       const {visit} = this.props
       if (this.state.editing) {
         return (
-          <VisitForm visit={visit} processForm={this.props.processForm}/>
+          <VisitForm visit={visit} processForm={this.props.processForm} toggleEdit={this.toggleEdit}/>
         )
       } else {
         return (
@@ -33,22 +33,22 @@ class VisitShow extends Component {
           <div className='soap-note'>
             <div className='soap-subjective'>
               <h1>Subjective</h1>
-              <div className='soap-subjective-display'>{visit.subjective}</div>
+              <div className='soap-subjective-display' dangerouslySetInnerHTML={{ __html: visit.subjective }}/>
             </div>
 
             <div className='soap-objective'>
               <h1>Objective</h1>
-                <div className='soap-objective-display'>{visit.objective}</div>
+                <div className='soap-objective-display' dangerouslySetInnerHTML={{ __html: visit.objective }}/>
             </div>
 
             <div className='soap-assessment'>
               <h1>Assessment</h1>
-                <div className='soap-assessment-display'>{visit.assessment}</div>
+                <div className='soap-assessment-display' dangerouslySetInnerHTML={{ __html: visit.assessment }}/>
             </div>
 
             <div className='soap-plan'>
               <h1>Plan</h1>
-                <div className='soap-plan-display'>{visit.plan}</div>
+                <div className='soap-plan-display' dangerouslySetInnerHTML={{ __html: visit.plan }}/>
             </div>
           </div>
 

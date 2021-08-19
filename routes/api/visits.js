@@ -65,7 +65,7 @@ router.patch('/update/:id', (req, res) => {
 	const plan = req.body.plan;
   const patientId = req.body.patientId;
 
-	Visit.updateOne({_id: visitId }, {
+	Visit.findByIdAndUpdate(visitId, {
     subjective,
     objective,
     assessment,

@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
+import { Redirect } from 'react-router';
 
 class VisitForm extends Component {
   constructor(props) {
     super(props);
     const {visit} = this.props
     this.state = {
+      _id: visit._id,
       subjective: visit.subjective,
       objective: visit.objective,
       assessment: visit.assessment,
-      plan: visit.plan
+      plan: visit.plan,
+      patientId: visit.patientId
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,7 +24,8 @@ class VisitForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.processForm(this.state)
+    this.props.processForm(this.state);
+    this.props.toggleEdit();
   }
 
   handleSubjectiveChange(value, editor) {

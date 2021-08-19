@@ -135,11 +135,9 @@ router.patch('/update/:id', (req, res) => {
 	Patient.findOne({ _id: req.params.id })
 		.then(patient => {
 			if (patient) {
-				console.log('patient', patient);
 				User.findOne({ _id: patient.doctorId })
 					.then(user => {
 						if (user) {
-							console.log('user', user);
 							let patients = user.patients;
 							patients[patient._id] = patient;
 							User.updateOne({ _id: user._id }, {

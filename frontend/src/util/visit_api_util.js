@@ -5,7 +5,7 @@ export const createVisit = (visit) => {
 };
 
 export const updateVisit = (visit) => {
-  return axios.patch(`/api/visits/update/${visit.id}`, visit);
+  return axios.patch(`/api/visits/update/${visit._id}`, visit);
 };
 
 export const fetchPatientVisits = patientId => {
