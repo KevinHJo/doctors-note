@@ -1,8 +1,8 @@
-import * as PatientAPIUtil from '../util/patient_api_util';
+import * as PatientAPIUtil from '../util/patient_api_util'
 import jwt_decode from 'jwt-decode';
 
-// This pattern should be familiar to you from the full stack project
-
+export const RECEIVE_PATIENT = 'RECEIVE_PATIENT';
+export const RECEIVE_PATIENTS = 'RECEIVE_PATIENTS';
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_LOGIN = "RECEIVE_USER_LOGIN";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
@@ -27,6 +27,16 @@ export const logoutUser = () => ({
 const receiveSessionErrors = errors => ({
     type: RECEIVE_SESSION_ERRORS,
     errors
+});
+
+const receivePatient = patient => ({
+  type: RECEIVE_PATIENT,
+  patient
+});
+
+const receivePatients = patients => ({
+  type: RECEIVE_PATIENTS,
+  patients
 });
 
 //THUNK ACTION CREATORS
@@ -59,3 +69,23 @@ export const login = user => dispatch => (
         dispatch(receiveSessionErrors(err.response.data));
     })
 )
+
+export const fetchPatient = patientId => dispatch => (
+  PatientAPIUtil.fetchPatient(patientId)
+    .then(patient => dispatch(receivePatient(patient)))
+);
+
+export const fetchDoctorPatients = doctorId => dispatch => (
+  PatientAPIUtil.fetchDoctorPatients(doctorId)
+    .then(patients => dispatch(receivePatients(patients)))
+);
+
+export const createPatient = patient => dispatch => (
+  PatientAPIUtil.createPatient(patient)
+    .then(patient => dispatch(receivePatient(patient)))
+);
+
+export const updatePatient = patient => dispatch => (
+  PatientAPIUtil.updatePatient(patient)
+    .then(patient => dispatch(receivePatient(patient)))
+);

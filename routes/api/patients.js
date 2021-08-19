@@ -8,6 +8,55 @@ const router = express.Router();
 // const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
+router.get('/:patientId', (req, res) => {
+	Patient.findOne({_id: req.params.patientId})
+		.then(patient => res.json(patient))
+		.catch(err => res.json(err));
+})
+
+router.get('/:doctorId/patients', (req, res) => {
+	Patient.find({doctorId: req.params.doctorId})
+		.then(patients => res.json(patients))
+		.catch(err => res.json(err));
+})
+
+router.patch('/update/:patientId', (req, res) => {
+	const patientId = req.params.patientId
+	const fname = req.body.fname;
+	const lname = req.body.lname;
+	const username = req.body.username;
+	const password = req.body.password;
+	const role = req.body.role;
+	const address = req.body.address;
+	const dateOfBirth = req.body.dateOfBirth;
+	const sex = req.body.sex;
+	const phone = req.body.phone;
+	const email = req.body.email;
+	const doctorId = req.body.doctorId;
+	const diagnoses = req.body.diagnoses;
+	const medications = req.body.medications;
+	const allergies = req.body.allergies;
+
+	Patient.updateOne({_id: patientId }, {
+    fname,
+		lname,
+		username,
+		password,
+		role,
+		address,
+		dateOfBirth,
+		sex,
+		phone,
+		email,
+		doctorId,
+		diagnoses,
+		medications,
+		allergies
+  })
+    .then(patient => res.json(patient))
+    .catch(err => res.json(err));
+});
+
 router.post('/new', (req, res) => {
 	const { body } = req;
 	const generatePassword = (length = 8) => Math.random().toString(20).substr(2, length);

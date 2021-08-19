@@ -7,14 +7,14 @@ const VisitsReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_VISITS:
       nextState = {};
-      action.visits.forEach(visit => nextState[visit.id] = visit)
+      action.visits.forEach(visit => nextState[visit._id] = visit);
       return nextState;
     case RECEIVE_VISIT:
-      nextState[action.visit.id] = action.visit
+      nextState[action.visit._id] = action.visit;
       return nextState;
     default:
       return state;
   }
-}
+};
 
-export default VisitsReducer
+export default VisitsReducer;
