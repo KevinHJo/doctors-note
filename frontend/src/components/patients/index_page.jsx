@@ -21,21 +21,21 @@ export default class IndexPage extends React.Component {
         case "2":
           section = (
             <div id="patient-section-appointments" className="patient-homepage-sections">
-              <Appointments />
+              <Appointments user={this.props.user} />
             </div>
           )
           break;
         case "3":
           section = (
             <div id="patient-section-visits" className="patient-homepage-sections">
-              <Visits />
+              <Visits user={this.props.user} />
             </div>
           )
           break;
         case "4":
           section = (
             <div id="patient-section-medical-history" className="patient-homepage-sections">
-              MedicalHistory
+              <MedicalHistory user={this.props.user} />
             </div>
           )
           break;

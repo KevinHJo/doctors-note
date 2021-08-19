@@ -11,10 +11,10 @@ const validateLoginInput = require('../../validation/login');
 // router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
 router.get('/:id', (req, res) => {
-  User.findOne({_id: req.params.id})
-    .then(user => res.json(user))
-    .catch(err => res.json(err))
-})
+	User.findOne({ _id: req.params.id })
+		.then(user => res.json(user))
+		.catch(err => res.json(err));
+});
 
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
 	res.json({
@@ -115,7 +115,8 @@ router.post('/login', (req, res) => {
 							email: user.email,
 							role: user.role,
 							fname: user.fname,
-							lname: user.lname
+							lname: user.lname,
+							username: user.username,
 						};
 
 						jwt.sign(

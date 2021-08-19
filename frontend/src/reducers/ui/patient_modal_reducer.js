@@ -9,7 +9,7 @@ const PatientModalReducer = (state = {}, action) => {
     case RECEIVE_CURRENT_USER:
       return ({1: true})
     default:
-      return state;
+      return ({1: true});
   }
 }
 
