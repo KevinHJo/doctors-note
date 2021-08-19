@@ -6,7 +6,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const router = express.Router();
 // const validateRegisterInput = require('../../validation/register');
-const validateLoginInput = require('../../validation/login');
+const validatePatientLoginInput = require('../../validation/patient_login.js');
 
 router.post('/new', (req, res) => {
 	const { body } = req;
@@ -22,6 +22,88 @@ router.post('/new', (req, res) => {
 				return res.status(400).json({ email: "A patient has already registered with this address" });
 			}
 		});
+
+	Patient.findOne({ username: req.body.username })
+		.then(patient => {
+			if (patient) {
+				// Throw a 400 error if the username already exists
+				return res.status(400).json({ username: "A patient has already registered with this username" });
+			}
+		});
+
+	// Otherwise create a new user
+	const newPatient = new Patient({
+		username: req.body.username,
+		email: req.body.email,
+		password: req.body.password,
+		fname: req.body.fname,
+		lname: req.body.lname,
+		address: req.body.address,
+		dateOfBirth: req.body.dateOfBirth,
+		sex: req.body.sex,
+		phone: req.body.phone,
+		email: req.body.email,
+		doctorId: req.body.doctorId,
+		role: req.body.role,
+	});
+
+	bcrypt.genSalt(10, (err, salt) => {
+		bcrypt.hash(newPatient.password, salt, (err, hash) => {
+			if (err) throw err;
+			newPatient.password = hash;
+			newPatient.save()
+				.then(patient => res.json(patient))
+				.catch(err => res.json(err));
+		});
+	});
+});
+
+router.post('/login', (req, res) => {
+	const { errors, isValid } = validatePatientLoginInput(req.body);
+
+	if (!isValid) {
+		return res.status(400).json(errors);
+	}
+
+	const username = req.body.username;
+	const password = req.body.password;
+
+	Patient.findOne({ username: username })
+		.then(patient => {
+			if (!patient) {
+				return res.status(404).json({ username: 'This patient does not exist' });
+			}
+
+			bcrypt.compare(password, patient.password)
+				.then(isMatch => {
+					if (isMatch) {
+						const payload = { id: patient.id, username: patient.username, role: patient.role }; // revisit this
+
+						jwt.sign(
+							payload,
+							keys.secretOrKey,
+							// Tell the key to expire in one hour
+							{ expiresIn: 3600 },
+							(err, token) => {
+								res.json({
+									success: true,
+									token: 'Bearer ' + token
+								});
+							});
+					} else {
+						return res.status(400).json({ password: 'Incorrect password' });
+					}
+				});
+		});
+});
+
+router.post('/new', (req, res) => {
+	const { body } = req;
+	const generatePassword = (length = 8) => Math.random().toString(20).substr(2, length);
+	const digits = Math.floor(1000 + Math.random() * 9000);
+	let randomUsername = `${body.fname}${body.lname}${digits}`;
+	let oldPw = generatePassword();
+
 
 	const newPatient = new Patient({
 		username: randomUsername,
