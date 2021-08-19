@@ -27,16 +27,22 @@
 }
 
 #patient-login-sub-section1 {
-  width: 400px;
+  width: 350px;
   height: 400px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.6);
   padding: 18px 20px;
-  background-color: white;
+  margin-right: 160px;
+  margin-top: 45px;
+  background-color: rgb(248,252,255);
+}
+
+#patient-login-sub-section2 {
+  width: 700px;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  margin-left: 60px;
 }
 
 .patient-login-title {
@@ -48,11 +54,11 @@
 
 .patient-login-form {
   position: relative;
-  width: 100%;
+  width: 300px;
   height: 80%;
   margin: 0 auto;
   padding: 8px 5px;
-  background: white;
+  background: rgb(248,252,255);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -86,8 +92,12 @@
   padding-bottom: 9px;
   padding-top: 9px;
   border-bottom: 1px solid rgb(62,62,118);
-  background: white;
+  background: rgb(248,252,255);
   color: rgb(62,62,118);
+}
+
+.patient-login-inputs:focus {
+  outline: none;
 }
 
 .patient-login-button {
@@ -99,10 +109,37 @@
   align-self: center;
   background-color: rgb(17,94,155);;
   font-weight: 700;
-  color: white;
+  color: rgb(248,252,255);
 }
 
 .patient-login-button:hover {
   cursor: pointer;
   background-color: rgb(7,46,92);
+}
+
+.patient-login-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.patient-login-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.patient-login-desc .desc {
+  font-size: 44px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: white;
+  text-align: right;
+  padding-right: 25px;
+}
+
+#group-icon {
+  width: 350px;
+  margin-left: 15px;
+  margin-top: 10px;
 }
