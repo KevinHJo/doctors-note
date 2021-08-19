@@ -3,7 +3,110 @@
   flex-direction: column;
 }
 
+.new-chart-page h1 {
+  margin-left: 50px;
+}
+
+#close-modal {
+  background-color: rgba(255, 255, 255, 0);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
 .new-chart-form {
   display: flex;
   flex-direction: column;
+  margin: auto;
+  width: 750px;
+}
+
+.new-chart-top {
+  display: flex;
+  flex-direction: row;
+}
+
+.new-chart-form-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+}
+
+
+.new-chart-form input {
+  position: relative;
+  border: none;
+  text-align:center;
+  padding: 5px 14px;
+  letter-spacing: 2px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 8px;
+  margin-right: 60px;
+  padding-bottom: 9px;
+  padding-top: 9px;
+  border-bottom: 1px solid rgb(62,62,118);
+  background: rgb(248,252,255);
+  color: rgb(62,62,118);
+}
+
+.new-chart-sex-input {
+  z-index: 0;
+}
+
+.statusdiv, .ctwFlexItem25, .listhead {
+  display: none;
+}
+
+.visible {
+  display: block !important;
+}
+
+.new-chart-diagnoses {
+  position: relative;
+}
+
+.new-chart-diaglist {
+  margin-bottom: 10px;
+}
+
+.ctw-input {
+  z-index: 2;
+}
+
+.ctw-window {
+  display: none;
+  position: absolute;
+  top: -10px;
+  left: 375px;
+  z-index: 1;
+  height: 250px;
+  overflow-y: scroll;
+  width: 500px;
+  background-color: white;
+  box-shadow:0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.new-chart-form-label textarea {
+  z-index: 0;
+}
+
+#new-chart-submit-button {
+  border: none;
+  margin-top: 7px;
+  border-radius: 0px;
+  padding: 6px;
+  width: 55%;
+  align-self: center;
+  background-color: rgb(17,94,155);;
+  font-weight: 700;
+  color: white;
+}
+
+#new-chart-submit-button:hover {
+  cursor: pointer;
+  background-color: rgb(7,46,92);
 }
