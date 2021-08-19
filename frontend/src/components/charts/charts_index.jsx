@@ -35,7 +35,8 @@ export default class ChartsIndex extends React.Component {
       <div>
         <TopNavBarContainer />
         <div id='spacer'></div>
-        <div className='charts-index'>
+        {/* <div className='charts-index' style={`{overflowY: 'scroll'}`}> */}
+        <div className='charts-index' style={{overflowY: 'scroll'}}>
           {!!patients ? 
             (patients.map(patient => 
               <div key={patient._id}>
