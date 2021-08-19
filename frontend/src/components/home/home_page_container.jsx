@@ -4,6 +4,8 @@ import HomePage from './home_page';
 
 const mSTP = (state, ownParams) => ({
   history: ownParams.history,
+  signupErrors: state.errors.signup,
+  signinErrors: state.errors.signin,
 });
 
 const mDTP = (dispatch) => ({

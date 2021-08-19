@@ -6,6 +6,8 @@ import jwt_decode from 'jwt-decode';
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_LOGIN = "RECEIVE_USER_LOGIN";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
+export const RECEIVE_SIGNUP_ERRORS = "RECEIVE_SIGNUP_ERRORS";
+export const RECEIVE_SIGNIN_ERRORS = "RECEIVE_SIGNIN_ERRORS";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 
 //ACTION CREATORS
@@ -24,8 +26,13 @@ export const logoutUser = () => ({
     type: RECEIVE_USER_LOGOUT
 });
 
-const receiveSessionErrors = errors => ({
-    type: RECEIVE_SESSION_ERRORS,
+const receiveSignupErrors = errors => ({
+    type: RECEIVE_SIGNUP_ERRORS,
+    errors
+});
+
+const receiveSigninErrors = errors => ({
+    type: RECEIVE_SIGNIN_ERRORS,
     errors
 });
 
@@ -43,7 +50,7 @@ export const signup = (user) => (dispatch) => (
     SessionAPIUtil.signup(user).then((res) => (
         dispatch(receiveUserLogin(res))
     ), err => (
-        dispatch(receiveSessionErrors(err.response.data))
+        dispatch(receiveSignupErrors(err.response.data))
     ))
 );
 
@@ -56,6 +63,6 @@ export const login = user => dispatch => (
         dispatch(receiveCurrentUser(decoded))
     })
     .catch(err => {
-        dispatch(receiveSessionErrors(err.response.data));
+        dispatch(receiveSigninErrors(err.response.data));
     })
 )

@@ -190,6 +190,7 @@
 .patient-left-nav-sections:active {
   background: rgb(18, 16, 31);
   border: 2px inset rgb(81,75,123, 0%);
+  outline: none;
 }
 
 .patient-homepage-sections {
