@@ -7,6 +7,6 @@ export const getPatients = state => {
   return Object.values(state.entities.user.patients)
 }
 
-// export const getPatient = state => (
-//   Object.values(state.session.user.patients).filter(patient => )
-// )
+export const getPatient = (state, patientId) => (
+  state.entities.patients[patientId]
+)

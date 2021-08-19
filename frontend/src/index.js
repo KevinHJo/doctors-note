@@ -5,6 +5,7 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
+import { fetchPatient } from './actions/patient_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -39,5 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
 
   ReactDOM.render(<Root store={store} />, root);
-  // window.getState = store.getState
+  window.getState = store.getState
+  window.dispatch = store.dispatch
+  window.fetchPatient = fetchPatient
 });

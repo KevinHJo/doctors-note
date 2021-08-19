@@ -72,7 +72,7 @@ export const login = user => dispatch => (
 
 export const fetchPatient = patientId => dispatch => (
   PatientAPIUtil.fetchPatient(patientId)
-    .then(patient => dispatch(receivePatient(patient)))
+    .then(patient => dispatch(receivePatient(patient.data)))
 );
 
 export const fetchDoctorPatients = doctorId => dispatch => (

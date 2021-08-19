@@ -2,9 +2,13 @@ import React from 'react'
 import VisitsIndex from '../visits/visits_index'
 
 export default class ChartShow extends React.Component {
+  componentDidMount() {
+    this.props.fetchPatient(this.props.match.params.patientId)
+  }
+
   render() {
-    console.log(this.props)
-    const patient = this.props.location.state
+    if (!this.props.patient) return null
+    const { patient } = this.props
     return (
       <div>
         <div id='spacer'></div>
@@ -22,7 +26,7 @@ export default class ChartShow extends React.Component {
           <div><p>Allergies: </p>(map allergies)</div>
         </div>
         <div>
-          <VisitsIndex patient={patient} />
+          {/* <VisitsIndex patient={patient} /> */}
         </div>
       </div>
     )
