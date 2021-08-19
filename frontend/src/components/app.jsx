@@ -12,6 +12,7 @@ import PatientsIndexContainer from './patients/index_page_container';
 //TESTING - start
 import VisitsIndex from './visits/visits_index';
 import ChartFormContainer from './charts/chart_form_container';
+import ChartPrint from './charts/chart_print';
 //TESTING -end
 
 const App = () => (
@@ -23,6 +24,7 @@ const App = () => (
             <AuthRoute exact path="/" component={HomePageContainer} />
             <AuthRoute exact path="/patients/login" component={LoginPageContainer} />
             <AuthRoute exact path="/signup" component={SignupPage} />
+            <ProtectedRoute exact path='/print' component={ChartPrint} />
             <ProtectedRoute exact path="/charts" component={ChartsIndexContainer} />
             <ProtectedRoute exact path='/charts/form' component={ChartFormContainer} />
             <PatientProtectedRoute exact path="/patients/home" component={PatientsIndexContainer} />

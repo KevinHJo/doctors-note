@@ -31,6 +31,7 @@ export default class ChartForm extends React.Component {
     e.preventDefault()
     console.log(this.state)
     this.props.createPatient(this.state)
+      .then(res => this.props.history.push({pathname: '/print', state: { username: res.patient.username, pw: res.patient.pw, _id: res.patient._id, email: res.patient.email }}))
   }
 
   render() {
