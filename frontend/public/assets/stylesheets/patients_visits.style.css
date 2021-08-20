@@ -1,0 +1,10 @@
+#patient-home-visits {
+  width: 600px;
+}
+
+#patient-home-visits-title {
+  font-size: 22px;
+  font-weight: 600;
+  padding-bottom: 5px;
+  border-bottom: 3px solid rgb(62,62,62);
+}
