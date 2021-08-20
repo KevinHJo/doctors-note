@@ -13,7 +13,7 @@ export default class UserInformation extends React.Component {
       email: this.props.user.email,
       phone: this.props.user.phone,
       address: this.props.user.address,
-      doctorId: this.props.user.doctorId,
+      doctor: `Dr. ${this.props.doctor.lname}`,
       password: '',
     }
   }
@@ -44,8 +44,8 @@ export default class UserInformation extends React.Component {
             </label>
           </div>
           <div className="patient-form-section-right">
-            <label>Doctor's Id:
-              <input disabled className="nonedit-inputs" defaultValue={this.state.doctorId}/>
+            <label>Assigned Doctor:
+              <input disabled className="nonedit-inputs" defaultValue={this.state.doctor}/>
             </label>
             <label>Personal Identifier Code:
               <input disabled className="nonedit-inputs patient-code" defaultValue={this.state.username.split("").slice(-4).join("")}/>

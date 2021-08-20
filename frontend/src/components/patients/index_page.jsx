@@ -7,6 +7,10 @@ import Appointments from './appointments';
 import UserInformation from './user_information';
 
 export default class IndexPage extends React.Component {
+  componentDidMount() {
+    this.props.fetchDoctor(this.props.user.doctorId)
+  }
+  
   render() {
     let section = '';
     if (Object.values(this.props.modal)[0]) {
@@ -14,7 +18,7 @@ export default class IndexPage extends React.Component {
         case "1":
           section = (
             <div id="patient-section-user-info" className="patient-homepage-sections">
-              <UserInformation user={this.props.user} />
+              <UserInformation user={this.props.user} doctor={this.props.doctor} />
             </div>
           )
           break;
