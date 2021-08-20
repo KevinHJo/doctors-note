@@ -1,10 +1,25 @@
 import React from 'react'
+import Visit from './visit'
 
 export default class Visits extends React.Component {
   render() {
+    let eachVisit = [];
+    
+    if (this.props.user && this.props.user.visits) {
+      let visits = Object.values(this.props.user.visits)
+      visits.map((visit, idx) => {
+        eachVisit.push(
+          <div key={idx}>
+            <Visit visit={visit} />
+          </div>
+        )
+      })
+    }
+    
     return (
-      <div>
-        <p>Visits</p>
+      <div id="patient-home-visits">
+        <p id="patient-home-visits-title">Visits</p>
+        {eachVisit}
       </div>
     )
   }
