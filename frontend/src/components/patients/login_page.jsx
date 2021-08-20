@@ -29,7 +29,8 @@ export default class LoginPage extends React.Component {
     this.setState({ username: '', password: '' });
   }
 
-  demoLogin() {
+  demoLogin(e) {
+    e.preventDefault();
     const demoPatient = {
       username: 'PatDemo5945',
       password: '111111'

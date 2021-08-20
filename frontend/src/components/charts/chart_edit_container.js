@@ -8,7 +8,6 @@ const mSTP = (state, ownProps) => {
 
   return {
     doctorId: state.session.user.id,
-    reloaded: state.ui.doctorModal,
     patient: state.entities.patients[patientId],
     patientId: patientId,
     formHeader: <h1>Edit Existing Patient Information</h1>,

@@ -41,7 +41,8 @@ export default class LoginForm extends React.Component {
     }
   }
 
-  demoLogin() {
+  demoLogin(e) {
+    e.preventDefault();
     const demoUser = {
       email: 'demo@demo.com',
       password: 'password'
