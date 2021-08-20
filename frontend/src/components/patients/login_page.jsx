@@ -12,6 +12,7 @@ export default class LoginPage extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateField = this.updateField.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   updateField(field) {
@@ -26,6 +27,15 @@ export default class LoginPage extends React.Component {
     e.preventDefault();
     this.props.login(this.state);
     this.setState({ username: '', password: '' });
+  }
+
+  demoLogin() {
+    const demoPatient = {
+      username: 'PatDemo5945',
+      password: '111111'
+    }
+
+    this.props.login(demoPatient);
   }
 
   render() {
@@ -82,7 +92,10 @@ export default class LoginPage extends React.Component {
                 />
                 {error2}
               </label>
-              <input className="patient-login-button" type='submit' value="Submit" />
+              <div className='patient-login-buttons'>
+                <input className="patient-login-button" type='submit' value="Submit" />
+                <button id='patient-login-demo' onClick={this.demoLogin}>Demo</button>
+              </div>
             </form>
           </div>
           <div id="patient-login-sub-section2">

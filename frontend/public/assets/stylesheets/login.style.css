@@ -98,8 +98,12 @@
   color: rgb(206, 84, 104);
 }
 
-#login-button {
-  width: 125px;
+.login-buttons {
+  display: flex;
+}
+
+#login-button, #demo-button {
+  width: 100px;
   margin: 0 auto;
   border-radius: 0px;
   background-color: rgb(17,94,155);
@@ -109,7 +113,11 @@
   padding: 6px 8px;
 }
 
-#login-button:hover {
+#demo-button {
+  border: none;
+}
+
+#login-button:hover, #demo-button:hover {
   background-color: rgb(7,46,92);
   cursor: pointer;
 }

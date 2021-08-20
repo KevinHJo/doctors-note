@@ -71,7 +71,17 @@ export default class HomePage extends React.Component {
           </div>
           <div className="info-lower-line"></div>
         </div>
+
         <div id="spacer"></div>
+
+        <section className='section-facts'>
+          <h2>Electronic Health Records (EHR) Made for You</h2>
+          <div className='facts-cont'>
+            <div>
+              
+            </div>
+          </div>
+        </section>
       </div>
     )
   }

@@ -52,7 +52,7 @@ class VisitShow extends Component {
           <div>
             <TopNavBarContainer />
             <div id='spacer'/>
-            <VisitForm visit={visit} processForm={this.props.processForm} toggleEdit={this.toggleEdit} updateEditedVisit={this.updateEditedVisit} />
+            <VisitForm visit={visit} processForm={this.props.processForm} toggleEdit={this.toggleEdit} updateEditedVisit={this.updateEditedVisit} formSubmit='Save'/>
           </div>
         )
       } else {

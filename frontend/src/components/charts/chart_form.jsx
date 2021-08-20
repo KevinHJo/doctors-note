@@ -107,10 +107,6 @@ export default class ChartForm extends React.Component {
     document.getElementById('ctw-window').classList.add('visible')
   }
 
-  loadDiagnoses() {
-    window.location.reload();
-  }
-
   render() {
     if (!this.props.patient) return null
 
@@ -165,7 +161,6 @@ export default class ChartForm extends React.Component {
               <div className='new-chart-diaglist'>{this.renderSelections()}</div>
               Type to search: <input type="text" className="ctw-input" autoComplete="off" data-ctw-ino="1" onClick={this.addVisible}/>
 
-              <button className="page-refresh-button" onClick={this.loadDiagnoses}>Load Diagnoses</button>
               <div className="ctw-window" data-ctw-ino="1" id='ctw-window'></div>
             </div>
           </label>
