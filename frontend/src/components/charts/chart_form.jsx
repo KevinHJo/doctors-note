@@ -25,6 +25,7 @@ export default class ChartForm extends React.Component {
   }
 
   componentDidMount() {
+    
     if( window.localStorage ) {
       if(!localStorage.getItem('firstLoad'))
       {
@@ -41,6 +42,12 @@ export default class ChartForm extends React.Component {
         this.setState({diagnoses: selections})
       }
     };
+
+    if (!!this.props.patientId) {
+      if (!!document.getElementById("new-chart-page")) {
+        document.getElementById("new-chart-page").classList.add("visible");
+      }
+    }
     
     ECT.Handler.configure(mySettings, myCallbacks);
     if (this.props.formSubmit === 'Save') this.props.fetchPatient(this.props.patientId)
