@@ -1,4 +1,4 @@
-import {RECEIVE_VISIT, RECEIVE_VISITS} from '../../actions/visit_actions'
+import {RECEIVE_VISIT, RECEIVE_VISITS, REMOVE_VISIT} from '../../actions/visit_actions'
 
 const VisitsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -11,6 +11,9 @@ const VisitsReducer = (state = {}, action) => {
       return nextState;
     case RECEIVE_VISIT:
       nextState[action.visit._id] = action.visit;
+      return nextState;
+    case REMOVE_VISIT:
+      delete nextState[action.visit._id]
       return nextState;
     default:
       return state;
