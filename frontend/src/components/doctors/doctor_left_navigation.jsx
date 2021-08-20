@@ -25,7 +25,7 @@ export default class DoctorLeftNavigation extends React.Component {
           <p>Patient Charts</p>
         </div>
         <div id="doctor-left-nav-section3" className={`doctor-left-nav-sections ${(this.props.modal[3] ? 'focused' : '')}`} onClick={() => this.focusSection(3)}>
-          <p>Chart Details</p>
+          <p>Appointments</p>
         </div>
         <div id="doctor-left-nav-section4" className={`doctor-left-nav-sections ${(this.props.modal[4] ? 'focused' : '')}`} onClick={() => this.focusSection(4)}>
           <p>Doctor Info</p>

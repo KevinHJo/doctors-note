@@ -22,24 +22,29 @@ export default class DoctorIndexPage extends React.Component {
         case "1":
           section = (
             <div id="doctor-section-user-info" className="doctor-homepage-sections">
-              <p>Overview.</p>
-              <p onClick={this.toggleAddChart}>Add New Chart</p>
+              <p className="doctor-section-user-title">Quick Links.</p>
+              <div className="revealAddChart" onClick={this.toggleAddChart}>
+                <img alt="plus" className="plus-chart-icon" src="https://doctors-note-seeds.s3.us-west-1.amazonaws.com/add.png" />
+                Add New Chart
+              </div>
               <ChartFormContainer />
             </div>
           )
           break;
         case "2":
           section = (
-            <div id="doctor-section-user-info" className="doctor-homepage-sections">
+            <div id="doctor-section-all-charts" className="doctor-homepage-sections">
+              <p className="title">All Charts.</p>
               <ChartsIndexContainer receiveChart={this.props.receiveChart} toggleModal={this.props.toggleModal} />
             </div>
           )
           break;
         case "3":
-          if (!this.props.patientId) return null;
+          // if (!this.props.patientId) return null;
           section = (
             <div id="doctor-section-user-info" className="doctor-homepage-sections">
-              <ChartShowContainer patient={this.props.patientId} />
+              {/* <ChartShowContainer patient={this.props.patientId} /> */}
+              <p>No Appointments yet.</p>
             </div>
           )
           break;
@@ -55,7 +60,7 @@ export default class DoctorIndexPage extends React.Component {
       }
     }
     return (
-      <div>
+      <div id="main-doctors-home">
         <NavBarContainer />
         <div id='spacer'></div>
         <DoctorLeftNavigation toggleModal={this.props.toggleModal} modal={this.props.modal} />

@@ -53,6 +53,9 @@ export default class ChartForm extends React.Component {
   }
 
   handleStringChange = field => e => {
+    if (field === 'search' && e.currentTarget.value.split("").length === 1) {
+      this.addVisible();
+    }
     this.setState({[field]: e.target.value})
   }
 
@@ -117,66 +120,71 @@ export default class ChartForm extends React.Component {
       <div id='new-chart-page'>
         <TopNavBarContainer />
         <div id='spacer'></div>
+        <div id="fuzzy"></div>
         <div id='close-modal' onClick={this.removeVisible}></div>
-        {this.props.formHeader}
-        <form onSubmit={this.handleSubmit} className='new-chart-form'>
-          <div className='new-chart-top'>
-            <div className='new-chart-section1'>
-              <label className='new-chart-form-label'>First name: 
-                <input type="text" required onChange={this.handleStringChange('fname')} value={this.state.fname}/>
-              </label>
+        <div id="new-patient-chart-form">
+          {this.props.formHeader}
+          <form onSubmit={this.handleSubmit} className='new-chart-form'>
+            <div className='new-chart-top'>
+              <div className='new-chart-section1'>
+                <label className='new-chart-form-label'>First name: 
+                  <input type="text" required onChange={this.handleStringChange('fname')} value={this.state.fname}/>
+                </label>
 
-              <label className='new-chart-form-label'>Date of Birth: 
-                <input type="date" required onChange={this.handleStringChange('dateOfBirth')} value={this.state.dateOfBirth.slice(0,10)}/>
-              </label>
-              
-              <label className='new-chart-form-label'>Email: 
-                <input type="email" required onChange={this.handleStringChange('email')} value={this.state.email}/>
-              </label>
+                <label className='new-chart-form-label'>Last name: 
+                  <input type="text" required onChange={this.handleStringChange('lname')} value={this.state.lname}/>
+                </label>
+                
+                <label className='new-chart-form-label'>Email: 
+                  <input type="email" required onChange={this.handleStringChange('email')} value={this.state.email}/>
+                </label>
+              </div>
+
+              <div className='new-chart-section2'>
+                <label className='new-chart-form-label'>Date of Birth: 
+                  <input type="date" required onChange={this.handleStringChange('dateOfBirth')} value={this.state.dateOfBirth.slice(0,10)}/>
+                </label>
+
+                <label className='new-chart-form-label'>Phone number: 
+                  <input type="tel" required pattern="[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={this.handlePhoneChange} value={this.state.phone} />
+                  {/* <input type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={this.handleStringChange('phone')} value={this.state.phone} /> */}
+                </label>
+
+                <label className='new-chart-form-label'>Sex: 
+                  <select className='new-chart-sex-input' value={this.state.sex} required onChange={this.handleStringChange('sex')}>
+                    <option value="" disabled hidden> </option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </label>
+
+              </div>
             </div>
 
-            <div className='new-chart-section2'>
-              <label className='new-chart-form-label'>Last name: 
-                <input type="text" required onChange={this.handleStringChange('lname')} value={this.state.lname}/>
-              </label>
+            <label className='new-chart-form-label new-chart-form-address'>Address: 
+              <input type="text" required onChange={this.handleStringChange('address')} value={this.state.address}/>
+            </label>
 
-              <label className='new-chart-form-label'>Sex: 
-                <select className='new-chart-sex-input' value={this.state.sex} required onChange={this.handleStringChange('sex')}>
-                  <option value="" disabled hidden> </option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </label>
+            <label className='new-chart-form-label'>Diagnoses: 
+              <div className='new-chart-diagnoses'>
+                <div className='new-chart-diaglist'>{this.renderSelections()}</div>
+                Type to search: <input type="text" className="ctw-input" autoComplete="off" data-ctw-ino="1" onClick={this.addVisible} onChange={this.handleStringChange('search')}/>
 
-              <label className='new-chart-form-label'>Phone number: 
-                <input type="tel" required pattern="[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={this.handlePhoneChange} value={this.state.phone} />
-                {/* <input type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" onChange={this.handleStringChange('phone')} value={this.state.phone} /> */}
-              </label>
+                <div className="ctw-window" data-ctw-ino="1" id='ctw-window'></div>
+              </div>
+            </label>
+            <label className='new-chart-form-label'>Medications: 
+              <textarea onChange={this.handleArrayChange('medications')}></textarea>
+            </label>
+            <label className='new-chart-form-label'>Allergies: 
+              <textarea onChange={this.handleArrayChange('allergies')}></textarea>
+            </label>
+            <div id="section-buttons">
+              <input type="submit" value="Create Patient" className='new-chart-buttons' id='create-button'/>
+              <p onClick={() => window.location.reload()} className='new-chart-buttons' id='cancel-button'>Cancel</p>
             </div>
-          </div>
-
-          <label className='new-chart-form-label new-chart-form-address'>Address: 
-            <input type="text" required onChange={this.handleStringChange('address')} value={this.state.address}/>
-          </label>
-
-          <label className='new-chart-form-label'>Diagnoses: 
-            <div className='new-chart-diagnoses'>
-              <div className='new-chart-diaglist'>{this.renderSelections()}</div>
-              Type to search: <input type="text" className="ctw-input" autoComplete="off" data-ctw-ino="1" onClick={this.addVisible}/>
-
-              <div className="ctw-window" data-ctw-ino="1" id='ctw-window'></div>
-            </div>
-          </label>
-          <label className='new-chart-form-label'>Medications: 
-            <textarea onChange={this.handleArrayChange('medications')}></textarea>
-          </label>
-          <label className='new-chart-form-label'>Allergies: 
-            <textarea onChange={this.handleArrayChange('allergies')}></textarea>
-          </label>
-          <p onClick={() => window.location.reload()} className='new-chart-buttons'>Cancel</p>
-          <input type="submit" value="Create Patient" className='new-chart-buttons'/>
-
-        </form>
+          </form>
+        </div>
       </div>
     )
   }

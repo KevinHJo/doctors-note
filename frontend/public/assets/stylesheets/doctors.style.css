@@ -1,3 +1,8 @@
+#main-doctors-home {
+  background-color: rgb(106, 126, 159, 30%);
+  color: rgb(43, 43, 43);
+}
+
 #doctor-left-nav {
   height: 100%;
   width: 265px;
@@ -41,19 +46,30 @@
 
 /* charts */
 #doctor-charts {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .doctor-homepage-sections {
   width: 1200px;
-  background: grey;
+  height: 900px;
+  background: rgba(250, 251, 255, 0.8);
   margin: 0 auto;
+  border-radius: 4px;
+}
+
+#doctor-section-all-charts {
+  display: flex;
+  flex-direction: column;
+}
+
+#doctor-section-all-charts .title {
+  font-weight: 700;
+  font-size: 28px;
   padding: 25px;
-}
-
-.charts-index {
-
-}
-
-.charts-index-panel {
-
+  background-color: #5a5482;
+  color: whitesmoke;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
 }
