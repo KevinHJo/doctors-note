@@ -31,7 +31,7 @@ export default class ChartForm extends React.Component {
         this.setState({diagnoses: selections})
       }
     };
-
+    
     ECT.Handler.configure(mySettings, myCallbacks);
   }
 
@@ -85,6 +85,10 @@ export default class ChartForm extends React.Component {
     document.getElementById('ctw-window').classList.add('visible')
   }
 
+  loadDiagnoses() {
+    window.location.reload();
+  }
+
   render() {
     return (
       <div className='new-chart-page'>
@@ -96,25 +100,25 @@ export default class ChartForm extends React.Component {
           <div className='new-chart-top'>
             <div className='new-chart-section1'>
               <label className='new-chart-form-label'>First name: 
-                <input type="text" required onChange={this.handleStringChange('fname')} />
+                <input type="text" required onChange={this.handleStringChange('fname')} value={this.state.fname}/>
               </label>
 
               <label className='new-chart-form-label'>Date of Birth: 
-                <input type="date" required onChange={this.handleStringChange('dateOfBirth')} />
+                <input type="date" required onChange={this.handleStringChange('dateOfBirth')} value={this.state.dateOfBirth}/>
               </label>
               
               <label className='new-chart-form-label'>Email: 
-                <input type="email" required onChange={this.handleStringChange('email')} />
+                <input type="email" required onChange={this.handleStringChange('email')} value={this.state.email}/>
               </label>
             </div>
 
             <div className='new-chart-section2'>
               <label className='new-chart-form-label'>Last name: 
-                <input type="text" required onChange={this.handleStringChange('lname')} />
+                <input type="text" required onChange={this.handleStringChange('lname')} value={this.state.lname}/>
               </label>
 
               <label className='new-chart-form-label'>Sex: 
-                <select className='new-chart-sex-input' defaultValue='' required onChange={this.handleStringChange('sex')} >
+                <select className='new-chart-sex-input' defaultValue={this.state.sex} required onChange={this.handleStringChange('sex')}>
                   <option value="" disabled hidden> </option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
@@ -129,14 +133,15 @@ export default class ChartForm extends React.Component {
           </div>
 
           <label className='new-chart-form-label new-chart-form-address'>Address: 
-            <input type="text" required onChange={this.handleStringChange('address')} />
+            <input type="text" required onChange={this.handleStringChange('address')} value={this.state.address}/>
           </label>
 
           <label className='new-chart-form-label'>Diagnoses: 
             <div className='new-chart-diagnoses'>
               <div className='new-chart-diaglist'>{this.renderSelections()}</div>
               Type to search: <input type="text" className="ctw-input" autoComplete="off" data-ctw-ino="1" onClick={this.addVisible}/>
-              {/* <button class="search-clear" onClick={ECT.Handler.clear('1')} title="Clear search and results">❌</button> */}
+
+              <button className="page-refresh-button" onClick={this.loadDiagnoses}>Load Diagnoses</button>
               <div className="ctw-window" data-ctw-ino="1" id='ctw-window'></div>
             </div>
           </label>
