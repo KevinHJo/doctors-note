@@ -55,6 +55,8 @@
 
 .new-chart-sex-input {
   z-index: 0;
+  width: 100px;
+  height: 30px;
 }
 
 .statusdiv, .ctwFlexItem25, .listhead {
