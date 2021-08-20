@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import VisitForm from "./visit_form";
-import { createVisit, fetchVisit } from "../../actions/visit_actions";
+import { createVisit } from "../../actions/visit_actions";
 
 const mSTP = (state, ownProps) => ({
   visit: {

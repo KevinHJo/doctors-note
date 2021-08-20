@@ -23,8 +23,8 @@ class VisitForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.processForm(this.state);
-    this.props.toggleEdit();
+    this.props.processForm(this.state)
+      .then(() => this.props.toggleEdit())
     this.props.updateEditedVisit();
   }
 

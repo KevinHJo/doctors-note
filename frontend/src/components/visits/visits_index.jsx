@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class VisitsIndex extends Component {
+  componentDidMount() {
+    this.props.fetchPatient(this.props.patient._id)
+  }
 
   render() {
     if (this.props.patient) {
