@@ -169,9 +169,21 @@
   margin-top: 7px;
   border-radius: 0px;
   padding: 6px;
-  width: 55%;
+  width: 40%;
   align-self: center;
   background-color: rgb(17,94,155);;
+  font-weight: 700;
+  color: white;
+}
+
+#signup-demo-login {
+  border: none;
+  margin-top: 7px;
+  border-radius: 0px;
+  padding: 6px;
+  width: 40%;
+  align-self: center;
+  background-color: rgb(89,84,129);;
   font-weight: 700;
   color: white;
 }
@@ -179,4 +191,9 @@
 #signup-submit-button:hover {
   cursor: pointer;
   background-color: rgb(7,46,92);
+}
+
+#signup-demo-login:hover {
+  cursor: pointer;
+  background-color: rgb(62, 58, 90);
 }

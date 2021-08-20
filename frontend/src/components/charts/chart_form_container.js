@@ -1,17 +1,34 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import ChartForm from './chart_form'
-import { createPatient } from '../../actions/patient_actions'
+import { createPatient, fetchPatient } from '../../actions/patient_actions'
 import { receiveForm } from '../../actions/doctor_modal_actions'
 
 const mSTP = state => ({
   doctorId: state.session.user.id,
-  reloaded: state.ui.doctorModal
+  reloaded: state.ui.doctorModal,
+  patient: {
+    fname: '',
+      lname: '',
+      dateOfBirth: '',
+      sex: '',
+      email: '',
+      phone: '',
+      address: '',
+      doctorId: state.session.user.id,
+      diagnoses: [],
+      medications: [],
+      allergies: []
+  },
+  formHeader: <h1>Create a New Patient</h1>,
+  patientId: '',
+  formSubmit: 'Create New Patient'
 })
 
 const mDTP = dispatch => ({
-  createPatient: patient => dispatch(createPatient(patient)),
-  receiveForm: () => dispatch(receiveForm())
+  processForm: patient => dispatch(createPatient(patient)),
+  receiveForm: () => dispatch(receiveForm()),
+  fetchPatient: patientId => dispatch(fetchPatient(patientId))
 })
 
 const ChartFormContainer = withRouter(connect(mSTP, mDTP)(ChartForm))

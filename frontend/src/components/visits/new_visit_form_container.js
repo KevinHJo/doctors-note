@@ -15,7 +15,7 @@ const mSTP = (state, ownProps) => ({
   history: ownProps.history,
   updateEditedVisit: () => null,
   toggleEdit: () => ownProps.history.push(`/charts/${ownProps.match.params.patientId}`),
-
+  formSubmit: 'Create Visit'
 });
 
 const mDTP = dispatch => ({

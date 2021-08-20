@@ -82,8 +82,8 @@ export default class ChartShow extends React.Component {
           <p className="header">Recent Visits</p>
           <VisitsIndex patient={patient} fetchPatient={this.props.fetchPatient}/>
         </div>
-        {/* <Link>Edit Patient Information</Link> */}
-        {/* <button>Delete Patient</button> */}
+        <Link to={`/charts/${patient._id}/edit`}>Edit Patient Information</Link>
+        <button>Delete Patient</button>
       </div>
     )
   }

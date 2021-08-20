@@ -7,17 +7,17 @@ export default class ChartForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      fname: '',
-      lname: '',
-      dateOfBirth: '',
-      sex: '',
-      email: '',
-      phone: '',
-      address: '',
-      doctorId: this.props.doctorId,
-      diagnoses: [],
-      medications: [],
-      allergies: []
+        fname: '',
+        lname: '',
+        dateOfBirth: '',
+        sex: '',
+        email: '',
+        phone: '',
+        address: '',
+        doctorId: this.props.doctorId,
+        diagnoses: [],
+        medications: [],
+        allergies: []
     }
 
     this.renderSelections = this.renderSelections.bind(this);
@@ -42,6 +42,13 @@ export default class ChartForm extends React.Component {
     };
     
     ECT.Handler.configure(mySettings, myCallbacks);
+    if (this.props.formSubmit === 'Save') this.props.fetchPatient(this.props.patientId)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.patient !== prevProps.patient) {
+      this.setState(this.props.patient)
+    }
   }
 
   handleStringChange = field => e => {
@@ -68,8 +75,14 @@ export default class ChartForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
     console.log(this.state)
-    this.props.createPatient(this.state)
-      .then(res => this.props.history.push({pathname: '/print', state: { username: res.patient.username, pw: res.patient.pw, _id: res.patient._id, email: res.patient.email }}))
+    this.props.processForm(this.state)
+      .then(res => {
+        if (this.props.formSubmit === 'Create New Patient') {
+          this.props.history.push({pathname: '/print', state: { username: res.patient.username, pw: res.patient.pw, _id: res.patient._id, email: res.patient.email}})
+        } else {
+          this.props.history.push({pathname:  `/charts/${this.props.patientId}`})
+        }
+      })
   }
 
   renderSelections() {
@@ -77,7 +90,7 @@ export default class ChartForm extends React.Component {
       return (
         <div>
           {this.state.diagnoses.map(selection => {
-            return <li>{selection}</li>
+            return <li key={this.state.diagnoses.indexOf(selection)}>{selection}</li>
           })}
         </div>
       )
@@ -96,17 +109,15 @@ export default class ChartForm extends React.Component {
     document.getElementById('close-modal').classList.add('visible')
   }
 
-  loadDiagnoses() {
-    window.location.reload();
-  }
-
   render() {
+    if (!this.props.patient) return null
+
     return (
       <div id='new-chart-page'>
         <TopNavBarContainer />
         <div id='spacer'></div>
         <div id='close-modal' onClick={this.removeVisible}></div>
-        <h1>Create a New Patient</h1>
+        {this.props.formHeader}
         <form onSubmit={this.handleSubmit} className='new-chart-form'>
           <div className='new-chart-top'>
             <div className='new-chart-section1'>
@@ -115,7 +126,7 @@ export default class ChartForm extends React.Component {
               </label>
 
               <label className='new-chart-form-label'>Date of Birth: 
-                <input type="date" required onChange={this.handleStringChange('dateOfBirth')} value={this.state.dateOfBirth}/>
+                <input type="date" required onChange={this.handleStringChange('dateOfBirth')} value={this.state.dateOfBirth.slice(0,10)}/>
               </label>
               
               <label className='new-chart-form-label'>Email: 
@@ -129,7 +140,7 @@ export default class ChartForm extends React.Component {
               </label>
 
               <label className='new-chart-form-label'>Sex: 
-                <select className='new-chart-sex-input' defaultValue={this.state.sex} required onChange={this.handleStringChange('sex')}>
+                <select className='new-chart-sex-input' value={this.state.sex} required onChange={this.handleStringChange('sex')}>
                   <option value="" disabled hidden> </option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
@@ -152,7 +163,6 @@ export default class ChartForm extends React.Component {
               <div className='new-chart-diaglist'>{this.renderSelections()}</div>
               Type to search: <input type="text" className="ctw-input" autoComplete="off" data-ctw-ino="1" onClick={this.addVisible}/>
 
-              <button className="page-refresh-button" onClick={this.loadDiagnoses}>Load Diagnoses</button>
               <div className="ctw-window" data-ctw-ino="1" id='ctw-window'></div>
             </div>
           </label>
@@ -164,6 +174,7 @@ export default class ChartForm extends React.Component {
           </label>
           <p onClick={() => window.location.reload()} className='new-chart-buttons'>Cancel</p>
           <input type="submit" value="Create Patient" className='new-chart-buttons'/>
+
         </form>
       </div>
     )

@@ -2,6 +2,7 @@ import * as VisitAPIUtil from '../util/visit_api_util';
 
 export const RECEIVE_VISIT = 'RECEIVE_VISIT';
 export const RECEIVE_VISITS = 'RECEIVE_VISITS';
+export const REMOVE_VISIT = 'REMOVE_VISIT'
 
 //ACTION CREATORS
 const receiveVisits = visits => ({
@@ -13,6 +14,11 @@ const receiveVisit = visit => ({
   type: RECEIVE_VISIT,
   visit
 });
+
+const removeVisit = visit => ({
+  type: REMOVE_VISIT,
+  visit
+})
 
 //THUNK ACTION CREATORS
 export const fetchVisit = visitId => dispatch => (
@@ -35,3 +41,11 @@ export const updateVisit = visit => dispatch => {
   return VisitAPIUtil.updateVisit(visit)
     .then(visit => dispatch(receiveVisit(visit.data)))
 };
+
+export const deleteVisit = visitId => dispatch => {
+  return VisitAPIUtil.deleteVisit(visitId)
+    .then(visit => {
+      // console.log(visit)
+      dispatch(removeVisit(visit.data))
+    })
+}

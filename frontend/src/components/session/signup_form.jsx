@@ -168,7 +168,7 @@ export default class SignupForm extends React.Component {
             ></input>
             {error7}
           </label>
-          <input id="signup-submit-button" type="submit"/>
+            <input id="signup-submit-button" type="submit"/>
         </div>
       </form>
     )

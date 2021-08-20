@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { fetchVisit, updateVisit } from "../../actions/visit_actions";
+import { fetchVisit, updateVisit, deleteVisit } from "../../actions/visit_actions";
 import VisitShow from "./visit_show";
 
 const mSTP = (state, ownProps) => {
@@ -13,7 +13,8 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => ({
   fetchVisit: visitId => dispatch(fetchVisit(visitId)),
-  processForm: visit => dispatch(updateVisit(visit))
+  processForm: visit => dispatch(updateVisit(visit)),
+  deleteVisit: visitId => dispatch(deleteVisit(visitId))
 });
 
 export default withRouter(connect(mSTP, mDTP)(VisitShow))
