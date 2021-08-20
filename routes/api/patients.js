@@ -37,7 +37,7 @@ router.patch('/update/:patientId', (req, res) => {
 	const medications = req.body.medications;
 	const allergies = req.body.allergies;
 
-	Patient.findByIdAndUpdate({_id: patientId }, {
+	Patient.updateOne({_id: patientId }, {
     fname,
 		lname,
 		username,

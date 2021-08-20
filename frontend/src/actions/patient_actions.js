@@ -7,6 +7,7 @@ export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_LOGIN = "RECEIVE_USER_LOGIN";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
+export const RECEIVE_ALL_PATIENTS = "RECEIVE_ALL_PATIENTS";
 
 //ACTION CREATORS
 export const receiveCurrentUser = currentUser => ({
@@ -39,6 +40,11 @@ const receivePatients = patients => ({
   patients
 });
 
+const receiveAllPatients = patients => ({
+  type: RECEIVE_ALL_PATIENTS,
+  patients
+});
+
 //THUNK ACTION CREATORS
 export const logout = () => dispatch => {
     // Remove the token from local storage
@@ -68,6 +74,11 @@ export const login = user => dispatch => (
     .catch(err => {
         dispatch(receiveSessionErrors(err.response.data));
     })
+)
+
+export const fetchAllPatients = () => dispatch => (
+    PatientAPIUtil.fetchAllPatients()
+        .then(patients => dispatch(receiveAllPatients(patients)))
 )
 
 export const fetchPatient = patientId => dispatch => (

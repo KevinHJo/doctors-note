@@ -9,6 +9,13 @@ class VisitsIndex extends Component {
   render() {
     if (this.props.patient) {
       const { _id, visits } = this.props.patient
+      if (Object.values(visits).length === 0) {
+        return (
+          <div id='no-visits'>
+            <p className="header">No recent visits.</p>
+          </div>
+        )
+      }
       return (
         <ul className='visits-index'>
           {Object.values(visits).map(visit => {

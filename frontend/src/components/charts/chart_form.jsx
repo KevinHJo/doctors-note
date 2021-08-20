@@ -87,11 +87,13 @@ export default class ChartForm extends React.Component {
   removeVisible() {
     console.log('remove');
     document.getElementById('ctw-window').classList.remove('visible')
+    document.getElementById('close-modal').classList.remove('visible')
   }
 
   addVisible() {
     console.log('add')
     document.getElementById('ctw-window').classList.add('visible')
+    document.getElementById('close-modal').classList.add('visible')
   }
 
   loadDiagnoses() {
@@ -100,7 +102,7 @@ export default class ChartForm extends React.Component {
 
   render() {
     return (
-      <div className='new-chart-page'>
+      <div id='new-chart-page'>
         <TopNavBarContainer />
         <div id='spacer'></div>
         <div id='close-modal' onClick={this.removeVisible}></div>
@@ -160,7 +162,8 @@ export default class ChartForm extends React.Component {
           <label className='new-chart-form-label'>Allergies: 
             <textarea onChange={this.handleArrayChange('allergies')}></textarea>
           </label>
-          <input type="submit" value="Create Patient" id='new-chart-submit-button'/>
+          <p onClick={() => window.location.reload()} className='new-chart-buttons'>Cancel</p>
+          <input type="submit" value="Create Patient" className='new-chart-buttons'/>
         </form>
       </div>
     )
