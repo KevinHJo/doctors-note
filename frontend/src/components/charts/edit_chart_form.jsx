@@ -181,7 +181,7 @@ export default class ChartForm extends React.Component {
               <textarea onChange={this.handleArrayChange('allergies')}></textarea>
             </label>
             <div id="section-buttons">
-              <input type="submit" value="Create Patient" className='new-chart-buttons' id='create-button'/>
+              <input type="submit" value="Update Patient" className='new-chart-buttons' id='create-button'/>
               <p onClick={() => window.location.reload()} className='new-chart-buttons' id='cancel-button'>Cancel</p>
             </div>
           </form>
