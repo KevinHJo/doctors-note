@@ -17,7 +17,7 @@ textarea:focus {
   display: flex;
   /* position: absolute; */
   flex-direction: column;
-  display: block;
+  display: none;
 }
 
 #new-patient-chart-form {
@@ -32,6 +32,7 @@ textarea:focus {
   padding: 20px;
   background-color: whitesmoke;
   box-shadow: 0px 0px 20px 5px rgb(108, 141, 184);
+
 }
 
 #section-buttons {
@@ -203,6 +204,7 @@ textarea:focus {
   font-weight: 600;
   margin-left: 20px;
   margin-top: 10px;
+  border-radius: 50px;
 }
 
 .revealAddChart:hover {
