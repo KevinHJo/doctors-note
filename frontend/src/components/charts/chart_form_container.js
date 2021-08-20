@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import ChartForm from './chart_form'
-import { createPatient } from '../../actions/patient_actions'
+import { fetchPatient, createPatient } from '../../actions/patient_actions'
 import { receiveForm } from '../../actions/doctor_modal_actions'
 
 const mSTP = state => ({
@@ -27,7 +27,8 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
   processForm: patient => dispatch(createPatient(patient)),
-  receiveForm: () => dispatch(receiveForm())
+  receiveForm: () => dispatch(receiveForm()),
+  fetchPatient: patientId => dispatch(fetchPatient(patientId))
 })
 
 const ChartFormContainer = withRouter(connect(mSTP, mDTP)(ChartForm))
