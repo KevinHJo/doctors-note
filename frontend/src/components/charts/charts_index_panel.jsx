@@ -12,7 +12,7 @@ export default class ChartsIndexPanel extends React.Component {
     if (!lastVisit) return <div><h1>No past visits</h1></div>
     return (
       <div>
-        <h1>Last visit on {new Date(lastVisit.createdAt).toLocaleDateString("en-US")}</h1>
+        <h1>Last visit on {new Date(lastVisit.createdAt).toLocaleDateString("en-US", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</h1>
         <div>
           <p>Subjective: </p>
           <p>{lastVisit.subjective}</p>
