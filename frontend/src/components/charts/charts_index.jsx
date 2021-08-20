@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ChartsIndexPanel from './charts_index_panel'
-import TopNavBarContainer from '../navbar/top_nav_bar_container'
 
 export default class ChartsIndex extends React.Component {
   constructor(props) {
@@ -9,10 +8,12 @@ export default class ChartsIndex extends React.Component {
     this.state = {
       patientId: null
     }
+
+    // this.openChart = this.openChart.bind(this);
   }
   
   componentDidMount() {
-    this.props.fetchDoctor(this.props.doctorId)
+    // this.props.fetchDoctor(this.props.doctorId)
   }
 
   handleClick = patientId => e => {
@@ -20,6 +21,11 @@ export default class ChartsIndex extends React.Component {
     console.log(this.state)
   }
 
+  // openChart(id) {
+  //   this.props.fetchPatient(id)
+  //   // this.props.receiveChart(id);
+  // }
+  
   render() {
     // if (!!this.props.patients) {
     //   const { patients } = this.props
@@ -32,23 +38,24 @@ export default class ChartsIndex extends React.Component {
       selectedPatient = patients.find(patient => patient._id === this.state.patientId)
     }
     return (
-      <div>
-        <TopNavBarContainer />
+      <div id="doctor-charts">
         <div id='spacer'></div>
-        {/* <div className='charts-index' style={`{overflowY: 'scroll'}`}> */}
-        <div className='charts-index' style={{overflowY: 'scroll'}}>
+        <div className='charts-index'>
           {!!patients ? 
             (patients.map(patient => 
               <div key={patient._id}>
                 <Link to={`/charts/${patient._id}`}>{`${patient.lname}, ${patient.fname}`}</Link>
+                {/* <div onClick={() => this.openChart(patient._id)}>
+                  {patient.lname}, {patient.fname}
+                </div> */}
                 <button onClick={this.handleClick(patient._id)}>🔍</button>
               </div>
             )) : (
               ''
             )
           }
+          <Link to='/charts/form'>Add New Patient</Link>
         </div>
-        <Link to='/charts/form'>Add New Patient</Link>
         <div className='charts-index-panel'>
           {this.state.patientId ? 
           <ChartsIndexPanel patient={selectedPatient} />

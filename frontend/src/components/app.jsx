@@ -24,10 +24,10 @@ const App = () => (
             <AuthRoute exact path="/patients/login" component={LoginPageContainer} />
             <AuthRoute exact path="/signup" component={SignupPage} />
             <ProtectedRoute exact path='/print' component={ChartPrint} />
+            <ProtectedRoute exact path='/home' component={DoctorsIndexContainer} />
             <ProtectedRoute exact path="/charts" component={ChartsIndexContainer} />
             <ProtectedRoute exact path='/charts/form' component={ChartFormContainer} />
             <PatientProtectedRoute exact path="/patients/home" component={PatientsIndexContainer} />
-            <ProtectedRoute exact path='/home' component={DoctorsIndexContainer} />
             <ProtectedRoute exact path='/charts/:patientId' component={ChartShowContainer} />
             <ProtectedRoute exact path='/charts/:patientId/edit' component={ChartEditContainer} />
             <ProtectedRoute exact path='/charts/:patientId/:visitId' component={VisitShowContainer} />

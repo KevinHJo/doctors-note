@@ -1,6 +1,8 @@
-.new-chart-page {
+#new-chart-page {
   display: flex;
+  position: absolute;
   flex-direction: column;
+  display: none;
 }
 
 .new-chart-page h1 {
@@ -9,9 +11,12 @@
 
 #close-modal {
   background-color: rgba(255, 255, 255, 0);
+  display: none;
   height: 100%;
   width: 100%;
   position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .new-chart-form {

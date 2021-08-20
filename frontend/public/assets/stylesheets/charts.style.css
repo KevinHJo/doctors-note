@@ -2,3 +2,76 @@
   height: 600px;
   width: 700px;
 }
+
+#charts-show {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+#charts-show .title {
+  border-top-right-radius: 35px; 
+  border-top-left-radius: 35px; 
+  background-color: #cdcbba;
+}
+#charts-show .title p {
+  font-size: 42px;
+  font-weight: 700;
+  border-top-right-radius: 35px; 
+  border-top-left-radius: 35px; 
+  text-align: center;
+  background-color: #cdcbba;
+}
+
+#charts-show .create {
+  text-decoration: none;
+  font-size: 18px;
+  padding: 5px;
+  color: rgb(250, 250, 250);
+  background-color: rgb(108, 141, 184, 95%);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+#charts-show .create:hover {
+  background-color: rgba(83, 118, 163, 0.95);
+  font-weight: 700;
+}
+
+#charts-show .header {
+  font-size: 28px;
+  font-weight: 600;
+  border-bottom: 2px solid black;
+}
+
+.chart-patient-info {
+  background-color: rgb(108, 141, 184, 35%);
+  padding: 15px 45px;
+}
+
+.chart-patient-info .sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#chart-show-recent-visits {
+  background-color: rgb(223, 187, 191, 70%);
+  padding: 15px 45px;
+  margin-bottom: 50px;
+}
+
+.titles {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 10px 10px 0px 10px;
+}
+
+.descs {
+  padding: 5px 10px;
+  font-size: 17px;
+  font-weight: 300;
+}

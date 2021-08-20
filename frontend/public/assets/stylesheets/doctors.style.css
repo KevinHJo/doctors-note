@@ -38,3 +38,22 @@
   border: 2px inset rgb(81,75,123, 0%);
   outline: none;
 }
+
+/* charts */
+#doctor-charts {
+}
+
+.doctor-homepage-sections {
+  width: 1200px;
+  background: grey;
+  margin: 0 auto;
+  padding: 25px;
+}
+
+.charts-index {
+
+}
+
+.charts-index-panel {
+
+}

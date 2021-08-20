@@ -13,25 +13,74 @@ export default class ChartShow extends React.Component {
     if (!this.props.patient) return null
     const { patient } = this.props
     return (
-      <div>
+      <div id="charts-show">
         <TopNavBarContainer />
         <div id='spacer'></div>
-        <div className='chart-patient-info'>
-          <div><p>First name: </p>{patient.fname}</div>
-          <div><p>Last name: </p>{patient.lname}</div>
-          <div><p>Age: </p>{getAge(patient.dateOfBirth)}</div>
-          <div><p>Date of Birth: </p>{new Date(patient.dateOfBirth).toLocaleDateString("en-US", {year: 'numeric', month: 'long', day: 'numeric'})}</div>
-          <div><p>Sex: </p>{patient.sex}</div>
-          <div><p>Email: </p>{patient.email}</div>
-          <div><p>Phone number: </p>{patient.phone}</div>
-          <div><p>Address: </p>{patient.address}</div>
-          <div><p>Diagnoses: </p>{patient.diagnoses.map(diagnosis => <p key={patient.diagnoses.indexOf(diagnosis)}>{diagnosis}</p>)}</div>
-          <div><p>Medications: </p>{patient.medications.map(medication => <p>{medication}</p>)}</div>
-          <div><p>Allergies: </p>{patient.allergies.map(allergy => <p>{allergy}</p>)}</div>
+        <div className="title">
+          <p>Patient Chart: {patient.lname}, {patient.fname}</p>
         </div>
-        <div>
+        <Link className="create" to={`/charts/${this.props.match.params.patientId}/visits/new`}>Click to Create New Visit</Link>
+        <div className='chart-patient-info'>
+          <div>
+            <p className="header">Patient Details</p>
+            <div className="top-section sections">
+              <div className="chart-patient-details">
+                <p className="titles">First name: </p>
+                <p className="descs">{patient.fname}</p>
+              </div>
+              <div className="chart-patient-details">
+                <p className="titles">Last name: </p>
+                <p className="descs">{patient.lname}</p>
+              </div>
+              <div className="chart-patient-details">
+                <p className="titles">Age: </p>
+                <p className="descs">{getAge(patient.dateOfBirth)}</p>
+              </div>
+              <div className="chart-patient-details">
+                <p className="titles">Date of Birth:</p>
+                <p className="descs">{new Date(patient.dateOfBirth).toLocaleDateString("en-US", {year: 'numeric', month: 'long', day: 'numeric'})}</p>
+              </div>
+            </div>
+            <div className="bottom-section sections">
+              <div className="chart-patient-details">
+                <p className="titles">Sex:</p>
+                <p className="descs">{patient.sex}</p>
+              </div>
+              <div className="chart-patient-details">
+                <p className="titles">Email: </p>
+                <p className="descs">{patient.email}</p>
+              </div>
+              <div className="chart-patient-details">
+                <p className="titles">Phone number:</p>
+                <p className="descs">{patient.phone}</p>
+              </div>
+            </div>
+            <div className="sections">
+              <div className="chart-patient-details">
+                <p className="titles">Address:</p>
+                <p className="descs">{patient.address}</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p className="header">Medical History</p>
+            <div>
+              <p className="titles">Diagnoses: </p>
+              {patient.diagnoses.map(diagnosis => <p className="descs" key={patient.diagnoses.indexOf(diagnosis)}>{diagnosis}</p>)}
+            </div>
+            <div>
+              <p className="titles">Medications:</p>
+              {patient.medications.map(medication => <p className="descs">{medication}</p>)}
+            </div>
+            <div>
+              <p className="titles">Allergies:</p>
+              {patient.allergies.map(allergy => <p className="descs">{allergy}</p>)}
+            </div>
+          </div>
+        </div>
+        <div id="chart-show-recent-visits">
+          <p className="header">Recent Visits</p>
           <VisitsIndex patient={patient} fetchPatient={this.props.fetchPatient}/>
-          <Link to={`/charts/${this.props.match.params.patientId}/visits/new`}>Create New Visit</Link>
         </div>
         <Link to={`/charts/${patient._id}/edit`}>Edit Patient Information</Link>
         <button>Delete Patient</button>

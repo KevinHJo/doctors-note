@@ -32,3 +32,7 @@ export const fetchDoctorPatients = doctorId => {
 export const fetchPatient = patientId => {
   return axios.get(`/api/patients/${patientId}`);
 };
+
+export const fetchAllPatients = () => {
+  return axios.get('/api/patients/get/all');
+};

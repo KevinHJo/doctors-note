@@ -12,7 +12,7 @@ const Auth = ({ component: Component, path, loggedIn, exact, user }) => (
       (user.role === 'patient') ? (
         <Redirect to="/patients/home" />
       ) : (
-        <Redirect to="/charts" />
+        <Redirect to="/home" />
       )
     )
   )} />
