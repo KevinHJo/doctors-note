@@ -109,7 +109,12 @@
   outline: none;
 }
 
-.patient-login-button {
+.patient-login-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.patient-login-button, #patient-login-demo {
   border: none;
   margin-top: 7px;
   border-radius: 0px;
@@ -121,7 +126,7 @@
   color: rgb(248,252,255);
 }
 
-.patient-login-button:hover {
+.patient-login-button:hover, #patient-login-demo:hover {
   cursor: pointer;
   background-color: rgb(7,46,92);
 }
