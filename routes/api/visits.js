@@ -95,10 +95,12 @@ router.delete('/delete/:id', (req, res) => {
                             if (user) {
                               let patients = Object.assign({}, user.patients)
                               patients[pat._id] = pat
-                              User.findByIdAndUpdate({_id: user._id}, {patients: {}}, {new: true})
-                                .then(_user => {
-                                  console.log(patients)
-                                  User.findByIdAndUpdate(_user._id, {patients: patients}, {new: true})
+                              User.findByIdAndUpdate(user._id, {patients: {}}, {new: true})
+                                .then(resUser => {
+                                  console.log(resUser);
+                                  console.log(patients);
+                                  User.findByIdAndUpdate(resUser._id, {patients: patients})
+                                    .catch(err => res.json(err))
                                 })
                             }
                           })
