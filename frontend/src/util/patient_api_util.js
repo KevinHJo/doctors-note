@@ -22,7 +22,7 @@ export const createPatient = (patient) => {
 };
 
 export const updatePatient = (patient) => {
-  return axios.patch(`/api/patients/update/${patient.id}`, patient);
+  return axios.patch(`/api/patients/update/${patient._id}`, patient);
 };
 
 export const fetchDoctorPatients = doctorId => {

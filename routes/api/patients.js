@@ -52,8 +52,24 @@ router.patch('/update/:patientId', (req, res) => {
 		diagnoses,
 		medications,
 		allergies
-  })
-    .then(patient => res.json(patient))
+  }, { new: true })
+    .then(patient => {
+			User.findOne({ _id: patient.doctorId })
+				.then(user => {
+					if (user) {
+						let patients = user.patients;
+						patients[patient._id] = patient;
+						User.updateOne({ _id: user._id }, {
+							patients
+						})
+							.catch(err => res.json(err));
+					} else {
+						return res.status(404).json({ user: 'This doctor does not exist' });
+					}
+				})
+			
+			res.json(patient)
+		})
     .catch(err => res.json(err));
 });
 

@@ -33,7 +33,7 @@ export default class ChartShow extends React.Component {
           <VisitsIndex patient={patient} fetchPatient={this.props.fetchPatient}/>
           <Link to={`/charts/${this.props.match.params.patientId}/visits/new`}>Create New Visit</Link>
         </div>
-        {/* <Link>Edit Patient Information</Link> */}
+        <Link to={`/charts/${patient._id}/edit`}>Edit Patient Information</Link>
         {/* <button>Delete Patient</button> */}
       </div>
     )
