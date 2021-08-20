@@ -2,6 +2,7 @@ import React from 'react'
 import { formatPhone, getDigits, isDelete } from '../../util/chart_util'
 import TopNavBarContainer from '../navbar/top_nav_bar_container'
 import * as ECT from '@whoicd/icd11ect';
+import '@whoicd/icd11ect/style.css';
 
 export default class ChartForm extends React.Component {
   constructor(props) {

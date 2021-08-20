@@ -2,7 +2,7 @@
   display: flex;
   position: absolute;
   flex-direction: column;
-  display: none;
+  display: block;
 }
 
 .new-chart-page h1 {
