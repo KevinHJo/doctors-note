@@ -1,6 +1,50 @@
 .charts-index {
-  height: 600px;
-  width: 700px;
+  width: 33%;
+}
+
+.patients-charts {
+  width: 350px;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(247,219,163);
+  margin-bottom: 8px;
+}
+
+#last-visit-details {
+  padding: 0px 25px 25px 25px;
+  margin-left: 8px;
+  height: 100%;
+  margin-bottom: 60px;
+}
+
+.visit-header {
+  margin-bottom: 15px;
+}
+
+#last-visit-details .visit-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+}
+
+#last-visit-details .visit-desc {
+
+}
+
+.patients-chart-links {
+  padding: 10px 25px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  background: rgb(62, 104, 159);
+  color: white;
+  margin-left: -2px;
+  width: 310px;
+  letter-spacing: 2px;
+  z-index: 1;
 }
 
 #charts-show {
@@ -75,3 +119,4 @@
   font-size: 17px;
   font-weight: 300;
 }
+

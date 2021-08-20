@@ -39,22 +39,20 @@ export default class ChartsIndex extends React.Component {
     }
     return (
       <div id="doctor-charts">
-        <div id='spacer'></div>
         <div className='charts-index'>
           {!!patients ? 
             (patients.map(patient => 
-              <div key={patient._id}>
-                <Link to={`/charts/${patient._id}`}>{`${patient.lname}, ${patient.fname}`}</Link>
+              <div key={patient._id} className='patients-charts'>
+                <Link className="patients-chart-links" to={`/charts/${patient._id}`}>{`${patient.lname}, ${patient.fname}`}</Link>
                 {/* <div onClick={() => this.openChart(patient._id)}>
                   {patient.lname}, {patient.fname}
                 </div> */}
-                <button onClick={this.handleClick(patient._id)}>🔍</button>
+                <button className="patients-chart-toggle" onClick={this.handleClick(patient._id)}>{`Quick Show >>`}</button>
               </div>
             )) : (
               ''
             )
           }
-          <Link to='/charts/form'>Add New Patient</Link>
         </div>
         <div className='charts-index-panel'>
           {this.state.patientId ? 

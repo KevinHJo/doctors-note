@@ -5,6 +5,7 @@
 /* spacer for adding padding  */
 #spacer {
   height: 80px;
+  position: relative;
 }
 
 #horizontal-spacer {
