@@ -7,7 +7,7 @@ export default class Visits extends React.Component {
     
     if (this.props.user && this.props.user.visits) {
       let visits = Object.values(this.props.user.visits)
-      visits.map((visit, idx) => {
+      visits.forEach((visit, idx) => {
         eachVisit.push(
           <section key={idx} className="visit-container">
             <Visit visit={visit} />

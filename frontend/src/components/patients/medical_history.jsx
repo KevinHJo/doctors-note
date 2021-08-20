@@ -7,21 +7,21 @@ export default class MedicalHistory extends React.Component {
     let medications = [];
     if (this.props.user) {
       if (this.props.user.diagnoses) {
-        this.props.user.diagnoses.map((diag, idx) => {
+        this.props.user.diagnoses.forEach((diag, idx) => {
           diagnoses.push(
             <li className="diag-desc" key={idx}>{diag}</li>
           )
         })
       }
       if (this.props.user.allergies) {
-        this.props.user.allergies.map((diag, idx) => {
+        this.props.user.allergies.forEach((diag, idx) => {
           allergies.push(
             <li className="diag-desc" key={idx}>{diag}</li>
           )
         })
       }
       if (this.props.user.medications) {
-        this.props.user.medications.map((diag, idx) => {
+        this.props.user.medications.forEach((diag, idx) => {
           medications.push(
             <li className="diag-desc" key={idx}>{diag}</li>
           )

@@ -6,7 +6,8 @@ class VisitShow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editing: false
+      editing: false,
+      updated: false
     }
 
     this.toggleEdit = this.toggleEdit.bind(this);
@@ -14,11 +15,22 @@ class VisitShow extends Component {
   }
 
   componentDidMount() {
+    if( window.localStorage ) {
+      if(!localStorage.getItem('firstLoad'))
+      {
+        localStorage['firstLoad'] = true;
+        window.location.reload();
+      }  
+      else localStorage.removeItem('firstLoad');
+    }
+
     this.props.fetchVisit(this.props.visitId);
   }
 
   updateEditedVisit() {
     this.props.fetchVisit(this.props.visitId);
+    const updated = this.state.updated;
+    this.setState({updated: !updated})
   }
 
   toggleEdit() {
