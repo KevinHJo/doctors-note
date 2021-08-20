@@ -76,4 +76,44 @@ router.patch('/update/:id', (req, res) => {
     .catch(err => res.json(err));
 });
 
+router.delete('/delete/:id', (req, res) => {
+  Visit.findOne({_id: req.params.id})
+    .then(visit => {
+      Visit.deleteOne({_id: visit._id})
+        .then(vis => Patient.findOne({_id: visit.patientId})
+          .then(patient => {
+            if (patient) {
+              let visits = Object.assign({}, patient.visits)
+              delete visits[visit._id]
+              Patient.findByIdAndUpdate(patient._id, {visits: {}}, {new: true})
+                .then(resPatient => {
+                  Patient.findByIdAndUpdate(resPatient._id, {visits: visits}, {new: true})
+                    .then(pat => {
+                      if (pat) {
+                        User.findOne({_id: pat.doctorId})
+                          .then(user => {
+                            if (user) {
+                              let patients = Object.assign({}, user.patients)
+                              patients[pat._id] = pat
+                              User.findByIdAndUpdate({_id: user._id}, {patients: {}}, {new: true})
+                                .then(_user => {
+                                  console.log(patients)
+                                  User.findByIdAndUpdate(_user._id, {patients: patients}, {new: true})
+                                })
+                            }
+                          })
+                      }
+                    })
+                })
+
+                .catch(err => res.json(err))
+            }
+          })
+          // .catch(err => res.json(err))
+        )
+      res.json(visit)
+    })
+    .catch(err => res.json(err))
+})
+
 module.exports = router;
