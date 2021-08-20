@@ -15,3 +15,7 @@ export const fetchPatientVisits = patientId => {
 export const fetchVisit = visitId => {
   return axios.get(`/api/visits/patients/${visitId}`);
 }
+
+export const deleteVisit = visitId => {
+  return axios.delete(`/api/visits/delete/${visitId}`)
+}

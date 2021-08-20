@@ -90,7 +90,7 @@ export default class ChartForm extends React.Component {
       return (
         <div>
           {this.state.diagnoses.map(selection => {
-            return <li>{selection}</li>
+            return <li key={this.state.diagnoses.indexOf(selection)}>{selection}</li>
           })}
         </div>
       )

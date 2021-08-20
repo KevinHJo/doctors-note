@@ -38,6 +38,11 @@ class VisitShow extends Component {
     this.setState({ editing: !editing })
   }
 
+  handleDelete = e => {
+    this.props.deleteVisit(this.props.visitId)
+      .then(this.props.history.push('/charts'))
+  }
+
   render() {
     if (this.props.visit) {
       const { visit } = this.props
@@ -82,6 +87,7 @@ class VisitShow extends Component {
               </div>
 
               <button onClick={this.toggleEdit}>Edit</button>
+              <button onClick={this.handleDelete}>Delete</button>
             </div>
           </div>
       )
