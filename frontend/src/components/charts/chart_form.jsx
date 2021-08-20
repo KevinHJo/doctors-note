@@ -120,8 +120,8 @@ export default class ChartForm extends React.Component {
       <div id='new-chart-page'>
         <TopNavBarContainer />
         <div id='spacer'></div>
-        <div id="fuzzy"></div>
         <div id='close-modal' onClick={this.removeVisible}></div>
+        <div id="fuzzy"></div>
         <div id="new-patient-chart-form">
           {this.props.formHeader}
           <form onSubmit={this.handleSubmit} className='new-chart-form'>
