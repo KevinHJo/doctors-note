@@ -56,6 +56,9 @@ class VisitShow extends Component {
             <TopNavBarContainer />
             <div id='spacer'/>
             <div className='visit-show'>
+              <div className='visit-info'>
+                <p>{new Date(visit.createdAt).toLocaleDateString('en-US', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</p>
+              </div>
               <div className='soap-note'>
                 <div className='soap-subjective'>
                   <h1>Subjective</h1>

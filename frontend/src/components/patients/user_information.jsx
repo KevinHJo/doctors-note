@@ -32,7 +32,7 @@ export default class UserInformation extends React.Component {
               <input className="editable-inputs" defaultValue={this.state.lname}/>
             </label>
             <label>Date of Birth:
-              <input className="editable-inputs" defaultValue={this.state.dateOfBirth.split("T")[0]}/>
+              <input className="editable-inputs" defaultValue={new Date(this.state.dateOfBirth.split("T")[0]).toLocaleDateString('en-US')}/>
             </label>
             <label>Email:
               <input className="editable-inputs" defaultValue={this.state.email}/>

@@ -20,7 +20,7 @@ export default class ChartShow extends React.Component {
           <div><p>First name: </p>{patient.fname}</div>
           <div><p>Last name: </p>{patient.lname}</div>
           <div><p>Age: </p>{getAge(patient.dateOfBirth)}</div>
-          <div><p>Date of Birth: </p>{new Date(patient.dateOfBirth).toLocaleDateString("en-US")}</div>
+          <div><p>Date of Birth: </p>{new Date(patient.dateOfBirth).toLocaleDateString("en-US", {year: 'numeric', month: 'long', day: 'numeric'})}</div>
           <div><p>Sex: </p>{patient.sex}</div>
           <div><p>Email: </p>{patient.email}</div>
           <div><p>Phone number: </p>{patient.phone}</div>

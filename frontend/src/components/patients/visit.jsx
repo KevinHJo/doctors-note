@@ -6,7 +6,7 @@ export default class Visit extends React.Component {
     <div className="visit-sections">
       <div>
         <p className="title">Date of Visit:</p>
-        <p className="desc desc1" dangerouslySetInnerHTML={{ __html: this.props.visit.createdAt.split("T")[0] }}></p>
+        <p className='desc desc1' >{new Date(this.props.visit.createdAt).toLocaleDateString("en-US",{weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</p>
       </div>
       <div>
         <p className="title">Reason for Visit:</p>

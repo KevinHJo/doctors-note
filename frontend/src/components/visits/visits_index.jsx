@@ -15,17 +15,7 @@ class VisitsIndex extends Component {
             return (
               <li key={visit._id} className='visit-link'>
                 <Link to={{pathname: `${_id}/${visit._id}`, state: {patient: this.props.patient, visit: visit}}}>
-                  {/* {
-                    visit.aggregate({
-                      $project: {
-                        date: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } }
-                      }
-                    }).date
-                  }
-                  */}
-                  {
-                    visit.createdAt.slice(0,10)
-                  }
+                  {new Date(visit.createdAt).toLocaleDateString("en-US", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}
                 </Link>
               </li>
             )
