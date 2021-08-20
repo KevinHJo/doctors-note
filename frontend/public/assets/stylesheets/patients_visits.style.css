@@ -1,10 +1,57 @@
 #patient-home-visits {
-  width: 600px;
+  width: 800px;
+}
+
+#patient-section-visits {
+  border: none;
 }
 
 #patient-home-visits-title {
-  font-size: 22px;
+  font-size: 25px;
   font-weight: 600;
-  padding-bottom: 5px;
-  border-bottom: 3px solid rgb(62,62,62);
+  padding-bottom: 10px;
+  border: none;
+}
+
+.visit-sections {
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 30px 30px 30px;
+}
+
+.visit-sections .title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid rgb(62,62,62, 70%);
+}
+
+.visit-container {
+  padding-bottom: 15px;
+  border: 3px solid rgb(62,62,62, 70%);
+}
+
+.visit-sections .desc1 {
+  margin-left: 18px;
+}
+
+.visit-sections .desc2 {
+  margin-left: 18px;
+}
+.visit-sections .desc4 {
+  margin-left: 18px;
+}
+
+.visit-sections .desc {
+  font-size: 18px;
+  padding: 30px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+
+#patient-home-visits section:nth-child(even) {
+  background-color: rgb(115, 147, 188, 30%);
+}
+#patient-home-visits section:nth-child(odd) {
+  background-color: rgb(188, 115, 147, 30%);
 }

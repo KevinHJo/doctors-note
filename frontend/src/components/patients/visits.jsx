@@ -9,16 +9,16 @@ export default class Visits extends React.Component {
       let visits = Object.values(this.props.user.visits)
       visits.map((visit, idx) => {
         eachVisit.push(
-          <div key={idx}>
+          <section key={idx} className="visit-container">
             <Visit visit={visit} />
-          </div>
+          </section>
         )
       })
     }
     
     return (
       <div id="patient-home-visits">
-        <p id="patient-home-visits-title">Visits</p>
+        <p id="patient-home-visits-title">Recent Visits</p>
         {eachVisit}
       </div>
     )
