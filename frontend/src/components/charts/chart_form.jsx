@@ -24,6 +24,15 @@ export default class ChartForm extends React.Component {
   }
 
   componentDidMount() {
+    if( window.localStorage ) {
+      if(!localStorage.getItem('firstLoad'))
+      {
+        localStorage['firstLoad'] = true;
+        window.location.reload();
+      }  
+      else localStorage.removeItem('firstLoad');
+    }
+    
     const mySettings = {apiServerUrl: "https://icd11restapi-developer-test.azurewebsites.net"};
     const myCallbacks = {
       selectedEntityFunction: selectedEntity => {
