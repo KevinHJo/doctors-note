@@ -9,6 +9,7 @@ import NewVisitFormContainer from './visits/new_visit_form_container';
 import LoginPageContainer from './patients/login_page_container';
 import HomePageContainer from './home/home_page_container';
 import PatientsIndexContainer from './patients/index_page_container';
+import DoctorsIndexContainer from './doctors/doctor_index_page_container';
 
 //TESTING - start
 import ChartFormContainer from './charts/chart_form_container';
@@ -25,6 +26,7 @@ const App = () => (
             <ProtectedRoute exact path="/charts" component={ChartsIndexContainer} />
             <ProtectedRoute exact path='/charts/form' component={ChartFormContainer} />
             <PatientProtectedRoute exact path="/patients/home" component={PatientsIndexContainer} />
+            <ProtectedRoute exact path='/home' component={DoctorsIndexContainer} />
             <ProtectedRoute exact path='/charts/:patientId' component={ChartShowContainer} />
             <ProtectedRoute exact path='/charts/:patientId/:visitId' component={VisitShowContainer} />
             <ProtectedRoute exact path='/charts/:patientId/visits/new' component={NewVisitFormContainer} />
