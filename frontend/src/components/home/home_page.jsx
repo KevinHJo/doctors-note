@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SignupForm from '../session/signup_form';
 import NavBarContainer from '../navbar/top_nav_bar_container';
 
