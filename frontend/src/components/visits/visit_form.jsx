@@ -134,7 +134,7 @@ class VisitForm extends Component {
                 />
           </div>
 
-          <input type="submit" value='save'/>
+          <input type="submit" value={this.props.formSubmit}/>
         </form>
       </div>
     )
