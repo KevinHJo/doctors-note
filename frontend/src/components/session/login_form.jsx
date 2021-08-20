@@ -12,6 +12,7 @@ export default class LoginForm extends React.Component {
     this.hideLoginForm = this.hideLoginForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateField = this.updateField.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   hideLoginForm() {
@@ -38,6 +39,15 @@ export default class LoginForm extends React.Component {
         [field]: e.currentTarget.value
       })
     }
+  }
+
+  demoLogin() {
+    const demoUser = {
+      email: 'demo@demo.com',
+      password: 'password'
+    }
+  
+    this.props.login(demoUser);
   }
   
   render() {
@@ -90,7 +100,10 @@ export default class LoginForm extends React.Component {
               ></input>
               {error2}
             </label>
-            <input type="submit" value="Sign In" id="login-button"/>
+            <div className='login-buttons'>
+              <input type="submit" value="Sign In" id="login-button"/>
+              <button id='demo-button' onClick={this.demoLogin}>Demo</button>
+            </div>
           </div>
         </form>
       </div>
