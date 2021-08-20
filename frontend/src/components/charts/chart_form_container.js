@@ -27,8 +27,7 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
   processForm: patient => dispatch(createPatient(patient)),
-  receiveForm: () => dispatch(receiveForm()),
-  fetchPatient: patientId => dispatch(fetchPatient(patientId))
+  receiveForm: () => dispatch(receiveForm())
 })
 
 const ChartFormContainer = withRouter(connect(mSTP, mDTP)(ChartForm))
