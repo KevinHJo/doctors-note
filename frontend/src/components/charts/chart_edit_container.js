@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
 import { fetchPatient, updatePatient } from "../../actions/patient_actions";
-import ChartForm from "./chart_form";
+import EditChartForm from "./edit_chart_form";
 import { withRouter } from "react-router";
 
 const mSTP = (state, ownProps) => {
   const patientId = ownProps.match.params.patientId;
+  console.log(ownProps.match.params);
 
   return {
     doctorId: state.session.user.id,
@@ -19,4 +20,4 @@ const mDTP = dispatch => ({
   fetchPatient: patientId => dispatch(fetchPatient(patientId))
 });
 
-export default withRouter(connect(mSTP, mDTP)(ChartForm));
+export default withRouter(connect(mSTP, mDTP)(EditChartForm));

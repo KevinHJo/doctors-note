@@ -42,12 +42,6 @@ export default class ChartForm extends React.Component {
         this.setState({diagnoses: selections})
       }
     };
-
-    if (!!this.props.patientId) {
-      if (!!document.getElementById("new-chart-page")) {
-        document.getElementById("new-chart-page").classList.add("visible");
-      }
-    }
     
     ECT.Handler.configure(mySettings, myCallbacks);
     if (this.props.formSubmit === 'Save') this.props.fetchPatient(this.props.patientId)
@@ -124,7 +118,7 @@ export default class ChartForm extends React.Component {
     if (!this.props.patient) return null
 
     return (
-      <div id='new-chart-page'>
+      <div id='new-chart-page' className="visible">
         <TopNavBarContainer />
         <div id='spacer'></div>
         <div id='close-modal' onClick={this.removeVisible}></div>
