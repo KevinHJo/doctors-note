@@ -12,6 +12,7 @@ export default class IndexPage extends React.Component {
   }
   
   render() {
+    if (!this.props.doctor) return null;
     let section = '';
     if (Object.values(this.props.modal)[0]) {
       switch (Object.keys(this.props.modal)[0]) {

@@ -70,7 +70,7 @@
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
-  margin: 0px 10px;
+  margin: 1px 10px;
 }
 
 .section-nav-buttons {
@@ -80,7 +80,7 @@
 }
 
 .section-buttons {
-  padding: 12px 15px;
+  padding:15px;
   text-decoration: none;
   margin-left: 3px;
 }
@@ -97,7 +97,7 @@
 }
 
 .section-buttons-patient {
-  padding: 12px 15px;
+  padding:15px;
   text-decoration: none;
 }
 

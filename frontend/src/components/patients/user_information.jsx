@@ -19,6 +19,7 @@ export default class UserInformation extends React.Component {
   }
   
   render() {
+    if (!this.props.user || !this.props.doctor) return null;
     return (
       <div id="patient-home-info-section">
         <p id="patient-home-info-title">User Information</p>
@@ -44,10 +45,10 @@ export default class UserInformation extends React.Component {
             </label>
           </div>
           <div className="patient-form-section-right">
-            <label>Assigned Doctor:
+            <label>Your doctor is:
               <input disabled className="nonedit-inputs" defaultValue={this.state.doctor}/>
             </label>
-            <label>Personal Identifier Code:
+            <label>Personal Identifier Code P.I.C:
               <input disabled className="nonedit-inputs patient-code" defaultValue={this.state.username.split("").slice(-4).join("")}/>
             </label>
             <input type='submit' value='Update' className="patient-home-form-button"/>

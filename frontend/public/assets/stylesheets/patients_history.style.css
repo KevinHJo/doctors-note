@@ -1,0 +1,39 @@
+#patient-section-medical-history {
+  width: 800px;
+}
+
+.medical-history-component {
+  width: 100%;
+}
+
+.medical-history-title {
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding-bottom: 10px;
+}
+
+.medical-history-main-section {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.diag-desc {
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.medical-history-sections {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  letter-spacing: 0.5px;
+}
+
+.medical-history-sections .desc {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid rgb(62, 62, 62, 70%)
+}
