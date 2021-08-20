@@ -138,9 +138,14 @@
   align-items: center;
 }
 
+.section-facts > h2 {
+  font-size: 30px;
+}
+
 .facts-cont {
   display: flex;
   text-align: center;
+  justify-content: space-evenly;
 }
 
 .facts-cont h2 {
