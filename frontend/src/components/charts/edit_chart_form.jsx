@@ -1,5 +1,6 @@
 import React from 'react'
 import { formatPhone, getDigits, isDelete } from '../../util/chart_util'
+import { Link } from 'react-router-dom'
 import TopNavBarContainer from '../navbar/top_nav_bar_container'
 import * as ECT from '@whoicd/icd11ect';
 import '@whoicd/icd11ect/style.css';
@@ -182,7 +183,8 @@ export default class ChartForm extends React.Component {
             </label>
             <div id="section-buttons">
               <input type="submit" value="Update Patient" className='new-chart-buttons' id='create-button'/>
-              <p onClick={() => window.location.reload()} className='new-chart-buttons' id='cancel-button'>Cancel</p>
+              <Link to={`/charts/${this.props.patient._id}`} className='new-chart-buttons' id='cancel-button'>Cancel</Link>
+              {/* <p onClick={() => window.location.reload()} className='new-chart-buttons' id='cancel-button'>Cancel</p> */}
             </div>
           </form>
         </div>

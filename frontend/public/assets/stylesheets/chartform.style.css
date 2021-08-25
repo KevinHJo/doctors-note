@@ -51,6 +51,7 @@ textarea:focus {
   box-shadow: 0px 0px 3px 2px rgb(0, 0, 0, 0.7);
   font-size: 16px;
   font-weight: 700px;
+  text-decoration: none;
 }
 
 #create-button {
