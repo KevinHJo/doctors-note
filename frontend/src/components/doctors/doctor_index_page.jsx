@@ -34,7 +34,7 @@ export default class DoctorIndexPage extends React.Component {
         case "2":
           section = (
             <div id="doctor-section-all-charts" className="doctor-homepage-sections">
-              <p className="title">All Charts.</p>
+              <p className="title">Patient Charts</p>
               <ChartsIndexContainer receiveChart={this.props.receiveChart} toggleModal={this.props.toggleModal} />
             </div>
           )

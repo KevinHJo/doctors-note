@@ -77,13 +77,15 @@ export default class ChartShow extends React.Component {
               {patient.allergies.map(allergy => <p className="descs">{allergy}</p>)}
             </div>
           </div>
+          <div>
+            <p className="header">Recent Visits</p>
+            <div id="chart-show-recent-visits">
+              <VisitsIndex patient={patient} fetchPatient={this.props.fetchPatient}/>
+            </div>
+          </div>
         </div>
-        <div id="chart-show-recent-visits">
-          <p className="header">Recent Visits</p>
-          <VisitsIndex patient={patient} fetchPatient={this.props.fetchPatient}/>
-        </div>
-        <Link to={`/charts/${patient._id}/edit`}>Edit Patient Information</Link>
-        <button>Delete Patient</button>
+        <Link to={`/charts/${patient._id}/edit`} className="show-chart-edit-button show-chart-buttons">Edit Patient Information</Link>
+        <button className="show-chart-delete-button show-chart-buttons">Delete Patient</button>
       </div>
     )
   }

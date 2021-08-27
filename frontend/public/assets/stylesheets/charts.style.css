@@ -3,20 +3,19 @@
 }
 
 .patients-charts {
-  width: 350px;
-  height: 100px;
+  width: 375px;
+  height: 60px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: rgb(247,219,163);
-  margin-bottom: 8px;
+  margin-bottom: 0px;
+  border: none;
 }
 
 #last-visit-details {
   padding: 0px 25px 25px 25px;
   margin-left: 8px;
-  height: 100%;
-  margin-bottom: 60px;
+  height: 580px;
 }
 
 .visit-header {
@@ -41,10 +40,14 @@
   font-weight: 600;
   background: rgb(62, 104, 159);
   color: white;
-  margin-left: -2px;
   width: 310px;
   letter-spacing: 2px;
   z-index: 1;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.patients-chart-links:hover {
+  background: rgb(34, 63, 100);
 }
 
 #charts-show {
@@ -58,6 +61,7 @@
   border-top-right-radius: 35px; 
   border-top-left-radius: 35px; 
   background-color: #cdcbba;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
 }
 #charts-show .title p {
   font-size: 42px;
@@ -77,6 +81,7 @@
   font-weight: 600;
   letter-spacing: 1px;
   text-align: center;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
 }
 
 #charts-show .create:hover {
@@ -90,9 +95,15 @@
   border-bottom: 2px solid black;
 }
 
+.no-visits-title {
+  font-size: 22px;
+  font-weight: 300;
+}
+
 .chart-patient-info {
   background-color: rgb(108, 141, 184, 35%);
   padding: 15px 45px;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
 }
 
 .chart-patient-info .sections {
@@ -102,7 +113,6 @@
 }
 
 #chart-show-recent-visits {
-  background-color: rgb(223, 187, 191, 70%);
   padding: 15px 45px;
   margin-bottom: 50px;
 }
@@ -120,3 +130,27 @@
   font-weight: 300;
 }
 
+.show-chart-buttons {
+  text-align: center;
+  padding: 7px;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+  background-color: rgb(223, 187, 191, 70%);
+  border: none;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.show-chart-buttons:hover {
+  background-color: rgb(223, 187, 191, 100%);
+  cursor: pointer;
+}
+
+.show-chart-edit-button {
+  text-align: center;
+}
+
+.show-chart-delete-button {
+  
+}
