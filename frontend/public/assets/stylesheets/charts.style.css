@@ -15,22 +15,31 @@
 #last-visit-details {
   padding: 0px 25px 25px 25px;
   margin-left: 8px;
-  height: 580px;
+  height: 590px;
 }
 
 .visit-header {
-  margin-bottom: 15px;
+  margin: 15px 0px;
+  font-size: 26px;
+  letter-spacing: 0.5px;
+}
+
+.no-visit-header {
+  margin: 15px 0px;
+  font-size: 26px;
+  letter-spacing: 0.5px;
 }
 
 #last-visit-details .visit-title {
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 1px;
-
+  color: red;
+  text-decoration: underline;
 }
 
 #last-visit-details .visit-desc {
-
+  margin: 5px 15px;
 }
 
 .patients-chart-links {
@@ -76,7 +85,7 @@
   text-decoration: none;
   font-size: 18px;
   padding: 5px;
-  color: rgb(250, 250, 250);
+  color: rgb(0, 0, 0);
   background-color: rgb(108, 141, 184, 95%);
   font-weight: 600;
   letter-spacing: 1px;
@@ -86,7 +95,7 @@
 
 #charts-show .create:hover {
   background-color: rgba(83, 118, 163, 0.95);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 #charts-show .header {
@@ -132,8 +141,8 @@
 
 .show-chart-buttons {
   text-align: center;
-  padding: 7px;
-  font-size: 20px;
+  padding: 5px;
+  font-size: 18px;
   font-weight: 600;
   color: black;
   text-decoration: none;
@@ -145,6 +154,7 @@
 .show-chart-buttons:hover {
   background-color: rgb(223, 187, 191, 100%);
   cursor: pointer;
+  font-weight: 800;
 }
 
 .show-chart-edit-button {

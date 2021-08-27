@@ -58,8 +58,8 @@ export default class ChartsIndex extends React.Component {
           {this.state.patientId ? 
           <ChartsIndexPanel patient={selectedPatient} />
           :
-          <div>
-            <p>Select patient tab to view.</p>
+          <div className="charts-index-default-panel">
+            <p className="charts-index-default-desc">Select patient tab to view.</p>
           </div>
           }
         </div>
