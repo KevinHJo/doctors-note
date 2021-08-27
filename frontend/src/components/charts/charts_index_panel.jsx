@@ -4,12 +4,9 @@ import { getLastVisit } from '../../util/chart_util'
 
 export default class ChartsIndexPanel extends React.Component {
   render() {
-    console.log(this.props)
     const { visits } = this.props.patient
-    console.log(visits)
     const lastVisit = getLastVisit(visits)
-    console.log(lastVisit)
-    if (!lastVisit) return <div><h1>No past visits</h1></div>
+    if (!lastVisit) return <div id="last-visit-details"><h1>No past visits</h1></div>
     return (
       <div id="last-visit-details">
         <h1>{this.props.patient.fname} {this.props.patient.lname},</h1>
