@@ -8,6 +8,7 @@ export const RECEIVE_USER_LOGIN = "RECEIVE_USER_LOGIN";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_ALL_PATIENTS = "RECEIVE_ALL_PATIENTS";
+export const REMOVE_PATIENT = 'REMOVE_PATIENT'
 
 //ACTION CREATORS
 export const receiveCurrentUser = currentUser => ({
@@ -44,6 +45,11 @@ const receivePatients = patients => ({
 //   type: RECEIVE_ALL_PATIENTS,
 //   patients
 // });
+
+export const removePatient = patient => ({
+  type: REMOVE_PATIENT,
+  patient
+})
 
 //THUNK ACTION CREATORS
 export const logout = () => dispatch => {
@@ -100,3 +106,8 @@ export const updatePatient = patient => dispatch => (
   PatientAPIUtil.updatePatient(patient)
     .then(patient => dispatch(receivePatient(patient.data)))
 );
+
+export const deletePatient = patientId => dispatch => (
+  PatientAPIUtil.deletePatient(patientId)
+    .then(patient => dispatch(removePatient(patient.data)))
+)

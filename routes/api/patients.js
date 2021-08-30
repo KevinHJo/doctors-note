@@ -7,6 +7,7 @@ const passport = require('passport');
 const router = express.Router();
 // const validateRegisterInput = require('../../validation/register');
 const validatePatientLoginInput = require('../../validation/patient_login');
+const Visit = require("../../models/Visit");
 
 router.get('/:patientId', (req, res) => {
 	Patient.findOne({_id: req.params.patientId})
@@ -180,5 +181,28 @@ router.post('/login', (req, res) => {
 				});
 		});
 });
+
+router.delete('/delete/:id', (req, res) => {
+  Patient.findOne({_id: req.params.id})
+    .then(patient => {
+      if (patient) Patient.deleteOne({_id: patient._id})
+        .then(pat => {
+          User.findOne({_id: patient.doctorId})
+            .then(doctor => {
+              if (doctor) {
+                let patients = Object.assign({}, doctor.patients)
+                delete patients[patient._id]
+                User.findByIdAndUpdate(doctor._id, {patients: {}}, {new: true})
+                  .then(resDoctor => {
+                    User.findByIdAndUpdate(resDoctor._id, {patients: patients}, {new: true})
+                      .catch(err => res.json(err))
+                  })
+              }
+            })
+          Visit.deleteMany({patientId: patient._id})
+            .catch(err => res.json(err))
+        })
+    })
+})
 
 module.exports = router;

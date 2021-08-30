@@ -9,7 +9,6 @@ const PatientsReducer = (state = {}, action) => {
       nextState[action.patient._id] = action.patient;
       return nextState
     case RECEIVE_PATIENTS:
-      console.log(action)
       return action.patients
       // nextState = {};
       // action.patients.forEach(patient => nextState[patient._id] = patient);

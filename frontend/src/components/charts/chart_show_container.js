@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import ChartShow from './chart_show'
-import { fetchPatient } from '../../actions/patient_actions'
+import { deletePatient, fetchPatient } from '../../actions/patient_actions'
 import { getPatient } from '../../selectors/chart_selectors'
 
 const mSTP = (state, ownProps) => ({
@@ -9,7 +9,8 @@ const mSTP = (state, ownProps) => ({
 })
 
 const mDTP = dispatch => ({
-  fetchPatient: patientId => dispatch(fetchPatient(patientId))
+  fetchPatient: patientId => dispatch(fetchPatient(patientId)),
+  deletePatient: patientId => dispatch(deletePatient(patientId))
 })
 
 const ChartShowContainer = connect(mSTP, mDTP)(ChartShow)
