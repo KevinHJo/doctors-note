@@ -31,8 +31,8 @@ textarea:focus {
   height: 760px;
   padding: 20px;
   background-color: whitesmoke;
-  box-shadow: 0px 0px 20px 5px rgb(108, 141, 184);
-
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  overflow: auto;
 }
 
 #section-buttons {
@@ -45,20 +45,20 @@ textarea:focus {
   padding: 9px 13px;
   background-color: rgb(204, 61, 75);
   color: white;
-  width: 170px;
+  width: 220px;
   text-align: center;
   letter-spacing: 1.5px;
-  box-shadow: 0px 0px 3px 2px rgb(0, 0, 0, 0.7);
   font-size: 16px;
   font-weight: 700px;
   text-decoration: none;
+  border: 1px solid black;
 }
 
 #create-button {
   background: rgba(116, 160, 218) !important;
   color: white !important;
-  box-shadow: 0px 0px 3px 2px rgb(0, 0, 0, 0.7);
   margin-right: 85px;
+  width: 220px;
 }
 
 .new-chart-buttons:hover {
@@ -66,7 +66,7 @@ textarea:focus {
 }
 
 .new-chart-buttons:active {
-  outline: 3px inset black;
+  outline: 1px inset black;
   font-weight: 800;
 }
 
@@ -76,7 +76,7 @@ textarea:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(108, 141, 184, 90%);
+  background-color: rgba(138, 142, 148, 0.9);
 }
 
 .new-chart-page h1 {
@@ -109,7 +109,7 @@ textarea:focus {
 }
 
 .new-chart-form-label textarea {
-  border: 3px solid rgba(116, 160, 218, 0.3);
+  border: 1px solid black;
 }
 
 .new-chart-form input {
@@ -126,18 +126,18 @@ textarea:focus {
   padding-top: 9px;
   background: white;
   color: rgb(62,62,118);
-  border: 3px solid rgba(116, 160, 218, 0.3);
+  border: 1px solid black;
 }
 
 .new-chart-sex-input {
   z-index: 0;
   width: 100px;
   height: 30px;
-  border: 3px solid rgba(116, 160, 218, 0.3);
+  border: 1px solid black;
 }
 
 .new-chart-sex-input option {
-  border: 3px solid rgba(116, 160, 218, 0.3);
+  border: 1px solid black;
 }
 
 .statusdiv, .ctwFlexItem25, .listhead {
@@ -171,8 +171,8 @@ textarea:focus {
   width: 250px;
   overflow-y: scroll;
   width: 500px;
-  background-color: rgba(241, 247, 255, 0.9);
-  border-radius: 8px;
+  background-color: rgba(247, 247, 255, 0.9);
+  border-radius: 0px;
   box-shadow:0px 0px 10px 5px rgba(0, 0, 0, 0.2);
   z-index: 12;
 }
@@ -181,21 +181,21 @@ textarea:focus {
   z-index: 0;
 }
 
-#new-chart-submit-button {
+.new-chart-buttons {
   border: none;
   margin-top: 7px;
   border-radius: 0px;
   padding: 6px;
   width: 55%;
   align-self: center;
-  background-color: rgb(17,94,155);;
+  background-color: rgb(17,94,155);
   font-weight: 700;
   color: white;
 }
 
-#new-chart-submit-button:hover {
+.new-chart-buttons:hover {
   cursor: pointer;
-  background-color: rgb(7,46,92);
+  font-weight: 800;
 }
 
 .revealAddChart {
@@ -210,18 +210,19 @@ textarea:focus {
 }
 
 .revealAddChart:hover {
-  background: rgb(106, 126, 159, 80%);
+  background: rgb(115,147,188, 60%);
   cursor: pointer;
 }
 
 .doctor-section-user-title {
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 800;
   padding: 25px;
   margin-bottom: 5px;
-  background: #82547c;
-  color: whitesmoke;
+  color: rgb(37, 37, 37);
   letter-spacing: 2px;
+  cursor: default;
+  border-bottom: 3px solid black;
 }
 
 .plus-chart-icon {
@@ -231,5 +232,14 @@ textarea:focus {
 
 .patients-chart-toggle {
   color: white;
-  background-color:#5481bc;
+  background-color:rgb(84, 129, 188);
+  font-size: 15px;
+  font-weight: 700px;
+  letter-spacing: 1px;
+  border: 1px solid white;
+}
+
+.patients-chart-toggle:hover  {
+  background-color:rgb(117, 146, 184);
+  cursor: pointer;
 }

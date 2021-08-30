@@ -12,7 +12,7 @@ class VisitsIndex extends Component {
       if (Object.values(visits).length === 0) {
         return (
           <div id='no-visits'>
-            <p className="header">No recent visits.</p>
+            <p className="no-visits-title">No recent visits.</p>
           </div>
         )
       }

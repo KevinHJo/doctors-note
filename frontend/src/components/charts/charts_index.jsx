@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ChartsIndexPanel from './charts_index_panel'
+import ChartFormContainer from './chart_form_container'
 
 export default class ChartsIndex extends React.Component {
   constructor(props) {
@@ -47,7 +48,7 @@ export default class ChartsIndex extends React.Component {
                 {/* <div onClick={() => this.openChart(patient._id)}>
                   {patient.lname}, {patient.fname}
                 </div> */}
-                <button className="patients-chart-toggle" onClick={this.handleClick(patient._id)}>{`Quick Show >>`}</button>
+                <button className="patients-chart-toggle" onClick={this.handleClick(patient._id)}>{`View recent visit >`}</button>
               </div>
             )) : (
               ''
@@ -58,7 +59,9 @@ export default class ChartsIndex extends React.Component {
           {this.state.patientId ? 
           <ChartsIndexPanel patient={selectedPatient} />
           :
-          <div></div>
+          <div className="charts-index-default-panel">
+            <p className="charts-index-default-desc">Select patient tab to view.</p>
+          </div>
           }
         </div>
       </div>

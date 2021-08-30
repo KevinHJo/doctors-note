@@ -190,8 +190,7 @@ export default class ChartForm extends React.Component {
             <div id="section-buttons">
               <input type="submit" value="Create Patient" className='new-chart-buttons' id='create-button'/>
               <Link to={`/charts/${this.props.patient._id}`} className='new-chart-buttons' id='cancel-button'>Cancel</Link>
-              {/* <p onClick={() => window.location.reload()} className='new-chart-buttons' id='cancel-button'>Cancel</p> */}
-              {/* <p onClick={() => window.location.reload()} className='new-chart-buttons' id='cancel-button'>Cancel</p> */}
+              {/* <p onClick={() => window.location.reload()} className='new-chart-buttons' id='cancel-button'>Discard</p> */}
             </div>
           </form>
         </div>

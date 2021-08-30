@@ -23,7 +23,7 @@ export default class DoctorIndexPage extends React.Component {
         case "1":
           section = (
             <div id="doctor-section-user-info" className="doctor-homepage-sections">
-              <p className="doctor-section-user-title">Quick Links.</p>
+              <p className="doctor-section-user-title">{`${`${new Date()}`.split(" ").splice(0, 4).join(" ")}`}</p>
               <div className="revealAddChart" onClick={this.toggleAddChart}>
                 <img alt="plus" className="plus-chart-icon" src="https://doctors-note-seeds.s3.us-west-1.amazonaws.com/add.png" />
                 Add New Chart
@@ -35,7 +35,7 @@ export default class DoctorIndexPage extends React.Component {
         case "2":
           section = (
             <div id="doctor-section-all-charts" className="doctor-homepage-sections">
-              <p className="title">All Charts.</p>
+              <p className="title">Patient Charts</p>
               <ChartsIndexContainer receiveChart={this.props.receiveChart} toggleModal={this.props.toggleModal} />
             </div>
           )
