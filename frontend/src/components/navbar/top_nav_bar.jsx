@@ -40,7 +40,7 @@ export default class TopNavBar extends React.Component {
       if (!!this.props.pageDir) {
         buttons.push(
           <Link key='3' to="/" className={`${button}`}>
-            <p className="nav-buttons">Doctor Portal.</p>
+            <p className="nav-buttons">Doctor Portal</p>
           </Link>
         )
       } else {
@@ -51,7 +51,7 @@ export default class TopNavBar extends React.Component {
         )
         buttons.push(
           <Link key='2' to="/patients/login" className={`${button}`}>
-            <p className="nav-buttons">Patient Portal.</p>
+            <p className="nav-buttons">Patient Portal</p>
           </Link>
         )
       }

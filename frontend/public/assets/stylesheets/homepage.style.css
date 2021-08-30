@@ -158,3 +158,9 @@
   width: 300px;
   margin: 100px;
 }
+
+.facts-cont img {
+  height: 100px;
+  margin: auto;
+  padding: 15px;
+}

@@ -78,16 +78,28 @@ export default class HomePage extends React.Component {
           <h2>Electronic Health Records (EHR) Made for You</h2>
           <div className='facts-cont'>
             <div className='facts-made-by'>
+              <img src='https://doctors-note-seeds.s3.us-west-1.amazonaws.com/stethoscope.png'
+                alt='made-by'
+                className="made-by-image"
+              />
               <h2>Made by Professionals</h2>
               <p>D. Note was designed by healthcare professionals with healthcare professionals in mind. Our team strives to constantly improve the experience for all users.</p>
             </div>
             
             <div className='facts-easy-use'>
+              <img src='https://doctors-note-seeds.s3.us-west-1.amazonaws.com/stopwatches.png'
+                alt='easy-use'
+                className="easy-use-image"
+              />
               <h2>Up and Running in Minutes</h2>
               <p>D. Note is simple, intuitive, and easy to use. Just sign in, and start working! No downloads or installation necessary.</p>
             </div>
             
             <div className='facts-support'>
+              <img src='https://doctors-note-seeds.s3.us-west-1.amazonaws.com/24-hours.png'
+                alt='support'
+                className="support-image"
+              />
               <h2>24-Hour Support</h2>
               <p>Our team is committed to ensuring that your practice runs smoothly, no matter the hour. D. Note users enjoy award-winning customer service around the clock.</p>
             </div>
