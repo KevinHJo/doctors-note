@@ -1,0 +1,73 @@
+.visit-show {
+  width: 750px;
+  margin: 0 auto;
+}
+
+.visit-info {
+  font-size: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
+}
+
+.soap-note h1 {
+  font-size: 25px;
+  margin-bottom: 7px;
+}
+
+.soap-subjective-display, .soap-objective-display, .soap-assessment-display, .soap-plan-display {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.soap-note ul {
+  margin: 0;
+}
+
+.soap-note p {
+  margin: 5px 0px 5px 0px;
+}
+
+.soap-controls {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 15px;
+  border-top: 1px solid lightgray;
+}
+
+.soap-controls button {
+  margin-right: 15px;
+  height: 30px;
+  width: 75px;
+  color: white;
+  border: none;
+}
+
+#edit-visit-button {
+  background-color: rgb(89,84,129);
+}
+
+#edit-visit-button:hover {
+  cursor: pointer;
+  background-color: rgb(62, 54, 126);
+}
+
+#edit-visit-button:active {
+  cursor: pointer;
+  background-color: rgb(33, 26, 90);
+}
+
+#delete-visit-button {
+  background-color: rgb(156, 33, 33);
+}
+
+#delete-visit-button:hover {
+  cursor: pointer;
+  background-color: rgb(129, 28, 28);
+}
+
+#delete-visit-button:active {
+  cursor: pointer;
+  background-color: rgb(82, 18, 18);
+}
