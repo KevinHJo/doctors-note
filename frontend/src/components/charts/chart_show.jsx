@@ -20,6 +20,8 @@ export default class ChartShow extends React.Component {
           <p>Patient Chart: {patient.lname}, {patient.fname}</p>
         </div>
         <Link className="create" to={`/charts/${this.props.match.params.patientId}/visits/new`}>Click to Create New Visit</Link>
+        <Link to={`/charts/${patient._id}/edit`} className="show-chart-edit-button show-chart-buttons">Edit Patient Information</Link>
+        <button className="show-chart-delete-button show-chart-buttons">Delete Patient</button>
         <div className='chart-patient-info'>
           <div>
             <p className="header">Patient Details</p>
@@ -84,8 +86,6 @@ export default class ChartShow extends React.Component {
             </div>
           </div>
         </div>
-        <Link to={`/charts/${patient._id}/edit`} className="show-chart-edit-button show-chart-buttons">Edit Patient Information</Link>
-        <button className="show-chart-delete-button show-chart-buttons">Delete Patient</button>
       </div>
     )
   }
