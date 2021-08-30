@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ChartsIndexPanel from './charts_index_panel'
+import ChartFormContainer from './chart_form_container'
 
 export default class ChartsIndex extends React.Component {
   constructor(props) {
