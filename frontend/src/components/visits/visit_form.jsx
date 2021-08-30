@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
+import { Link } from 'react-router-dom';
+import VisitFormNavBar from './visit_form_nav_bar';
+import TopNavBarContainer from '../navbar/top_nav_bar_container';
 
 class VisitForm extends Component {
   constructor(props) {
@@ -45,38 +48,51 @@ class VisitForm extends Component {
   handlePlanChange(value, editor) {
     this.setState({plan: value})
   }
+
+  cancelForm() {
+    if (this.props.formSubmit === 'Save') {
+      return <button onClick={() => window.location.reload()}>Cancel</button>
+    } else {
+      return <Link to={`/charts/${this.props.visit.patientId}`}>Cancel</Link>
+    }
+  }
   
   render() {
-    return (
-      <div className='visit-form'>
-        <form className='soap-note' onSubmit={this.handleSubmit}>
-          <div className='soap-subjective'>
-            <h1>Subjective</h1>
-            <Editor
-              apiKey="qdsfz5mb1rgq6f9e4tlppil5y3suu39z8ln3guyhhbej13qp"
-              init={{
-                height: 500,
-                menubar: false,
-                plugins: [
-                  'advlist autolink lists link image', 
-                  'charmap print preview anchor help',
-                  'searchreplace visualblocks code',
-                  'insertdatetime media table paste wordcount'
-                ],
-                toolbar:
-                  'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | help'
-              }}
-              value={this.state.subjective}
-              onEditorChange={this.handleSubjectiveChange}
-            />
-          </div>
-
-          <div className='soap-objective'>
-            <h1>Objective</h1>
+    let section;
+    if (Object.values(this.props.modal)[0]) {
+      switch (Object.keys(this.props.modal)[0]) {
+        case '1':
+          section = (
+            <div className='soap-subjective'>
+              <h1>Subjective</h1>
               <Editor
                 apiKey="qdsfz5mb1rgq6f9e4tlppil5y3suu39z8ln3guyhhbej13qp"
                 init={{
-                  height: 500,
+                  height: 700,
+                  menubar: false,
+                  plugins: [
+                    'advlist autolink lists link image', 
+                    'charmap print preview anchor help',
+                    'searchreplace visualblocks code',
+                    'insertdatetime media table paste wordcount'
+                  ],
+                  toolbar:
+                    'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | help'
+                }}
+                value={this.state.subjective}
+                onEditorChange={this.handleSubjectiveChange}
+              />
+            </div>
+          )
+          break;
+        case '2':
+          section = (
+            <div className='soap-objective'>
+              <h1>Objective</h1>
+              <Editor
+                apiKey="qdsfz5mb1rgq6f9e4tlppil5y3suu39z8ln3guyhhbej13qp"
+                init={{
+                  height: 700,
                   menubar: false,
                   plugins: [
                     'advlist autolink lists link image', 
@@ -90,14 +106,17 @@ class VisitForm extends Component {
                 onEditorChange={this.handleObjectiveChange}
                 value={this.state.objective}
               />
-          </div>
-
-          <div className='soap-assessment'>
-            <h1>Assessment</h1>
+            </div>
+          )
+          break;
+        case '3':
+          section = (
+            <div className='soap-assessment'>
+              <h1>Assessment</h1>
               <Editor
                 apiKey="qdsfz5mb1rgq6f9e4tlppil5y3suu39z8ln3guyhhbej13qp"
                 init={{
-                  height: 500,
+                  height: 700,
                   menubar: false,
                   plugins: [
                     'advlist autolink lists link image', 
@@ -111,32 +130,54 @@ class VisitForm extends Component {
                 onEditorChange={this.handleAssessmentChange}
                 value={this.state.assessment}
               />
-          </div>
+            </div>
+          )
+          break;
+        case '4':
+          section = (
+            <div className='soap-plan'>
+              <h1>Plan</h1>
+              <Editor
+                apiKey="qdsfz5mb1rgq6f9e4tlppil5y3suu39z8ln3guyhhbej13qp"
+                init={{
+                  height: 700,
+                  menubar: false,
+                  plugins: [
+                    'advlist autolink lists link image', 
+                    'charmap print preview anchor help',
+                    'searchreplace visualblocks code',
+                    'insertdatetime media table paste wordcount'
+                  ],
+                  toolbar:
+                    'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | help'
+                }}
+                onEditorChange={this.handlePlanChange}
+                value={this.state.plan}
+              />
+            </div>
+          )
+          break;
+        default:
+          break;
+      }
+    }
 
-          <div className='soap-plan'>
-            <h1>Plan</h1>
-                <Editor
-                  apiKey="qdsfz5mb1rgq6f9e4tlppil5y3suu39z8ln3guyhhbej13qp"
-                  init={{
-                    height: 500,
-                    menubar: false,
-                    plugins: [
-                      'advlist autolink lists link image', 
-                      'charmap print preview anchor help',
-                      'searchreplace visualblocks code',
-                      'insertdatetime media table paste wordcount'
-                    ],
-                    toolbar:
-                      'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | help'
-                  }}
-                  onEditorChange={this.handlePlanChange}
-                  value={this.state.plan}
-                />
-          </div>
-
-          <input type="submit" value={this.props.formSubmit}/>
-        </form>
+    return (
+      <div id='visit-form-container'>
+        <TopNavBarContainer />
+        <div id='spacer'/>
+        <div className='visit-form'>
+          <VisitFormNavBar toggleModal={this.props.toggleModal} modal={this.props.modal}/>
+          <form className='soap-note-form' onSubmit={this.handleSubmit}>
+            {section}
+            <div id='visit-form-controls'>
+              <input type="submit" value={this.props.formSubmit}/>
+              {this.cancelForm()}
+            </div>
+          </form>
+        </div>
       </div>
+      
     )
   }
 }

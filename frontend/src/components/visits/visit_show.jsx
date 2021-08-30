@@ -51,14 +51,12 @@ class VisitShow extends Component {
       if (this.state.editing) {
         return (
           <div>
-            <TopNavBarContainer />
-            <div id='spacer'/>
-            <VisitForm visit={visit} processForm={this.props.processForm} toggleEdit={this.toggleEdit} updateEditedVisit={this.updateEditedVisit} formSubmit='Save'/>
+            <VisitForm visit={visit} processForm={this.props.processForm} toggleEdit={this.toggleEdit} updateEditedVisit={this.updateEditedVisit} formSubmit='Save' toggleModal={this.props.toggleModal} modal={this.props.modal}/>
           </div>
         )
       } else {
         return (
-          <div>
+          <div id='visit-show-container'>
             <TopNavBarContainer />
             <div id='spacer'/>
             <div className='visit-show'>
@@ -86,17 +84,21 @@ class VisitShow extends Component {
                     <div className='soap-plan-display' dangerouslySetInnerHTML={{ __html: visit.plan }}/>
                 </div>
               </div>
-
-              <button onClick={this.toggleEdit}>Edit</button>
-              <button onClick={this.handleDelete}>Delete</button>
-              <Link to={`/charts/${visit.patientId}`}>Back</Link>
+              <div className='soap-controls'>
+                <button id='edit-visit-button' onClick={this.toggleEdit}>Edit</button>
+                <button id='delete-visit-button' onClick={this.handleDelete}>Delete</button>
+                <Link to={`/charts/${visit.patientId}`}>Back</Link>
+              </div>
             </div>
           </div>
       )
       }
     } else {
       return (
-        <p key={this.props.visit}>Loading Visit</p>
+        <div id='visit-show-container'>
+          <TopNavBarContainer />
+          <div id='spacer'/>
+        </div>
       )
     }
   }
