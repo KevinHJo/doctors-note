@@ -51,14 +51,12 @@ class VisitShow extends Component {
       if (this.state.editing) {
         return (
           <div>
-            <TopNavBarContainer />
-            <div id='spacer'/>
             <VisitForm visit={visit} processForm={this.props.processForm} toggleEdit={this.toggleEdit} updateEditedVisit={this.updateEditedVisit} formSubmit='Save' toggleModal={this.props.toggleModal} modal={this.props.modal}/>
           </div>
         )
       } else {
         return (
-          <div>
+          <div id='visit-show-container'>
             <TopNavBarContainer />
             <div id='spacer'/>
             <div className='visit-show'>
@@ -97,7 +95,10 @@ class VisitShow extends Component {
       }
     } else {
       return (
-        <p key={this.props.visit}>Loading Visit</p>
+        <div id='visit-show-container'>
+          <TopNavBarContainer />
+          <div id='spacer'/>
+        </div>
       )
     }
   }

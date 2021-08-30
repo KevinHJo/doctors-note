@@ -1,6 +1,15 @@
+#visit-show-container {
+  height: 125vh;
+  width: 100%;
+  background-color: rgb(164, 188, 204);
+}
+
 .visit-show {
   width: 750px;
   margin: 0 auto;
+  padding: 25px 40px;
+  background-color: white;
+  box-shadow:rgb(33, 26, 90) 3px 3px 5px;
 }
 
 .visit-info {
@@ -31,14 +40,14 @@
 .soap-controls {
   display: flex;
   margin-top: 20px;
-  margin-bottom: 20px;
-  padding-top: 15px;
+  margin-bottom: 10px;
+  padding-top: 20px;
   border-top: 1px solid lightgray;
 }
 
 .soap-controls button {
   margin-right: 15px;
-  height: 30px;
+  height: 35px;
   width: 75px;
   color: white;
   border: none;

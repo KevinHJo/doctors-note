@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
 import { Link } from 'react-router-dom';
 import VisitFormNavBar from './visit_form_nav_bar';
+import TopNavBarContainer from '../navbar/top_nav_bar_container';
 
 class VisitForm extends Component {
   constructor(props) {
@@ -162,16 +163,21 @@ class VisitForm extends Component {
     }
 
     return (
-      <div className='visit-form'>
-        <VisitFormNavBar toggleModal={this.props.toggleModal} modal={this.props.modal}/>
-        <form className='soap-note-form' onSubmit={this.handleSubmit}>
-          {section}
-          <div id='visit-form-controls'>
-            <input type="submit" value={this.props.formSubmit}/>
-            {this.cancelForm()}
-          </div>
-        </form>
+      <div id='visit-form-container'>
+        <TopNavBarContainer />
+        <div id='spacer'/>
+        <div className='visit-form'>
+          <VisitFormNavBar toggleModal={this.props.toggleModal} modal={this.props.modal}/>
+          <form className='soap-note-form' onSubmit={this.handleSubmit}>
+            {section}
+            <div id='visit-form-controls'>
+              <input type="submit" value={this.props.formSubmit}/>
+              {this.cancelForm()}
+            </div>
+          </form>
+        </div>
       </div>
+      
     )
   }
 }
