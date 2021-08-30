@@ -12,7 +12,8 @@ export default class DoctorIndexPage extends React.Component {
   
   componentDidMount() {
     this.props.fetchDoctor(this.props.user.id)
-    this.props.fetchAllPatients();
+    // this.props.fetchDoctorPatients(this.props.user.id)
+    // this.props.fetchAllPatients();
   }
   
   render() {

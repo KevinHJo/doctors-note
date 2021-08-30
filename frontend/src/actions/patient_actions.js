@@ -40,10 +40,10 @@ const receivePatients = patients => ({
   patients
 });
 
-const receiveAllPatients = patients => ({
-  type: RECEIVE_ALL_PATIENTS,
-  patients
-});
+// const receiveAllPatients = patients => ({
+//   type: RECEIVE_ALL_PATIENTS,
+//   patients
+// });
 
 //THUNK ACTION CREATORS
 export const logout = () => dispatch => {
@@ -76,10 +76,10 @@ export const login = user => dispatch => (
     })
 )
 
-export const fetchAllPatients = () => dispatch => (
-    PatientAPIUtil.fetchAllPatients()
-        .then(patients => dispatch(receiveAllPatients(patients)))
-)
+// export const fetchAllPatients = () => dispatch => (
+//     PatientAPIUtil.fetchAllPatients()
+//         .then(patients => dispatch(receiveAllPatients(patients)))
+// )
 
 export const fetchPatient = patientId => dispatch => (
   PatientAPIUtil.fetchPatient(patientId)

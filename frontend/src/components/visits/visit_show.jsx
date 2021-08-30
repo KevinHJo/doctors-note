@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import VisitForm from './visit_form'
 import TopNavBarContainer from '../navbar/top_nav_bar_container'
 
@@ -88,6 +89,7 @@ class VisitShow extends Component {
 
               <button onClick={this.toggleEdit}>Edit</button>
               <button onClick={this.handleDelete}>Delete</button>
+              <Link to={`/charts/${visit.patientId}`}>Back</Link>
             </div>
           </div>
       )

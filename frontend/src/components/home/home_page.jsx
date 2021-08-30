@@ -84,12 +84,12 @@ export default class HomePage extends React.Component {
             
             <div className='facts-easy-use'>
               <h2>Up and Running in Minutes</h2>
-              <p>D. Note is simple, intuitive, and easy to use. Just sign in, and start working! No downloads or installation necessary</p>
+              <p>D. Note is simple, intuitive, and easy to use. Just sign in, and start working! No downloads or installation necessary.</p>
             </div>
             
             <div className='facts-support'>
-              <h2>24 Hour Support</h2>
-              <p>Our team is committed to ensuring that your practice runs smoothly, no matter the hour. D. Note users enjoy award winning customer service around the clock</p>
+              <h2>24-Hour Support</h2>
+              <p>Our team is committed to ensuring that your practice runs smoothly, no matter the hour. D. Note users enjoy award-winning customer service around the clock.</p>
             </div>
           </div>
         </section>

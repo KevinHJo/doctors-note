@@ -50,6 +50,7 @@ textarea:focus {
   letter-spacing: 1.5px;
   font-size: 16px;
   font-weight: 700px;
+  text-decoration: none;
   border: 1px solid black;
 }
 
