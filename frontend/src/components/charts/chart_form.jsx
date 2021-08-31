@@ -23,6 +23,7 @@ export default class ChartForm extends React.Component {
     }
 
     this.renderSelections = this.renderSelections.bind(this);
+    this.toggleForm = this.toggleForm.bind(this);
   }
 
   componentDidMount() {
@@ -109,6 +110,24 @@ export default class ChartForm extends React.Component {
     }
   }
 
+  toggleForm(e) {
+    e.preventDefault();
+      this.setState({
+        fname: '',
+        lname: '',
+        dateOfBirth: '',
+        sex: '',
+        email: '',
+        phone: '',
+        address: '',
+        doctorId: this.props.doctorId,
+        diagnoses: [],
+        medications: [],
+        allergies: []
+      });
+    document.getElementById("new-chart-page").classList.remove("visible")
+  }
+
   removeVisible() {
     console.log('remove');
     document.getElementById('ctw-window').classList.remove('visible')
@@ -189,8 +208,8 @@ export default class ChartForm extends React.Component {
             </label>
             <div id="section-buttons">
               <input type="submit" value="Create Patient" className='new-chart-buttons' id='create-button'/>
-              <Link to={`/charts/${this.props.patient._id}`} className='new-chart-buttons' id='cancel-button'>Cancel</Link>
-              {/* <p onClick={() => window.location.reload()} className='new-chart-buttons' id='cancel-button'>Discard</p> */}
+              {/* <Link to={`/charts/${this.props.patient._id}`} className='new-chart-buttons' id='cancel-button'>Cancel</Link> */}
+              <p onClick={this.toggleForm} className='new-chart-buttons' id='cancel-button'>Cancel</p>
             </div>
           </form>
         </div>
