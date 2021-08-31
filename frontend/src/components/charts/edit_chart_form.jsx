@@ -176,10 +176,10 @@ export default class ChartForm extends React.Component {
               </div>
             </label>
             <label className='new-chart-form-label'>Medications: 
-              <textarea onChange={this.handleArrayChange('medications')}></textarea>
+              <textarea onChange={this.handleArrayChange('medications')} value={this.state.medications}></textarea>
             </label>
             <label className='new-chart-form-label'>Allergies: 
-              <textarea onChange={this.handleArrayChange('allergies')}></textarea>
+              <textarea onChange={this.handleArrayChange('allergies')} value={this.state.allergies}></textarea>
             </label>
             <div id="section-buttons">
               <input type="submit" value="Update Patient" className='new-chart-buttons' id='create-button'/>

@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { toggleModal } from "../../actions/patient_modal_actions";
 import { fetchVisit, updateVisit, deleteVisit } from "../../actions/visit_actions";
+import { fetchPatient } from "../../actions/patient_actions";
 import VisitShow from "./visit_show";
 
 const mSTP = (state, ownProps) => {
@@ -14,6 +15,7 @@ const mSTP = (state, ownProps) => {
 };
 
 const mDTP = dispatch => ({
+  fetchPatient: patientId => dispatch(fetchPatient(patientId)),
   fetchVisit: visitId => dispatch(fetchVisit(visitId)),
   processForm: visit => dispatch(updateVisit(visit)),
   deleteVisit: visitId => dispatch(deleteVisit(visitId)),
