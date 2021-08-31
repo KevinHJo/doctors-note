@@ -4,10 +4,10 @@ const validText = require('./valid-text');
 module.exports = function validateLoginInput(data) {
   let errors = {};
 
-  data.email = validText(data.email) ? data.email : '';
+  data.loginId = validText(data.loginId) ? data.loginId : '';
   data.password = validText(data.password) ? data.password : '';
 
-  if (!Validator.isEmail(data.email)) {
+  if (!Validator.isEmail(data.loginId)) {
     errors.email = 'Email is invalid';
   }
 

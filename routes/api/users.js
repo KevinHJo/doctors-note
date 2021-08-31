@@ -92,49 +92,84 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-	const { errors, isValid } = validateLoginInput(req.body);
-
-	if (!isValid) {
-		return res.status(400).json(errors);
-	}
-
-	const email = req.body.email;
+	console.log(req)
+	console.log(req.body)
 	const password = req.body.password;
+	const loginEmailOrUsername = req.body.loginId;
+	// if (!loginEmailOrUsername) return null;
+	if (loginEmailOrUsername.includes('@')) {
+		const { errors, isValid } = validateLoginInput(req.body);
 
-	User.findOne({ email })
-		.then(user => {
-			if (!user) {
-				return res.status(404).json({ email: 'This user does not exist' });
-			}
-
-			bcrypt.compare(password, user.password)
-				.then(isMatch => {
-					if (isMatch) {
-						const payload = {
-							id: user.id,
-							email: user.email,
-							role: user.role,
-							fname: user.fname,
-							lname: user.lname,
-							username: user.username,
-						};
-
-						jwt.sign(
-							payload,
-							keys.secretOrKey,
-							// Tell the key to expire in one hour
-							{ expiresIn: 3600 },
-							(err, token) => {
-								res.json({
-									success: true,
-									token: 'Bearer ' + token
+		if (!isValid) {
+			return res.status(400).json(errors);
+		}
+		User.findOne({ email: loginEmailOrUsername })
+			.then(user => {
+				if (!user) {
+					return res.status(404).json({ email: 'This user does not exist' });
+				}
+				bcrypt.compare(password, user.password)
+					.then(isMatch => {
+						if (isMatch) {
+							const payload = {
+								id: user.id,
+								email: user.email,
+								role: user.role,
+								fname: user.fname,
+								lname: user.lname,
+								username: user.username,
+							};
+							jwt.sign(
+								payload,
+								keys.secretOrKey,
+								// Tell the key to expire in one hour
+								{ expiresIn: 3600 },
+								(err, token) => {
+									res.json({
+										success: true,
+										token: 'Bearer ' + token
+									});
 								});
-							});
-					} else {
-						return res.status(400).json({ password: 'Incorrect password' });
-					}
-				});
-		});
+						} else {
+							return res.status(400).json({ password: 'Incorrect password' });
+						}
+					});
+			});
+	} else {
+		User.findOne({ username: loginEmailOrUsername })
+			.then(user => {
+				if (!user) {
+					return res.status(404).json({ username: 'This user does not exist' });
+				}
+				bcrypt.compare(password, user.password)
+					.then(isMatch => {
+						if (isMatch) {
+							const payload = {
+								id: user.id,
+								email: user.email,
+								role: user.role,
+								fname: user.fname,
+								lname: user.lname,
+								username: user.username,
+							};
+
+							jwt.sign(
+								payload,
+								keys.secretOrKey,
+								// Tell the key to expire in one hour
+								{ expiresIn: 3600 },
+								(err, token) => {
+									res.json({
+										success: true,
+										token: 'Bearer ' + token
+									});
+								});
+						} else {
+							return res.status(400).json({ password: 'Incorrect password' });
+						}
+					});
+			});
+	}
 });
 
 router.patch('/update/:id', (req, res) => {
