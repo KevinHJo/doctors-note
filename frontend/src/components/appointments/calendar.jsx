@@ -36,7 +36,7 @@ class Calendar extends React.Component {
       years.push(currentYear.add(i, 'year').format('YYYY'))
     }
 
-    return years.map(year => {
+    years = years.map(year => {
       return (
         <td
           key={year}
@@ -48,6 +48,23 @@ class Calendar extends React.Component {
           <span onClick={this.toggleYearTable.bind(this)}>{year}</span>
         </td>
       )
+    });
+
+    let rows = [];
+    let cells = [];
+    years.forEach((year, i) => {
+      if (i % 7 !== 0 || i == 0) {
+        cells.push(year);
+      } else {
+        rows.push(cells);
+        cells = [];
+        cells.push(year);
+      }
+    });
+
+    rows.push(cells);
+    return rows.map((d,i) => {
+      return <tr key={i+31}>{d}</tr>
     })
   }
 
@@ -110,9 +127,9 @@ class Calendar extends React.Component {
       if (date.getMonth() === monthIdx && date.getFullYear() === selectedYear) {
         const patient = this.props.doctor.patients[appointment.patientId]
         if (appointments[date.getDate()]) {
-          appointments[date.getDate()].push(<li key={appointment._id}>{patient.lname + ', ' + patient.fname}</li>)
+          appointments[date.getDate()].push(<li key={appointment._id} className='calendar-appointment'>{patient.lname + ', ' + patient.fname}</li>)
         } else {
-          appointments[date.getDate()] = [<li key={appointment._id}>{patient.lname + ', ' + patient.fname}</li>]
+          appointments[date.getDate()] = [<li key={appointment._id} className='calendar-appointment'>{patient.lname + ', ' + patient.fname}</li>]
         }
       }
     });
@@ -172,43 +189,6 @@ class Calendar extends React.Component {
       dateObject: dateObject
     });
   };
-  
-  pickRender() {
-    if(this.state.showCalendar) {
-      return (
-        <table className='calendar-days'>
-          <thead>
-            <tr key={-1}>{this.createWeekdayList()}</tr>
-          </thead>
-          <tbody>
-            {this.createDaysInMonth()}
-          </tbody>
-        </table>
-      )
-    } else if (this.state.showMonthTable) {
-      return (
-        <table className='calendar-months'>
-          <thead>
-            <tr key={-2}>
-              <th colSpan='4'>Select a Month</th>
-            </tr>
-          </thead>
-          <tbody>{this.createMonthList()}</tbody>
-        </table>
-      )
-    } else if (this.state.showYearTable) {
-      return (
-        <table className='calendar-years'>
-          <thead>
-            <tr key={-3}>
-              <th colSpan='4'>Select a Year</th>
-            </tr>
-          </thead>
-          <tbody>{this.createYearList()}</tbody>
-        </table>
-      )
-    }
-  }
 
   toggleMonthTable() {
     this.setState({
@@ -252,6 +232,43 @@ class Calendar extends React.Component {
       showMonthTable: false,
       showYearTable: false
     });
+  }
+
+  pickRender() {
+    if(this.state.showCalendar) {
+      return (
+        <table className='calendar-days'>
+          <thead>
+            <tr key={-1}>{this.createWeekdayList()}</tr>
+          </thead>
+          <tbody>
+            {this.createDaysInMonth()}
+          </tbody>
+        </table>
+      )
+    } else if (this.state.showMonthTable) {
+      return (
+        <table className='calendar-months'>
+          <thead>
+            <tr key={-2}>
+              <th colSpan='4'>Select a Month</th>
+            </tr>
+          </thead>
+          <tbody>{this.createMonthList()}</tbody>
+        </table>
+      )
+    } else if (this.state.showYearTable) {
+      return (
+        <table className='calendar-years'>
+          <thead>
+            <tr key={-3}>
+              <th colSpan='7'>Select a Year</th>
+            </tr>
+          </thead>
+          <tbody>{this.createYearList()}</tbody>
+        </table>
+      )
+    }
   }
 
   render() {
