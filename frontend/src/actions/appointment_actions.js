@@ -23,12 +23,12 @@ const removeAppointment = appointmentId => ({
 //THUNK ACTION CREATORS
 export const createAppointment = appointment => dispatch => (
   AppointmentAPIUtil.createAppointment(appointment)
-    .then(appointment => dispatch(receiveAppointment(appointment)))
+    .then(appointment => dispatch(receiveAppointment(appointment.data)))
 );
 
 export const fetchDoctorAppointments = doctorId => dispatch => (
   AppointmentAPIUtil.fetchDoctorAppointments(doctorId)
-    .then(appointments => dispatch(receiveAppointments(appointments)))
+    .then(appointments => dispatch(receiveAppointments(appointments.data)))
 );
 
 export const deleteAppointment = appointmentId => dispatch => (
