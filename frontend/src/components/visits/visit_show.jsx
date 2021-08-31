@@ -40,8 +40,11 @@ class VisitShow extends Component {
   }
 
   handleDelete = e => {
+    const patientId = this.props.visit.patientId
+    const route = `/charts/${patientId}`
     this.props.deleteVisit(this.props.visitId)
-      .then(this.props.history.push('/charts'))
+      .then(() => {this.props.history.push(route);
+      })
   }
 
   render() {

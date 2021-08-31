@@ -6,7 +6,15 @@ import { Link } from 'react-router-dom';
 
 export default class ChartShow extends React.Component {
   componentDidMount() {
-    this.props.fetchPatient(this.props.match.params.patientId)
+    this.props.fetchPatient(this.props.match.params.patientId);
+    if( window.localStorage ) {
+      if(!localStorage.getItem('firstLoad'))
+      {
+        localStorage['firstLoad'] = true;
+        window.location.reload();
+      }  
+      else localStorage.removeItem('firstLoad');
+    }
   }
 
   render() {
