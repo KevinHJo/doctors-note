@@ -21,7 +21,6 @@ router.post('/new', (req, res) => {
 		assessment: req.body.assessment,
 		plan: req.body.plan,
     patientId: req.body.patientId
-    
 	})
 
   newVisit.save()

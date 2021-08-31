@@ -3,6 +3,7 @@ import NavBarContainer from '../navbar/top_nav_bar_container';
 import DoctorLeftNavigation from './doctor_left_navigation';
 import ChartsIndexContainer from '../charts/charts_index_container';
 import ChartFormContainer from '../charts/chart_form_container';
+import Calendar from '../appointments/calendar'
 
 export default class DoctorIndexPage extends React.Component {
   toggleAddChart() {
@@ -43,7 +44,8 @@ export default class DoctorIndexPage extends React.Component {
           section = (
             <div id="doctor-section-user-info" className="doctor-homepage-sections">
               {/* <ChartShowContainer patient={this.props.patientId} /> */}
-              <p>No Appointments yet.</p>
+              {/* <p>No Appointments yet.</p> */}
+              <Calendar></Calendar>
             </div>
           )
           break;
