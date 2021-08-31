@@ -4,6 +4,7 @@ import { toggleModal } from '../../actions/patient_modal_actions';
 import { fetchDoctor } from '../../actions/user_actions';
 import { receiveChart } from '../../actions/doctor_modal_actions';
 import { fetchDoctorPatients } from '../../actions/patient_actions';
+import { fetchDoctorAppointments } from '../../actions/appointment_actions';
 import DoctorIndexPage from './doctor_index_page';
 
 const mSTP = (state, ownParams) => {
@@ -23,7 +24,8 @@ const mDTP = (dispatch) => ({
   toggleModal: (modalId) => dispatch(toggleModal(modalId)),
   fetchDoctor: (doctorId) => dispatch(fetchDoctor(doctorId)),
   receiveChart: (patientId) => dispatch(receiveChart(patientId)),
-  fetchDoctorPatients: doctorId => dispatch(fetchDoctorPatients(doctorId))
+  fetchDoctorPatients: doctorId => dispatch(fetchDoctorPatients(doctorId)),
+  fetchDoctorAppointments: doctorId => dispatch(fetchDoctorAppointments(doctorId))
   // fetchAllPatients: () => dispatch(fetchAllPatients()),
 });
 

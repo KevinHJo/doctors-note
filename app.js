@@ -5,6 +5,7 @@ const db = require('./config/keys').mongoURI;
 const users = require('./routes/api/users');
 const visits = require('./routes/api/visits');
 const patients = require('./routes/api/patients');
+const appointments = require('./routes/api/appointments')
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
@@ -27,6 +28,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
+app.use("/api/appointments", appointments)
 app.use("/api/visits", visits);
 app.use("/api/users", users);
 app.use('/api/patients', patients);

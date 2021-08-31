@@ -43,8 +43,8 @@ export default class ChartsIndex extends React.Component {
           {!!patients ? 
             (patients.map(patient => 
               <div key={patient._id} className='patients-charts'>
-                <Link className="patients-chart-links" to={`/charts/${patient._id}`}>{`${patient.lname}, ${patient.fname}`}</Link>
-                {/* <Link target='_blank' className="patients-chart-links" to={`/charts/${patient._id}`}>{`${patient.lname}, ${patient.fname}`}</Link> */}
+                {/* <Link className="patients-chart-links" to={`/charts/${patient._id}`}>{`${patient.lname}, ${patient.fname}`}</Link> */}
+                <Link target='_blank' className="patients-chart-links" to={`/charts/${patient._id}`}>{`${patient.lname}, ${patient.fname}`}</Link>
                 {/* <div onClick={() => this.openChart(patient._id)}>
                   {patient.lname}, {patient.fname}
                 </div> */}
