@@ -36,3 +36,7 @@ export const fetchPatient = patientId => {
 // export const fetchAllPatients = () => {
 //   return axios.get('/api/patients/get/all');
 // };
+
+export const deletePatient = patientId => {
+  return axios.delete(`/api/patients/delete/${patientId}`)
+}

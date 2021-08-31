@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ChartsIndexPanel from './charts_index_panel'
-import ChartFormContainer from './chart_form_container'
 
 export default class ChartsIndex extends React.Component {
   constructor(props) {
@@ -19,7 +18,7 @@ export default class ChartsIndex extends React.Component {
 
   handleClick = patientId => e => {
     this.setState({patientId})
-    console.log(this.state)
+    // console.log(this.state)
   }
 
   // openChart(id) {
@@ -45,6 +44,7 @@ export default class ChartsIndex extends React.Component {
             (patients.map(patient => 
               <div key={patient._id} className='patients-charts'>
                 <Link className="patients-chart-links" to={`/charts/${patient._id}`}>{`${patient.lname}, ${patient.fname}`}</Link>
+                {/* <Link target='_blank' className="patients-chart-links" to={`/charts/${patient._id}`}>{`${patient.lname}, ${patient.fname}`}</Link> */}
                 {/* <div onClick={() => this.openChart(patient._id)}>
                   {patient.lname}, {patient.fname}
                 </div> */}

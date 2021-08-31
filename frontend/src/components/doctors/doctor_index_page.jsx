@@ -3,7 +3,6 @@ import NavBarContainer from '../navbar/top_nav_bar_container';
 import DoctorLeftNavigation from './doctor_left_navigation';
 import ChartsIndexContainer from '../charts/charts_index_container';
 import ChartFormContainer from '../charts/chart_form_container';
-import ChartShowContainer from '../charts/chart_show_container';
 
 export default class DoctorIndexPage extends React.Component {
   toggleAddChart() {
@@ -13,7 +12,6 @@ export default class DoctorIndexPage extends React.Component {
   componentDidMount() {
     this.props.fetchDoctor(this.props.user.id)
     // this.props.fetchDoctorPatients(this.props.user.id)
-    // this.props.fetchAllPatients();
   }
   
   render() {

@@ -17,6 +17,12 @@ export default class ChartShow extends React.Component {
     }
   }
 
+  handleDelete = e => {
+    this.props.deletePatient(this.props.patientId)
+      .then(this.props.history.push('/'))
+    // this.props.history.push('/') // push to charts index instead
+  }
+
   render() {
     if (!this.props.patient) return null
     const { patient } = this.props
@@ -29,7 +35,7 @@ export default class ChartShow extends React.Component {
         </div>
         <Link className="create" to={`/charts/${this.props.match.params.patientId}/visits/new`}>Click to Create New Visit</Link>
         <Link to={`/charts/${patient._id}/edit`} className="show-chart-edit-button show-chart-buttons">Edit Patient Information</Link>
-        <button className="show-chart-delete-button show-chart-buttons">Delete Patient</button>
+        <button className="show-chart-delete-button show-chart-buttons" onClick={this.handleDelete}>Delete Patient</button>
         <div className='chart-patient-info'>
           <div>
             <p className="header">Patient Details</p>
