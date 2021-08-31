@@ -92,11 +92,9 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-	console.log(req)
-	console.log(req.body)
 	const password = req.body.password;
 	const loginEmailOrUsername = req.body.loginId;
-	// if (!loginEmailOrUsername) return null;
+
 	if (loginEmailOrUsername.includes('@')) {
 		const { errors, isValid } = validateLoginInput(req.body);
 
