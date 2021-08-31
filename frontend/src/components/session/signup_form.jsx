@@ -54,43 +54,43 @@ export default class SignupForm extends React.Component {
 
       if (fname) {
         error1 = (
-          <input disabled className="error-field" defaultValue={`${fname}`}/>
+          <input disabled className="fade-out error-field" defaultValue={`${fname}`}/>
         )
         focused['fname'] = 'errored-field';
       }
       if (lname) {
         error2 = (
-          <input disabled className="error-field" defaultValue={`${lname}`}/>
+          <input disabled className="fade-out error-field" defaultValue={`${lname}`}/>
         )
         focused['lname'] = 'errored-field';
       }
       if (dba) {
         error3 = (
-          <input disabled className="error-field dba-error-field" defaultValue={`${dba}`}/>
+          <input disabled className="fade-out error-field dba-error-field" defaultValue={`${dba}`}/>
         )
         focused['dba'] = 'errored-field';
       }
       if (prodKey) {
         error4 = (
-          <input disabled className="error-field" defaultValue={`${prodKey}`}/>
+          <input disabled className="fade-out error-field" defaultValue={`${prodKey}`}/>
         )
         focused['prodKey'] = 'errored-field';
       }
       if (email) {
         error5 = (
-          <input disabled className="error-field" id="error-field-email" defaultValue={`${email}`}/>
+          <input disabled className="fade-out error-field" id="error-field-email" defaultValue={`${email}`}/>
         )
         focused['email'] = 'errored-field';
       }
       if (username) {
         error6 = (
-          <textarea disabled className="error-field" id="error-field-username" defaultValue={`${username}`}/>
+          <textarea disabled className="fade-out error-field" id="error-field-username" defaultValue={`${username}`}/>
         )
         focused['username'] = 'errored-field';
       }
       if (password) {
         error7 = (
-          <textarea disabled className="error-field" id="error-field-pw" defaultValue={`${password}`}/>
+          <textarea disabled className="fade-out error-field" id="error-field-pw" defaultValue={`${password}`}/>
         )
         focused['password'] = 'errored-field';
       }
@@ -100,6 +100,7 @@ export default class SignupForm extends React.Component {
       <form className="signup-form" onSubmit={this.handleSubmit}>
         <div className='section1'>
           <label className="signup-business-label">First Name:
+            <div id="relative"></div>
             <input className="signup-business-input"
               type="text"
               id={focused['fname']}
@@ -110,6 +111,7 @@ export default class SignupForm extends React.Component {
             {error1}
           </label>
           <label className="signup-business-label">Last Name:
+            <div id="relative"></div>
             <input className="signup-business-input"
               type="text"
               id={focused['lname']}
@@ -120,6 +122,7 @@ export default class SignupForm extends React.Component {
             {error2}
           </label>
           <label className="signup-business-label">DBA:
+                <div id="relative"></div>
             <input className="signup-business-input"
               type="text"
               id={focused['dba']}
@@ -129,6 +132,7 @@ export default class SignupForm extends React.Component {
               ></input>
             {error3}
           </label>
+                <div id="relative"></div>
           <label className="signup-key-label">Product-Key:
             <input className="signup-key-input" 
               type="text"
@@ -141,6 +145,7 @@ export default class SignupForm extends React.Component {
         </div>
         <div className='section2'>
           <label className="signup-email-label">Email: 
+            <div id="relative"></div>
             <input className="signup-email-input" 
               type="text"
               id={focused['email']}
@@ -151,6 +156,7 @@ export default class SignupForm extends React.Component {
             {error5}
           </label>
           <label className="signup-username-label">Username:
+            <div id="relative"></div>
             <input type="text"
               id={focused['username']}
               placeholder="New Username Here."
@@ -160,6 +166,7 @@ export default class SignupForm extends React.Component {
             {error6}
           </label>
           <label className="signup-password-label">Password:
+            <div id="relative"></div>
             <input type="password"
               id={focused['password']}
               placeholder="New Password Here."
