@@ -8,7 +8,7 @@ const mSTP = (state) => ({
 
 const mDTP = (dispatch) => ({
   signup: (user) => dispatch(signup(user)),
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
 });
 
 export default connect(mSTP, mDTP)(SignupPage);

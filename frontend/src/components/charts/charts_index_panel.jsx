@@ -23,7 +23,7 @@ export default class ChartsIndexPanel extends React.Component {
           <p className="visit-title">Assessment: </p>
           <p className="visit-desc" dangerouslySetInnerHTML={{ __html: lastVisit.assessment }}></p>
         </div>
-        <div>
+        <div className="last-div">
           <p className="visit-title">Plan: </p>
           <p className="visit-desc" dangerouslySetInnerHTML={{ __html: lastVisit.plan }}></p>
         </div>

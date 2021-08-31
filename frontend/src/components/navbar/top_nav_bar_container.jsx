@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { login, logout } from '../../actions/session_actions';
+import { login, logout, removeErrors } from '../../actions/session_actions';
 import TopNavBar from './top_nav_bar';
 
 const mSTP = (state, ownParams) => {
@@ -13,7 +13,8 @@ const mSTP = (state, ownParams) => {
 
 const mDTP = (dispatch) => ({
   login: (user) => dispatch(login(user)),
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+  removeErrors: () => dispatch(removeErrors())
 });
 
 export default connect(mSTP, mDTP)(TopNavBar);

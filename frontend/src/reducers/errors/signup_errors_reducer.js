@@ -1,4 +1,4 @@
-import {RECEIVE_SIGNUP_ERRORS, RECEIVE_CURRENT_USER} from '../../actions/session_actions';
+import {RECEIVE_SIGNUP_ERRORS, RECEIVE_CURRENT_USER, REMOVE_ERRORS} from '../../actions/session_actions';
 
 const SignupErrorsReducer = (state = [], action) => {
   Object.freeze(state);
@@ -7,6 +7,8 @@ const SignupErrorsReducer = (state = [], action) => {
     case RECEIVE_SIGNUP_ERRORS:
       return action.errors;
     case RECEIVE_CURRENT_USER:
+      return [];
+    case REMOVE_ERRORS:
       return [];
     default:
       return state;
