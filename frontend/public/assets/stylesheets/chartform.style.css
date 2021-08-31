@@ -220,7 +220,7 @@ textarea:focus {
   padding: 25px;
   margin-bottom: 5px;
   color: rgb(37, 37, 37);
-  letter-spacing: 2px;
+  letter-spacing: .6px;
   cursor: default;
   border-bottom: 3px solid black;
 }

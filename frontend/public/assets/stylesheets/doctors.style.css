@@ -1,14 +1,15 @@
 #main-doctors-home {
   background-color: rgb(106, 126, 159, 30%);
   color: rgb(43, 43, 43);
+  height: 100vh;
 }
 
 #doctor-left-nav {
   height: 100%;
-  width: 265px;
+  width: 12.5%;
   position: fixed;
   left: 0;
-  top: 55px;
+  top: 30px;
   bottom: 0;
   background-color: rgb(84, 101, 130);
   display: flex;
@@ -50,12 +51,13 @@
   flex-direction: row;
   justify-content: center;
   padding: 10px;
+  height: 85%;
   /* margin-bottom: 50px; */
 }
 
 .doctor-homepage-sections {
-  width: 1200px;
-  height: 900px;
+  width: 65%;
+  height: 85%;
   background: rgba(250, 251, 255, 0.8);
   margin: 0 auto;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
