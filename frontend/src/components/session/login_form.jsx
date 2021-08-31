@@ -15,8 +15,10 @@ export default class LoginForm extends React.Component {
     this.demoLogin = this.demoLogin.bind(this);
   }
 
-  hideLoginForm() {
-    document.getElementById("login-form-section").classList.remove("show")
+  hideLoginForm(e) {
+    e.preventDefault();
+    document.getElementById("login-form-section").classList.remove("show");
+    this.props.removeErrors();
   }
 
   handleSubmit(e) {

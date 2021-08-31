@@ -10,6 +10,7 @@ export default class TopNavBar extends React.Component {
   }
   
   toggleLoginForm() {
+    this.props.removeErrors();
     document.getElementById("login-form-section").classList.add("show")
     document.getElementById("login-email").focus();
   }
@@ -76,6 +77,7 @@ export default class TopNavBar extends React.Component {
         <SigninForm 
           login={this.props.login}
           signinErrors={this.props.signinErrors}
+          removeErrors={this.props.removeErrors}
         />
       </div>
     )

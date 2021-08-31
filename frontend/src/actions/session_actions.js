@@ -8,6 +8,7 @@ export const RECEIVE_USER_LOGIN = "RECEIVE_USER_LOGIN";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_SIGNUP_ERRORS = "RECEIVE_SIGNUP_ERRORS";
 export const RECEIVE_SIGNIN_ERRORS = "RECEIVE_SIGNIN_ERRORS";
+export const REMOVE_ERRORS = "REMOVE_ERRORS";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_PROD_KEY = "RECEIVE_PROD_KEY";
 
@@ -35,6 +36,10 @@ const receiveSignupErrors = errors => ({
 const receiveSigninErrors = errors => ({
     type: RECEIVE_SIGNIN_ERRORS,
     errors
+});
+
+export const removeErrors = () => ({
+    type: REMOVE_ERRORS
 });
 
 export const receiveProdKey = (prodKey) => ({

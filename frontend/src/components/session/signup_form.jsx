@@ -23,9 +23,9 @@ export default class SignupForm extends React.Component {
     let packages = Object.assign({}, this.state, {role: "admin", password2: this.state.password});
     // console.log(packages)
     this.props.signup(packages, this.props.history)
-      .then((user) => this.props.login(packages))
-      .catch((err) => this.setState = this.state)
-    this.props.history.push('/charts')
+      .then((user) => this.props.login({loginId: this.state.username, password: this.state.password}))
+      .catch((err) => this.setState(this.state))
+    
   }
 
   updateField(field) {
