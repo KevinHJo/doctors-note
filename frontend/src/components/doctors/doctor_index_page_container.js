@@ -3,7 +3,6 @@ import { login, logout } from '../../actions/session_actions';
 import { toggleModal } from '../../actions/patient_modal_actions';
 import { fetchDoctor } from '../../actions/user_actions';
 import { receiveChart } from '../../actions/doctor_modal_actions';
-// import { fetchAllPatients } from '../../actions/patient_actions';
 import { fetchDoctorPatients } from '../../actions/patient_actions';
 import DoctorIndexPage from './doctor_index_page';
 

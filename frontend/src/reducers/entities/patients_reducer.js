@@ -1,4 +1,4 @@
-import { RECEIVE_PATIENT, RECEIVE_PATIENTS, RECEIVE_ALL_PATIENTS } from "../../actions/patient_actions";
+import { RECEIVE_PATIENT, RECEIVE_PATIENTS } from "../../actions/patient_actions";
 
 const PatientsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -13,8 +13,6 @@ const PatientsReducer = (state = {}, action) => {
       // nextState = {};
       // action.patients.forEach(patient => nextState[patient._id] = patient);
       // return nextState;
-    // case RECEIVE_ALL_PATIENTS:
-    //   return nextState;
     default:
       return state;
   }
