@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 export default class ChartShow extends React.Component {
   componentDidMount() {
     this.props.fetchPatient(this.props.match.params.patientId);
+    this.props.fetchDoctor(this.props.doctorId)
     if( window.localStorage ) {
       if(!localStorage.getItem('firstLoad'))
       {
@@ -19,7 +20,7 @@ export default class ChartShow extends React.Component {
 
   handleDelete = e => {
     this.props.deletePatient(this.props.patientId)
-      .then(this.props.history.push('/'))
+      .then(() => this.props.history.push('/'))
     // this.props.history.push('/') // push to charts index instead
   }
 

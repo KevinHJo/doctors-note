@@ -202,6 +202,7 @@ router.delete('/delete/:id', (req, res) => {
           Visit.deleteMany({patientId: patient._id})
             .catch(err => res.json(err))
         })
+        res.json(patient)
     })
 })
 
