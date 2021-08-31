@@ -1,0 +1,113 @@
+.doctor-homepage-calendar {
+  width: 70vw;
+  margin-left: 22vw;
+  background-color: white;
+  border: 1vh solid black;
+}
+
+.appointment-calendar {
+  height: 100%;
+}
+
+.calendar-years, .calendar-months {
+  height: 50vh;
+  width: 100%;
+  text-align: center;
+}
+
+.calendar-nav {
+  display: flex;
+  font-size: 3vh;
+  justify-content: center;
+  background-color: rgb(199, 85, 85);
+  color: white;
+  height: 7vh;
+  line-height: 4.3vh;
+}
+
+#calendar-nav-left {
+  padding: 1vh 1.5vw;
+}
+
+.calendar-month {
+  padding: 1vh 2vw;
+  text-align:center;
+}
+
+.calendar-year {
+  padding: 1vh 1vw;
+}
+
+#calendar-nav-right {
+  padding: 1vh 1.5vw;
+}
+
+#calendar-nav-left:hover, .calendar-month:hover, .calendar-year:hover, #calendar-nav-right:hover {
+  cursor: pointer;
+  background-color: rgb(158, 58, 58);
+}
+
+#calendar-nav-left:active, .calendar-month:active, .calendar-year:active, #calendar-nav-right:active {
+  cursor: pointer;
+  background-color: rgb(121, 37, 37);
+}
+
+.calendar-days {
+  width: 100%;
+  overflow: auto;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+thead {
+  height: 7vh;
+  border-bottom: 0.2vh solid black;
+}
+
+.calendar-day {
+  height: 13vh;
+  width: 15vw;
+}
+
+.calendar-day:not(:last-child) {
+  border-right: 0.1vh solid black;
+}
+
+.calendar-days > tbody tr:not(:last-child) {
+  border-bottom: 0.1vh solid black;
+}
+
+.calendar-days > tbody tr:last-child td:last-child {
+  border-right: 0.1vh solid black;
+}
+
+.calendar-day {
+  vertical-align: top;
+}
+
+.calendar-day:hover {
+  cursor: pointer;
+}
+
+.calendar-day h4 {
+  padding-top: 1vh;
+}
+
+.calendar-appointment {
+  list-style: none;
+  background-color:rgb(233, 182, 182)
+}
+
+.calendar-appointment:hover {
+  cursor: pointer;
+  background-color:rgb(228, 149, 149)
+}
+
+.calendar-months td, .calendar-years td {
+  width: 10vw;
+}
+
+.calendar-months td:hover, .calendar-years td:hover {
+  cursor: pointer;
+  background-color: rgb(194, 188, 188);
+}

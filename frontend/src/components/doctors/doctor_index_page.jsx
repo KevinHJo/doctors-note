@@ -44,7 +44,7 @@ export default class DoctorIndexPage extends React.Component {
         case "3":
           // if (!this.props.patientId) return null;
           section = (
-            <div id="doctor-section-user-info" className="doctor-homepage-sections">
+            <div id="doctor-section-appointments" className="doctor-homepage-calendar">
               {/* <ChartShowContainer patient={this.props.patientId} /> */}
               {/* <p>No Appointments yet.</p> */}
               <CalendarContainer doctor={this.props.doctor}/>
