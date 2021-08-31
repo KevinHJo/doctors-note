@@ -5,7 +5,7 @@ export default class LoginForm extends React.Component {
     super(props);
 
     this.state = {
-      email: '',
+      loginId: '',
       password: ''
     }
 
@@ -26,7 +26,7 @@ export default class LoginForm extends React.Component {
         if (!this.props.signinErrors) {
           document.getElementById("login-form-section").classList.remove("show")
           this.setState({
-            email: '',
+            loginId: '',
             password: '',
           })
         }
@@ -44,7 +44,7 @@ export default class LoginForm extends React.Component {
   demoLogin(e) {
     e.preventDefault();
     const demoUser = {
-      email: 'demo@demo.com',
+      loginId: 'demo@demo.com',
       password: 'password'
     }
   
@@ -85,8 +85,8 @@ export default class LoginForm extends React.Component {
             <label className="login-username-email-label">Username or Email:
               <input type="text"
                 placeholder="Username or email"
-                onChange={this.updateField('email')}
-                defaultValue={this.state.email}
+                onChange={this.updateField('loginId')}
+                defaultValue={this.state.loginId}
                 id="login-email"
                 className={`${focused['email']} user-login-email`}
               ></input>
