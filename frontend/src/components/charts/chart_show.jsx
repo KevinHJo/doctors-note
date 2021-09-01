@@ -3,19 +3,20 @@ import TopNavBarContainer from '../navbar/top_nav_bar_container';
 import VisitsIndex from '../visits/visits_index';
 import { getAge } from '../../util/chart_util';
 import { Link } from 'react-router-dom';
+import ChartPrint from './chart_print';
 
 export default class ChartShow extends React.Component {
   componentDidMount() {
     this.props.fetchPatient(this.props.match.params.patientId);
     this.props.fetchDoctor(this.props.doctorId)
-    if( window.localStorage ) {
-      if(!localStorage.getItem('firstLoad'))
-      {
-        localStorage['firstLoad'] = true;
-        window.location.reload();
-      }  
-      else localStorage.removeItem('firstLoad');
-    }
+    // if( window.localStorage ) {
+    //   if(!localStorage.getItem('firstLoad'))
+    //   {
+    //     localStorage['firstLoad'] = true;
+    //     window.location.reload();
+    //   }  
+    //   else localStorage.removeItem('firstLoad');
+    // }
   }
 
   handleDelete = e => {
@@ -29,8 +30,13 @@ export default class ChartShow extends React.Component {
     const { patient } = this.props
     return (
       <div id="charts-show">
-        <TopNavBarContainer />
+        <TopNavBarContainer  />
         <div id='spacer'></div>
+        {(Object.keys(this.props.newBanner).length > 0) ? (
+          <ChartPrint state={this.props.newBanner} />
+        ) : (
+          ''
+        )}
         <div className="title">
           <p>Patient Chart: {patient.lname}, {patient.fname}</p>
         </div>
