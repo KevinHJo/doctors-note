@@ -24,7 +24,8 @@ export default class DoctorIndexPage extends React.Component {
         case "1":
           section = (
             <div id="doctor-section-user-info" className="doctor-homepage-sections">
-              <p className="doctor-section-user-title">{`${`${new Date()}`.split(" ").splice(0, 4).join(" ")}`}</p>
+              <p className="doctor-section-user-title">{new Date().toLocaleDateString("en-US", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</p>
+              {/* <p className="doctor-section-user-title">{`${`${new Date()}`.split(" ").splice(0, 4).join(" ")}`}</p> */}
               <div className="revealAddChart" onClick={this.toggleAddChart}>
                 <img alt="plus" className="plus-chart-icon" src="https://doctors-note-seeds.s3.us-west-1.amazonaws.com/add.png" />
                 Add New Chart
