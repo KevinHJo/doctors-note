@@ -90,6 +90,10 @@ thead {
   cursor: pointer;
 }
 
+.empty:hover {
+  cursor: default;
+}
+
 .calendar-day h4 {
   padding-top: 1vh;
 }

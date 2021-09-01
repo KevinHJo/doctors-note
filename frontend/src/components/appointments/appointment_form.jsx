@@ -7,22 +7,27 @@ class AppointmentForm extends React.Component {
     this.state = {
       doctorId: this.props.doctor._id,
       patientId: null,
-      date: this.props.date,
+      date: moment(this.props.date),
       purpose: ''
     }
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
-    this.props.createAppointment(this.state)
+    this.props.createAppointment({
+      doctorId: this.state.doctorId,
+      patientId: this.state.patientId,
+      date: this.state.date.toDate(),
+      purpose: this.state.purpose
+    });
   }
 
   updateTime(e) {
     e.preventDefault();
-    let date = moment(this.state.date)
+    let date = this.state.date;
     const time = e.target.value.split(':')
     date.set({h: time[0], m: time[1], s: 0});
-    date = date.toDate()
     this.setState({date})
   }
 
@@ -37,15 +42,20 @@ class AppointmentForm extends React.Component {
   }
 
   render() {
-    console.dir(this.state);
     return (
-      <div id='appointment-form-container'>
-        <form id='appointment-form' onSubmit={this.handleSubmit.bind(this)}>
+      <div id='appointment-form-container' onClick={this.props.toggleAppointmentForm}>
+        <form id='appointment-form' onSubmit={this.handleSubmit.bind(this)} onClick={e => e.stopPropagation()}>
+          <div className='appointment-header'>
+            <h2>Create an Appointment</h2>
+            <p>with <strong>Dr. {this.props.doctor.lname}</strong> on <strong>{this.state.date.format("MM/DD/YYYY")}</strong></p>
+          </div>
+
           <div className='appointment-form-name'>
             <label htmlFor="name">Patient Name:</label>
-            <select id="name" onChange={this.updateName.bind(this)}>
-              {Object.values(this.props.doctor.patients).map(patient => {
-                return <option value={patient._id}>{patient.lname + ', ' + patient.fname}</option>
+            <select id="name" onChange={this.updateName.bind(this)} defaultValue={'Select a Patient'} required>
+              <option key={'selectapatient'} disabled>Select a Patient</option>
+              {Object.values(this.props.doctor.patients).map((patient, i) => {
+                return <option key={i} value={patient._id}>{patient.lname + ', ' + patient.fname}</option>
               })}
             </select>
           </div>
@@ -59,8 +69,11 @@ class AppointmentForm extends React.Component {
             <label htmlFor="purpose">Purpose for Visit:</label>
             <textarea id='purpose' onChange={this.updatePurpose.bind(this)}/>
           </div>
-
-          <input id='appointment-form-submit' type="submit" value='Create Appointment'/>
+            
+          <div id='appointment-form-controls'>
+            <input id='appointment-form-submit' type="submit" value='Create Appointment'/>
+            <button id='appointment-form-cancel' onClick={this.props.toggleAppointmentForm}>Cancel</button>
+          </div>
         </form>
       </div>
       
