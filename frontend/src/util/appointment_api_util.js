@@ -15,3 +15,7 @@ export const fetchDoctorAppointments = doctorId => {
 export const deleteAppointment = appointmentId => {
   return axios.delete(`/api/appointments/${appointmentId}`)
 }
+
+export const fetchPatientAppointments = patientId => {
+  return axios.get(`/api/appointments/patient/${patientId}`);
+}

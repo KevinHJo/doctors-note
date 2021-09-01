@@ -3,12 +3,13 @@ import NavBarContainer from '../navbar/top_nav_bar_container';
 import LeftNavigation from './left_navigation';
 import MedicalHistory from './medical_history';
 import Visits from './visits';
-import Appointments from './appointments';
+import PatientAppointmentsIndex from '../appointments/patient_appointments_index';
 import UserInformation from './user_information';
 
 export default class IndexPage extends React.Component {
   componentDidMount() {
-    this.props.fetchDoctor(this.props.user.doctorId)
+    this.props.fetchDoctor(this.props.user.doctorId);
+    this.props.fetchPatientAppointments(this.props.user.id);
   }
   
   render() {
@@ -26,7 +27,7 @@ export default class IndexPage extends React.Component {
         case "2":
           section = (
             <div id="patient-section-appointments" className="patient-homepage-sections">
-              <Appointments user={this.props.user} />
+              <PatientAppointmentsIndex user={this.props.user} fetchPatientAppointments={this.props.fetchPatientAppointments} appointments={this.props.appointments}/>
             </div>
           )
           break;

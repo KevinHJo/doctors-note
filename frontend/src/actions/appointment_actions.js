@@ -35,3 +35,8 @@ export const deleteAppointment = appointmentId => dispatch => (
   AppointmentAPIUtil.deleteAppointment(appointmentId)
     .then(() => dispatch(removeAppointment(appointmentId)))
 );
+
+export const fetchPatientAppointments = patientId => dispatch => (
+  AppointmentAPIUtil.fetchPatientAppointments(patientId)
+    .then(appointments => dispatch(receiveAppointments(appointments.data)))
+)

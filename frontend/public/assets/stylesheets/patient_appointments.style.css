@@ -1,0 +1,53 @@
+#patient-section-appointments {
+  list-style: none;
+  width: 100%;
+  height: 100vh;
+}
+
+#patient-appointments-index p:hover {
+  cursor: default;
+}
+
+#patient-appointments-index {
+  width: 800px;
+  margin-left: 40%;
+  border: 1px solid black;
+  padding: 2vh 3vw;
+  box-shadow: 2px 2px 5px;
+  background-color: rgb(134, 158, 190);
+}
+
+#patient-appointments-header {
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+}
+
+#patient-appointments-list {
+  width: 500px;
+  margin: auto;
+  margin-top: 2vh;
+  padding: 2vh 3vw;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.patient-appointment {
+  display: flex;
+  justify-content: space-between;
+}
+
+.patient-appointment:not(:last-child) {
+  padding-bottom: 0.5vh;
+}
+
+.patient-appointment-section1 {
+  display: flex;
+}
+
+.patient-appointment-section1 > p:first-child {
+  padding-right: 1vw;
+
+}
