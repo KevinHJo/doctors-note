@@ -45,7 +45,7 @@ class Calendar extends React.Component {
             this.setYear(year);
           }}
         >
-          <span onClick={this.toggleYearTable.bind(this)}>{year}</span>
+          <span>{year}</span>
         </td>
       )
     });
@@ -76,7 +76,7 @@ class Calendar extends React.Component {
           className='calendar-month'
           onClick={e => this.setMonth(month)}
         >
-          <span onClick={this.toggleMonthTable.bind(this)}>{month}</span>
+          <span>{month}</span>
         </td>
       )
     });
@@ -177,7 +177,10 @@ class Calendar extends React.Component {
     let dateObject = Object.assign({}, this.state.dateObject);
     dateObject = moment(dateObject).set('year', year);
     this.setState({
-      dateObject: dateObject
+      dateObject: dateObject,
+      showYearTable: false,
+      showCalendar: true,
+      showMonthTable: false
     });
   };
 
@@ -186,21 +189,24 @@ class Calendar extends React.Component {
     let dateObject = Object.assign({}, this.state.dateObject);
     dateObject = moment(dateObject).set('month', monthIdx);
     this.setState({
-      dateObject: dateObject
+      dateObject: dateObject,
+      showYearTable: false,
+      showCalendar: true,
+      showMonthTable: false
     });
   };
 
   toggleMonthTable() {
     this.setState({
       showMonthTable: !this.state.showMonthTable,
-      showCalendar: !this.state.showCalendar
+      showYearTable: false
     });
   };
 
   toggleYearTable() {
     this.setState({
       showYearTable: !this.state.showYearTable,
-      showCalendar: !this.state.showCalendar
+      showMonthTable: false
     });
   };
 
@@ -235,18 +241,7 @@ class Calendar extends React.Component {
   }
 
   pickRender() {
-    if(this.state.showCalendar) {
-      return (
-        <table className='calendar-days'>
-          <thead>
-            <tr key={-1}>{this.createWeekdayList()}</tr>
-          </thead>
-          <tbody>
-            {this.createDaysInMonth()}
-          </tbody>
-        </table>
-      )
-    } else if (this.state.showMonthTable) {
+    if (this.state.showMonthTable) {
       return (
         <table className='calendar-months'>
           <thead>
@@ -268,6 +263,17 @@ class Calendar extends React.Component {
           <tbody>{this.createYearList()}</tbody>
         </table>
       )
+    } else if(this.state.showCalendar) {
+      return (
+        <table className='calendar-days'>
+          <thead>
+            <tr key={-1}>{this.createWeekdayList()}</tr>
+          </thead>
+          <tbody>
+            {this.createDaysInMonth()}
+          </tbody>
+        </table>
+      )
     }
   }
 
@@ -276,7 +282,7 @@ class Calendar extends React.Component {
       <div className='appointment-calendar'>
         <div className='calendar-nav' >
           <div id='calendar-nav-left' onClick={this.onPrev.bind(this)}>
-            <i class="fas fa-caret-left"></i>
+            <i className="fas fa-caret-left"></i>
           </div>
           <div className='calendar-month' onClick={this.toggleMonthTable.bind(this)}>
             {this.state.dateObject.format('MMMM')}
@@ -285,7 +291,7 @@ class Calendar extends React.Component {
             {this.displayCurrentYear()}
           </div>
           <div id='calendar-nav-right' onClick={this.onNext.bind(this)}>
-            <i class="fas fa-caret-right"></i>
+            <i className="fas fa-caret-right"></i>
           </div>
         </div>
 
