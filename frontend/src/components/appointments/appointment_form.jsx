@@ -13,7 +13,6 @@ class AppointmentForm extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     this.props.createAppointment({
       doctorId: this.state.doctorId,
