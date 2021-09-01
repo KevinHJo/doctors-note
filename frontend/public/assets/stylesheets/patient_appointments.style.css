@@ -9,8 +9,8 @@
 }
 
 #patient-appointments-index {
-  width: 800px;
-  margin-left: 40%;
+  width: 1000px;
+  margin-left: 35%;
   border: 1px solid black;
   padding: 2vh 3vw;
   box-shadow: 2px 2px 5px;
@@ -24,7 +24,7 @@
 }
 
 #patient-appointments-list {
-  width: 500px;
+  width: 800px;
   margin: auto;
   margin-top: 2vh;
   padding: 2vh 3vw;
@@ -37,17 +37,40 @@
 .patient-appointment {
   display: flex;
   justify-content: space-between;
+  padding: 10px 10px;
+}
+
+.patient-appointment:hover {
+  background-color: rgb(226, 226, 226);
 }
 
 .patient-appointment:not(:last-child) {
-  padding-bottom: 0.5vh;
+  margin-bottom: 1vh;
 }
 
-.patient-appointment-section1 {
+.patient-appointment-section1, .patient-appointment-section2 {
   display: flex;
+  align-items: center;
 }
 
 .patient-appointment-section1 > p:first-child {
   padding-right: 1vw;
+}
 
+#patient-appointment-cancel {
+  border: none;
+  padding: 10px 15px;
+  background-color: rgb(224, 111, 111);
+  color: white;
+  box-shadow: 0px 0px 5px black;
+}
+
+#patient-appointment-cancel:hover {
+  cursor: pointer;
+  background-color: rgb(170, 66, 66);
+}
+
+#patient-appointment-cancel:active {
+  cursor: pointer;
+  background-color: rgb(138, 52, 52);
 }

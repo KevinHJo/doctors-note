@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { login, logout } from '../../actions/session_actions';
 import { toggleModal } from '../../actions/patient_modal_actions';
 import { fetchDoctor } from '../../actions/user_actions';
-import { fetchPatientAppointments } from '../../actions/appointment_actions';
+import { fetchPatientAppointments, deleteAppointment } from '../../actions/appointment_actions';
 import IndexPage from './index_page';
 
 const mSTP = (state, ownParams) => {
@@ -21,7 +21,8 @@ const mDTP = (dispatch) => ({
   logout: () => dispatch(logout()),
   toggleModal: (modalId) => dispatch(toggleModal(modalId)),
   fetchDoctor: (doctorId) => dispatch(fetchDoctor(doctorId)),
-  fetchPatientAppointments: patientId => dispatch(fetchPatientAppointments(patientId))
+  fetchPatientAppointments: patientId => dispatch(fetchPatientAppointments(patientId)),
+  deleteAppointment: appointmentId => dispatch(deleteAppointment(appointmentId))
 });
 
 export default connect(mSTP, mDTP)(IndexPage);

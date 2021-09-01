@@ -27,7 +27,7 @@ export default class IndexPage extends React.Component {
         case "2":
           section = (
             <div id="patient-section-appointments" className="patient-homepage-sections">
-              <PatientAppointmentsIndex user={this.props.user} fetchPatientAppointments={this.props.fetchPatientAppointments} appointments={this.props.appointments}/>
+              <PatientAppointmentsIndex user={this.props.user} fetchPatientAppointments={this.props.fetchPatientAppointments} deleteAppointment={this.props.deleteAppointment} appointments={this.props.appointments}/>
             </div>
           )
           break;
