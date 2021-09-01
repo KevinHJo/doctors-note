@@ -2,6 +2,11 @@ import React from 'react';
 import moment from 'moment';
 
 class PatientAppointmentsIndex extends React.Component {
+  handleDelete(e, appointmentId) {
+    e.preventDefault();
+    this.props.deleteAppointment(appointmentId)
+  }
+  
   render() {
     const {appointments, user} = this.props
     appointments.sort((a, b) => (new Date(a.date).getTime() / 1000) - (new Date(b.date).getTime() / 1000))
@@ -29,6 +34,10 @@ class PatientAppointmentsIndex extends React.Component {
 
                     <div className='patient-appointment-section2'>
                       <p>{appointment.purpose}</p>
+                    </div>
+
+                    <div className='patient-appointment-section3'>
+                      <button id='patient-appointment-cancel' onClick={e => this.handleDelete(e, appointment._id)}>Cancel Appointment</button>
                     </div>
                   </li>
                 )
