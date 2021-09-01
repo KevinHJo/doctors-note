@@ -1,18 +1,28 @@
 import React from 'react'
 import moment from 'moment'
+import AppointmentForm from './appointment_form'
+import AppointmentShow from './appointment_show'
 
 class Calendar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       dateObject: moment(),
+      currentDate: moment(),
       months: moment.months(),
       showCalendar: true,
       showMonthTable: false,
       showYearTable: false,
+      showAppointment: false,
+      showAppointmentForm: false,
+      selectedDate: moment(),
+      selectedAppointment: null
     }
 
     this.createYearList = this.createYearList.bind(this);
+    this.renderAppointment = this.renderAppointment.bind(this);
+    this.selectDay = this.selectDay.bind(this);
+    this.toggleAppointmentShow = this.toggleAppointmentShow.bind(this);
   };
 
   firstDayOfMonth() {
@@ -22,7 +32,7 @@ class Calendar extends React.Component {
   };
 
   currentDay() {
-    return this.state.dateObject.format('D');
+    return parseInt(this.state.currentDate.format('D'));
   }
 
   displayCurrentYear() {
@@ -45,7 +55,7 @@ class Calendar extends React.Component {
             this.setYear(year);
           }}
         >
-          <span onClick={this.toggleYearTable.bind(this)}>{year}</span>
+          <span>{year}</span>
         </td>
       )
     });
@@ -53,7 +63,7 @@ class Calendar extends React.Component {
     let rows = [];
     let cells = [];
     years.forEach((year, i) => {
-      if (i % 7 !== 0 || i == 0) {
+      if (i % 7 !== 0 || i === 0) {
         cells.push(year);
       } else {
         rows.push(cells);
@@ -76,7 +86,7 @@ class Calendar extends React.Component {
           className='calendar-month'
           onClick={e => this.setMonth(month)}
         >
-          <span onClick={this.toggleMonthTable.bind(this)}>{month}</span>
+          <span>{month}</span>
         </td>
       )
     });
@@ -84,7 +94,7 @@ class Calendar extends React.Component {
     let rows = [];
     let cells = [];
     months.forEach((month, i) => {
-      if (i % 3 !== 0 || i == 0) {
+      if (i % 3 !== 0 || i === 0) {
         cells.push(month);
       } else {
         rows.push(cells);
@@ -109,6 +119,20 @@ class Calendar extends React.Component {
     });
   }
 
+  selectDay(e, i) {
+    const selectedDate = this.state.dateObject;
+    selectedDate.set('date', i)
+    this.setState({selectedDate, showAppointmentForm: !this.state.showAppointmentForm})
+  }
+
+  toggleAppointmentShow(e, appointment) {
+    this.setState({
+      showAppointment: !this.state.showAppointment, 
+      showAppointmentForm: false, 
+      selectedAppointment: appointment
+    })
+  }
+
   createDaysInMonth() {
     //Fills the first week with blank slots until the first day of the month
     let blanks = [];
@@ -127,9 +151,9 @@ class Calendar extends React.Component {
       if (date.getMonth() === monthIdx && date.getFullYear() === selectedYear) {
         const patient = this.props.doctor.patients[appointment.patientId]
         if (appointments[date.getDate()]) {
-          appointments[date.getDate()].push(<li key={appointment._id} className='calendar-appointment'>{patient.lname + ', ' + patient.fname}</li>)
+          appointments[date.getDate()].push(<li key={appointment._id} className='calendar-appointment' onClick={e => this.toggleAppointmentShow(e, appointment)}>{patient.lname + ', ' + patient.fname}</li>)
         } else {
-          appointments[date.getDate()] = [<li key={appointment._id} className='calendar-appointment'>{patient.lname + ', ' + patient.fname}</li>]
+          appointments[date.getDate()] = [<li key={appointment._id} className='calendar-appointment' onClick={e => this.toggleAppointmentShow(e, appointment)}>{patient.lname + ', ' + patient.fname}</li>]
         }
       }
     });
@@ -137,11 +161,11 @@ class Calendar extends React.Component {
     //Fills the calendar with real slots until the end of the month
     let daysInMonth = [];
     for (let i=1; i <= this.state.dateObject.daysInMonth(); i++) {
-      let today = i === this.currentDay() ? 'today' : '';
+      let today = ((i === this.currentDay()) && (this.state.currentDate.month() === monthIdx)) ? 'today' : '';
       daysInMonth.push(
-        <td key={i} className={`calendar-day ${today}`}>
+        <td key={i} className={`calendar-day ${today}`} onClick={e => this.selectDay(e, i)}>
           <h4>{i}</h4>
-          {appointments[i-1]}
+          {appointments[i]}
         </td>
       );
     };
@@ -177,7 +201,10 @@ class Calendar extends React.Component {
     let dateObject = Object.assign({}, this.state.dateObject);
     dateObject = moment(dateObject).set('year', year);
     this.setState({
-      dateObject: dateObject
+      dateObject: dateObject,
+      showYearTable: false,
+      showCalendar: true,
+      showMonthTable: false
     });
   };
 
@@ -186,21 +213,24 @@ class Calendar extends React.Component {
     let dateObject = Object.assign({}, this.state.dateObject);
     dateObject = moment(dateObject).set('month', monthIdx);
     this.setState({
-      dateObject: dateObject
+      dateObject: dateObject,
+      showYearTable: false,
+      showCalendar: true,
+      showMonthTable: false
     });
   };
 
   toggleMonthTable() {
     this.setState({
       showMonthTable: !this.state.showMonthTable,
-      showCalendar: !this.state.showCalendar
+      showYearTable: false
     });
   };
 
   toggleYearTable() {
     this.setState({
       showYearTable: !this.state.showYearTable,
-      showCalendar: !this.state.showCalendar
+      showMonthTable: false
     });
   };
 
@@ -235,18 +265,7 @@ class Calendar extends React.Component {
   }
 
   pickRender() {
-    if(this.state.showCalendar) {
-      return (
-        <table className='calendar-days'>
-          <thead>
-            <tr key={-1}>{this.createWeekdayList()}</tr>
-          </thead>
-          <tbody>
-            {this.createDaysInMonth()}
-          </tbody>
-        </table>
-      )
-    } else if (this.state.showMonthTable) {
+    if (this.state.showMonthTable) {
       return (
         <table className='calendar-months'>
           <thead>
@@ -268,29 +287,60 @@ class Calendar extends React.Component {
           <tbody>{this.createYearList()}</tbody>
         </table>
       )
+    } else if(this.state.showCalendar) {
+      return (
+        <table className='calendar-days'>
+          <thead>
+            <tr key={-1}>{this.createWeekdayList()}</tr>
+          </thead>
+          <tbody>
+            {this.createDaysInMonth()}
+          </tbody>
+        </table>
+      )
+    }
+  }
+
+  toggleAppointmentForm() {
+    this.setState({showAppointmentForm: !this.state.showAppointmentForm})
+  }
+
+  renderAppointment() {
+    if (this.state.showAppointment) {
+      return <AppointmentShow doctor={this.props.doctor} date={this.state.selectedDate} appointment={this.state.selectedAppointment} toggleAppointmentShow={this.toggleAppointmentShow}/>
+    }
+    else if (this.state.showAppointmentForm) {
+      return <AppointmentForm doctor={this.props.doctor} date={this.state.selectedDate} createAppointment={this.props.createAppointment} toggleAppointmentForm={this.toggleAppointmentForm.bind(this)}/>
     }
   }
 
   render() {
     return (
-      <div className='appointment-calendar'>
-        <div className='calendar-nav' >
-          <div id='calendar-nav-left' onClick={this.onPrev.bind(this)}>
-            <i class="fas fa-caret-left"></i>
+      <div>
+        {this.renderAppointment()}
+        <div className='appointment-calendar'>
+          <div id='calendar-header'>
+            <div className='calendar-nav' >
+              <div id='calendar-nav-left' onClick={this.onPrev.bind(this)}>
+                <i className="fas fa-caret-left"></i>
+              </div>
+              <div className='calendar-month' onClick={this.toggleMonthTable.bind(this)}>
+                {this.state.dateObject.format('MMMM')}
+              </div>
+              <div className='calendar-year' onClick={this.toggleYearTable.bind(this)}>
+                {this.displayCurrentYear()}
+              </div>
+              <div id='calendar-nav-right' onClick={this.onNext.bind(this)}>
+                <i className="fas fa-caret-right"></i>
+              </div>
+            </div>
           </div>
-          <div className='calendar-month' onClick={this.toggleMonthTable.bind(this)}>
-            {this.state.dateObject.format('MMMM')}
-          </div>
-          <div className='calendar-year' onClick={this.toggleYearTable.bind(this)}>
-            {this.displayCurrentYear()}
-          </div>
-          <div id='calendar-nav-right' onClick={this.onNext.bind(this)}>
-            <i class="fas fa-caret-right"></i>
-          </div>
-        </div>
+          
 
-        {this.pickRender()}        
+          {this.pickRender()}        
+        </div>
       </div>
+        
     )
   };
 };

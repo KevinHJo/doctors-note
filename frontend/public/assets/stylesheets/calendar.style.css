@@ -1,4 +1,5 @@
-.doctor-homepage-calendar {
+.appointment-calendar {
+  height: 100;
   width: 70vw;
   margin-left: 22vw;
   background-color: white;
@@ -15,13 +16,20 @@
   text-align: center;
 }
 
+#calendar-header {
+  background-color: rgb(81,75,123);
+  height: 7vh;
+  display: flex;
+  justify-content: center;
+}
+
 .calendar-nav {
   display: flex;
   font-size: 3vh;
-  justify-content: center;
-  background-color: rgb(199, 85, 85);
+  width: 60%;
+  justify-content:space-between;
   color: white;
-  height: 7vh;
+  height: 100%;
   line-height: 4.3vh;
 }
 
@@ -44,12 +52,12 @@
 
 #calendar-nav-left:hover, .calendar-month:hover, .calendar-year:hover, #calendar-nav-right:hover {
   cursor: pointer;
-  background-color: rgb(158, 58, 58);
+  background-color: rgb(66, 60, 100);
 }
 
 #calendar-nav-left:active, .calendar-month:active, .calendar-year:active, #calendar-nav-right:active {
   cursor: pointer;
-  background-color: rgb(121, 37, 37);
+  background-color: rgb(40, 37, 59);
 }
 
 .calendar-days {
@@ -57,6 +65,7 @@
   overflow: auto;
   text-align: center;
   border-collapse: collapse;
+  background-color: rgb(214, 214, 255);
 }
 
 thead {
@@ -64,9 +73,23 @@ thead {
   border-bottom: 0.2vh solid black;
 }
 
+.today h4 {
+  width: 2vh;
+  height: 2vh;
+  line-height: 2vh;
+  padding-top: 0px !important;
+  margin: auto;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  background-color: rgb(199,85,85);
+  border-radius: 2vw;
+  color: white;
+}
+
 .calendar-day {
   height: 13vh;
   width: 15vw;
+  background-color: white;
 }
 
 .calendar-day:not(:last-child) {
@@ -87,6 +110,10 @@ thead {
 
 .calendar-day:hover {
   cursor: pointer;
+}
+
+.empty:hover {
+  cursor: default;
 }
 
 .calendar-day h4 {

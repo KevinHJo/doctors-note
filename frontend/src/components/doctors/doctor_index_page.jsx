@@ -9,14 +9,14 @@ export default class DoctorIndexPage extends React.Component {
   toggleAddChart() {
     document.getElementById("new-chart-page").classList.add("visible")
   }
-  
+
   componentDidMount() {
     this.props.fetchDoctor(this.props.user.id);
     this.props.fetchDoctorAppointments(this.props.user.id);
     
     // this.props.fetchDoctorPatients(this.props.user.id)
   }
-  
+
   render() {
     let section;
     if (Object.values(this.props.modal)[0]) {

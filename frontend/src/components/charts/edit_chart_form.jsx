@@ -91,16 +91,21 @@ export default class ChartForm extends React.Component {
       })
   }
 
+  handleDelete = (e, idx) => {
+    this.setState({diagnoses: this.state.diagnoses.filter((diag, i) => idx !== i)})
+    // this.setState({diagnoses: this.state.diagnoses.splice(idx, 1)})
+  }
+
   renderSelections() {
-    if (this.state.diagnoses[0]) {
-      return (
-        <div>
-          {this.state.diagnoses.map(selection => {
-            return <li key={this.state.diagnoses.indexOf(selection)}>{selection}</li>
-          })}
-        </div>
-      )
-    }
+    return (
+      <div>
+        {this.state.diagnoses.map((selection, idx) => (
+          <li key={idx}>{selection + '  '}
+            <button onClick={e => this.handleDelete(e, idx)}>delete</button>
+          </li>
+        ))}
+      </div>
+    )
   }
 
   removeVisible() {
@@ -167,14 +172,14 @@ export default class ChartForm extends React.Component {
               <input type="text" required onChange={this.handleStringChange('address')} value={this.state.address}/>
             </label>
 
-            <label className='new-chart-form-label'>Diagnoses: 
+            <div className='new-chart-form-label'>Diagnoses: 
               <div className='new-chart-diagnoses'>
                 <div className='new-chart-diaglist'>{this.renderSelections()}</div>
                 Type to search: <input type="text" className="ctw-input" autoComplete="off" data-ctw-ino="1" onClick={this.addVisible} onChange={this.handleStringChange('search')}/>
 
                 <div className="ctw-window" data-ctw-ino="1" id='ctw-window'></div>
               </div>
-            </label>
+            </div>
             <label className='new-chart-form-label'>Medications: 
               <textarea onChange={this.handleArrayChange('medications')} value={this.state.medications}></textarea>
             </label>
