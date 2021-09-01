@@ -6,7 +6,8 @@ router.post('/new', (req, res) => {
 	const newAppointment = new Appointment({
 		doctorId: req.body.doctorId,
 		patientId: req.body.patientId,
-		date: new Date(req.body.date)
+		date: new Date(req.body.date),
+		purpose: req.body.purpose
 	})
 
   newAppointment.save()
@@ -30,7 +31,8 @@ router.patch('/:appointmentId', (req, res) => {
 	const data = {
 		doctorId: req.body.doctorId,
 		patientId: req.body.patientId,
-		date: new Date(req.body.date)
+		date: new Date(req.body.date),
+		purpose: req.body.purpose
 	}
 
 	Appointment.findByIdAndUpdate(req.params.appointmentId, data)

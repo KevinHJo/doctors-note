@@ -1,0 +1,26 @@
+#appointment-form-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  z-index: 1;
+  background-color: rgba(129, 129, 129, 0.575)
+}
+
+#appointment-form {
+  height: 50vh;
+  width: 50vw;
+  margin: auto;
+  background-color: white;
+  border: 0.5vw solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#appointment-form div {
+  margin: auto;
+  padding: 2vh 0vh;
+}
