@@ -9,7 +9,8 @@ const AppointmentsReducer = (state = {}, action) => {
       nextState[action.appointment._id] = action.appointment;
       return nextState;
     case RECEIVE_APPOINTMENTS:
-      return action.appointments;
+      action.appointments.forEach(appointment => nextState[appointment._id] = appointment)
+      return nextState;
     case REMOVE_APPOINTMENT:
       delete nextState[action.appointmentId];
       return nextState;

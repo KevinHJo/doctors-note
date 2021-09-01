@@ -3,7 +3,7 @@ import Calendar from './calendar'
 import {fetchDoctorAppointments} from '../../actions/appointment_actions'
 
 const mSTP = state => ({
-  appointments: state.entities.appointments
+  appointments: Object.values(state.entities.appointments)
 })
 
 const mDTP = dispatch => ({
