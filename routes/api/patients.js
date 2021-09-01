@@ -26,7 +26,7 @@ router.patch('/update/:patientId', (req, res) => {
 	const fname = req.body.fname;
 	const lname = req.body.lname;
 	const username = req.body.username;
-	const password = req.body.password;
+	// const password = req.body.password;
 	const role = req.body.role;
 	const address = req.body.address;
 	const dateOfBirth = req.body.dateOfBirth;
@@ -42,7 +42,7 @@ router.patch('/update/:patientId', (req, res) => {
     fname,
 		lname,
 		username,
-		password,
+		// password,
 		role,
 		address,
 		dateOfBirth,

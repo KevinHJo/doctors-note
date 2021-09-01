@@ -19,7 +19,7 @@ export default class IndexPage extends React.Component {
         case "1":
           section = (
             <div id="patient-section-user-info" className="patient-homepage-sections">
-              <UserInformation user={this.props.user} doctor={this.props.doctor} />
+              <UserInformation user={this.props.user} doctor={this.props.doctor} updatePatient={this.props.updatePatient} receiveCurrentUser={this.props.receiveCurrentUser} />
             </div>
           )
           break;
