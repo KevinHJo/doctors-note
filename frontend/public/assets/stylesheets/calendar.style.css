@@ -17,7 +17,7 @@
 }
 
 #calendar-header {
-  background-color: rgb(199, 85, 85);
+  background-color: rgb(81,75,123);
   height: 7vh;
   display: flex;
   justify-content: center;
@@ -52,12 +52,12 @@
 
 #calendar-nav-left:hover, .calendar-month:hover, .calendar-year:hover, #calendar-nav-right:hover {
   cursor: pointer;
-  background-color: rgb(158, 58, 58);
+  background-color: rgb(66, 60, 100);
 }
 
 #calendar-nav-left:active, .calendar-month:active, .calendar-year:active, #calendar-nav-right:active {
   cursor: pointer;
-  background-color: rgb(121, 37, 37);
+  background-color: rgb(40, 37, 59);
 }
 
 .calendar-days {
