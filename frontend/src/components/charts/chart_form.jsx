@@ -100,6 +100,7 @@ export default class ChartForm extends React.Component {
   }
 
   handleDelete = (e, idx) => {
+    e.preventDefault()
     this.setState({diagnoses: this.state.diagnoses.filter((diag, i) => idx !== i)})
     // this.setState({diagnoses: this.state.diagnoses.splice(idx, 1)})
   }
