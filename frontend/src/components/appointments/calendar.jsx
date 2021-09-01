@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import AppointmentForm from './appointment_form'
+import AppointmentShow from './appointment_show'
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -11,12 +12,16 @@ class Calendar extends React.Component {
       showCalendar: true,
       showMonthTable: false,
       showYearTable: false,
+      showAppointment: false,
       showAppointmentForm: false,
-      selectedDate: moment()
+      selectedDate: moment(),
+      selectedAppointment: null
     }
 
     this.createYearList = this.createYearList.bind(this);
-    this.renderAppointmentForm = this.renderAppointmentForm.bind(this);
+    this.renderAppointment = this.renderAppointment.bind(this);
+    this.selectDay = this.selectDay.bind(this);
+    this.toggleAppointmentShow = this.toggleAppointmentShow.bind(this);
   };
 
   firstDayOfMonth() {
@@ -57,7 +62,7 @@ class Calendar extends React.Component {
     let rows = [];
     let cells = [];
     years.forEach((year, i) => {
-      if (i % 7 !== 0 || i == 0) {
+      if (i % 7 !== 0 || i === 0) {
         cells.push(year);
       } else {
         rows.push(cells);
@@ -88,7 +93,7 @@ class Calendar extends React.Component {
     let rows = [];
     let cells = [];
     months.forEach((month, i) => {
-      if (i % 3 !== 0 || i == 0) {
+      if (i % 3 !== 0 || i === 0) {
         cells.push(month);
       } else {
         rows.push(cells);
@@ -113,6 +118,20 @@ class Calendar extends React.Component {
     });
   }
 
+  selectDay(e, i) {
+    const selectedDate = this.state.dateObject;
+    selectedDate.set('date', i)
+    this.setState({selectedDate, showAppointmentForm: !this.state.showAppointmentForm})
+  }
+
+  toggleAppointmentShow(e, appointment) {
+    this.setState({
+      showAppointment: !this.state.showAppointment, 
+      showAppointmentForm: false, 
+      selectedAppointment: appointment
+    })
+  }
+
   createDaysInMonth() {
     //Fills the first week with blank slots until the first day of the month
     let blanks = [];
@@ -131,9 +150,9 @@ class Calendar extends React.Component {
       if (date.getMonth() === monthIdx && date.getFullYear() === selectedYear) {
         const patient = this.props.doctor.patients[appointment.patientId]
         if (appointments[date.getDate()]) {
-          appointments[date.getDate()].push(<li key={appointment._id} className='calendar-appointment'>{patient.lname + ', ' + patient.fname}</li>)
+          appointments[date.getDate()].push(<li key={appointment._id} className='calendar-appointment' onClick={e => this.toggleAppointmentShow(e, appointment)}>{patient.lname + ', ' + patient.fname}</li>)
         } else {
-          appointments[date.getDate()] = [<li key={appointment._id} className='calendar-appointment'>{patient.lname + ', ' + patient.fname}</li>]
+          appointments[date.getDate()] = [<li key={appointment._id} className='calendar-appointment' onClick={e => this.toggleAppointmentShow(e, appointment)}>{patient.lname + ', ' + patient.fname}</li>]
         }
       }
     });
@@ -143,7 +162,7 @@ class Calendar extends React.Component {
     for (let i=1; i <= this.state.dateObject.daysInMonth(); i++) {
       let today = i === this.currentDay() ? 'today' : '';
       daysInMonth.push(
-        <td key={i} className={`calendar-day ${today}`}>
+        <td key={i} className={`calendar-day ${today}`} onClick={e => this.selectDay(e, i)}>
           <h4>{i}</h4>
           {appointments[i]}
         </td>
@@ -281,16 +300,23 @@ class Calendar extends React.Component {
     }
   }
 
-  renderAppointmentForm() {
-    if (this.state.showAppointmentForm) {
-      return <AppointmentForm doctor={this.props.doctor} date={this.state.selectedDate} createAppointment={this.props.createAppointment}/>
+  toggleAppointmentForm() {
+    this.setState({showAppointmentForm: !this.state.showAppointmentForm})
+  }
+
+  renderAppointment() {
+    if (this.state.showAppointment) {
+      return <AppointmentShow doctor={this.props.doctor} date={this.state.selectedDate} appointment={this.state.selectedAppointment} toggleAppointmentShow={this.toggleAppointmentShow}/>
+    }
+    else if (this.state.showAppointmentForm) {
+      return <AppointmentForm doctor={this.props.doctor} date={this.state.selectedDate} createAppointment={this.props.createAppointment} toggleAppointmentForm={this.toggleAppointmentForm.bind(this)}/>
     }
   }
 
   render() {
     return (
       <div>
-        {this.renderAppointmentForm()}
+        {this.renderAppointment()}
         <div className='appointment-calendar'>
           <div className='calendar-nav' >
             <div id='calendar-nav-left' onClick={this.onPrev.bind(this)}>

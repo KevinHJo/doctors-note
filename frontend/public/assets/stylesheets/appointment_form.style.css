@@ -1,15 +1,14 @@
-#appointment-form-container {
+#appointment-form-container, #appointment-show-container {
   height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
   display: flex;
-  z-index: 1;
   background-color: rgba(129, 129, 129, 0.575)
 }
 
-#appointment-form {
+#appointment-form, #appointment-show {
   height: 50vh;
   width: 50vw;
   margin: auto;
@@ -18,9 +17,91 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 1;
+}
+
+#appointment-show {
+  height: 30vh;
 }
 
 #appointment-form div {
   margin: auto;
-  padding: 2vh 0vh;
+  padding: 1vh 0vh;
+}
+
+.appointment-header {
+  text-align: center;
+}
+
+#appointment-form label {
+  margin-right: 1vw;
+}
+
+.appointment-form-purpose {
+  display: flex;
+  align-items: baseline;
+}
+
+#appointment-form-controls {
+  display: flex;
+}
+
+#appointment-form-submit {
+  border: none;
+  background-color: rgb(84,101,130);
+  padding: 1vh 2vw;
+  color: white;
+  margin-right: 4vw;
+}
+
+#appointment-form-submit:hover {
+  cursor: pointer;
+  background-color: rgb(55, 74, 107);
+}
+
+#appointment-form-submit:active {
+  cursor: pointer;
+  background-color: rgb(34, 46, 66);
+}
+
+#appointment-form-cancel {
+  border: none;
+  background-color: rgb(199,85,85);
+  color: white;
+  padding: 1vh 2vw;
+}
+
+#appointment-form-cancel:hover {
+  cursor: pointer;
+  background-color: rgb(146, 55, 55);
+}
+
+#appointment-form-cancel:active {
+  cursor: pointer;
+  background-color: rgb(95, 38, 38);
+}
+
+#appointment-info-container {
+  margin-top: 2vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+#appointment-info-row1 {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 1vh;
+}
+
+.appointment-show-info {
+  display: flex;
+  align-items: center;
+}
+
+.appointment-show-info p {
+  margin-left: 1vw;
+  color: red;
 }
