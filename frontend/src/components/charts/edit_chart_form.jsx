@@ -100,8 +100,8 @@ export default class ChartForm extends React.Component {
     return (
       <div>
         {this.state.diagnoses.map((selection, idx) => (
-          <li key={idx}>{selection}
-            <p onClick={e => this.handleDelete(e, idx)}>delete</p>
+          <li key={idx}>{selection + '  '}
+            <button onClick={e => this.handleDelete(e, idx)}>delete</button>
           </li>
         ))}
       </div>
