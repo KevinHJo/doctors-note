@@ -8,6 +8,7 @@ class Calendar extends React.Component {
     super(props)
     this.state = {
       dateObject: moment(),
+      currentDate: moment(),
       months: moment.months(),
       showCalendar: true,
       showMonthTable: false,
@@ -31,7 +32,7 @@ class Calendar extends React.Component {
   };
 
   currentDay() {
-    return this.state.dateObject.format('D');
+    return parseInt(this.state.dateObject.format('D'));
   }
 
   displayCurrentYear() {
@@ -160,7 +161,7 @@ class Calendar extends React.Component {
     //Fills the calendar with real slots until the end of the month
     let daysInMonth = [];
     for (let i=1; i <= this.state.dateObject.daysInMonth(); i++) {
-      let today = i === this.currentDay() ? 'today' : '';
+      let today = (i === this.currentDay()) && (this.state.currentDate.month() === monthIdx) ? 'today' : '';
       daysInMonth.push(
         <td key={i} className={`calendar-day ${today}`} onClick={e => this.selectDay(e, i)}>
           <h4>{i}</h4>
@@ -318,20 +319,23 @@ class Calendar extends React.Component {
       <div>
         {this.renderAppointment()}
         <div className='appointment-calendar'>
-          <div className='calendar-nav' >
-            <div id='calendar-nav-left' onClick={this.onPrev.bind(this)}>
-              <i className="fas fa-caret-left"></i>
-            </div>
-            <div className='calendar-month' onClick={this.toggleMonthTable.bind(this)}>
-              {this.state.dateObject.format('MMMM')}
-            </div>
-            <div className='calendar-year' onClick={this.toggleYearTable.bind(this)}>
-              {this.displayCurrentYear()}
-            </div>
-            <div id='calendar-nav-right' onClick={this.onNext.bind(this)}>
-              <i className="fas fa-caret-right"></i>
+          <div id='calendar-header'>
+            <div className='calendar-nav' >
+              <div id='calendar-nav-left' onClick={this.onPrev.bind(this)}>
+                <i className="fas fa-caret-left"></i>
+              </div>
+              <div className='calendar-month' onClick={this.toggleMonthTable.bind(this)}>
+                {this.state.dateObject.format('MMMM')}
+              </div>
+              <div className='calendar-year' onClick={this.toggleYearTable.bind(this)}>
+                {this.displayCurrentYear()}
+              </div>
+              <div id='calendar-nav-right' onClick={this.onNext.bind(this)}>
+                <i className="fas fa-caret-right"></i>
+              </div>
             </div>
           </div>
+          
 
           {this.pickRender()}        
         </div>
