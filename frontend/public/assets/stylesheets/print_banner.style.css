@@ -1,0 +1,6 @@
+#print-banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 70px;
+}

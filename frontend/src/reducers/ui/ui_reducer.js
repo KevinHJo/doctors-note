@@ -4,6 +4,7 @@ import ProductKeyReducer from './product_key_reducer';
 import NewestVisitReducer from './newest_visit_reducer';
 import DoctorModalReducer from './doctor_modal_reducer';
 import ShowChartReducer from './show_chart_reducer';
+import PatientBannerReducer from './patient_banner_reducer';
 
 const UIReducer = combineReducers({
   patientModal: PatientModalReducer,
@@ -11,6 +12,7 @@ const UIReducer = combineReducers({
   prodKey: ProductKeyReducer,
   doctorModal: DoctorModalReducer,
   showChart: ShowChartReducer,
+  patientBanner: PatientBannerReducer,
 });
 
 export default UIReducer

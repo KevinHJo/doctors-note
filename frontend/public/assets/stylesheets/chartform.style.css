@@ -148,6 +148,10 @@ textarea:focus {
   display: block !important;
 }
 
+.hide {
+  display: none !important;
+}
+
 .new-chart-diagnoses {
   position: relative;
 }
