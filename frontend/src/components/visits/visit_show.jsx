@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import VisitForm from './visit_form'
 import TopNavBarContainer from '../navbar/top_nav_bar_container'
 
@@ -42,7 +41,7 @@ class VisitShow extends Component {
   handleDelete = e => {
     const patientId = this.props.visit.patientId
     const route = `/charts/${patientId}`
-    this.props.deleteVisit(this.props.visitId)
+    this.props.deleteVisit(this.props.visit)
       .then(() => {
         setTimeout(() => this.props.history.push(route), 200);
       })

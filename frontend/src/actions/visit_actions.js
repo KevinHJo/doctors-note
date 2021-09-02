@@ -42,9 +42,9 @@ export const updateVisit = visit => dispatch => {
     .then(visit => dispatch(receiveVisit(visit.data)))
 };
 
-export const deleteVisit = visitId => dispatch => {
-  return VisitAPIUtil.deleteVisit(visitId)
-    .then(visit => {
-      dispatch(removeVisit(visit.data))
+export const deleteVisit = visit => dispatch => {
+  return VisitAPIUtil.deleteVisit(visit)
+    .then(resVisit => {
+      dispatch(removeVisit(resVisit.data))
     })
 }

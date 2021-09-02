@@ -37,7 +37,6 @@ export default class SignupForm extends React.Component {
   }
   
   render() {
-  
     let error1 = '';
     let error2 = '';
     let error3 = '';
