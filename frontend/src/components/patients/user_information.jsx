@@ -55,10 +55,14 @@ export default class UserInformation extends React.Component {
     let passwordMessage = document.getElementById('passwordMessage')
     let newPassword = passwordField.value
     if (newPassword.length < 6 || newPassword.length > 30) {
-      passwordMessage.innerHTML = 'Password must be between 6 and 30 characters'
+      passwordMessage.innerHTML = 'Password must be between 6 and 30 characters';
+      passwordMessage.className = '';
+      passwordMessage.classList.add('password-change-fail')
     } else {
       changePassword({_id: this.state._id, password: newPassword})
-      passwordMessage.innerHTML = 'Password changed successfully'
+      passwordMessage.innerHTML = 'Password changed successfully';
+      passwordMessage.className = '';
+      passwordMessage.classList.add('password-change-success');
     }
     passwordField.value = ''
   }
@@ -101,9 +105,11 @@ export default class UserInformation extends React.Component {
           </div>
         </form>
         <div id='spacer'></div>
-        <label>Change password: 
-          <input type="password" id="newPassword" />
-          <button onClick={this.handleChangePassword}>Edit</button>
+        <label className='patient-password-change'>Change password:
+          <div id='patient-password-container'>
+            <input id='patient-password' type="password" id="newPassword" />
+            <button id='patient-password-button' onClick={this.handleChangePassword}>Edit</button>
+          </div> 
           <p id="passwordMessage"></p>
         </label>
         <div id='spacer'></div>
