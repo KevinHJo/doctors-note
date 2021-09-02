@@ -97,7 +97,7 @@ class AppointmentShow extends React.Component {
             </div>
 
             <div id='appointment-info-controls'>
-              <button id='appointment-edit-button' onClick={this.toggleEditing}>Edit</button>
+              <button id='appointment-edit-button' onClick={this.toggleEditing}>Edit Appointment</button>
               <button id='appointment-cancel-button' onClick={this.handleDelete}>Cancel Appointment</button>
             </div>
           </div>
