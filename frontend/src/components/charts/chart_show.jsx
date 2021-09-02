@@ -20,7 +20,7 @@ export default class ChartShow extends React.Component {
   }
 
   handleDelete = e => {
-    this.props.deletePatient(this.props.patientId)
+    this.props.deletePatient(this.props.patient)
       .then(() => this.props.history.push('/'))
     // this.props.history.push('/') // push to charts index instead
   }

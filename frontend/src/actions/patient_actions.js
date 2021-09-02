@@ -96,7 +96,7 @@ export const updatePatient = patient => dispatch => (
     .then(patient => dispatch(receivePatient(patient.data)))
 );
 
-export const deletePatient = patientId => dispatch => (
-  PatientAPIUtil.deletePatient(patientId)
+export const deletePatient = patient => dispatch => (
+  PatientAPIUtil.deletePatient(patient)
     .then(patient => dispatch(removePatient(patient.data)))
 )
