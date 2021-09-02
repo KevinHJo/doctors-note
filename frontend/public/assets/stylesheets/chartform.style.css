@@ -242,6 +242,7 @@ textarea:focus {
   letter-spacing: 1px;
   border: 1px solid white;
   padding: 0;
+  width: 32.5%;
 }
 
 .patients-chart-toggle:hover  {
