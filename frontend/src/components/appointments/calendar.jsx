@@ -307,7 +307,7 @@ class Calendar extends React.Component {
 
   renderAppointment() {
     if (this.state.showAppointment) {
-      return <AppointmentShow doctor={this.props.doctor} date={this.state.selectedDate} appointment={this.state.selectedAppointment} toggleAppointmentShow={this.toggleAppointmentShow}/>
+      return <AppointmentShow doctor={this.props.doctor} date={this.state.selectedDate} appointment={this.state.selectedAppointment} toggleAppointmentShow={this.toggleAppointmentShow} deleteAppointment={this.props.deleteAppointment} updateAppointment={this.props.updateAppointment}/>
     }
     else if (this.state.showAppointmentForm) {
       return <AppointmentForm doctor={this.props.doctor} date={this.state.selectedDate} createAppointment={this.props.createAppointment} toggleAppointmentForm={this.toggleAppointmentForm.bind(this)}/>

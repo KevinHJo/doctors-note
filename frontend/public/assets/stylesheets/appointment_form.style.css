@@ -110,3 +110,13 @@
   margin-left: 1vw;
   color: red;
 }
+
+#appointment-info-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#appointment-info-controls button:not(:last-child) {
+  margin-right: 10px;
+}

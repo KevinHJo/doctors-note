@@ -41,7 +41,7 @@ router.patch('/:appointmentId', (req, res) => {
 		purpose: req.body.purpose
 	}
 
-	Appointment.findByIdAndUpdate(req.params.appointmentId, data)
+	Appointment.findByIdAndUpdate(req.params.appointmentId, data, {new: true})
 		.then(appointment => res.json(appointment))
 		.catch(err => res.json(err))
 })
