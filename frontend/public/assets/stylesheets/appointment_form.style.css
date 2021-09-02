@@ -42,6 +42,11 @@
   align-items: baseline;
 }
 
+#purpose {
+  resize: none;
+  height: 10vh;
+}
+
 #appointment-form-controls {
   display: flex;
 }

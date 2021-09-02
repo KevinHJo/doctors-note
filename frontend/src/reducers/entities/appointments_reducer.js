@@ -2,7 +2,7 @@ import {RECEIVE_APPOINTMENT, RECEIVE_APPOINTMENTS, REMOVE_APPOINTMENT} from '../
 
 const AppointmentsReducer = (state = {}, action) => {
   Object.freeze(state);
-  const nextState = Object.assign({}, state);
+  let nextState = Object.assign({}, state);
 
   switch (action.type) {
     case RECEIVE_APPOINTMENT:

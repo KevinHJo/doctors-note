@@ -21,6 +21,12 @@ router.get('/:doctorId', (req, res) => {
 		.catch(err => res.json(err))
 })
 
+router.get('/patient/:patientId', (req, res) => {
+	Appointment.find({patientId: req.params.patientId})
+		.then(appointments => res.json(appointments))
+		.catch(err => res.json(err))
+})
+
 router.delete('/:appointmentId', (req, res) => {
 	Appointment.deleteOne({_id: req.params.appointmentId})
 		.then(appointment => res.json(appointment))
