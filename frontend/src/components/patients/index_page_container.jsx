@@ -12,6 +12,7 @@ const mSTP = (state, ownParams) => {
     history: ownParams.history,
     loggedIn: state.session.isAuthenticated,
     modal: state.ui.patientModal,
+    patientId: state.session.user.id,
     doctorId: state.session.user.doctorId,
     user: getUser(state),
     doctor: state.entities.user,

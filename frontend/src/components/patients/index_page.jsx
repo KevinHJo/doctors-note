@@ -9,7 +9,7 @@ import UserInformation from './user_information';
 export default class IndexPage extends React.Component {
   componentDidMount() {
     this.props.fetchDoctor(this.props.doctorId)
-    this.props.fetchPatientAppointments(this.props.user.id);
+    this.props.fetchPatientAppointments(this.props.patientId);
   }
   
   render() {
