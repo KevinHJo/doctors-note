@@ -14,7 +14,7 @@ const mSTP = (state, ownProps) => ({
 
 const mDTP = dispatch => ({
   fetchPatient: patientId => dispatch(fetchPatient(patientId)),
-  deletePatient: patientId => dispatch(deletePatient(patientId)),
+  deletePatient: patient => dispatch(deletePatient(patient)),
   fetchDoctor: doctorId => dispatch(fetchDoctor(doctorId)),
   removePatientBanner: () => dispatch(removePatientBanner()),
 })

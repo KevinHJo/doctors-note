@@ -33,12 +33,8 @@ export const fetchPatient = patientId => {
   return axios.get(`/api/patients/${patientId}`);
 };
 
-// export const fetchAllPatients = () => {
-//   return axios.get('/api/patients/get/all');
-// };
-
-export const deletePatient = patientId => {
-  return axios.delete(`/api/patients/delete/${patientId}`)
+export const deletePatient = patient => {
+  return axios.delete(`/api/patients/delete/${patient._id}`, {data: patient})
 }
 
 export const changePassword = patientData => (
