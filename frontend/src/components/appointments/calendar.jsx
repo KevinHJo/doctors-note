@@ -143,6 +143,7 @@ class Calendar extends React.Component {
     };
 
     const appointments = {};
+    const year = this.state.dateObject.year();
     const monthIdx = this.state.dateObject.month();
     const selectedYear = parseInt(this.state.dateObject.format("Y"))
 
@@ -161,7 +162,7 @@ class Calendar extends React.Component {
     //Fills the calendar with real slots until the end of the month
     let daysInMonth = [];
     for (let i=1; i <= this.state.dateObject.daysInMonth(); i++) {
-      let today = ((i === this.currentDay()) && (this.state.currentDate.month() === monthIdx)) ? 'today' : '';
+      let today = ((i === this.currentDay()) && (this.state.currentDate.month() === monthIdx) && (this.state.currentDate.year() === year)) ? 'today' : '';
       daysInMonth.push(
         <td key={i} className={`calendar-day ${today}`} onClick={e => this.selectDay(e, i)}>
           <h4>{i}</h4>
