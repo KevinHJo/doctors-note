@@ -28,7 +28,7 @@ const mDTP = (dispatch) => ({
   toggleModal: (modalId) => dispatch(toggleModal(modalId)),
   fetchDoctor: (doctorId) => dispatch(fetchDoctor(doctorId)),
   fetchPatientAppointments: patientId => dispatch(fetchPatientAppointments(patientId)),
-  deleteAppointment: appointmentId => dispatch(deleteAppointment(appointmentId))
+  deleteAppointment: appointmentId => dispatch(deleteAppointment(appointmentId)),
 });
 
 export default connect(mSTP, mDTP)(IndexPage);

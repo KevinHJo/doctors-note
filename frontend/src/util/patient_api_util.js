@@ -41,6 +41,6 @@ export const deletePatient = patientId => {
   return axios.delete(`/api/patients/delete/${patientId}`)
 }
 
-// export const changePassword = patientData => (
-//   axios.update()
-// )
+export const changePassword = patientData => (
+  axios.patch('/api/patients/changePassword', patientData)
+)

@@ -1,5 +1,6 @@
 import React from 'react'
 import { formatPhone, getDigits, isDelete } from '../../util/chart_util'
+import { changePassword } from '../../util/patient_api_util';
 
 export default class UserInformation extends React.Component {
   constructor(props) {
@@ -48,6 +49,22 @@ export default class UserInformation extends React.Component {
     this.props.updatePatient(this.state)
       .then(() => window.location.reload())
   }
+
+  handleChangePassword = e => {
+    e.preventDefault()
+    let passwordField = document.getElementById('newPassword')
+    let passwordMessage = document.getElementById('passwordMessage')
+    let newPassword = passwordField.value
+    console.log(newPassword)
+    console.log(this.state._id)
+    if (newPassword.length < 6 || newPassword.length > 30) {
+      passwordMessage.innerHTML = 'Password must be between 6 and 30 characters'
+    } else {
+      changePassword({_id: this.state._id, password: newPassword})
+      passwordMessage.innerHTML = 'Password changed successfully'
+    }
+    passwordField.value = ''
+  }
   
   render() {
     if (!this.state.fname || !this.props.doctor) return null;
@@ -88,8 +105,9 @@ export default class UserInformation extends React.Component {
         </form>
         <div id='spacer'></div>
         <label>Change password: 
-          <input type="password" />
-          <button>Edit</button>
+          <input type="password" id="newPassword" />
+          <button onClick={this.handleChangePassword}>Edit</button>
+          <p id="passwordMessage"></p>
         </label>
         <div id='spacer'></div>
         <div id='spacer'></div>
