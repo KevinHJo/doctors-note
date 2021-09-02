@@ -2,5 +2,115 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 70px;
+  height: 95px;
+  padding: 5px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 5.7vh;
+  background-color: rgb(240,242,245);
+  border: 1px solid white;
+}
+
+.pb-sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.print-banner-section-1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 19px;
+  font-weight: 800;
+  text-decoration: underline;
+  align-items: flex-end;
+  text-decoration-color: red;
+}
+
+.print-banner-section-2 .labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.print-banner-section-2 .inputs {
+  width: 9vw
+}
+
+.pbs2-credentials-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 15.5vw;
+  margin-right: 25px;
+}
+
+.pbs2-toggle-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 3;
+  font-weight: 500;
+  width: 184px;
+  border: 1px solid rgb(37,37,37, 0%);
+  border-radius: 50px;
+  margin: 16px;
+  padding: 3px 8px;
+  align-items: center;
+  text-decoration: underline;
+}
+
+.pbs2-toggle-section:hover {
+  border: 1px solid white;
+  background-color: rgb(220,222,225);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.pb3-sections {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100px;
+  margin: auto;
+  height: 76%;
+  align-items: center;
+  border-radius: 50px;
+  margin-left: 40px;
+  border: 1px solid rgb(37,37,37, 0%);
+  font-weight: 500;
+}
+
+.pb3-sections:hover {
+  border: 1px solid white;
+  background-color: rgb(220,222,225);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.pb4-sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.send-icons {
+  height: 25px;
+  width: 25px;
+}
+
+.send-close-icon {
+  height: 24px;
+  width: 24px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.send-close-icon:hover {
+  cursor: pointer;
+  background-color: rgb(220,222,225);
 }

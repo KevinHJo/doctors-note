@@ -21,7 +21,10 @@ class VisitsIndex extends Component {
           {Object.values(visits).map(visit => {
             return (
               <li key={visit._id} className='visit-link'>
-                <Link to={{pathname: `${_id}/${visit._id}`, state: {patient: this.props.patient, visit: visit}}}>
+                <Link
+                  to={{pathname: `${_id}/${visit._id}`, state: {patient: this.props.patient, visit: visit}}}
+                  className="visit-date-links"
+                >
                   {new Date(visit.createdAt).toLocaleDateString("en-US", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}
                 </Link>
               </li>

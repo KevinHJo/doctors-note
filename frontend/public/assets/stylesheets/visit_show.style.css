@@ -1,7 +1,7 @@
 #visit-show-container {
   height: 125vh;
   width: 100%;
-  background-color: rgb(164, 188, 204);
+  background-color: rgb(201,214,230);
 }
 
 .visit-show {
@@ -9,7 +9,9 @@
   margin: 0 auto;
   padding: 25px 40px;
   background-color: white;
-  box-shadow:rgb(33, 26, 90) 3px 3px 5px;
+  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.1);
+  /* box-shadow:rgb(33, 26, 90) 3px 3px 5px; */
+  border-top-right-radius: 50px;
 }
 
 .visit-info {
@@ -17,6 +19,31 @@
   padding-bottom: 10px;
   border-bottom: 1px solid lightgray;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.back-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-section:hover {
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.back-text {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.back-button {
+  width: 25px;
+  height: 25px;
 }
 
 .soap-note h1 {
@@ -79,4 +106,16 @@
 #delete-visit-button:active {
   cursor: pointer;
   background-color: rgb(82, 18, 18);
+}
+
+.visit-date-links {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+}
+
+.visit-date-links:hover {
+  text-decoration: underline;
 }

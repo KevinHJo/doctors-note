@@ -1,5 +1,11 @@
+#charts-show-background {
+  background-color: rgb(108, 141, 184, 35%);
+}
+
 .charts-index {
   width: 33%;
+  overflow: auto;
+  margin-bottom: 30px;
 }
 
 .patients-charts {
@@ -56,7 +62,11 @@
   width: 310px;
   letter-spacing: 2px;
   z-index: 1;
-  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.5);
+  border: 0.5px solid whitesmoke;
+  border-top-left-radius: 10px;
+  border-bottom: 1px solid rgb(241,244,249);
+  border-top: 1px solid rgb(241,244,249);
+  border: 0.5px solid whitesmoke;
 }
 
 .patients-chart-links:hover {
@@ -73,9 +83,8 @@
 
 #charts-show .title {
   border-top-right-radius: 35px; 
-  border-top-left-radius: 35px; 
   background-color: #cdcbba;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  border: 0.5px solid whitesmoke;
 }
 #charts-show .title p {
   font-size: 42px;
@@ -83,7 +92,7 @@
   border-top-right-radius: 35px; 
   border-top-left-radius: 35px; 
   text-align: center;
-  background-color: #cdcbba;
+  background-color: rgb(205, 203, 186);
 }
 
 #charts-show .create {
@@ -95,7 +104,7 @@
   font-weight: 600;
   letter-spacing: 1px;
   text-align: center;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  border: 0.5px solid whitesmoke;
 }
 
 #charts-show .create:hover {
@@ -115,9 +124,10 @@
 }
 
 .chart-patient-info {
-  background-color: rgb(108, 141, 184, 35%);
+  background-color: rgb(245, 245, 245);
   padding: 15px 45px;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  border: 0.5px solid whitesmoke;
+  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.1);
 }
 
 .chart-patient-info .sections {
@@ -153,8 +163,10 @@
   text-decoration: none;
   background-color: rgb(223, 187, 191, 70%);
   border: none;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  border: 0.5px solid whitesmoke;
 }
+
+
 
 .show-chart-buttons:hover {
   background-color: rgb(223, 187, 191, 100%);
@@ -167,5 +179,5 @@
 }
 
 .show-chart-delete-button {
-  
+  border-bottom-color: black;
 }

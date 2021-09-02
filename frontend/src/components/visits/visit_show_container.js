@@ -7,10 +7,12 @@ import VisitShow from "./visit_show";
 
 const mSTP = (state, ownProps) => {
   const visitId = ownProps.match.params.visitId
+  console.log(ownProps)
   return {
     visitId: visitId,
     visit: state.entities.visits[visitId],
-    modal: state.ui.patientModal
+    modal: state.ui.patientModal,
+    history: ownProps.history,
   }
 };
 
