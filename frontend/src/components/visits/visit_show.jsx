@@ -43,7 +43,8 @@ class VisitShow extends Component {
     const patientId = this.props.visit.patientId
     const route = `/charts/${patientId}`
     this.props.deleteVisit(this.props.visitId)
-      .then(() => {this.props.history.push(route);
+      .then(() => {
+        setTimeout(() => this.props.history.push(route), 200);
       })
   }
 
