@@ -45,7 +45,6 @@ export const updateVisit = visit => dispatch => {
 export const deleteVisit = visitId => dispatch => {
   return VisitAPIUtil.deleteVisit(visitId)
     .then(visit => {
-      // console.log(visit)
       dispatch(removeVisit(visit.data))
     })
 }

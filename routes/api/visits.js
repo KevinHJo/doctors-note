@@ -96,8 +96,6 @@ router.delete('/delete/:id', (req, res) => {
                               patients[pat._id] = pat
                               User.findByIdAndUpdate(user._id, {patients: {}}, {new: true})
                                 .then(resUser => {
-                                  // console.log(resUser);
-                                  // console.log(patients);
                                   User.findByIdAndUpdate(resUser._id, {patients: patients})
                                     .catch(err => res.json(err))
                                 })

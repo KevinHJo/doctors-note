@@ -45,7 +45,6 @@ export default class UserInformation extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log(this.state)
     this.props.updatePatient(this.state)
       .then(() => window.location.reload())
   }
@@ -55,8 +54,6 @@ export default class UserInformation extends React.Component {
     let passwordField = document.getElementById('newPassword')
     let passwordMessage = document.getElementById('passwordMessage')
     let newPassword = passwordField.value
-    console.log(newPassword)
-    console.log(this.state._id)
     if (newPassword.length < 6 || newPassword.length > 30) {
       passwordMessage.innerHTML = 'Password must be between 6 and 30 characters';
       passwordMessage.className = '';
