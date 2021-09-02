@@ -21,7 +21,7 @@
 }
 
 #appointment-show {
-  height: 30vh;
+  height: 40vh;
 }
 
 #appointment-form div {
@@ -106,6 +106,10 @@
   align-items: center;
 }
 
+.appointment-show-info h3 {
+  margin-right: 5px;
+}
+
 .appointment-show-info p {
   margin-left: 1vw;
   color: red;
@@ -114,9 +118,55 @@
 #appointment-info-controls {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 #appointment-info-controls button:not(:last-child) {
-  margin-right: 10px;
+  margin-right: 25px;
+}
+
+#appointment-edit-button {
+  border: none;
+  padding: 10px 10px;
+  background-color: rgb(121, 142, 189);
+  color: white;
+  box-shadow: 0px 0px 2px black;
+}
+
+#appointment-edit-button:hover {
+  cursor: pointer;
+  background-color: rgb(102, 121, 161);
+}
+
+#appointment-edit-button:active {
+  cursor: pointer;
+  background-color: rgb(80, 95, 128);
+}
+
+#appointment-cancel-button {
+  border: none;
+  padding: 10px 10px;
+  background-color: rgb(224, 111, 111);
+  color: white;
+  box-shadow: 0px 0px 2px black;
+}
+
+#appointment-cancel-button:hover {
+  cursor: pointer;
+  background-color: rgb(194, 96, 96);
+}
+
+#appointment-cancel-button:active {
+  cursor: pointer;
+  background-color: rgb(161, 80, 80);
+}
+
+#appointment-stop-edit {
+  border: none;
+  background-color: white;
+}
+
+#appointment-stop-edit:hover {
+  cursor: pointer;
+  color: blue;
 }
