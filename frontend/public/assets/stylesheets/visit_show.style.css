@@ -1,6 +1,6 @@
 #visit-show-container {
-  height: 125vh;
   width: 100%;
+  padding-bottom: 50px;
   background-color: rgb(201,214,230);
 }
 
@@ -49,6 +49,7 @@
 .soap-note h1 {
   font-size: 25px;
   margin-bottom: 7px;
+  color: red;
 }
 
 .soap-subjective-display, .soap-objective-display, .soap-assessment-display, .soap-plan-display {
