@@ -26,10 +26,10 @@
 
 .doctor-left-nav-sections {
   font-weight: 200;
-  font-size: 23px;
+  font-size: 1.45em;
   letter-spacing: 2px;
   text-align: right;
-  padding: 5px 15px;
+  padding: 5px 0.1%;
   margin: 5px 0px;
   border: 2px solid rgb(113, 84, 130, 0%);
 }
@@ -80,7 +80,7 @@
 }
 
 .charts-index-panel {
-  width: 65%;
+  width: 58%;
   height: 95%;
   overflow: auto;
   border-radius: 5px;
