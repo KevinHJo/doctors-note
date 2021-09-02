@@ -4,13 +4,15 @@ import { toggleModal } from '../../actions/patient_modal_actions';
 import { fetchDoctor } from '../../actions/user_actions';
 import IndexPage from './index_page';
 import { updatePatient } from '../../actions/patient_actions';
+import { getUser } from '../../selectors/patient_selectors';
 
 const mSTP = (state, ownParams) => {
   return ({
     history: ownParams.history,
     loggedIn: state.session.isAuthenticated,
     modal: state.ui.patientModal,
-    user: state.session.user,
+    doctorId: state.session.user.doctorId,
+    user: getUser(state),
     doctor: state.entities.user,
   })
 };

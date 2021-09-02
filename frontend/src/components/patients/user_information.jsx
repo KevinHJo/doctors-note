@@ -46,7 +46,7 @@ export default class UserInformation extends React.Component {
     e.preventDefault()
     console.log(this.state)
     this.props.updatePatient(this.state)
-      .then(() => this.props.receiveCurrentUser(this.state))
+      .then(() => window.location.reload())
   }
   
   render() {
@@ -57,13 +57,13 @@ export default class UserInformation extends React.Component {
         <form id="patient-form">
           <div className="patient-form-section-left">
             <label>First Name:
-              <input disabled className="nonedit-inputs" defaultValue={this.props.user.fname}/>
+              <input disabled className="nonedit-inputs" defaultValue={this.state.fname}/>
             </label>
             <label>Last Name:
-              <input disabled className="nonedit-inputs" defaultValue={this.props.user.lname}/>
+              <input disabled className="nonedit-inputs" defaultValue={this.state.lname}/>
             </label>
             <label>Date of Birth:
-              <input disabled className="nonedit-inputs" defaultValue={new Date(this.props.user.dateOfBirth.split("T")[0]).toLocaleDateString('en-US')}/>
+              <input disabled className="nonedit-inputs" defaultValue={new Date(this.state.dateOfBirth.split("T")[0]).toLocaleDateString('en-US')}/>
             </label>
             <label>Email:
               <input className="editable-inputs" type='email' value={this.state.email} onChange={this.handleStringChange('email')} />
@@ -86,6 +86,11 @@ export default class UserInformation extends React.Component {
             <input type='submit' value='Update' className="patient-home-form-button" onClick={this.handleSubmit} />
           </div>
         </form>
+        <div id='spacer'></div>
+        <label>Change password: 
+          <input type="password" />
+          <button>Edit</button>
+        </label>
         <div id='spacer'></div>
         <div id='spacer'></div>
         <div id='spacer'></div>

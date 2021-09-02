@@ -16,11 +16,6 @@ export const receiveCurrentUser = currentUser => ({
     currentUser
 });
 
-// export const updateCurrentUser = currentUser => ({
-//   type: UPDATE_CURRENT_USER,
-//   currentUser
-// })
-
 export const receiveUserLogin = (pkg) => {
     return ({
         type: RECEIVE_USER_LOGIN

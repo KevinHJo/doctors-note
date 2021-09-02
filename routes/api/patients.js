@@ -22,11 +22,10 @@ router.get('/:doctorId/patients', (req, res) => {
 })
 
 router.patch('/update/:patientId', (req, res) => {
-	const patientId = req.params.patientId
+  const patientId = req.body.id || req.params.patientId
 	const fname = req.body.fname;
 	const lname = req.body.lname;
 	const username = req.body.username;
-	// const password = req.body.password;
 	const role = req.body.role;
 	const address = req.body.address;
 	const dateOfBirth = req.body.dateOfBirth;
@@ -38,11 +37,10 @@ router.patch('/update/:patientId', (req, res) => {
 	const medications = req.body.medications;
 	const allergies = req.body.allergies;
 
-	Patient.updateOne({_id: patientId }, {
+	Patient.findByIdAndUpdate(patientId, {
     fname,
 		lname,
 		username,
-		// password,
 		role,
 		address,
 		dateOfBirth,
