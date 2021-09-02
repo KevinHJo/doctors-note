@@ -18,7 +18,6 @@ export default class ChartsIndex extends React.Component {
 
   handleClick = patientId => e => {
     this.setState({patientId})
-    // console.log(this.state)
   }
 
   // openChart(id) {

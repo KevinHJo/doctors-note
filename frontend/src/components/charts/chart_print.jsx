@@ -50,7 +50,6 @@ export default class ChartPrint extends React.Component {
 
   render() {
     if (!this.props.state) return null
-    console.log(this.props)
     const state = this.props.state; 
     return (
       <div id="print-banner">
