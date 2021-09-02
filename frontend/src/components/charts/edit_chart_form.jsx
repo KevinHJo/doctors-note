@@ -40,7 +40,7 @@ export default class ChartForm extends React.Component {
     const myCallbacks = {
       selectedEntityFunction: selectedEntity => {
         const selections = this.state.diagnoses.concat(selectedEntity.code + " - " + selectedEntity.bestMatchText)
-        this.setState({diagnoses: selections})
+        this.setState({diagnoses: [...new Set(selections)]})
       }
     };
     

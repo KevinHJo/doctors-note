@@ -180,6 +180,10 @@ router.post('/login', (req, res) => {
 		});
 });
 
+// router.delete('/delete/:id', (req, res) => {
+//   Patient.deleteOne({_id: patient._id})
+//     .then(pat => console.log(pat))
+// })
 router.delete('/delete/:id', (req, res) => {
   Patient.findOne({_id: req.params.id})
     .then(patient => {
