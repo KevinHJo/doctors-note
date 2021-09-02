@@ -204,4 +204,20 @@ router.delete('/delete/:id', (req, res) => {
     })
 })
 
+router.patch('/changePassword', (req, res) => {
+  console.log(req.body)
+  Patient.findById(req.body._id)
+    .then(patient => {
+      console.log(patient)
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(req.body.password, salt, (err, hash) => {
+          if (err) throw err
+          patient.password = hash
+          patient.save()
+            .then(pat => console.log(pat))
+        })
+      })
+    })
+})
+
 module.exports = router;
