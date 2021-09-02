@@ -13,8 +13,8 @@
 }
 
 .navbar-icon {
-  width: 2.4em;
-  height: 2.4em;
+  width: 2.1em;
+  height: 2.3em;
 }
 
 #top-nav-bar-patient {
@@ -36,6 +36,7 @@
   text-decoration: none;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .section-title:hover {
