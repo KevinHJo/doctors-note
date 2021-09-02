@@ -80,18 +80,19 @@ export default class ChartForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log(this.state)
+    // console.log(this.state)
     this.props.processForm(this.state)
       .then(res => {
         if (this.props.formSubmit === 'Create New Patient') {
           this.props.history.push({pathname: '/print', state: { username: res.patient.username, pw: res.patient.pw, _id: res.patient._id, email: res.patient.email}})
         } else {
-          this.props.history.push({pathname:  `/charts/${this.props.patientId}`})
+          this.props.history.push({pathname: `/charts/${this.props.patientId}`})
         }
       })
   }
 
   handleDelete = (e, idx) => {
+    e.preventDefault()
     this.setState({diagnoses: this.state.diagnoses.filter((diag, i) => idx !== i)})
     // this.setState({diagnoses: this.state.diagnoses.splice(idx, 1)})
   }

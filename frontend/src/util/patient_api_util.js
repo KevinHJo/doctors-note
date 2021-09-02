@@ -40,3 +40,7 @@ export const fetchPatient = patientId => {
 export const deletePatient = patientId => {
   return axios.delete(`/api/patients/delete/${patientId}`)
 }
+
+// export const changePassword = patientData => (
+//   axios.update()
+// )

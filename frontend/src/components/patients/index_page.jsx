@@ -8,7 +8,7 @@ import UserInformation from './user_information';
 
 export default class IndexPage extends React.Component {
   componentDidMount() {
-    this.props.fetchDoctor(this.props.user.doctorId);
+    this.props.fetchDoctor(this.props.doctorId)
     this.props.fetchPatientAppointments(this.props.user.id);
   }
   
@@ -20,7 +20,7 @@ export default class IndexPage extends React.Component {
         case "1":
           section = (
             <div id="patient-section-user-info" className="patient-homepage-sections">
-              <UserInformation user={this.props.user} doctor={this.props.doctor} />
+              <UserInformation user={this.props.user} doctor={this.props.doctor} updatePatient={this.props.updatePatient} receiveCurrentUser={this.props.receiveCurrentUser} />
             </div>
           )
           break;
