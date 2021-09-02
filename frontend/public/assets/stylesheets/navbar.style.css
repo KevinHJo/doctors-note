@@ -13,7 +13,8 @@
 }
 
 .navbar-icon {
-  width: 35px;
+  width: 2.4em;
+  height: 2.4em;
 }
 
 #top-nav-bar-patient {
@@ -31,7 +32,7 @@
 
 .section-title {
   margin: 0px 15px 0px 0px;
-  padding: 12px 35px;
+  padding: 0.5% 35px;
   text-decoration: none;
   display: flex;
   flex-direction: row;
@@ -67,7 +68,7 @@
 
 .nav-title {
   color: white;
-  font-size: 18px;
+  font-size: 1.3em;
   font-weight: 600;
   text-decoration: none;
   margin: 1px 10px;
@@ -80,9 +81,12 @@
 }
 
 .section-buttons {
-  padding:15px;
+  padding: 0.5%;
   text-decoration: none;
   margin-left: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .section-buttons:hover {
@@ -114,8 +118,9 @@
 .nav-buttons {
   color: white;
   text-decoration: none;
-  height: 100%;
   margin: 0px 15px;
+  width: 100%;
   background-color: inherit;
   border: none;
+  font-size: 1em;
 }

@@ -237,10 +237,11 @@ textarea:focus {
 .patients-chart-toggle {
   color: white;
   background-color:rgb(84, 129, 188);
-  font-size: 15px;
+  font-size: 0.8em;
   font-weight: 700px;
   letter-spacing: 1px;
   border: 1px solid white;
+  padding: 0;
 }
 
 .patients-chart-toggle:hover  {
