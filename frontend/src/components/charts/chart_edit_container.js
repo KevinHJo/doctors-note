@@ -5,7 +5,6 @@ import { withRouter } from "react-router";
 
 const mSTP = (state, ownProps) => {
   const patientId = ownProps.match.params.patientId;
-  console.log(ownProps.match.params);
 
   return {
     doctorId: state.session.user.id,

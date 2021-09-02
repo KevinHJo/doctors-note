@@ -62,16 +62,12 @@ export default class ChartForm extends React.Component {
   }
 
   handleArrayChange = field => e => {
-    console.log(e)
     this.setState({[field]: e.target.value.split(',')})
   }
 
   handlePhoneChange = e => {
-    // console.log(e)
     let prevDigits = getDigits(this.state.phone)
     let nextDigits = getDigits(e.target.value)
-    // console.log(prevDigits)
-    // console.log(nextDigits)
     if (prevDigits.length === 10 && !isDelete(e.nativeEvent.inputType)) return
     if (isDelete(e.nativeEvent.inputType) && nextDigits.length === prevDigits.length) return
     if (!/^\d+$/.test(e.nativeEvent.data) && !isDelete(e.nativeEvent.inputType)) return
@@ -80,7 +76,6 @@ export default class ChartForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    // console.log(this.state)
     this.props.processForm(this.state)
       .then(res => {
         if (this.props.formSubmit === 'Create New Patient') {
@@ -110,13 +105,11 @@ export default class ChartForm extends React.Component {
   }
 
   removeVisible() {
-    console.log('remove');
     document.getElementById('ctw-window').classList.remove('visible')
     document.getElementById('close-modal').classList.remove('visible')
   }
 
   addVisible() {
-    console.log('add')
     document.getElementById('ctw-window').classList.add('visible')
     document.getElementById('close-modal').classList.add('visible')
   }

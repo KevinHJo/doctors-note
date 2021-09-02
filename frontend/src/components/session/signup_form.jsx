@@ -21,7 +21,6 @@ export default class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let packages = Object.assign({}, this.state, {role: "admin", password2: this.state.password});
-    // console.log(packages)
     this.props.signup(packages, this.props.history)
       .then((user) => this.props.login({loginId: this.state.username, password: this.state.password}))
       .catch((err) => this.setState(this.state))
@@ -38,8 +37,6 @@ export default class SignupForm extends React.Component {
   }
   
   render() {
-    console.log(this.state.prodKey);
-  
     let error1 = '';
     let error2 = '';
     let error3 = '';

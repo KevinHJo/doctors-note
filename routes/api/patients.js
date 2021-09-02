@@ -200,41 +200,15 @@ router.delete('/delete/:id', (req, res) => {
     })
   res.json(req.body)
 })
-// router.delete('/delete/:id', (req, res) => {
-//   Patient.findOne({_id: req.params.id})
-//     .then(patient => {
-//       if (patient) Patient.deleteOne({_id: patient._id})
-//         .then(pat => {
-//           User.findOne({_id: patient.doctorId})
-//             .then(doctor => {
-//               if (doctor) {
-//                 let patients = Object.assign({}, doctor.patients)
-//                 delete patients[patient._id]
-//                 User.findByIdAndUpdate(doctor._id, {patients: {}}, {new: true})
-//                   .then(resDoctor => {
-//                     User.findByIdAndUpdate(resDoctor._id, {patients: patients}, {new: true})
-//                       .catch(err => res.json(err))
-//                   })
-//               }
-//             })
-//           Visit.deleteMany({patientId: patient._id})
-//             .catch(err => res.json(err))
-//         })
-//         res.json(patient)
-//     })
-// })
 
 router.patch('/changePassword', (req, res) => {
-  console.log(req.body)
   Patient.findById(req.body._id)
     .then(patient => {
-      console.log(patient)
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(req.body.password, salt, (err, hash) => {
           if (err) throw err
           patient.password = hash
           patient.save()
-            .then(pat => console.log(pat))
         })
       })
     })
