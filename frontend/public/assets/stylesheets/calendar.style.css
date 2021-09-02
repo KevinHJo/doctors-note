@@ -37,9 +37,17 @@
   padding: 1vh 1.5vw;
 }
 
+.calendar-months thead, .calendar-years thead {
+  font-size: 2vh;
+}
+
 .calendar-month {
   padding: 1vh 2vw;
   text-align:center;
+}
+
+.calendar-month span, .calendar-year span {
+  font-size: 2vh;
 }
 
 .calendar-year {
