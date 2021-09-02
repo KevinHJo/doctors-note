@@ -1,6 +1,5 @@
 import React from 'react'
 import { formatPhone, getDigits, isDelete } from '../../util/chart_util'
-import { Link } from 'react-router-dom'
 import TopNavBarContainer from '../navbar/top_nav_bar_container'
 import * as ECT from '@whoicd/icd11ect';
 import '@whoicd/icd11ect/style.css';

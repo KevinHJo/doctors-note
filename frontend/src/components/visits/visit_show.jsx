@@ -65,6 +65,14 @@ class VisitShow extends Component {
             <div className='visit-show'>
               <div className='visit-info'>
                 <p>{new Date(visit.createdAt).toLocaleDateString('en-US', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</p>
+                <div className="back-section" onClick={() => this.props.history.push(`/charts/${visit.patientId}`)}>
+                  <img 
+                    src="https://doctors-note-seeds.s3.us-west-1.amazonaws.com/reply-message.png"
+                    alt="back arrow"
+                    className="back-button"
+                  ></img>
+                  <p className="back-text">Return</p>
+                </div>
               </div>
               <div className='soap-note'>
                 <div className='soap-subjective'>
@@ -90,7 +98,6 @@ class VisitShow extends Component {
               <div className='soap-controls'>
                 <button id='edit-visit-button' onClick={this.toggleEdit}>Edit</button>
                 <button id='delete-visit-button' onClick={this.handleDelete}>Delete</button>
-                <Link to={`/charts/${visit.patientId}`}>Back</Link>
               </div>
             </div>
           </div>
