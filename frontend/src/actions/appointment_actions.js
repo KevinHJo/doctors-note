@@ -40,3 +40,8 @@ export const fetchPatientAppointments = patientId => dispatch => (
   AppointmentAPIUtil.fetchPatientAppointments(patientId)
     .then(appointments => dispatch(receiveAppointments(appointments.data)))
 )
+
+export const updateAppointment = appointment => dispatch => (
+  AppointmentAPIUtil.updateAppointment(appointment)
+    .then(appointment => dispatch(receiveAppointment(appointment.data)))
+)

@@ -2,9 +2,38 @@ import React from 'react';
 import moment from 'moment';
 
 class PatientAppointmentsIndex extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showConfirmation: false
+    }
+
+    this.renderConfirmation = this.renderConfirmation.bind(this);
+  }
+
   handleDelete(e, appointmentId) {
     e.preventDefault();
     this.props.deleteAppointment(appointmentId)
+  }
+
+  toggleConfirmation(e) {
+    this.setState({showConfirmation: !this.state.showConfirmation})
+  }
+
+  renderConfirmation(appointment) {
+    if(!this.state.showConfirmation) {
+      return (
+        <button id='patient-appointment-cancel' onClick={this.toggleConfirmation.bind(this)}>Cancel Appointment</button>
+      )
+    } else {
+      return (
+        <div id='appointment-cancel-menu'>
+          <h4>Are you sure?</h4>
+          <button id='appointment-cancel-yes' onClick={e => this.handleDelete(e, appointment._id)}>Yes</button>
+          <button id='appointment-cancel-no' onClick={this.toggleConfirmation.bind(this)}>No</button>
+        </div>
+      )
+    }
   }
   
   render() {
@@ -37,7 +66,7 @@ class PatientAppointmentsIndex extends React.Component {
                     </div>
 
                     <div className='patient-appointment-section3'>
-                      <button id='patient-appointment-cancel' onClick={e => this.handleDelete(e, appointment._id)}>Cancel Appointment</button>
+                      {this.renderConfirmation(appointment)}
                     </div>
                   </li>
                 )

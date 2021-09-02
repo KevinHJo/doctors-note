@@ -62,7 +62,7 @@
   padding: 10px 15px;
   background-color: rgb(224, 111, 111);
   color: white;
-  box-shadow: 0px 0px 5px black;
+  box-shadow: 0px 0px 2px black;
 }
 
 #patient-appointment-cancel:hover {
@@ -73,4 +73,48 @@
 #patient-appointment-cancel:active {
   cursor: pointer;
   background-color: rgb(138, 52, 52);
+}
+
+#appointment-cancel-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#appointment-cancel-menu button {
+  width: 50px;
+  border: none;
+  padding: 3px 5px;
+  box-shadow: 0px 0px 2px black;
+}
+
+#appointment-cancel-yes {
+  margin: 0px 13px;
+  background-color: rgb(224, 111, 111);
+  color: white;
+}
+
+#appointment-cancel-yes:hover {
+  background-color: rgb(170, 66, 66);
+  cursor: pointer;
+}
+
+#appointment-cancel-yes:active {
+  cursor: pointer;
+  background-color: rgb(138, 52, 52);
+}
+
+#appointment-cancel-no {
+  background-color: rgb(121, 142, 189);
+  color: white;
+}
+
+#appointment-cancel-no:hover {
+  background-color: rgb(103, 122, 161);
+  cursor: pointer;
+}
+
+#appointment-cancel-no:active {
+  cursor: pointer;
+  background-color: rgb(83, 99, 129);
 }
