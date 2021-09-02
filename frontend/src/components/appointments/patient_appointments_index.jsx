@@ -5,10 +5,11 @@ class PatientAppointmentsIndex extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      showConfirmation: false
+      showConfirmation: -1
     }
 
     this.renderConfirmation = this.renderConfirmation.bind(this);
+    this.toggleConfirmation = this.toggleConfirmation.bind(this);
   }
 
   handleDelete(e, appointmentId) {
@@ -16,14 +17,19 @@ class PatientAppointmentsIndex extends React.Component {
     this.props.deleteAppointment(appointmentId)
   }
 
-  toggleConfirmation(e) {
-    this.setState({showConfirmation: !this.state.showConfirmation})
+  toggleConfirmation(e, i) {
+    if (!(this.state.showConfirmation === i)) {
+      this.setState({showConfirmation: i})
+    } else {
+      this.setState({showConfirmation: -1})
+    }
+    
   }
 
-  renderConfirmation(appointment) {
-    if(!this.state.showConfirmation) {
+  renderConfirmation(appointment, i) {
+    if(!(this.state.showConfirmation === i)) {
       return (
-        <button id='patient-appointment-cancel' onClick={this.toggleConfirmation.bind(this)}>Cancel Appointment</button>
+        <button id='patient-appointment-cancel' onClick={e => this.toggleConfirmation(e, i)}>Cancel Appointment</button>
       )
     } else {
       return (
@@ -66,7 +72,7 @@ class PatientAppointmentsIndex extends React.Component {
                     </div>
 
                     <div className='patient-appointment-section3'>
-                      {this.renderConfirmation(appointment)}
+                      {this.renderConfirmation(appointment, i)}
                     </div>
                   </li>
                 )
