@@ -38,7 +38,7 @@
 }
 
 .print-banner-section-2 .inputs {
-  width: 9vw
+  min-width: 200px;
 }
 
 .pbs2-credentials-section {
