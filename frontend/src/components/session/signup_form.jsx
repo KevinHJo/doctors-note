@@ -67,12 +67,6 @@ export default class SignupForm extends React.Component {
         )
         focused['dba'] = 'errored-field';
       }
-      if (prodKey) {
-        error4 = (
-          <input disabled className="fade-out error-field" defaultValue={`${prodKey}`}/>
-        )
-        focused['prodKey'] = 'errored-field';
-      }
       if (email) {
         error5 = (
           <input disabled className="fade-out error-field" id="error-field-email" defaultValue={`${email}`}/>
