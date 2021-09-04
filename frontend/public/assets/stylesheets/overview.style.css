@@ -1,0 +1,149 @@
+.overview-sections {
+  display: flex;
+  height: 82%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom: 4px solid rgb(75, 92, 123);
+}
+
+.quick-links-section {
+  width: 47.5%;
+  height: 80%;
+}
+
+.quick-links-title-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1.7em;
+  font-weight: 600;
+  padding: 10px 25px;
+}
+
+.quick-links-buttons {
+  border-top: 4px solid rgb(75, 92, 123);
+  margin-top: 15px;
+  padding: 25px 30px;
+}
+
+.revealAddChart {
+  display: flex;
+  flex-direction: row;
+  width: 180px;
+  padding: 7px 12px;
+  font-weight: 600;
+  margin-left: 20px;
+  margin-top: 10px;
+  border-radius: 50px;
+}
+
+.revealAddChart:hover {
+  background: rgb(115,147,188, 60%);
+  cursor: pointer;
+}
+
+.new-patient-chart-icon {
+  width: 45px;
+  margin-right: 25px;
+}
+
+.new-patient-title {
+  letter-spacing: 1px;
+}
+
+.daily-section {
+  width: 47.5%;
+}
+
+.daily-title-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1.7em;
+  font-weight: 600;
+  padding: 10px 25px;
+}
+
+.daily-calendar-icon {
+  width: 45px;
+  margin-right: 25px;
+}
+
+.daily-title {
+  letter-spacing: 1px;
+}
+
+.daily-appointment-section {
+  padding: 25px 30px;
+  border-top: 4px solid rgb(75, 92, 123);
+  margin-top: 15px;
+  padding-bottom: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.daily-appointment-header {
+  font-size: 1.35em;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.daily-all-appointments {
+  border-left: 2px solid rgb(75, 92, 123);
+  border-right: 2px solid rgb(75, 92, 123);
+  width: 100%;
+  margin: 10px;
+}
+
+.quick-appointments {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 6vh;
+}
+
+.appointment-details {
+  width: 33.333333%;
+  align-self: center;
+  text-align: center;
+  text-decoration: underline;
+  letter-spacing: 0.5px;
+  color: rgb(45, 45, 45);
+  font-weight: 500;
+  background-color: rgb(219,194,207, 80%);
+}
+
+.appointment-details:hover {
+  font-weight: 700;
+  background-color: rgb(219,194,207, 100%);
+}
+
+.appointment-details-header {
+  border-bottom: 2px solid rgb(75, 92, 123);
+  padding: 2%;
+  margin: 0px 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  width: 33%;
+  align-self: center;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.appointment-details-border {
+  border-left: 1px solid rgb(75, 92, 123);
+  border-right: 1px solid rgb(75, 92, 123);
+}
+
+.no-appointments {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}

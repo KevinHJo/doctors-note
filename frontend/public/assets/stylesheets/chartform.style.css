@@ -237,22 +237,6 @@
   font-weight: 800;
 }
 
-.revealAddChart {
-  display: flex;
-  flex-direction: row;
-  width: 180px;
-  padding: 7px 12px;
-  font-weight: 600;
-  margin-left: 20px;
-  margin-top: 10px;
-  border-radius: 50px;
-}
-
-.revealAddChart:hover {
-  background: rgb(115,147,188, 60%);
-  cursor: pointer;
-}
-
 .doctor-section-user-title {
   font-size: 28px;
   font-weight: 800;
