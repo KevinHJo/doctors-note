@@ -47,7 +47,7 @@ export default class ChartsIndex extends React.Component {
                 {/* <div onClick={() => this.openChart(patient._id)}>
                   {patient.lname}, {patient.fname}
                 </div> */}
-                <button className="patients-chart-toggle" onClick={this.handleClick(patient._id)}>{`View recent visit >`}</button>
+                <button className="patients-chart-toggle" onClick={this.handleClick(patient._id)}>{`Show Tab`}</button>
               </div>
             )) : (
               ''

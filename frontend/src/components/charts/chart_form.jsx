@@ -154,15 +154,15 @@ export default class ChartForm extends React.Component {
             <div className='new-chart-top'>
               <div className='new-chart-section1'>
                 <label className='new-chart-form-label'>First name: 
-                  <input placeholder="Enter First Name Here" type="text" required onChange={this.handleStringChange('fname')} value={this.state.fname}/>
+                  <input placeholder="Enter first name here" type="text" required onChange={this.handleStringChange('fname')} value={this.state.fname}/>
                 </label>
 
                 <label className='new-chart-form-label'>Last name: 
-                  <input placeholder="Enter Last Name Here"  type="text" required onChange={this.handleStringChange('lname')} value={this.state.lname}/>
+                  <input placeholder="Enter last name here"  type="text" required onChange={this.handleStringChange('lname')} value={this.state.lname}/>
                 </label>
                 
                 <label className='new-chart-form-label'>Email: 
-                  <input placeholder="Enter Email Name Here"  type="email" required onChange={this.handleStringChange('email')} value={this.state.email}/>
+                  <input placeholder="Enter email here"  type="email" required onChange={this.handleStringChange('email')} value={this.state.email}/>
                 </label>
               </div>
 
@@ -178,17 +178,16 @@ export default class ChartForm extends React.Component {
 
                 <label className='new-chart-form-label'>Sex: 
                   <select className='new-chart-sex-input' value={this.state.sex} required onChange={this.handleStringChange('sex')}>
-                    <option value="" disabled hidden> </option>
+                    <option value="" selected hidden disabled>Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                   </select>
                 </label>
-
               </div>
             </div>
 
             <label className='new-chart-form-label new-chart-form-address'>Address: 
-              <input type="text" required onChange={this.handleStringChange('address')} value={this.state.address}/>
+              <input placeholder="Enter full address here" type="text" required onChange={this.handleStringChange('address')} value={this.state.address}/>
             </label>
 
             <div className='new-chart-form-label'>Diagnoses: 
@@ -200,10 +199,10 @@ export default class ChartForm extends React.Component {
               </div>
             </div>
             <label className='new-chart-form-label'>Medications: 
-              <textarea onChange={this.handleArrayChange('medications')}></textarea>
+              <textarea placeholder="Current medications...." onChange={this.handleArrayChange('medications')}></textarea>
             </label>
             <label className='new-chart-form-label'>Allergies: 
-              <textarea onChange={this.handleArrayChange('allergies')}></textarea>
+              <textarea placeholder="Known allergies...." onChange={this.handleArrayChange('allergies')}></textarea>
             </label>
             <div id="section-buttons">
               <input type="submit" value="Create Patient" className='new-chart-buttons' id='create-button'/>

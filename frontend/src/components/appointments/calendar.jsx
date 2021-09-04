@@ -146,18 +146,58 @@ class Calendar extends React.Component {
     const year = this.state.dateObject.year();
     const monthIdx = this.state.dateObject.month();
     const selectedYear = parseInt(this.state.dateObject.format("Y"))
+    const thisMonthAppointments = [];
 
     this.props.appointments.forEach(appointment => {
       const date = new Date(appointment.date)
       if (date.getMonth() === monthIdx && date.getFullYear() === selectedYear) {
-        const patient = this.props.doctor.patients[appointment.patientId]
-        if (appointments[date.getDate()]) {
-          appointments[date.getDate()].push(<li key={appointment._id} className='calendar-appointment' onClick={e => this.toggleAppointmentShow(e, appointment)}>{patient.lname + ', ' + patient.fname}</li>)
-        } else {
-          appointments[date.getDate()] = [<li key={appointment._id} className='calendar-appointment' onClick={e => this.toggleAppointmentShow(e, appointment)}>{patient.lname + ', ' + patient.fname}</li>]
-        }
+        thisMonthAppointments.push(appointment)
       }
     });
+
+    const sortedAppointments = thisMonthAppointments.sort((a, b) => moment(a.date).unix() - moment(b.date).unix())
+
+    sortedAppointments.forEach((appointment, idx) => {
+      const patient = this.props.doctor.patients[appointment.patientId]
+      const date = new Date(appointment.date)
+      if (appointments[date.getDate()]) {
+        appointments[date.getDate()].push(
+          <li key={appointment._id} className='calendar-appointment' onClick={e => this.toggleAppointmentShow(e, appointment)}>
+            <p>{moment(appointment.date).format('h:mm a')}</p>
+            <p>{patient.fname.split("")[0] + '. ' + patient.lname}</p>
+          </li>
+        );
+      } else {
+        appointments[date.getDate()] = [
+          <li key={appointment._id} className='calendar-appointment' onClick={e => this.toggleAppointmentShow(e, appointment)}>
+            <p>{moment(appointment.date).format('h:mm a')}</p>
+            <p>{patient.fname.split("")[0] + '. ' + patient.lname}</p>
+          </li>
+        ]
+      }
+    })
+    
+    // this.props.appointments.forEach(appointment => {
+    //   const date = new Date(appointment.date)
+    //   if (date.getMonth() === monthIdx && date.getFullYear() === selectedYear) {
+    //     const patient = this.props.doctor.patients[appointment.patientId]
+    //     if (appointments[date.getDate()]) {
+    //       appointments[date.getDate()].push(
+    //         <li key={appointment._id} className='calendar-appointment' onClick={e => this.toggleAppointmentShow(e, appointment)}>
+    //           <p>{moment(appointment.date).format('h:mm a')}</p>
+    //           <p>{patient.fname.split("")[0] + '. ' + patient.lname}</p>
+    //         </li>
+    //       );
+    //     } else {
+    //       appointments[date.getDate()] = [
+    //         <li key={appointment._id} className='calendar-appointment' onClick={e => this.toggleAppointmentShow(e, appointment)}>
+    //           <p>{moment(appointment.date).format('h:mm a')}</p>
+    //           <p>{patient.fname.split("")[0] + '. ' + patient.lname}</p>
+    //         </li>
+    //       ]
+    //     }
+    //   }
+    // });
 
     //Fills the calendar with real slots until the end of the month
     let daysInMonth = [];

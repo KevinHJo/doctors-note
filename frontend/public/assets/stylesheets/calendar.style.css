@@ -124,6 +124,10 @@ thead {
 }
 
 .calendar-appointment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 3px;
   list-style: none;
   border-top: 0.5px solid white;
   border-bottom: 0.5px solid white;
