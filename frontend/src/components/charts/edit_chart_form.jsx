@@ -129,15 +129,15 @@ export default class ChartForm extends React.Component {
             <div className='new-chart-top'>
               <div className='new-chart-section1'>
                 <label className='new-chart-form-label'>First name: 
-                  <input type="text" required onChange={this.handleStringChange('fname')} value={this.state.fname}/>
+                  <input placeholder="First Name Here" type="text" required onChange={this.handleStringChange('fname')} value={this.state.fname}/>
                 </label>
 
                 <label className='new-chart-form-label'>Last name: 
-                  <input type="text" required onChange={this.handleStringChange('lname')} value={this.state.lname}/>
+                  <input placeholder="Last Name Here" type="text" required onChange={this.handleStringChange('lname')} value={this.state.lname}/>
                 </label>
                 
                 <label className='new-chart-form-label'>Email: 
-                  <input type="email" required onChange={this.handleStringChange('email')} value={this.state.email}/>
+                  <input placeholder="Email Here" type="email" required onChange={this.handleStringChange('email')} value={this.state.email}/>
                 </label>
               </div>
 
