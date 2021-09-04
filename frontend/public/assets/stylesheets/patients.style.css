@@ -174,8 +174,8 @@
 }
 
 #patient-left-nav {
+  width: 13.5%;
   height: 100%;
-  width: 265px;
   position: fixed;
   left: 0;
   top: 55px;

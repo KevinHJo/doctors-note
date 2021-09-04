@@ -50,7 +50,7 @@ export default class AppointmentDay extends React.Component {
     })
 
     if (appointmentsCount > 0) {
-      appointments.push(
+      appointments.unshift(
         <div className="quick-appointments">
           <p className="appointment-details-header">Time</p>
           <p className="appointment-details-header">Patient Name</p>
