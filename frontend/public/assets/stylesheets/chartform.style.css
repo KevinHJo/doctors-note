@@ -1,11 +1,19 @@
-input:focus {
+#new-patient-chart-form input:focus {
   border: none;
-  outline: 3px solid rgb(255, 177, 185);
+  outline: none;
+  box-shadow: 0 0 0 4px rgb(255, 177, 185) inset;
 }
 
-textarea:focus {
+#new-patient-chart-form textarea:focus {
   border: none;
-  outline: 3px solid rgb(255, 177, 185);
+  outline: none;
+  box-shadow: 0 0 0 4px rgb(255, 177, 185) inset;
+}
+
+#new-patient-chart-form select:focus {
+  border: none;
+  outline: none;
+  box-shadow: 0 0 0 4px rgb(255, 177, 185) inset;
 }
 
 #new-chart-page textarea {
@@ -28,10 +36,11 @@ textarea:focus {
   bottom: 0;
   margin: auto;
   width: 650px;
-  height: 760px;
+  height: 85vh;
   padding: 20px;
+  border-radius: 4px;
   background-color: whitesmoke;
-  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
   overflow: auto;
 }
 
@@ -51,7 +60,8 @@ textarea:focus {
   font-size: 16px;
   font-weight: 700px;
   text-decoration: none;
-  border: 1px solid rgb(35, 35, 35);
+  border: 1px solid white;
+  border-radius: 4px;
 }
 
 #create-button {
@@ -59,6 +69,8 @@ textarea:focus {
   color: white !important;
   margin-right: 85px;
   width: 220px;
+  border: 1px solid white;
+  border-radius: 4px;
 }
 
 .new-chart-buttons:hover {
@@ -99,6 +111,13 @@ textarea:focus {
   flex-direction: row;
 }
 
+.new-chart-form {
+  margin-top: 20px;
+  padding: 25px 0px;
+  border-top: 4px solid rgb(35, 35, 35);
+  border-bottom: 4px solid rgb(35, 35, 35);
+}
+
 .new-chart-form-label {
   display: flex;
   flex-direction: column;
@@ -109,7 +128,10 @@ textarea:focus {
 }
 
 .new-chart-form-label textarea {
-  border: 1px solid rgb(35, 35, 35);
+  /* border: 1px solid rgb(35, 35, 35); */
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
 }
 
 .new-chart-form input {
@@ -124,20 +146,31 @@ textarea:focus {
   margin-right: 60px;
   padding-bottom: 9px;
   padding-top: 9px;
+  border-radius: 4px;
   background: white;
   color: rgb(62,62,118);
-  border: 1px solid rgb(35, 35, 35);
+  /* border: 1px solid rgb(35, 35, 35); */
+}
+
+.new-chart-form-address {
+  padding-bottom: 15px;
+  border-bottom: 3px solid rgb(70, 70, 70, 50%);
 }
 
 .new-chart-sex-input {
   z-index: 0;
   width: 100px;
   height: 30px;
-  border: 1px solid rgb(35, 35, 35);
+  /* border: 1px solid rgb(35, 35, 35); */
+  border: none;
+  border-radius: 4px;
+  margin-left: 8px;
 }
 
 .new-chart-sex-input option {
-  border: 1px solid rgb(35, 35, 35);
+  /* border: 1px solid rgb(35, 35, 35); */
+  outline: none;
+  border-radius: 4px;
 }
 
 .statusdiv, .ctwFlexItem25, .listhead {
@@ -154,6 +187,7 @@ textarea:focus {
 
 .new-chart-diagnoses {
   position: relative;
+  margin-left: 8px;
 }
 
 .new-chart-diaglist {
@@ -163,22 +197,23 @@ textarea:focus {
 .ctw-input {
   z-index: 2;
   position: relative;
+  width: 275px;
+  margin-right: 20px !important;
+  margin-left: 5px;
 }
 
 .ctw-window {
   display: none;
   position: absolute;
-  /* top: -10px;
-  left: 375px; */
   z-index: 1;
   height: 250px;
-  width: 250px;
   overflow-y: scroll;
-  width: 500px;
+  width: 100%;
   background-color: rgba(247, 247, 255, 0.9);
-  border-radius: 0px;
+  border-radius: 10px;
   box-shadow:0px 0px 10px 5px rgba(0, 0, 0, 0.2);
   z-index: 12;
+  font-size: 16px;
 }
 
 .new-chart-form-label textarea {

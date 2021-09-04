@@ -154,15 +154,15 @@ export default class ChartForm extends React.Component {
             <div className='new-chart-top'>
               <div className='new-chart-section1'>
                 <label className='new-chart-form-label'>First name: 
-                  <input type="text" required onChange={this.handleStringChange('fname')} value={this.state.fname}/>
+                  <input placeholder="Enter First Name Here" type="text" required onChange={this.handleStringChange('fname')} value={this.state.fname}/>
                 </label>
 
                 <label className='new-chart-form-label'>Last name: 
-                  <input type="text" required onChange={this.handleStringChange('lname')} value={this.state.lname}/>
+                  <input placeholder="Enter Last Name Here"  type="text" required onChange={this.handleStringChange('lname')} value={this.state.lname}/>
                 </label>
                 
                 <label className='new-chart-form-label'>Email: 
-                  <input type="email" required onChange={this.handleStringChange('email')} value={this.state.email}/>
+                  <input placeholder="Enter Email Name Here"  type="email" required onChange={this.handleStringChange('email')} value={this.state.email}/>
                 </label>
               </div>
 
@@ -194,8 +194,9 @@ export default class ChartForm extends React.Component {
             <div className='new-chart-form-label'>Diagnoses: 
               <div className='new-chart-diagnoses'>
                 <div className='new-chart-diaglist'>{this.renderSelections()}</div>
-                Type to search: <input type="text" className="ctw-input" autoComplete="off" data-ctw-ino="1" onClick={this.addVisible} onChange={this.handleStringChange('search')}/>
-                <div className="ctw-window" data-ctw-ino="1" id='ctw-window'></div>
+                Type to search: <input type="text" className="ctw-input" autoComplete="off" data-ctw-ino="1" placeholder="Start typing to search..." onClick={this.addVisible} onChange={this.handleStringChange('search')}/> Click diagnosis to add.
+                <div className="ctw-window" data-ctw-ino="1" id='ctw-window'>
+                </div>
               </div>
             </div>
             <label className='new-chart-form-label'>Medications: 
