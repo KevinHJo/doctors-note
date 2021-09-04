@@ -11,16 +11,19 @@
   left: 0;
   top: 30px;
   bottom: 0;
-  background-color: rgb(84, 101, 130);
+  /* background-color: rgb(214,214,255); */
+  /* background-color: rgb(163, 163, 194); */
+  background-color: rgb(84,101,130);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding: 45px 0px;
-  color: rgb(245, 245, 245);
+  color: white;
 }
 
 #doctor-left-nav .focused {
-  background-color: rgb(115,147,188) !important;
+  background-color: rgb(89,123,167) !important;
+  color: white;
   font-weight: 500 !important;
 }
 
@@ -35,7 +38,8 @@
 }
 
 .doctor-left-nav-sections:hover {
-  background: rgb(115,147,188);
+  background: rgb(89,123,167);
+  color: whitesmoke;
   cursor: pointer;
 }
 
@@ -60,13 +64,16 @@
   height: 85%;
   background: rgba(250, 251, 255, 0.8);
   margin: 0 auto;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid white;
+  /* box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.2); */
   border-radius: 4px;
+  border-top-right-radius: 50px;
 }
 
 #doctor-section-all-charts {
   display: flex;
   flex-direction: column;
+  border-top-right-radius: 50px;
 }
 
 #doctor-section-all-charts .title {
@@ -76,7 +83,9 @@
   color: rgb(37, 37, 37);
   letter-spacing: 2px;
   margin-bottom: 25px;
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid white;
+  background-color: rgb(205,203,186);
+  border-top-right-radius: 50px;
 }
 
 .charts-index-panel {
@@ -84,8 +93,11 @@
   height: 95%;
   overflow: auto;
   border-radius: 5px;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
-  padding-bottom: 30px;
+  /* box-shadow: 0px 0px 20px 2px rgb(123, 90, 75, 50%); */
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 0px 10px;
+  background-color: white;
 }
 
 .charts-index-default-panel {
