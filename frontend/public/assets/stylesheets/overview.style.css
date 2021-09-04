@@ -3,12 +3,12 @@
   height: 82%;
   flex-direction: row;
   justify-content: space-evenly;
-  border-bottom: 4px solid rgb(75, 92, 123);
 }
 
 .quick-links-section {
   width: 47.5%;
-  height: 80%;
+  border-bottom: 4px solid rgb(75, 92, 123);
+  height: 68.1vh;
 }
 
 .quick-links-title-section {
@@ -54,6 +54,9 @@
 
 .daily-section {
   width: 47.5%;
+  border-right: 4px solid rgb(75, 92, 123);
+  padding-right: 25px;
+  padding-bottom: 10px;
 }
 
 .daily-title-section {
@@ -82,8 +85,10 @@
   padding-bottom: 35px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  height: 60vh;
+  border-bottom: 4px solid rgb(75, 92, 123);
 }
 
 .daily-appointment-header {

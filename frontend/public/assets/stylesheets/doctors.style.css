@@ -11,9 +11,10 @@
   left: 0;
   top: 30px;
   bottom: 0;
+  font-weight: 400;
   /* background-color: rgb(214,214,255); */
   /* background-color: rgb(163, 163, 194); */
-  background-color: rgb(84,101,130);
+  background-color: rgba(75, 92, 123, 0.60);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -44,7 +45,7 @@
 }
 
 .doctor-left-nav-sections:active {
-  background: rgb(84, 134, 199);
+  background: rgb(74, 114, 167);
   border: 2px inset rgba(90, 84, 128, 0);
   outline: none;
 }
@@ -104,4 +105,65 @@
   width: 250px;
   margin: 0 auto;
   margin-top: 15px;
+}
+
+/* doctor info page styling */
+.doctor-info-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 70vh;
+  padding: 25px;
+}
+
+.doctor-info-section1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-bottom: 25px;
+}
+
+.doctor-info-section1-labels {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.doctor-info-section1-inputs {
+  margin-left: 16px;
+  margin-top: 5px;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+  text-align: center;
+}
+.doctor-info-section2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.doctor-info-section2-labels {
+  display: flex;
+  flex-direction: column;
+  width: 23.33333%;
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.doctor-info-section2-inputs {
+  margin-top: 5px;
+  border: none;
+  border-bottom: 1px solid black;
+  margin-left: 16px;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  font-weight: 400;
 }

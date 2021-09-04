@@ -11,11 +11,9 @@ export default class AppointmentDay extends React.Component {
     let appointmentObject = {};
 
     this.props.appointments.forEach((appointment) => {
-      console.log(appointment)
       appointmentObject[(moment(appointment.date))] = {[appointment.patientId]: appointment.purpose}
     });
 
-    console.log(Object.keys(appointmentObject))
     const sortedAppointmentTimes = Object.keys(appointmentObject).sort((a, b) => moment(a).unix() - moment(b).unix())
 
     sortedAppointmentTimes.forEach((appointment, idx) => {
