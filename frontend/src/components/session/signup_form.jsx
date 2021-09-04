@@ -130,7 +130,7 @@ export default class SignupForm extends React.Component {
             {error3}
           </label>
                 <div id="relative"></div>
-          <label className="signup-key-label">Product-Key:
+          {/* <label className="signup-key-label">Product-Key:
             <input className="signup-key-input" 
               type="text"
               id={focused['prodKey']}
@@ -138,7 +138,7 @@ export default class SignupForm extends React.Component {
               defaultValue={this.props.prodKey}
             ></input>
             {error4}
-          </label>
+          </label> */}
         </div>
         <div className='section2'>
           <label className="signup-email-label">Email: 

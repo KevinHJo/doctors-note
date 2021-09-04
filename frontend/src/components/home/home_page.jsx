@@ -1,6 +1,7 @@
 import React from 'react';
 import SignupForm from '../session/signup_form';
 import NavBarContainer from '../navbar/top_nav_bar_container';
+import { Link } from 'react-router-dom';
 
 export default class HomePage extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export default class HomePage extends React.Component {
       prodKey: ''
     }
 
-    this.generateProdKey = this.generateProdKey.bind(this);
+    // this.generateProdKey = this.generateProdKey.bind(this);
   }
 
   toggleLoginForm() {
@@ -24,11 +25,11 @@ export default class HomePage extends React.Component {
     );
   }
 
-  generateProdKey() {
-    this.props.genProdKey(
-      `${this.generatePassword()}-${this.generatePassword()}-${this.generatePassword()}-${this.generatePassword()}`
-    );
-  }
+  // generateProdKey() {
+  //   this.props.genProdKey(
+  //     `${this.generatePassword()}-${this.generatePassword()}-${this.generatePassword()}-${this.generatePassword()}`
+  //   );
+  // }
   
   render() {
     return (
@@ -60,8 +61,8 @@ export default class HomePage extends React.Component {
                 prodKey={this.props.prodKey}
               />
               <div className="bottom-links">
-                <p className="product-key-info">Don't have a product key?
-                  <a href="#" onClick={this.generateProdKey} className="product-key-link">Click to purchase.</a>
+                <p className="product-key-info">Are you an existing patient?
+                  <Link to="/patients/login" className="product-key-link">Log in here.</Link>
                 </p>
                 <p className="product-key-info">Already have an account?
                   <a href="#" onClick={this.toggleLoginForm} className="product-key-link">Click to login.</a>

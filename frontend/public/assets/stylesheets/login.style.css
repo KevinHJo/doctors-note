@@ -65,7 +65,7 @@
   text-align: center;
   width: 210px;
   margin: 5px 10px 0px 10px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(35, 35, 35);
 }
 
 .section-login-fields input:focus {
