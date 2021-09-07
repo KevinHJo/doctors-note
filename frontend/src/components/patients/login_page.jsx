@@ -32,8 +32,8 @@ export default class LoginPage extends React.Component {
   demoLogin(e) {
     e.preventDefault();
     const demoPatient = {
-      username: 'PatDemo5945',
-      password: '111111'
+      username: 'MichaelMadsen2576',
+      password: 'password'
     }
 
     this.props.login(demoPatient);
