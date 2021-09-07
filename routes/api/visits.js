@@ -71,8 +71,30 @@ router.patch('/update/:id', (req, res) => {
     assessment,
     plan,
     patientId
-  })
-    .then(visit => res.json(visit))
+  }, {new: true})
+    .then(visit => {
+      Patient.findOne({_id: patientId})
+      .then(patient => {
+        if (patient) {
+          let visits = Object.assign({}, patient.visits)
+          visits[visitId] = visit
+          patient.visits = visits
+          patient.save()
+            .then(pat => {
+              User.findOne({_id: pat.doctorId})
+                .then(user => {
+                  if (user) {
+                    let patients = Object.assign({}, user.patients)
+                    patients[pat._id] = pat
+                    user.patients = patients
+                    user.save()
+                  }
+                })
+            })
+        }
+    })
+      res.json(visit)
+    })
     .catch(err => res.json(err));
 });
 
