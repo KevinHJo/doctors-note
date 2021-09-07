@@ -29,7 +29,7 @@ export default class DoctorInformation extends React.Component {
             <input disabled type="text" className="doctor-info-section2-inputs" defaultValue={`${Object.values(this.props.doctor.patients).length}`}></input>
           </label>
           <label className="doctor-info-section2-labels">Registered since
-            <input disabled type="text" className="doctor-info-section2-inputs" defaultValue={`${moment(this.props.doctor.createdAt).format("YYYY, MM/DD")}`}></input>
+            <input disabled type="text" className="doctor-info-section2-inputs" defaultValue={`${moment(this.props.doctor.createdAt).format("MM/DD/YYYY")}`}></input>
           </label>
         </div>
       </div>
