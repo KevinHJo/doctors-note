@@ -27,14 +27,14 @@ export default class ChartForm extends React.Component {
 
   componentDidMount() {
     
-    if( window.localStorage ) {
-      if(!localStorage.getItem('firstLoad'))
-      {
-        localStorage['firstLoad'] = true;
-        window.location.reload();
-      }  
-      else localStorage.removeItem('firstLoad');
-    }
+    // if( window.localStorage ) {
+    //   if(!localStorage.getItem('firstLoad'))
+    //   {
+    //     localStorage['firstLoad'] = true;
+    //     window.location.reload();
+    //   }  
+    //   else localStorage.removeItem('firstLoad');
+    // }
     
     const mySettings = {apiServerUrl: "https://icd11restapi-developer-test.azurewebsites.net"};
     const myCallbacks = {
@@ -43,15 +43,24 @@ export default class ChartForm extends React.Component {
         this.setState({diagnoses: [...new Set(selections)]})
       }
     };
+    
+    ECT.Handler.configure(mySettings, myCallbacks);
+    if (this.props.formSubmit === 'Save') this.props.fetchPatient(this.props.patientId)
+
+    if( window.localStorage ) {
+      if(!localStorage.getItem('firstLoad'))
+      {
+        localStorage['firstLoad'] = true;
+        window.location.reload();
+      }  
+      else localStorage.removeItem('firstLoad');
+    }
 
     if (!!this.props.patientId) {
       if (!!document.getElementById("new-chart-page")) {
         document.getElementById("new-chart-page").classList.add("visible");
       }
     }
-    
-    ECT.Handler.configure(mySettings, myCallbacks);
-    if (this.props.formSubmit === 'Save') this.props.fetchPatient(this.props.patientId)
   }
 
   componentDidUpdate(prevProps) {
