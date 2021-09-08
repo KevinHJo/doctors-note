@@ -1,5 +1,6 @@
 import { RECEIVE_DOCTOR } from "../../actions/user_actions";
 import { RECEIVE_USER_LOGOUT } from "../../actions/session_actions";
+import { RECEIVE_PATIENT_LOGOUT } from '../../actions/patient_actions';
 import { RECEIVE_PATIENT, REMOVE_PATIENT } from "../../actions/patient_actions";
 
 const UserReducer = (state=null, action) => {
@@ -9,6 +10,8 @@ const UserReducer = (state=null, action) => {
     case RECEIVE_DOCTOR:
       return action.doctor.data;
     case RECEIVE_USER_LOGOUT:
+      return null;
+    case RECEIVE_PATIENT_LOGOUT:
       return null;
     case RECEIVE_PATIENT:
       if (nextState.patients) nextState.patients[action.patient._id] = action.patient;

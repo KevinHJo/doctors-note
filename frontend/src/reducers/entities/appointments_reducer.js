@@ -1,4 +1,6 @@
 import {RECEIVE_APPOINTMENT, RECEIVE_APPOINTMENTS, REMOVE_APPOINTMENT} from '../../actions/appointment_actions'
+import { RECEIVE_USER_LOGOUT } from '../../actions/session_actions';
+import { RECEIVE_PATIENT_LOGOUT } from '../../actions/patient_actions';
 
 const AppointmentsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -14,6 +16,10 @@ const AppointmentsReducer = (state = {}, action) => {
     case REMOVE_APPOINTMENT:
       delete nextState[action.appointmentId];
       return nextState;
+    case RECEIVE_USER_LOGOUT:
+      return {};
+    case RECEIVE_PATIENT_LOGOUT:
+      return {};
     default:
       return state;
   }

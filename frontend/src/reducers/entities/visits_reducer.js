@@ -1,4 +1,6 @@
 import {RECEIVE_VISIT, RECEIVE_VISITS, REMOVE_VISIT} from '../../actions/visit_actions'
+import { RECEIVE_USER_LOGOUT } from '../../actions/session_actions';
+import { RECEIVE_PATIENT_LOGOUT } from '../../actions/patient_actions';
 
 const VisitsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -15,6 +17,10 @@ const VisitsReducer = (state = {}, action) => {
     case REMOVE_VISIT:
       delete nextState[action.visit._id]
       return nextState;
+    case RECEIVE_USER_LOGOUT:
+      return {};
+    case RECEIVE_PATIENT_LOGOUT:
+      return {};
     default:
       return state;
   }
