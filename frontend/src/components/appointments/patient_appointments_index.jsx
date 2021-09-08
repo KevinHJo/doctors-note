@@ -60,7 +60,8 @@ class PatientAppointmentsIndex extends React.Component {
 
           <div id='patient-appointments-list'>
             {
-              appointments.map((appointment, i) => {
+              appointments.filter(appointment => new Date(appointment.date) > new Date())
+              .map((appointment, i) => {
                 return (
                   <li key={i} className='patient-appointment'>
                     <div className='patient-appointment-section1'>
