@@ -77,14 +77,10 @@ thead {
 }
 
 .today h4 {
-  width: 2vh;
-  height: 2vh;
-  line-height: 2vh;
-  padding-top: 0px !important;
-  margin: auto;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-  background-color: rgb(199,85,85);
+  padding: 0.4vh 0vh !important;
+  /* background-color: rgb(199,85,85); */
+  background-color: rgb(255 67 67);
+  margin: 0px 25%;
   border-radius: 2vw;
   color: white;
 }
@@ -120,7 +116,7 @@ thead {
 }
 
 .calendar-day h4 {
-  padding-top: 1vh;
+  padding: 0.4vh 0vh;
 }
 
 .calendar-appointment {

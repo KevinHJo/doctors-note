@@ -44,12 +44,20 @@ class AppointmentForm extends React.Component {
     return (
       <div id='appointment-form-container' onClick={this.props.toggleAppointmentForm}>
         <form id='appointment-form' onSubmit={this.handleSubmit.bind(this)} onClick={e => e.stopPropagation()}>
-          <div className='appointment-header'>
+          <div className='appointment-form-header'>
             <h2>Create an Appointment</h2>
-            <p>with <strong>Dr. {this.props.doctor.lname}</strong> on <strong>{this.state.date.format("MM/DD/YYYY")}</strong></p>
-          </div>
-
-          <div className='appointment-form-name'>
+            <div className="appointment-form-header-details">
+                with 
+                <div className="appointment-form-header-doctor-and-date">
+                  Dr. {this.props.doctor.lname}
+                </div>
+                on
+                <div className="appointment-form-header-doctor-and-date">
+                  {this.state.date.format("MM/DD/YYYY")}
+                </div>
+              </div>
+            </div>
+          <div className='new-appointment-form-details appointment-form-name'>
             <label htmlFor="name">Patient Name:</label>
             <select id="name" onChange={this.updateName.bind(this)} defaultValue={'Select a Patient'} required>
               <option key={'selectapatient'} disabled>Select a Patient</option>
@@ -59,12 +67,12 @@ class AppointmentForm extends React.Component {
             </select>
           </div>
           
-          <div className='appointment-form-date'>
+          <div className='new-appointment-form-details appointment-form-date'>
             <label htmlFor="time">Appointment Time:</label>
             <input type="time" id="time" onChange={this.updateTime.bind(this)}/>
           </div>
 
-          <div className='appointment-form-purpose'>
+          <div className='new-appointment-form-details appointment-form-purpose'>
             <label htmlFor="purpose">Purpose for Visit:</label>
             <textarea id='purpose' onChange={this.updatePurpose.bind(this)}/>
           </div>

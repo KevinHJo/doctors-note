@@ -48,7 +48,7 @@ export default class ChartShow extends React.Component {
           <Link to={`/charts/${patient._id}/edit`} className="show-chart-edit-button show-chart-buttons">Edit Patient Information</Link>
           <button className="show-chart-delete-button show-chart-buttons" onClick={this.handleDelete}>Delete Patient</button>
           <div className='chart-patient-info'>
-            <div>
+            <div className="cpi-sections">
               <p className="header">Patient Details</p>
               <div className="top-section sections">
                 <div className="chart-patient-details">
@@ -89,7 +89,7 @@ export default class ChartShow extends React.Component {
                 </div>
               </div>
             </div>
-            <div>
+            <div className="cpi-sections">
               <p className="header">Medical History</p>
               <div>
                 <p className="titles">Diagnoses: </p>
@@ -104,7 +104,7 @@ export default class ChartShow extends React.Component {
                 {patient.allergies.map(allergy => <p className="descs">{allergy}</p>)}
               </div>
             </div>
-            <div>
+            <div className="cpi-sections">
               <p className="header">Recent Visits</p>
               <div id="chart-show-recent-visits">
                 <VisitsIndex patient={patient} fetchPatient={this.props.fetchPatient}/>

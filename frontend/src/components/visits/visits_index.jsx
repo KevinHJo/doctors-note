@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 class VisitsIndex extends Component {
@@ -25,7 +26,7 @@ class VisitsIndex extends Component {
                   to={{pathname: `${_id}/${visit._id}`, state: {patient: this.props.patient, visit: visit}}}
                   className="visit-date-links"
                 >
-                  {new Date(visit.createdAt).toLocaleDateString("en-US", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}
+                  {new moment(visit.createdAt).format('dddd, MMMM Do YYYY')}
                 </Link>
               </li>
             )

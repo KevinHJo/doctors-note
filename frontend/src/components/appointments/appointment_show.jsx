@@ -74,7 +74,16 @@ class AppointmentShow extends React.Component {
           <div id='appointment-show' onClick={e => e.stopPropagation()}>
             <div className='appointment-header'>
               <h2>Upcoming Appointment</h2>
-              <p>with <strong>Dr. {this.props.doctor.lname}</strong> on <strong>{moment(this.props.appointment.date).format("MM/DD/YYYY")}</strong></p>
+              <div className="appointment-header-details">
+                with 
+                <div className="appointment-header-doctor-and-date">
+                  Dr. {this.props.doctor.lname}
+                </div>
+                on
+                <div className="appointment-header-doctor-and-date">
+                  {this.state.date.format("MM/DD/YYYY")}
+                </div>
+              </div>
             </div>
 
             <div id='appointment-info-container'>
@@ -106,22 +115,31 @@ class AppointmentShow extends React.Component {
     } else {
       return (
         <div id='appointment-show-container' onClick={this.props.toggleAppointmentShow}>
-          <div id='appointment-show' onClick={e => e.stopPropagation()}>
-            <div className='appointment-header'>
-              <h2>Upcoming Appointment</h2>
-              <p>with <strong>Dr. {this.props.doctor.lname}</strong> on <strong><input type="date" onChange={this.updateDate.bind(this)} defaultValue={moment(this.props.appointment.date).format("YYYY-MM-DD")}/></strong></p>
+          <div id='appointment-show-edit' onClick={e => e.stopPropagation()}>
+            <div className='appointment-edit-header'>
+              <h2>Edit Appointment</h2>
+              <div className="appointment-edit-header-details">
+                with 
+                <div className="appointment-header-doctor-and-date">
+                  Dr. {this.props.doctor.lname}
+                </div>
+                on
+                <div>
+                  <input 
+                    type="date"
+                    onChange={this.updateDate.bind(this)}
+                    defaultValue={moment(this.props.appointment.date).format("YYYY-MM-DD")}
+                    className="appointment-edit-date-input"
+                  />
+                </div>
+              </div>
             </div>
 
             <div id='appointment-info-container'>
               <div id='appointment-info-row1'>
                 <div className='appointment-show-info'>
                   <h3>Patient: </h3>
-                  <select id="name" onChange={this.updateName.bind(this)} defaultValue={this.props.appointment.patientId} required>
-                    <option key={'selectapatient'} disabled>Select a Patient</option>
-                    {Object.values(this.props.doctor.patients).map((patient, i) => {
-                      return <option key={i} value={patient._id}>{patient.lname + ', ' + patient.fname}</option>
-                    })}
-                  </select>
+                  <p>{patient.fname + ' ' + patient.lname}</p>
                 </div>
 
                 <div className='appointment-show-info'>  
@@ -137,8 +155,7 @@ class AppointmentShow extends React.Component {
             </div>
 
             <div id='appointment-info-controls'>
-              <button id='appointment-edit-button' onClick={this.handleSave}>Save</button>
-              <button id='appointment-cancel-button' onClick={this.handleDelete}>Cancel Appointment</button>
+              <button id='appointment-edit-button' onClick={this.handleSave}>Save changes</button>
               <button id='appointment-stop-edit' onClick={this.toggleEditing}>Back</button>
             </div>
           </div>

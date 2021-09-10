@@ -19,7 +19,7 @@ export default class ChartsIndexPanel extends React.Component {
         <div id="last-visit-details">
           <h1 className="visit-header">Patient Name: {this.props.patient.fname} {this.props.patient.lname}</h1>
           <h1 className="visit-header">DOB: {moment(this.props.patient.dateOfBirth).format('MM/DD/YYYY')}</h1>
-          <h1 className="visit-header last-visit-header">Last visit on {new Date(lastVisit.createdAt).toLocaleDateString("en-US", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</h1>
+          <h1 className="visit-header last-visit-header">Last visit on {new moment(lastVisit.createdAt).format('dddd, MMMM Do YYYY')}</h1>
           <div>
             <p className="visit-title">Subjective: </p>
             <p className="visit-desc" dangerouslySetInnerHTML={{ __html: lastVisit.subjective }}></p>

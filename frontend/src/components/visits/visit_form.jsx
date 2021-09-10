@@ -65,7 +65,7 @@ class VisitForm extends Component {
       switch (Object.keys(this.props.modal)[0]) {
         case '1':
           section = (
-            <div className='soap-subjective'>
+            <div className='soap-subjective soap-sections'>
               <h1>Subjective</h1>
               <Editor
                 apiKey="qdsfz5mb1rgq6f9e4tlppil5y3suu39z8ln3guyhhbej13qp"
@@ -89,7 +89,7 @@ class VisitForm extends Component {
           break;
         case '2':
           section = (
-            <div className='soap-objective'>
+            <div className='soap-objective soap-sections'>
               <h1>Objective</h1>
               <Editor
                 apiKey="qdsfz5mb1rgq6f9e4tlppil5y3suu39z8ln3guyhhbej13qp"
@@ -113,7 +113,7 @@ class VisitForm extends Component {
           break;
         case '3':
           section = (
-            <div className='soap-assessment'>
+            <div className='soap-assessment soap-sections'>
               <h1>Assessment</h1>
               <Editor
                 apiKey="qdsfz5mb1rgq6f9e4tlppil5y3suu39z8ln3guyhhbej13qp"
@@ -137,7 +137,7 @@ class VisitForm extends Component {
           break;
         case '4':
           section = (
-            <div className='soap-plan'>
+            <div className='soap-plan soap-sections'>
               <h1>Plan</h1>
               <Editor
                 apiKey="qdsfz5mb1rgq6f9e4tlppil5y3suu39z8ln3guyhhbej13qp"
@@ -173,7 +173,7 @@ class VisitForm extends Component {
           <form className='soap-note-form' onSubmit={this.handleSubmit}>
             {section}
             <div id='visit-form-controls'>
-              <input type="submit" value={this.props.formSubmit}/>
+              <input type="submit" value={this.props.formSubmit}></input>
               {this.cancelForm()}
             </div>
           </form>

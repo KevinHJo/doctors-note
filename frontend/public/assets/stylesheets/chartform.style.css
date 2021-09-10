@@ -271,3 +271,7 @@
   background-color:rgb(185, 150, 168);
   cursor: pointer;
 }
+
+.patients-chart-toggle:active  {
+  background-color:rgb(185, 150, 168);
+}

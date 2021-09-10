@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import moment from 'moment';
 
 export default class Visit extends React.Component {
   render() {
@@ -6,7 +7,7 @@ export default class Visit extends React.Component {
     <div className="visit-sections">
       <div>
         <p className="title">Date of Visit:</p>
-        <p className='desc desc1' >{new Date(this.props.visit.createdAt).toLocaleDateString("en-US",{weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</p>
+        <p className='desc desc1' >{new moment(this.props.visit.createdAt).format('dddd, MMMM Do YYYY')}</p>
       </div>
       <div>
         <p className="title">Reason for Visit:</p>

@@ -5,32 +5,146 @@
   top: 0;
   left: 0;
   display: flex;
-  background-color: rgba(129, 129, 129, 0.575)
+  /* background-color: rgba(129, 129, 129, 0.575); */
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(3px)
 }
 
-#appointment-form, #appointment-show {
-  height: 50vh;
-  width: 30vw;
+#appointment-show {
   margin: auto;
-  background-color: white;
-  border: 0.5vw solid rgb(35, 35, 35);
+  height: 50vh;
+  width: 50vh;
+  background-color: rgba(117, 134, 161, 0.8);
+  border: 2px solid rgb(255,255,255);
+  border-radius: 25vh;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+}
+
+#appointment-show-edit {
+  margin: auto;
+  height: 55vh;
+  width: 55vh;
+  background-color: rgba(117, 134, 161, 0.8);
+  border: 2px solid rgb(255,255,255);
+  border-radius: 27.5vh;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+}
+
+#appointment-form {
+  margin: auto;
+  height: 60vh;
+  width: 60vh;
+  background-color: rgba(117, 134, 161, 0.8);
+  border: 2px solid white;
+  border-radius: 4px;
+  border-top-right-radius: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   z-index: 1;
 }
 
-#appointment-show {
-  height: 40vh;
-}
-
 #appointment-form div {
   margin: auto;
-  padding: 1vh 0vh;
 }
 
 .appointment-header {
   text-align: center;
+  border-bottom: 4px solid rgb(255, 255, 255);
+  margin: 0px 1.1vh;
+  padding-bottom: 15px;
+}
+
+.appointment-header h2 {
+  font-size: 1.75em;
+}
+
+.appointment-edit-header {
+  text-align: center;
+  border-bottom: 4px solid rgb(255, 255, 255);
+  margin: 0px 1.87vh;
+  padding-bottom: 15px;
+}
+
+.appointment-edit-header h2 {
+  font-size: 1.75em;
+}
+
+.appointment-header-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 58%;
+  margin: auto;
+  padding: 2px;
+}
+
+.appointment-edit-header-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70%;
+  margin: auto;
+  padding: 5px;
+}
+
+.appointment-header-doctor-and-date {
+  font-weight: 600;
+  color: black;
+  padding: 5px;
+  background-color: rgb(255, 255, 0, 0.7);
+  margin-top: -5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.appointment-edit-date-input {
+  padding: 2px;
+  margin-top: -5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.appointment-form-header {
+  text-align: center;
+  border-bottom: 4px solid white;
+  border-top-right-radius: 50px;
+  width: 100%;
+  margin-top: 0 !important;
+  padding: 20px;
+  background-color: rgb(205,203,186);
+  color: black;
+}
+
+.appointment-form-header-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 45%;
+  margin: auto;
+  align-items: center;
+}
+
+.appointment-form-header-doctor-and-date {
+  font-weight: 600;
+  color: red;
+}
+
+.new-appointment-form-details {
+  color: white;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 75%;
 }
 
 #appointment-form label {
@@ -52,11 +166,12 @@
 }
 
 #appointment-form-submit {
-  border: none;
+  border: 1px solid white;
   background-color: rgb(84,101,130);
   padding: 1vh 2vw;
   color: white;
   margin-right: 4vw;
+  border-radius: 4px;
 }
 
 #appointment-form-submit:hover {
@@ -70,10 +185,11 @@
 }
 
 #appointment-form-cancel {
-  border: none;
+  border: 1px solid white;
   background-color: rgb(199,85,85);
   color: white;
   padding: 1vh 2vw;
+  border-radius: 4px;
 }
 
 #appointment-form-cancel:hover {
@@ -87,7 +203,8 @@
 }
 
 #appointment-info-container {
-  margin-top: 2vh;
+  margin-top: 2.5vh;
+  margin-bottom: 3vh;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -112,29 +229,39 @@
 
 .appointment-show-info p {
   margin-left: 1vw;
-  color: red;
+  color: black;
+  padding: 2px;
+  background-color: rgb(255, 255, 0, 0.7);
+  font-weight: 600;
+  margin-top: -2px;
 }
 
 #appointment-info-controls {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-#appointment-info-controls button:not(:last-child) {
-  margin-right: 25px;
+  flex-direction: column;
+  width: 53%;
+  height: 115px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
 }
 
 #appointment-edit-button {
   border: none;
-  padding: 10px 10px;
+  padding: 6px 0px;
+  width: 100%;
   background-color: rgb(121, 142, 189);
   color: white;
-  box-shadow: 0px 0px 2px black;
+  border-radius: 50px;
+  border: 2px solid white;
+  font-size: 1.1em;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 #appointment-edit-button:hover {
   cursor: pointer;
+  font-weight: 700;
   background-color: rgb(102, 121, 161);
 }
 
@@ -145,14 +272,21 @@
 
 #appointment-cancel-button {
   border: none;
-  padding: 10px 10px;
+  width: 100%;
+  border-radius: 50px;
+  padding: 6px 0px;
   background-color: rgb(224, 111, 111);
   color: white;
-  box-shadow: 0px 0px 2px black;
+  border-radius: 50px;
+  border: 2px solid white;
+  font-size: 1.1em;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 #appointment-cancel-button:hover {
   cursor: pointer;
+  font-weight: 700;
   background-color: rgb(194, 96, 96);
 }
 
@@ -163,10 +297,24 @@
 
 #appointment-stop-edit {
   border: none;
-  background-color: white;
+  padding: 6px 0px;
+  width: 100%;
+  background-color: rgb(224, 111, 111);
+  color: white;
+  border-radius: 50px;
+  border: 2px solid white;
+  font-size: 1.1em;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 #appointment-stop-edit:hover {
   cursor: pointer;
-  color: blue;
+  font-weight: 700;
+  background-color: rgb(194, 96, 96);
+}
+
+#appointment-stop-edit:active {
+  cursor: pointer;
+  background-color: rgb(161, 80, 80);
 }

@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import VisitForm from './visit_form'
-import TopNavBarContainer from '../navbar/top_nav_bar_container'
+import React, { Component } from 'react';
+import moment from 'moment';
+import VisitForm from './visit_form';
+import TopNavBarContainer from '../navbar/top_nav_bar_container';
 
 class VisitShow extends Component {
   constructor(props) {
@@ -64,7 +65,7 @@ class VisitShow extends Component {
             <div id='spacer'/>
             <div className='visit-show'>
               <div className='visit-info'>
-                <p>{new Date(visit.createdAt).toLocaleDateString('en-US', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</p>
+                <p>{new moment(visit.createdAt).format('dddd, MMMM Do YYYY')}</p>
                 <div className="back-section" onClick={() => this.props.history.push(`/charts/${visit.patientId}`)}>
                   <img 
                     src="https://doctors-note-seeds.s3.us-west-1.amazonaws.com/reply-message.png"
