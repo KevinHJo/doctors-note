@@ -27,6 +27,7 @@
   text-decoration: underline;
   align-items: flex-end;
   text-decoration-color: red;
+  margin-left: 4%;
 }
 
 .print-banner-section-2 .labels {
@@ -54,7 +55,7 @@
   flex-direction: column;
   justify-content: center;
   z-index: 3;
-  font-weight: 500;
+  font-weight: 600;
   width: 184px;
   border: 1px solid rgb(37,37,37, 0%);
   border-radius: 50px;

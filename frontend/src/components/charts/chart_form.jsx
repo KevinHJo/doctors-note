@@ -27,26 +27,6 @@ export default class ChartForm extends React.Component {
 
   componentDidMount() {
     
-    // if( window.localStorage ) {
-    //   if(!localStorage.getItem('firstLoad'))
-    //   {
-    //     localStorage['firstLoad'] = true;
-    //     window.location.reload();
-    //   }  
-    //   else localStorage.removeItem('firstLoad');
-    // }
-    
-    const mySettings = {apiServerUrl: "https://icd11restapi-developer-test.azurewebsites.net"};
-    const myCallbacks = {
-      selectedEntityFunction: selectedEntity => {
-        const selections = this.state.diagnoses.concat(selectedEntity.code + " - " + selectedEntity.bestMatchText)
-        this.setState({diagnoses: [...new Set(selections)]})
-      }
-    };
-    
-    ECT.Handler.configure(mySettings, myCallbacks);
-    if (this.props.formSubmit === 'Save') this.props.fetchPatient(this.props.patientId)
-
     if( window.localStorage ) {
       if(!localStorage.getItem('firstLoad'))
       {
@@ -55,12 +35,23 @@ export default class ChartForm extends React.Component {
       }  
       else localStorage.removeItem('firstLoad');
     }
+    
+    const mySettings = {apiServerUrl: "https://icd11restapi-developer-test.azurewebsites.net", popupMode: true};
+    const myCallbacks = {
+      selectedEntityFunction: selectedEntity => {
+        const selections = this.state.diagnoses.concat(selectedEntity.code + " - " + selectedEntity.bestMatchText)
+        this.setState({diagnoses: [...new Set(selections)]})
+      }
+    };
 
     if (!!this.props.patientId) {
       if (!!document.getElementById("new-chart-page")) {
         document.getElementById("new-chart-page").classList.add("visible");
       }
     }
+    
+    if (this.props.formSubmit === 'Save') this.props.fetchPatient(this.props.patientId)
+    ECT.Handler.configure(mySettings, myCallbacks);
   }
 
   componentDidUpdate(prevProps) {
@@ -150,6 +141,18 @@ export default class ChartForm extends React.Component {
 
   render() {
     if (!this.props.patient) return null
+    if (document.getElementsByClassName('messageright').length > 0) {
+      console.log(document.getElementsByClassName('messageright').length)
+      console.log(document.getElementsByClassName('messageright'))
+      // document.getElementsByClassName('messageright')[0].onClick(() => {
+      //   document.getElementById('ctw-window').classList.remove('visible')
+      //   document.getElementById('close-modal').classList.remove('visible')
+      // })
+      document.getElementsByClassName('messageright')[0].onClick = function() {
+        document.getElementById('ctw-window').classList.remove('visible')
+        document.getElementById('close-modal').classList.remove('visible')
+      }
+    }
 
     return (
       <div id='new-chart-page'>

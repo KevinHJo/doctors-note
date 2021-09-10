@@ -34,6 +34,8 @@ class VisitForm extends Component {
   }
 
   handleSubjectiveChange(value, editor) {
+    console.log(value);
+    console.log(editor);
     this.setState({subjective: value})
   }
 

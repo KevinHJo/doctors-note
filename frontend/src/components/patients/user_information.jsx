@@ -107,7 +107,7 @@ export default class UserInformation extends React.Component {
         <div id='spacer'></div>
         <label className='patient-password-change'>Change password:
           <div id='patient-password-container'>
-            <input id='patient-password' type="password" id="newPassword" />
+            <input type="password" id="newPassword" />
             <button id='patient-password-button' onClick={this.handleChangePassword}>Edit</button>
           </div> 
           <p id="passwordMessage"></p>

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import moment from 'moment';
 import NavBarContainer from '../navbar/top_nav_bar_container';
 import DoctorLeftNavigation from './doctor_left_navigation';
 import ChartsIndexContainer from '../charts/charts_index_container';
@@ -8,6 +9,14 @@ import AppointmentDayContainer from '../appointments/appointment_day_container';
 import DoctorInformation from '../doctors/doctor_information';
 
 export default class DoctorIndexPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      time: new Date().toLocaleTimeString(),
+    }
+  }
+
   toggleAddChart() {
     document.getElementById("new-chart-page").classList.add("visible")
   }
@@ -21,6 +30,7 @@ export default class DoctorIndexPage extends React.Component {
 
   render() {
     if (!this.props.doctor) return null;
+    console.log(new Date().toLocaleTimeString());
     let section;
     if (Object.values(this.props.modal)[0]) {
       switch (Object.keys(this.props.modal)[0]) {
@@ -28,7 +38,8 @@ export default class DoctorIndexPage extends React.Component {
           section = (
             <div id="doctor-section-user-info" className="doctor-homepage-sections">
               <ChartFormContainer />
-              <p className="doctor-section-user-title">{new Date().toLocaleDateString("en-US", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</p>
+              {/* <p className="doctor-section-user-title">{new Date().toLocaleDateString("en-US", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</p> */}
+              <p className="doctor-section-user-title">{moment().format('dddd, MMMM Do YYYY')}</p>
               {/* <p className="doctor-section-user-title">{`${`${new Date()}`.split(" ").splice(0, 4).join(" ")}`}</p> */}
               <div className="overview-sections">
                 <AppointmentDayContainer patients={this.props.doctor.patients} />

@@ -40,14 +40,13 @@ export default class SignupForm extends React.Component {
     let error1 = '';
     let error2 = '';
     let error3 = '';
-    let error4 = '';
     let error5 = '';
     let error6 = '';
     let error7 = '';
     let focused = {};
 
     if (this.props.signupErrors) {
-      const {fname, lname, dba, prodKey, email, username, password} = this.props.signupErrors;
+      const {fname, lname, dba, email, username, password} = this.props.signupErrors;
 
       if (fname) {
         error1 = (
@@ -123,16 +122,6 @@ export default class SignupForm extends React.Component {
               ></input>
             {error3}
           </label>
-                <div id="relative"></div>
-          {/* <label className="signup-key-label">Product-Key:
-            <input className="signup-key-input" 
-              type="text"
-              id={focused['prodKey']}
-              placeholder="Enter 16-Digit Product Key."
-              defaultValue={this.props.prodKey}
-            ></input>
-            {error4}
-          </label> */}
         </div>
         <div className='section2'>
           <label className="signup-email-label">Email: 

@@ -36,7 +36,7 @@ export default class ChartForm extends React.Component {
       else localStorage.removeItem('firstLoad');
     }
     
-    const mySettings = {apiServerUrl: "https://icd11restapi-developer-test.azurewebsites.net"};
+    const mySettings = {apiServerUrl: "https://icd11restapi-developer-test.azurewebsites.net", popupMode: true};
     const myCallbacks = {
       selectedEntityFunction: selectedEntity => {
         const selections = this.state.diagnoses.concat(selectedEntity.code + " - " + selectedEntity.bestMatchText)
@@ -169,8 +169,7 @@ export default class ChartForm extends React.Component {
             <div className='new-chart-form-label'>Diagnoses: 
               <div className='new-chart-diagnoses'>
                 <div className='new-chart-diaglist'>{this.renderSelections()}</div>
-                Type to search: <input type="text" className="ctw-input" autoComplete="off" data-ctw-ino="1" onClick={this.addVisible} onChange={this.handleStringChange('search')}/>
-
+                Type to search: <input type="text" placeholder="Start typing to search..." className="ctw-input" autoComplete="off" data-ctw-ino="1" onClick={this.addVisible} onChange={this.handleStringChange('search')}/> Click diagnosis to add.
                 <div className="ctw-window" data-ctw-ino="1" id='ctw-window'></div>
               </div>
             </div>
