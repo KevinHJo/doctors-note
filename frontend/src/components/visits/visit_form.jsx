@@ -53,7 +53,9 @@ class VisitForm extends Component {
 
   cancelForm() {
     if (this.props.formSubmit === 'Save') {
-      return <button onClick={() => window.location.reload()}>Cancel</button>
+      return <button onClick={() => window.location.reload()}>
+        Cancel
+      </button>
     } else {
       return <Link to={`/charts/${this.props.visit.patientId}`}>Cancel</Link>
     }
